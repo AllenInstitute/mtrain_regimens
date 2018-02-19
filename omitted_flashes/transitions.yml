@@ -1,0 +1,44 @@
+- trigger: progress
+  source: 1_AutoRewards
+  dest: static_full_field_gratings
+  conditions: autorewards_complete
+
+- trigger: progress
+  source: static_full_field_gratings
+  dest: static_full_field_gratings_flash_500ms
+  conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+
+- trigger: progress
+  source: static_full_field_gratings_flash_500ms
+  dest: natural_images
+  conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+
+- trigger: progress
+  source: natural_images
+  dest: natural_images_drop_reward
+  conditions: three_complete
+#
+# - trigger: progress
+#   source: natural_images_drop_reward
+#   dest: natural_images_ophys_session_A
+#   conditions: ready_for_imaging
+#
+# - trigger: progress
+#   source: natural_images_ophys_session_A
+#   dest: natural_images_ophys_session_B
+#   conditions: one_complete
+#
+# - trigger: progress
+#   source: natural_images_ophys_session_B
+#   dest: natural_images_ophys_session_C
+#   conditions: one_complete
+#
+# - trigger: progress
+#   source: natural_images_ophys_session_C
+#   dest: natural_images_ophys_session_D
+#   conditions: one_complete
+#
+# - trigger: progress
+#   source: natural_images_ophys_session_D
+#   dest: natural_images_ophys_session_A
+#   conditions: one_complete

@@ -1,0 +1,191 @@
+1_AutoRewards:
+    stage: 1_AutoRewards
+    duration: 15
+
+    # stimulus
+    stimulus: full_screen_square_wave
+    delta_oris: [90]
+    SF: 0.04
+    catch_frequency: 0
+        
+    # rewards
+    rewardvol: 0.007 # in microliters
+    task_mode: training # 'testing' -> autoreward on change; 'training' -> must solicit reward
+    volumelimit: 1.5
+
+    # auto rewards
+    warmup_trials: 10
+
+    # timeout
+    ignore_false_alarms: True
+
+    # trial timing
+    stim_duration: 0.2
+    blank_duration_range: [0.0,0.0]
+    initial_blank: 0
+    delta_minimum: 2
+    stimulus_distribution: uniform
+    trial_duration: 12
+    response_window: [0.15,1]
+
+    # misc
+    frame_interval_plot: none
+
+static_full_field_gratings:
+    stage: static_full_field_gratings
+
+    # stimulus
+    stimulus: full_screen_square_wave
+    delta_oris: [90]
+    SF: 0.04
+    catch_frequency: 0.5
+        
+    # rewards
+    rewardvol: 0.01 # in microliters
+    task_mode: training # 'testing' -> autoreward on change; 'training' -> must solicit reward
+    volumelimit: 1.5
+
+    # auto rewards
+    warmup_trials: 5
+    lick_detect_training_enabled: true # if mouse is not licking for multiple trials, deliver free rewards
+    lick_detect_training_mode: single
+    lick_detect_training_block_length: [8,12] # interval of consecutive trials without a lick to a free reward
+
+    # timeout
+    whitenoise_on_timeout: false
+    blankscreen_on_timeout: false
+    blankscreen_duration: 1
+
+    max_number_trial_repeats: 5
+
+    # trial timing
+    stim_duration: 0.2
+    blank_duration_range: [0.0,0.0]
+    initial_blank: 0
+    delta_minimum: 2
+    stimulus_distribution: uniform
+    trial_duration: 4.5
+    response_window: [0.15,1]
+
+    # misc
+    frame_interval_plot: none
+
+static_windowed_gratings:
+    # major change: 'stimulus'
+    stage: static_windowed_gratings
+
+    # stimulus
+    stimulus: masked_sinusoidal_grating
+    delta_oris: [90]
+    SF: 0.04
+    catch_frequency: 0.5
+        
+    # rewards
+    rewardvol: 0.01 # in microliters
+    task_mode: training # 'testing' -> autoreward on change; 'training' -> must solicit reward
+    volumelimit: 1.5
+
+    # auto rewards
+    warmup_trials: 5
+    lick_detect_training_enabled: true # if mouse is not licking for multiple trials, deliver free rewards
+    lick_detect_training_mode: single
+    lick_detect_training_block_length: [8,12] # interval of consecutive trials without a lick to a free reward
+
+    # timeout
+    whitenoise_on_timeout: false
+    blankscreen_on_timeout: false
+    blankscreen_duration: 1
+
+    max_number_trial_repeats: 5
+
+    # trial timing
+    stim_duration: 0.2
+    blank_duration_range: [0.0,0.0]
+    initial_blank: 0
+    delta_minimum: 2
+    stimulus_distribution: uniform
+    trial_duration: 4.5
+    response_window: [0.15,1]
+
+    # misc
+    frame_interval_plot: none
+
+static_windowed_gratings_flash_500ms:
+    # major change: 'stimulus'
+    stage: static_windowed_gratings_flash_500ms
+    # stimulus
+    stimulus: masked_sinusoidal_grating
+    delta_oris: [90]
+    SF: 0.04
+    catch_frequency: 0.5
+        
+    # rewards
+    rewardvol: 0.01 # in microliters
+    task_mode: training # 'testing' -> autoreward on change; 'training' -> must solicit reward
+    volumelimit: 1.5
+
+    # auto rewards
+    warmup_trials: 5
+    lick_detect_training_enabled: true # if mouse is not licking for multiple trials, deliver free rewards
+    lick_detect_training_mode: single
+    lick_detect_training_block_length: [8,12] # interval of consecutive trials without a lick to a free reward
+
+    # timeout
+    whitenoise_on_timeout: false
+    blankscreen_on_timeout: false
+    blankscreen_duration: 1
+
+    max_number_trial_repeats: 5
+
+    # trial timing
+    stim_duration: 0.2
+    blank_duration_range: [0.5,0.5]
+    initial_blank: 0
+    delta_minimum: 2
+    stimulus_distribution: uniform
+    trial_duration: 4.5
+    response_window: [0.15,1]
+
+    # misc
+    frame_interval_plot: none
+
+natural_images:
+    task: DoC_NaturalImages_CAMMatched_n=8
+    stage: natural_images
+    # stimulus
+    stimulus: natural_images_eight_CAM_matched_2017.01.19.pkl
+    image_category_sampling_mode: random_without_replacement
+    stimulus_size: [1174,918]
+    stimulus_units: pix
+    pos: [0,0]
+    catch_frequency: 0.125 # 8 images -> 1/8 catch trials. 
+        
+    # rewards
+    rewardvol: 0.01 # in microliters
+    task_mode: training # 'testing' -> autoreward on change; 'training' -> must solicit reward
+    volumelimit: 1.5
+
+    # auto rewards
+    warmup_trials: 5
+    lick_detect_training_enabled: true # if mouse is not licking for multiple trials, deliver free rewards
+    lick_detect_training_mode: single
+    lick_detect_training_block_length: [8,12] # interval of consecutive trials without a lick to a free reward
+
+    # timeout
+    whitenoise_on_timeout: false
+    blankscreen_on_timeout: false
+    blankscreen_duration: 1
+
+    max_number_trial_repeats: 5
+
+    # trial timing
+    stim_duration: 0.2
+    blank_duration_range: [0.5,0.5]
+    initial_blank: 0
+    delta_minimum: 2
+    stimulus_distribution: uniform
+    trial_duration: 4.5
+    response_window: [0.15,1]
+
+    # misc
+    frame_interval_plot: none

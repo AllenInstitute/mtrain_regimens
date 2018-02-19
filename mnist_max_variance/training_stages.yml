@@ -1,0 +1,91 @@
+mnist_014_n1:
+    script:
+        DoC_General_AutoDaily.py
+
+    parameters:
+        task: DoC_MNIST
+        stage: mnist_014_n1
+        # stimulus
+        stimulus: mnist_014_n1_invert1.pkl
+        image_category_sampling_mode: random_without_replacement
+        stimulus_size: [75,75]
+        pos: [-25,0]
+        background_color: 0
+        catch_frequency: 0.333 # 8 images -> 1/8 catch trials. 
+            
+        # rewards
+        rewardvol: 0.007 # in microliters
+        task_mode: training # 'testing' -> autoreward on change; 'training' -> must solicit reward
+        volumelimit: 1.5
+
+        # auto rewards
+        warmup_trials: 5
+        lick_detect_training_enabled: true # if mouse is not licking for multiple trials, deliver free rewards
+        lick_detect_training_mode: single
+        lick_detect_training_block_length: [8,12] # interval of consecutive trials without a lick to a free reward
+
+        # timeout
+        whitenoise_on_timeout: false
+        blankscreen_on_timeout: false
+        blankscreen_duration: 1
+
+        max_number_trial_repeats: 5
+
+        # trial timing
+        stim_duration: 0.25
+        blank_duration_range: [0.5,0.5]
+        initial_blank: 0
+        delta_minimum: 2
+        stimulus_distribution: uniform
+        trial_duration: 4.5
+        response_window: [0.15,0.75]
+
+        # misc
+        frame_interval_plot: none
+
+mnist_014_n256:
+    script:
+        DoC_General_AutoDaily.py
+
+    parameters:
+        task: DoC_MNIST
+        stage: mnist_014_n256
+        # stimulus
+        stimulus: mnist_014_n256_invert1.pkl
+        image_category_sampling_mode: random_without_replacement
+        stimulus_size: [75,75]
+        pos: [-25,0]
+        background_color: 0
+        catch_frequency: 0.333 # 8 images -> 1/8 catch trials. 
+            
+        # rewards
+        rewardvol: 0.007 # in microliters
+        task_mode: training # 'testing' -> autoreward on change; 'training' -> must solicit reward
+        volumelimit: 1.5
+
+        # auto rewards
+        warmup_trials: 5
+        lick_detect_training_enabled: true # if mouse is not licking for multiple trials, deliver free rewards
+        lick_detect_training_mode: single
+        lick_detect_training_block_length: [8,12] # interval of consecutive trials without a lick to a free reward
+
+        # timeout
+        whitenoise_on_timeout: false
+        blankscreen_on_timeout: false
+        blankscreen_duration: 1
+
+        max_number_trial_repeats: 5
+
+        # trial timing
+        stim_duration: 0.25
+        blank_duration_range: [0.5,0.5]
+        initial_blank: 0
+        delta_minimum: 2
+        stimulus_distribution: uniform
+        trial_duration: 4.5
+        response_window: [0.15,0.75]
+
+        # misc
+        frame_interval_plot: none
+
+

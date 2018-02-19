@@ -1,0 +1,4 @@
+- trigger: progress
+  source: static_full_field_gratings_flash_500ms
+  dest: static_full_field_gratings_flash_500ms
+  

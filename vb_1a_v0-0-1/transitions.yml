@@ -1,0 +1,34 @@
+- trigger: progress
+  source: 1_AutoRewards
+  dest: static_full_field_gratings
+  conditions: autorewards_complete
+
+- trigger: progress
+  source: static_full_field_gratings
+  dest: static_full_field_gratings_flash_500ms
+  conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+
+- trigger: progress
+  source: static_full_field_gratings_flash_500ms
+  dest: natural_images
+  conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+
+- trigger: progress
+  source: natural_images
+  dest: natural_images_drop_reward
+  conditions: three_complete
+
+- trigger: progress
+  source: natural_images_drop_reward
+  dest: ready_for_imaging
+  conditions: meets_engagement_criteria
+
+- trigger: progress
+  source: ready_for_imaging
+  dest: not_ready_for_imaging
+  unless: meets_engagement_criteria
+
+- trigger: progress
+  source: not_ready_for_imaging
+  dest: ready_for_imaging
+  conditions: meets_engagement_criteria
