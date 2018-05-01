@@ -1,0 +1,227 @@
+####################################################################
+# mTrain training stages for Foraging2 DoC
+# @author: derricw
+# Dec 6 2017
+#
+####################################################################
+
+1_AutoRewards:
+    # Stage 0 features:
+    #   - automatic rewards on every trial. 
+    #   - stimulus is full screen square wave
+    #   - stimulus does not flash
+    #   - only 15 min duration
+    script:
+        doc_gratings.py
+
+    parameters:
+
+        stage: 1_AutoRewards
+        task_id: DoC
+
+        # rewards (ml)
+        auto_reward_vol: 0.007 # in microliters
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: -1 #infinite
+        abort_on_early_response: False
+
+        # trial timing
+        periodic_flash: None
+        initial_blank: 0
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 15.0
+
+        trial_translator: True
+
+
+static_full_field_gratings:
+    # Stage 1 features:
+    #   - automatic rewards for first 5 trials
+    #   - stimulus is full screen square wave
+    #   - stimulus does not flash
+    #   - 60 min duration
+    #   - 25% catch trials
+    script:
+        doc_gratings.py
+
+    parameters:
+        stage: static_full_field_gratings
+        task_id: DoC
+
+        catch_frequency: 0.25
+        failure_repeats: 5
+
+        # rewards (mL)
+        auto_reward_vol: 0.01
+        reward_vol: 0.01
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: 5
+
+        # trial timing
+        periodic_flash: None
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 60.0
+
+        trial_translator: True
+
+
+static_full_field_gratings_flash_500ms:
+    # Stage 2 features:
+    #   - same as stage 1 but stimulus flashes
+    script:
+        doc_gratings.py
+
+    parameters:
+        stage: static_full_field_gratings_flash_500ms
+        task_id: DoC
+
+        catch_frequency: 0.25
+        failure_repeats: 5
+
+        # rewards (mL)
+        auto_reward_vol: 0.01
+        reward_vol: 0.01
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: 5
+
+        # trial timing
+        periodic_flash: [0.25, 0.5]
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 60.0
+
+        trial_translator: True
+
+
+natural_images:
+    # Stage 3 features:
+    #   - natural image stimulus
+    #   - lower catch frequency
+    script:
+        doc_images.py
+
+    parameters:
+        stage: natural_images
+        task_id: DoC
+
+        catch_frequency: 0.125
+        failure_repeats: 5
+
+        # rewards (mL)
+        auto_reward_vol: 0.01
+        reward_vol: 0.01
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: 5
+
+        # trial timing
+        periodic_flash: [0.25, 0.5]
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 60.0
+
+        trial_translator: True
+
+
+natural_images_drop_reward:
+    # Stage 4 features:
+    #   - same as stage 3 but lower reward volume
+    script:
+        doc_images.py
+
+    parameters:
+        stage: natural_images_drop_reward
+        task_id: DoC
+
+        catch_frequency: 0.125
+        failure_repeats: 5
+
+        # rewards (mL)
+        auto_reward_vol: 0.007
+        reward_vol: 0.007
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: 5
+
+        # trial timing
+        periodic_flash: [0.25, 0.5]
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 60.0
+
+        trial_translator: True
+
+ready_for_imaging:
+    # Stage 4 features:
+    #   - same as stage 3 but lower reward volume
+    script:
+        doc_images.py
+
+    parameters:
+        stage: ready_for_imaging
+        task_id: DoC
+
+        catch_frequency: 0.125
+        failure_repeats: 5
+
+        # rewards (mL)
+        auto_reward_vol: 0.007
+        reward_vol: 0.007
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: 5
+
+        # trial timing
+        periodic_flash: [0.25, 0.5]
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 60.0
+
+        trial_translator: True
+
+not_ready_for_imaging:
+    # Stage 4 features:
+    #   - same as stage 3 but lower reward volume
+    script:
+        doc_images.py
+
+    parameters:
+        stage: not_ready_for_imaging
+        task_id: DoC
+
+        catch_frequency: 0.125
+        failure_repeats: 5
+
+        # rewards (mL)
+        auto_reward_vol: 0.007
+        reward_vol: 0.007
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: 5
+
+        # trial timing
+        periodic_flash: [0.25, 0.5]
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 60.0
+
+        trial_translator: True
