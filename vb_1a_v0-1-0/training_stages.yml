@@ -165,3 +165,63 @@ natural_images_drop_reward:
         max_task_duration_min: 60.0
 
         trial_translator: True
+
+ready_for_imaging:
+    # Stage 4 features:
+    #   - same as stage 3 but lower reward volume
+    script:
+        doc_images.py
+
+    parameters:
+        stage: ready_for_imaging
+        task_id: DoC
+
+        catch_frequency: 0.125
+        failure_repeats: 5
+
+        # rewards (mL)
+        auto_reward_vol: 0.007
+        reward_vol: 0.007
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: 5
+
+        # trial timing
+        periodic_flash: [0.25, 0.5]
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 60.0
+
+        trial_translator: True
+
+not_ready_for_imaging:
+    # Stage 4 features:
+    #   - same as stage 3 but lower reward volume
+    script:
+        doc_images.py
+
+    parameters:
+        stage: not_ready_for_imaging
+        task_id: DoC
+
+        catch_frequency: 0.125
+        failure_repeats: 5
+
+        # rewards (mL)
+        auto_reward_vol: 0.007
+        reward_vol: 0.007
+        volume_limit: 1.5
+
+        # auto rewards
+        warm_up_trials: 5
+
+        # trial timing
+        periodic_flash: [0.25, 0.5]
+        pre_change_time: 2.25
+        stimulus_window: 6.0
+        response_window: [0.15,1.0]
+        max_task_duration_min: 60.0
+
+        trial_translator: True
