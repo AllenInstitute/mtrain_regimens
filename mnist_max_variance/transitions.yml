@@ -1,4 +1,0 @@
-- trigger: progress
-  source: mnist_014_n1
-  dest: mnist_014_n256
-  conditions: [two_out_of_three_aint_bad, yesterday_was_good]
