@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import yaml
+import os
+import hashlib
+
+regimen_data = yaml.load(open('regimen.yml', 'r'))
+
+for stage_dict in regimen_data['training_stages'].values(): 
+    script_name = os.path.basename(stage_dict['script'])
+    assert hashlib.md5(open(script_name, 'r').read()).hexdigest() == stage_dict['script_md5']
+

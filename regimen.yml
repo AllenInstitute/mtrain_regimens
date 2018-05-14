@@ -52,7 +52,7 @@ training_stages:
             http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_gratings.py
         
         script_md5:
-        a81cc2a37280d041c3ea7ccecbfc7bc3
+            a81cc2a37280d041c3ea7ccecbfc7bc3
 
         parameters:
 
