@@ -50,6 +50,9 @@ training_stages:
         #   - only 15 min duration
         script:
             http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_gratings.py
+        
+        script_md5:
+        a81cc2a37280d041c3ea7ccecbfc7bc3
 
         parameters:
 
@@ -85,6 +88,9 @@ training_stages:
         script:
             http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_gratings.py
 
+        script_md5:
+            a81cc2a37280d041c3ea7ccecbfc7bc3
+
         parameters:
             stage: static_full_field_gratings
             task_id: DoC
@@ -115,6 +121,9 @@ training_stages:
         #   - same as stage 1 but stimulus flashes
         script:
             http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_gratings.py
+
+        script_md5:
+            a81cc2a37280d041c3ea7ccecbfc7bc3
 
         parameters:
             stage: static_full_field_gratings_flash_500ms
@@ -148,6 +157,9 @@ training_stages:
         script:
             http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_images.py
 
+        script_md5:
+            ee223420941ffb0dc8ad50d2f51ca173
+
         parameters:
             stage: natural_images
             task_id: DoC
@@ -179,6 +191,9 @@ training_stages:
         script:
             http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_images.py
 
+        script_md5:
+            ee223420941ffb0dc8ad50d2f51ca173
+
         parameters:
             stage: natural_images_drop_reward
             task_id: DoC
@@ -209,6 +224,10 @@ training_stages:
         script:
             http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_images.py
 
+
+        script_md5:
+            ee223420941ffb0dc8ad50d2f51ca173
+
         parameters:
             stage: ready_for_imaging
             task_id: DoC
@@ -238,6 +257,10 @@ training_stages:
         #   - same as stage 3 but lower reward volume
         script:
             http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_images.py
+
+
+        script_md5:
+            ee223420941ffb0dc8ad50d2f51ca173
 
         parameters:
             stage: not_ready_for_imaging
