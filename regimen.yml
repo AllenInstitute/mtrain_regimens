@@ -285,3 +285,16 @@ stages:
             max_task_duration_min: 60.0
 
             trial_translator: True
+
+    ophys_A:
+        # Ophys imaging:
+        #   - same as stage 3 but lower reward volume
+        script:
+            NotImplemented
+
+        script_md5:
+            
+
+        parameters:
+            stage: ophys_A
+            task_id: DoC

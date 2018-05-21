@@ -3,10 +3,14 @@
 import yaml
 import os
 import hashlib
+import warnings
 
 regimen_data = yaml.load(open('regimen.yml', 'r'))
 
-for stage_dict in regimen_data['stages'].values(): 
+for stage_name, stage_dict in regimen_data['stages'].items(): 
     script_name = os.path.basename(stage_dict['script'])
-    assert hashlib.md5(open(script_name, 'r').read()).hexdigest() == stage_dict['script_md5']
+    if stage_dict['script_md5'] is None:
+        warnings.warn('Stage "%s" has no checksum' % stage_name)
+    else:
+        assert hashlib.md5(open(script_name, 'r').read()).hexdigest() == stage_dict['script_md5']
 
