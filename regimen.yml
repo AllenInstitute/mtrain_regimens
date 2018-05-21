@@ -40,7 +40,7 @@ transitions:
     dest: ophys_A
     conditions: meets_engagement_criteria
 
-training_stages:
+stages:
 
     1_AutoRewards:
         # Stage 0 features:
