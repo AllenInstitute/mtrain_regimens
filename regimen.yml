@@ -144,7 +144,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -179,7 +179,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -213,7 +213,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -247,7 +247,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -281,7 +281,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
