@@ -45,13 +45,13 @@ stages:
 
     1_AutoRewards:
         # Stage 0 features:
-        #   - automatic rewards on every trial. 
+        #   - automatic rewards on every trial.
         #   - stimulus is full screen square wave
         #   - stimulus does not flash
         #   - only 15 min duration
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_gratings.py
-        
+            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_gratings.py
+
         script_md5:
             a81cc2a37280d041c3ea7ccecbfc7bc3
 
@@ -87,7 +87,7 @@ stages:
         #   - 60 min duration
         #   - 25% catch trials
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_gratings.py
+            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_gratings.py
 
         script_md5:
             a81cc2a37280d041c3ea7ccecbfc7bc3
@@ -121,7 +121,7 @@ stages:
         # Stage 2 features:
         #   - same as stage 1 but stimulus flashes
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_gratings.py
+            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_gratings.py
 
         script_md5:
             a81cc2a37280d041c3ea7ccecbfc7bc3
@@ -145,7 +145,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -156,7 +156,7 @@ stages:
         #   - natural image stimulus
         #   - lower catch frequency
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_images.py
+            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_images.py
 
         script_md5:
             ee223420941ffb0dc8ad50d2f51ca173
@@ -180,7 +180,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -190,7 +190,7 @@ stages:
         # Stage 4 features:
         #   - same as stage 3 but lower reward volume
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_images.py
+            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_images.py
 
         script_md5:
             ee223420941ffb0dc8ad50d2f51ca173
@@ -214,7 +214,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -223,7 +223,7 @@ stages:
         # Stage 4 features:
         #   - same as stage 3 but lower reward volume
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_images.py
+            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_images.py
 
 
         script_md5:
@@ -248,7 +248,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -257,7 +257,7 @@ stages:
         # Stage 4 features:
         #   - same as stage 3 but lower reward volume
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/vb_1a_v0-1-0/doc_images.py
+            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_images.py
 
 
         script_md5:
@@ -282,7 +282,7 @@ stages:
             periodic_flash: [0.25, 0.5]
             pre_change_time: 2.25
             stimulus_window: 6.0
-            response_window: [0.15,1.0]
+            response_window: [0.15,0.75]
             max_task_duration_min: 60.0
 
             trial_translator: True
@@ -294,7 +294,7 @@ stages:
             NotImplemented
 
         script_md5:
-            
+
 
         parameters:
             stage: ophys_A
