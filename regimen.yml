@@ -1,4 +1,4 @@
-tag: v0.1.1
+tag: v0.1.2
 transitions:
 
   - trigger: progress
@@ -50,7 +50,7 @@ stages:
         #   - stimulus does not flash
         #   - only 15 min duration
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_gratings.py
+            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_gratings.py
 
         script_md5:
             a81cc2a37280d041c3ea7ccecbfc7bc3
@@ -87,7 +87,7 @@ stages:
         #   - 60 min duration
         #   - 25% catch trials
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_gratings.py
+            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_gratings.py
 
         script_md5:
             a81cc2a37280d041c3ea7ccecbfc7bc3
@@ -121,7 +121,7 @@ stages:
         # Stage 2 features:
         #   - same as stage 1 but stimulus flashes
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_gratings.py
+            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_gratings.py
 
         script_md5:
             a81cc2a37280d041c3ea7ccecbfc7bc3
@@ -156,7 +156,7 @@ stages:
         #   - natural image stimulus
         #   - lower catch frequency
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_images.py
+            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_images.py
 
         script_md5:
             ee223420941ffb0dc8ad50d2f51ca173
@@ -190,7 +190,7 @@ stages:
         # Stage 4 features:
         #   - same as stage 3 but lower reward volume
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_images.py
+            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_images.py
 
         script_md5:
             ee223420941ffb0dc8ad50d2f51ca173
@@ -223,7 +223,7 @@ stages:
         # Stage 4 features:
         #   - same as stage 3 but lower reward volume
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_images.py
+            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_images.py
 
 
         script_md5:
@@ -257,7 +257,7 @@ stages:
         # Stage 4 features:
         #   - same as stage 3 but lower reward volume
         script:
-            http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/doc_images.py
+            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_images.py
 
 
         script_md5:
@@ -294,6 +294,7 @@ stages:
             NotImplemented
 
         script_md5:
+            NotImplemented
 
 
         parameters:
