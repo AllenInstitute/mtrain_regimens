@@ -1,4 +1,4 @@
-tag: v0.1.2
+name: v0.1.2
 transitions:
 
   - trigger: progress
