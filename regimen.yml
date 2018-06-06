@@ -102,7 +102,7 @@ stages:
             # rewards (mL)
             auto_reward_vol: 0.01
             reward_vol: 0.01
-            volume_limit: 1.5
+            volume_limit: 5.0
 
             # auto rewards
             warm_up_trials: 5
@@ -136,7 +136,7 @@ stages:
             # rewards (mL)
             auto_reward_vol: 0.01
             reward_vol: 0.01
-            volume_limit: 1.5
+            volume_limit: 5.0
 
             # auto rewards
             warm_up_trials: 5
@@ -171,7 +171,7 @@ stages:
             # rewards (mL)
             auto_reward_vol: 0.01
             reward_vol: 0.01
-            volume_limit: 1.5
+            volume_limit: 5.0
 
             # auto rewards
             warm_up_trials: 5
@@ -205,7 +205,7 @@ stages:
             # rewards (mL)
             auto_reward_vol: 0.007
             reward_vol: 0.007
-            volume_limit: 1.5
+            volume_limit: 5.0
 
             # auto rewards
             warm_up_trials: 5
@@ -239,7 +239,7 @@ stages:
             # rewards (mL)
             auto_reward_vol: 0.007
             reward_vol: 0.007
-            volume_limit: 1.5
+            volume_limit: 5.0
 
             # auto rewards
             warm_up_trials: 5
@@ -273,7 +273,7 @@ stages:
             # rewards (mL)
             auto_reward_vol: 0.007
             reward_vol: 0.007
-            volume_limit: 1.5
+            volume_limit: 5.0
 
             # auto rewards
             warm_up_trials: 5
