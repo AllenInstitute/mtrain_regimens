@@ -25,7 +25,7 @@ def test_script_files_download():
 
 def test_add_already_tracked_regimen():
 
-    api_endpoint = 'http://prodmtrain1:5000/api/regimens'
+    api_endpoint = 'http://prodmtrain1:5000/api/v1/regimens'
     result = requests.get(api_endpoint)
     assert result.status_code == 200
     data = result.json()
