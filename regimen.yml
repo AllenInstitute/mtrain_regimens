@@ -61,7 +61,7 @@ stages:
             task_id: DoC
 
             # rewards (ml)
-            auto_reward_vol: 0.007 # in microliters
+            auto_reward_vol: 0.005 # in microliters
             volume_limit: 1.5
 
             # auto rewards
@@ -100,7 +100,7 @@ stages:
             failure_repeats: 5
 
             # rewards (mL)
-            auto_reward_vol: 0.01
+            auto_reward_vol: 0.005
             reward_vol: 0.01
             volume_limit: 5.0
 
@@ -134,7 +134,7 @@ stages:
             failure_repeats: 5
 
             # rewards (mL)
-            auto_reward_vol: 0.01
+            auto_reward_vol: 0.005
             reward_vol: 0.01
             volume_limit: 5.0
 
@@ -169,7 +169,7 @@ stages:
             failure_repeats: 5
 
             # rewards (mL)
-            auto_reward_vol: 0.01
+            auto_reward_vol: 0.005
             reward_vol: 0.01
             volume_limit: 5.0
 
@@ -203,7 +203,7 @@ stages:
             failure_repeats: 5
 
             # rewards (mL)
-            auto_reward_vol: 0.007
+            auto_reward_vol: 0.005
             reward_vol: 0.007
             volume_limit: 5.0
 
@@ -237,7 +237,7 @@ stages:
             failure_repeats: 5
 
             # rewards (mL)
-            auto_reward_vol: 0.007
+            auto_reward_vol: 0.005
             reward_vol: 0.007
             volume_limit: 5.0
 
@@ -271,7 +271,7 @@ stages:
             failure_repeats: 5
 
             # rewards (mL)
-            auto_reward_vol: 0.007
+            auto_reward_vol: 0.005
             reward_vol: 0.007
             volume_limit: 5.0
 
