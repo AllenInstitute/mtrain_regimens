@@ -1,4 +1,84 @@
+
+_change_detection_script: &change_detection_script
+    http://foo
+
+_change_detection_script_md5: &change_detection_script_md5
+    XXXX
+
+_movie_clips_script: &movie_clips_script
+    http://foo
+
+_movie_clips_script_md5: &movie_clips_script_md5
+    XXXX
+
+_full_field_gratings_stimulus: &full_field_gratings
+    class: grating
+    params:
+        sf: 0.04
+        tex: sqr
+        size: [300, 300]
+        units: deg
+        phase: 0``.25
+    groups:
+        group0:
+            Ori: [0, 180]
+        group1:
+            Ori: [90, 270]
+
+_image_set_a_stimulus: &image_set_a
+    class: images
+    params:
+        image_set: //allen/aibs/mpe/Software/stimulus_files/nimages_0_20170714.zip
+        sampling: even
+
+_image_set_c_stimulus: &image_set_c
+    class: images
+    params:
+        image_set: //allen/aibs/mpe/Software/stimulus_files/nimages_0_20170714.zip
+        sampling: even
+
+_flash_parameters: &flash_parameters
+    task_id: DoC
+
+    catch_frequency: 0.25
+    failure_repeats: 5
+
+    # rewards (mL)
+    reward_vol: 0.01
+    volume_limit: 5.0
+
+    # auto rewards
+    auto_reward_vol: 0.005
+    warm_up_trials: 5
+    auto_reward_delay: 0.150
+
+    # trial timing
+    pre_change_time: 2.25
+    stimulus_window: 6.0
+    max_task_duration_min: 60.0
+    start_stop_padding: 10.0
+    periodic_flash: [0.25, 0.5]
+    response_window: [0.15,0.75]
+
+_no_flash_parameters: &no_flash_parameters
+    <<: *flash_parameters
+    periodic_flash: None
+    response_window: [0.15,1.0]
+
+
+_image_set_a_parameters: &image_set_a_parameters
+    <<: *flash_parameters
+    stimulus: *image_set_a
+
+_image_set_c_parameters: &image_set_c_parameters
+    <<: *flash_parameters
+    stimulus: *image_set_c
+
+
+### mtrain definitions
+
 name: v0.1.3
+
 transitions:
 
   - trigger: progress
@@ -67,91 +147,37 @@ stages:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-
+            <<: *no_flash_parameters
             stage: 1_AutoRewards
-            task_id: DoC
-
             stimulus: *full_field_gratings
-
-            # rewards (ml)
-            auto_reward_vol: 0.005 # in microliters
-            volume_limit: 1.5
 
             # auto rewards
             warm_up_trials: -1 #infinite
-            auto_reward_vol: 0.005 # in microliters
             abort_on_early_response: False
-            auto_reward_delay: 0.150
 
             # trial timing
-            periodic_flash: None
-            initial_blank: 0
-            pre_change_time: 2.25
-            stimulus_window: 6.0
             max_task_duration_min: 15.0
-            start_stop_padding: 10.0
 
 
     static_full_field_gratings:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
+            <<: *no_flash_parameters
             stage: static_full_field_gratings
-            task_id: DoC
 
             stimulus: *full_field_gratings
-
-            catch_frequency: 0.25
-            failure_repeats: 5
-
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.01
-            volume_limit: 5.0
-
-            # auto rewards
-            auto_reward_vol: 0.005
-            warm_up_trials: 5
-            auto_reward_delay: 0.150
-
-            # trial timing
-            periodic_flash: None
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,1.0]
-            max_task_duration_min: 60.0
-            start_stop_padding: 10.0
 
 
     static_full_field_gratings_flash_500ms:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
+            <<: *flash_parameters
             stage: static_full_field_gratings_flash_500ms
             task_id: DoC
 
             stimulus: *full_field_gratings
-
-            catch_frequency: 0.25
-            failure_repeats: 5
-
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.01
-            volume_limit: 5.0
-
-            # auto rewards
-            auto_reward_vol: 0.005
-            warm_up_trials: 5
-            auto_reward_delay: 0.150
-
-            # trial timing
-            periodic_flash: [0.25, 0.5]
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,0.75]
-            max_task_duration_min: 60.0
-            start_stop_padding: 10.0
 
 
     natural_images:
@@ -160,13 +186,8 @@ stages:
         parameters:
             <<: *image_set_a_parameters
             stage: natural_images
-            task_id: DoC
-
-            catch_frequency: 0.125
-            failure_repeats: 5
 
             # rewards (mL)
-            auto_reward_vol: 0.005
             reward_vol: 0.01
 
     natural_images_drop_reward:
@@ -176,52 +197,12 @@ stages:
             <<: *image_set_a_parameters
             stage: natural_images_drop_reward
 
-            catch_frequency: 0.125
-            failure_repeats: 5
-
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.007
-            volume_limit: 5.0
-
-            # auto rewards
-            warm_up_trials: 5
-
-            # trial timing
-            periodic_flash: [0.25, 0.5]
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,0.75]
-            max_task_duration_min: 60.0
-
-            trial_translator: True
-
     ready_for_imaging:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
             stage: ready_for_imaging
-
-            catch_frequency: 0.125
-            failure_repeats: 5
-
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.007
-            volume_limit: 5.0
-
-            # auto rewards
-            warm_up_trials: 5
-
-            # trial timing
-            periodic_flash: [0.25, 0.5]
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,0.75]
-            max_task_duration_min: 60.0
-
-            trial_translator: True
 
     not_ready_for_imaging:
         script: *change_detection_script
@@ -237,10 +218,12 @@ stages:
             <<: *image_set_a_parameters
             stage: ophys_set_a
 
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.007
-            volume_limit: 5.0
+    ophys_set_a_passive:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_a_parameters
+            stage: ophys_set_a_passive
 
     ophys_set_c:
         script: *change_detection_script
