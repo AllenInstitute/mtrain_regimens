@@ -75,6 +75,10 @@ _flash_parameters: &flash_parameters
     periodic_flash: [0.25, 0.5]
     response_window: [0.15,0.75]
 
+    # timing of changes
+    change_time_dist: exponential
+    change_time_scale: 2.0
+
 _no_flash_parameters: &no_flash_parameters
     <<: *flash_parameters
     periodic_flash: null
