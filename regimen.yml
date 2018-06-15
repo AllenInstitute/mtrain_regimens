@@ -1,9 +1,9 @@
 
 _change_detection_script: &change_detection_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection.py?at=c0506e42f4cbb66721153c24b3e0c8e3825137e8
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection.py?at=4c21bb32355931d28233e42e6b50e24d46f8a873
 
 _change_detection_script_md5: &change_detection_script_md5
-    f4a1d638df554f079abe39601d69d75b
+    3fd35a776370d68f2f6a13aacf4ecf10
 
 _movie_clips_script: &movie_clips_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/MovieClips.py?at=c0506e42f4cbb66721153c24b3e0c8e3825137e8
@@ -16,9 +16,9 @@ _full_field_gratings_stimulus: &full_field_gratings
     params:
         sf: 0.04
         tex: sqr
-        size: [300, 300]
+        size: [200, 150,]
         units: deg
-        phase: 0``.25
+        phase: 0.25
     groups:
         group0:
             Ori: [0, 180]
@@ -28,13 +28,26 @@ _full_field_gratings_stimulus: &full_field_gratings
 _image_set_a_stimulus: &image_set_a
     class: images
     params:
-        image_set: //allen/aibs/mpe/Software/stimulus_files/nimages_0_20170714.zip
+        # image_set: //allen/aibs/mpe/Software/stimulus_files/nimages_0_20170714.zip
+        image_set: /allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
+        sampling: even
+
+_image_set_b_stimulus: &image_set_b
+    class: images
+    params:
+        image_set: /allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_3_2017.07.14.pkl
         sampling: even
 
 _image_set_c_stimulus: &image_set_c
     class: images
     params:
-        image_set: //allen/aibs/mpe/Software/stimulus_files/nimages_0_20170714.zip
+        image_set: /allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_6_2017.07.14.pkl
+        sampling: even
+
+_image_set_d_stimulus: &image_set_d
+    class: images
+    params:
+        image_set: /allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_5_2017.07.14.pkl
         sampling: even
 
 _flash_parameters: &flash_parameters
@@ -44,15 +57,17 @@ _flash_parameters: &flash_parameters
     failure_repeats: 5
 
     # rewards (mL)
-    reward_vol: 0.01
+    reward_vol: 0.007
     volume_limit: 5.0
 
     # auto rewards
     auto_reward_vol: 0.005
     warm_up_trials: 5
     auto_reward_delay: 0.150
+    free_reward_trials: 0
 
     # trial timing
+    min_no_lick_time: 0.3
     pre_change_time: 2.25
     stimulus_window: 6.0
     max_task_duration_min: 60.0
@@ -62,186 +77,199 @@ _flash_parameters: &flash_parameters
 
 _no_flash_parameters: &no_flash_parameters
     <<: *flash_parameters
-    periodic_flash: None
+    periodic_flash: null
     response_window: [0.15,1.0]
+    reward_vol: 0.010
+    free_reward_trials: 10
 
 
 _image_set_a_parameters: &image_set_a_parameters
     <<: *flash_parameters
     stimulus: *image_set_a
+    catch_frequency: null
 
 _image_set_c_parameters: &image_set_c_parameters
     <<: *flash_parameters
     stimulus: *image_set_c
+    catch_frequency: null
 
 
 ### mtrain definitions
 
-name: v0.2.0
+name: VisualBehavior_Task1A_v0.2.0
 
 transitions:
 
   - trigger: progress
-    source: 1_AutoRewards
-    dest: static_full_field_gratings
+    source: 0_gratings_autorewards_15min
+    dest: 1_gratings
     conditions: autorewards_complete
 
   - trigger: progress
-    source: static_full_field_gratings
-    dest: static_full_field_gratings_flash_500ms
+    source: 1_gratings
+    dest: 2_gratings_flashed
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: static_full_field_gratings_flash_500ms
-    dest: natural_images
+    source: 2_gratings_flashed
+    dest: 3_images_a_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: natural_images
-    dest: natural_images_drop_reward
+    source: 3_images_a_10uL_reward
+    dest: 4_images_a_training
     conditions: three_complete
 
   - trigger: progress
-    source: natural_images_drop_reward
-    dest: ready_for_imaging
+    source: 4_images_a_training
+    dest: 4_images_a_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: ready_for_imaging
-    dest: not_ready_for_imaging
+    source: 4_images_a_handoff_ready
+    dest: 4_images_a_handoff_lapsed
     unless: meets_engagement_criteria
 
   - trigger: progress
-    source: not_ready_for_imaging
-    dest: ready_for_imaging
+    source: 4_images_a_handoff_lapsed
+    dest: 4_images_a_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: handoff
-    source: ready_for_imaging
-    dest: ophys_set_a
+    source: 4_images_a_handoff_ready
+    dest: 5_images_a_ophys
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: ophys_set_a
-    dest: ophys_set_a_passive
+    source: 5_images_a_ophys
+    dest: 6_images_a_ophys_no_lickspout
     conditions: four_complete
 
   - trigger: progress
-    source: ophys_set_a_passive
-    dest: ophys_set_c
+    source: 6_images_a_ophys_no_lickspout
+    dest: 7_images_b_ophys
     conditions: one_complete
 
   - trigger: progress
-    source: ophys_set_c
-    dest: ophys_set_c_passive
+    source: 7_images_b_ophys
+    dest: 8_images_b_ophys_no_lickspout
     conditions: four_complete
 
   - trigger: progress
-    source: ophys_set_c_passive
-    dest: receptive_field_mapping
+    source: 8_images_b_ophys_no_lickspout
+    dest: 9_receptive_field_mapping
     conditions: one_complete
 
 stages:
 
-    1_AutoRewards:
+    0_gratings_autorewards_15min:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *no_flash_parameters
-            stage: 1_AutoRewards
+            stage: 0_gratings_autorewards_15min
             stimulus: *full_field_gratings
 
             # auto rewards
             warm_up_trials: -1 #infinite
             abort_on_early_response: False
+            catch_frequency: 0.0
+
+            response_window: [0.0, 0.0]
+            min_no_lick_time: 0.0
+            failure_repeats: 0
 
             # trial timing
             max_task_duration_min: 15.0
 
 
-    static_full_field_gratings:
+    1_gratings:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *no_flash_parameters
-            stage: static_full_field_gratings
+            stage: 1_gratings
 
             stimulus: *full_field_gratings
 
 
-    static_full_field_gratings_flash_500ms:
+    2_gratings_flashed:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *flash_parameters
-            stage: static_full_field_gratings_flash_500ms
+            stage: 2_gratings_flashed
             task_id: DoC
 
             stimulus: *full_field_gratings
+            free_reward_trials: 10
 
 
-    natural_images:
+    3_images_a_10uL_reward:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: natural_images
+            stage: 3_images_a_10uL_reward
 
             # rewards (mL)
             reward_vol: 0.01
+            free_reward_trials: 10
 
-    natural_images_drop_reward:
+    4_images_a_training:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: natural_images_drop_reward
+            stage: 4_images_a_training
 
-    ready_for_imaging:
+    4_images_a_handoff_ready:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: ready_for_imaging
+            stage: 4_images_a_handoff_ready
 
-    not_ready_for_imaging:
+    4_images_a_handoff_lapsed:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: not_ready_for_imaging
+            stage: 4_images_a_handoff_lapsed
+            free_reward_trials: 10
 
-    ophys_set_a:
+    5_images_a_ophys:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: ophys_set_a
+            stage: 5_images_a_ophys
 
-    ophys_set_a_passive:
+    6_images_a_ophys_no_lickspout:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: ophys_set_a_passive
-
-    ophys_set_c:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_c_parameters
-            stage: ophys_set_c
-
-    ophys_set_c_passive:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_c_parameters
-            stage: ophys_set_c_passive
+            stage: 6_images_a_ophys_no_lickspout
             lick_spout: False
 
-    receptive_field_mapping:
+    7_images_b_ophys:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_c_parameters
+            stage: 7_images_b_ophys
+
+    8_images_b_ophys_no_lickspout:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_c_parameters
+            stage: 8_images_b_ophys_no_lickspout
+            lick_spout: False
+
+    9_receptive_field_mapping:
         script: *movie_clips_script
         script_md5: *movie_clips_script_md5
         parameters:
-            stage: receptive_field_mapping
+            stage: 9_receptive_field_mapping
