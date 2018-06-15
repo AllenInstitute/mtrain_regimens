@@ -1,9 +1,9 @@
 
 _change_detection_script: &change_detection_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection.py?at=4c21bb32355931d28233e42e6b50e24d46f8a873
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection.py?at=22c5b52dcb8be244e1191590a95a72bf57f37a1a
 
 _change_detection_script_md5: &change_detection_script_md5
-    3fd35a776370d68f2f6a13aacf4ecf10
+    fa75e0fbd57a8af3019fc694b1f00517
 
 _movie_clips_script: &movie_clips_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/MovieClips.py?at=c0506e42f4cbb66721153c24b3e0c8e3825137e8
