@@ -64,7 +64,7 @@ _flash_parameters: &flash_parameters
     auto_reward_vol: 0.005
     warm_up_trials: 5
     auto_reward_delay: 0.150
-    free_reward_trials: 0
+    free_reward_trials: .inf
 
     # trial timing
     min_no_lick_time: 0.3
