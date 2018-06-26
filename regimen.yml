@@ -248,6 +248,7 @@ stages:
         parameters:
             <<: *image_set_a_parameters
             stage: 5_images_a_ophys
+            start_stop_padding: 300.0
 
     6_images_a_ophys_no_lickspout:
         script: *change_detection_script
@@ -255,6 +256,7 @@ stages:
         parameters:
             <<: *image_set_a_parameters
             stage: 6_images_a_ophys_no_lickspout
+            start_stop_padding: 300.0
             lick_spout: False
 
     7_images_b_ophys:
@@ -262,6 +264,7 @@ stages:
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_c_parameters
+            start_stop_padding: 300.0
             stage: 7_images_b_ophys
 
     8_images_b_ophys_no_lickspout:
@@ -270,6 +273,7 @@ stages:
         parameters:
             <<: *image_set_c_parameters
             stage: 8_images_b_ophys_no_lickspout
+            start_stop_padding: 300.0
             lick_spout: False
 
     9_receptive_field_mapping:
