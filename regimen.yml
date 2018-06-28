@@ -57,7 +57,7 @@ _flash_parameters: &flash_parameters
     failure_repeats: 5
 
     # rewards (mL)
-    reward_vol: 0.007
+    reward_volume: 0.007
     volume_limit: 5.0
 
     # auto rewards
@@ -83,7 +83,7 @@ _no_flash_parameters: &no_flash_parameters
     <<: *flash_parameters
     periodic_flash: null
     response_window: [0.15,1.0]
-    reward_vol: 0.010
+    reward_volume: 0.010
     free_reward_trials: 10
 
 
@@ -217,7 +217,7 @@ stages:
             stage: 3_images_a_10uL_reward
 
             # rewards (mL)
-            reward_vol: 0.01
+            reward_volume: 0.01
             free_reward_trials: 10
 
     4_images_a_training:
