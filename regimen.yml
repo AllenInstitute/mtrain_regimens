@@ -1,302 +1,289 @@
-name: v0.1.3
+
+_change_detection_script: &change_detection_script
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection.py?at=22c5b52dcb8be244e1191590a95a72bf57f37a1a
+
+_change_detection_script_md5: &change_detection_script_md5
+    fa75e0fbd57a8af3019fc694b1f00517
+
+_movie_clips_script: &movie_clips_script
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/MovieClips.py?at=c0506e42f4cbb66721153c24b3e0c8e3825137e8
+
+_movie_clips_script_md5: &movie_clips_script_md5
+    922123fc5f902d7d364092bde3140f1f
+
+_full_field_gratings_stimulus: &full_field_gratings
+    class: grating
+    params:
+        sf: 0.04
+        tex: sqr
+        size: [200, 150,]
+        units: deg
+        phase: 0.25
+    groups:
+        vertical:
+            Ori: [0, 180]
+        horizontal:
+            Ori: [90, 270]
+
+_image_set_a_stimulus: &image_set_a
+    class: images
+    params:
+        # image_set: //allen/aibs/mpe/Software/stimulus_files/nimages_0_20170714.zip
+        image_set: /allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
+        sampling: even
+
+_image_set_b_stimulus: &image_set_b
+    class: images
+    params:
+        image_set: /allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_3_2017.07.14.pkl
+        sampling: even
+
+_image_set_c_stimulus: &image_set_c
+    class: images
+    params:
+        image_set: /allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_6_2017.07.14.pkl
+        sampling: even
+
+_image_set_d_stimulus: &image_set_d
+    class: images
+    params:
+        image_set: /allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_5_2017.07.14.pkl
+        sampling: even
+
+_flash_parameters: &flash_parameters
+    task_id: DoC
+
+    catch_frequency: 0.25
+    failure_repeats: 5
+
+    # rewards (mL)
+    reward_volume: 0.007
+    volume_limit: 5.0
+
+    # auto rewards
+    auto_reward_vol: 0.005
+    warm_up_trials: 5
+    auto_reward_delay: 0.150
+    free_reward_trials: 10000
+
+    # trial timing
+    min_no_lick_time: 0.3
+    pre_change_time: 2.25
+    stimulus_window: 6.0
+    max_task_duration_min: 60.0
+    start_stop_padding: 10.0
+    periodic_flash: [0.25, 0.5]
+    response_window: [0.15,0.75]
+
+    # timing of changes
+    change_time_dist: exponential
+    change_time_scale: 2.0
+
+_no_flash_parameters: &no_flash_parameters
+    <<: *flash_parameters
+    periodic_flash: null
+    response_window: [0.15,1.0]
+    reward_volume: 0.010
+    free_reward_trials: 10
+
+
+_image_set_a_parameters: &image_set_a_parameters
+    <<: *flash_parameters
+    stimulus: *image_set_a
+    catch_frequency: null
+
+_image_set_c_parameters: &image_set_c_parameters
+    <<: *flash_parameters
+    stimulus: *image_set_c
+    catch_frequency: null
+
+
+### mtrain definitions
+
+name: VisualBehavior_Task1A_v0.2.0
+
 transitions:
 
   - trigger: progress
-    source: 1_AutoRewards
-    dest: static_full_field_gratings
+    source: 0_gratings_autorewards_15min
+    dest: 1_gratings
     conditions: autorewards_complete
 
   - trigger: progress
-    source: static_full_field_gratings
-    dest: static_full_field_gratings_flash_500ms
+    source: 1_gratings
+    dest: 2_gratings_flashed
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: static_full_field_gratings_flash_500ms
-    dest: natural_images
+    source: 2_gratings_flashed
+    dest: 3_images_a_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: natural_images
-    dest: natural_images_drop_reward
+    source: 3_images_a_10uL_reward
+    dest: 4_images_a_training
     conditions: three_complete
 
   - trigger: progress
-    source: natural_images_drop_reward
-    dest: ready_for_imaging
+    source: 4_images_a_training
+    dest: 4_images_a_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: ready_for_imaging
-    dest: not_ready_for_imaging
+    source: 4_images_a_handoff_ready
+    dest: 4_images_a_handoff_lapsed
     unless: meets_engagement_criteria
 
   - trigger: progress
-    source: not_ready_for_imaging
-    dest: ready_for_imaging
+    source: 4_images_a_handoff_lapsed
+    dest: 4_images_a_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: handoff
-    source: ready_for_imaging
-    dest: ophys_A
+    source: 4_images_a_handoff_ready
+    dest: 5_images_a_ophys
     conditions: meets_engagement_criteria
+
+  - trigger: progress
+    source: 5_images_a_ophys
+    dest: 6_images_a_ophys_no_lickspout
+    conditions: four_complete
+
+  - trigger: progress
+    source: 6_images_a_ophys_no_lickspout
+    dest: 7_images_b_ophys
+    conditions: one_complete
+
+  - trigger: progress
+    source: 7_images_b_ophys
+    dest: 8_images_b_ophys_no_lickspout
+    conditions: four_complete
+
+  - trigger: progress
+    source: 8_images_b_ophys_no_lickspout
+    dest: 9_receptive_field_mapping
+    conditions: one_complete
 
 stages:
 
-    1_AutoRewards:
-        # Stage 0 features:
-        #   - automatic rewards on every trial.
-        #   - stimulus is full screen square wave
-        #   - stimulus does not flash
-        #   - only 15 min duration
-        script:
-            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_gratings.py
-
-        script_md5:
-            a81cc2a37280d041c3ea7ccecbfc7bc3
-
+    0_gratings_autorewards_15min:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-
-            stage: 1_AutoRewards
-            task_id: DoC
-
-            # rewards (ml)
-            auto_reward_vol: 0.005 # in microliters
-            volume_limit: 1.5
+            <<: *no_flash_parameters
+            stage: 0_gratings_autorewards_15min
+            stimulus: *full_field_gratings
 
             # auto rewards
             warm_up_trials: -1 #infinite
             abort_on_early_response: False
+            catch_frequency: 0.0
+
+            response_window: [0.0, 0.0]
+            min_no_lick_time: 0.0
+            failure_repeats: 0
 
             # trial timing
-            periodic_flash: None
-            initial_blank: 0
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,1.0]
             max_task_duration_min: 15.0
 
-            trial_translator: True
+            # rewards (mL)
+            reward_volume: 0.0
 
 
-    static_full_field_gratings:
-        # Stage 1 features:
-        #   - automatic rewards for first 5 trials
-        #   - stimulus is full screen square wave
-        #   - stimulus does not flash
-        #   - 60 min duration
-        #   - 25% catch trials
-        script:
-            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_gratings.py
-
-        script_md5:
-            a81cc2a37280d041c3ea7ccecbfc7bc3
-
+    1_gratings:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            stage: static_full_field_gratings
+            <<: *no_flash_parameters
+            stage: 1_gratings
+
+            stimulus: *full_field_gratings
+
+
+    2_gratings_flashed:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *flash_parameters
+            stage: 2_gratings_flashed
             task_id: DoC
 
-            catch_frequency: 0.25
-            failure_repeats: 5
+            stimulus: *full_field_gratings
+            free_reward_trials: 10
 
             # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.01
-            volume_limit: 5.0
-
-            # auto rewards
-            warm_up_trials: 5
-
-            # trial timing
-            periodic_flash: None
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,1.0]
-            max_task_duration_min: 60.0
-
-            trial_translator: True
+            reward_volume: 0.01
 
 
-    static_full_field_gratings_flash_500ms:
-        # Stage 2 features:
-        #   - same as stage 1 but stimulus flashes
-        script:
-            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_gratings.py
-
-        script_md5:
-            a81cc2a37280d041c3ea7ccecbfc7bc3
-
+    3_images_a_10uL_reward:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            stage: static_full_field_gratings_flash_500ms
-            task_id: DoC
-
-            catch_frequency: 0.25
-            failure_repeats: 5
+            <<: *image_set_a_parameters
+            stage: 3_images_a_10uL_reward
 
             # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.01
-            volume_limit: 5.0
+            reward_volume: 0.01
+            free_reward_trials: 10
 
-            # auto rewards
-            warm_up_trials: 5
-
-            # trial timing
-            periodic_flash: [0.25, 0.5]
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,0.75]
-            max_task_duration_min: 60.0
-
-            trial_translator: True
-
-
-    natural_images:
-        # Stage 3 features:
-        #   - natural image stimulus
-        #   - lower catch frequency
-        script:
-            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_images.py
-
-        script_md5:
-            ee223420941ffb0dc8ad50d2f51ca173
-
+    4_images_a_training:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            stage: natural_images
-            task_id: DoC
+            <<: *image_set_a_parameters
+            stage: 4_images_a_training
 
-            catch_frequency: 0.125
-            failure_repeats: 5
-
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.01
-            volume_limit: 5.0
-
-            # auto rewards
-            warm_up_trials: 5
-
-            # trial timing
-            periodic_flash: [0.25, 0.5]
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,0.75]
-            max_task_duration_min: 60.0
-
-            trial_translator: True
-
-
-    natural_images_drop_reward:
-        # Stage 4 features:
-        #   - same as stage 3 but lower reward volume
-        script:
-            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_images.py
-
-        script_md5:
-            ee223420941ffb0dc8ad50d2f51ca173
-
+    4_images_a_handoff_ready:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            stage: natural_images_drop_reward
-            task_id: DoC
+            <<: *image_set_a_parameters
+            stage: 4_images_a_handoff_ready
 
-            catch_frequency: 0.125
-            failure_repeats: 5
-
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.007
-            volume_limit: 5.0
-
-            # auto rewards
-            warm_up_trials: 5
-
-            # trial timing
-            periodic_flash: [0.25, 0.5]
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,0.75]
-            max_task_duration_min: 60.0
-
-            trial_translator: True
-
-    ready_for_imaging:
-        # Stage 4 features:
-        #   - same as stage 3 but lower reward volume
-        script:
-            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_images.py
-
-
-        script_md5:
-            ee223420941ffb0dc8ad50d2f51ca173
-
+    4_images_a_handoff_lapsed:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            stage: ready_for_imaging
-            task_id: DoC
+            <<: *image_set_a_parameters
+            stage: 4_images_a_handoff_lapsed
+            free_reward_trials: 10
 
-            catch_frequency: 0.125
-            failure_repeats: 5
-
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.007
-            volume_limit: 5.0
-
-            # auto rewards
-            warm_up_trials: 5
-
-            # trial timing
-            periodic_flash: [0.25, 0.5]
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,0.75]
-            max_task_duration_min: 60.0
-
-            trial_translator: True
-
-    not_ready_for_imaging:
-        # Stage 4 features:
-        #   - same as stage 3 but lower reward volume
-        script:
-            http://aibspi/braintv/visual_behavior/visual_behavior_scripts/raw/3254a1acca8c4b93e47995e22492088ec1b83264/doc_images.py
-
-
-        script_md5:
-            ee223420941ffb0dc8ad50d2f51ca173
-
+    5_images_a_ophys:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            stage: not_ready_for_imaging
-            task_id: DoC
+            <<: *image_set_a_parameters
+            stage: 5_images_a_ophys
+            start_stop_padding: 300.0
 
-            catch_frequency: 0.125
-            failure_repeats: 5
-
-            # rewards (mL)
-            auto_reward_vol: 0.005
-            reward_vol: 0.007
-            volume_limit: 5.0
-
-            # auto rewards
-            warm_up_trials: 5
-
-            # trial timing
-            periodic_flash: [0.25, 0.5]
-            pre_change_time: 2.25
-            stimulus_window: 6.0
-            response_window: [0.15,0.75]
-            max_task_duration_min: 60.0
-
-            trial_translator: True
-
-    ophys_A:
-        # Ophys imaging:
-        #   - same as stage 3 but lower reward volume
-        script:
-            NotImplemented
-
-        script_md5:
-            NotImplemented
-
-
+    6_images_a_ophys_no_lickspout:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            stage: ophys_A
-            task_id: DoC
+            <<: *image_set_a_parameters
+            stage: 6_images_a_ophys_no_lickspout
+            start_stop_padding: 300.0
+            lick_spout: False
+
+    7_images_b_ophys:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_c_parameters
+            start_stop_padding: 300.0
+            stage: 7_images_b_ophys
+
+    8_images_b_ophys_no_lickspout:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_c_parameters
+            stage: 8_images_b_ophys_no_lickspout
+            start_stop_padding: 300.0
+            lick_spout: False
+
+    9_receptive_field_mapping:
+        script: *movie_clips_script
+        script_md5: *movie_clips_script_md5
+        parameters:
+            stage: 9_receptive_field_mapping
