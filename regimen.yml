@@ -20,9 +20,9 @@ _full_field_gratings_stimulus: &full_field_gratings
         units: deg
         phase: 0.25
     groups:
-        group0:
+        vertical:
             Ori: [0, 180]
-        group1:
+        horizontal:
             Ori: [90, 270]
 
 _image_set_a_stimulus: &image_set_a
