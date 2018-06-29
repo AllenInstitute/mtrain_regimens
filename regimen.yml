@@ -186,6 +186,9 @@ stages:
             # trial timing
             max_task_duration_min: 15.0
 
+            # rewards (mL)
+            reward_volume: 0.0
+
 
     1_gratings:
         script: *change_detection_script
@@ -207,6 +210,9 @@ stages:
 
             stimulus: *full_field_gratings
             free_reward_trials: 10
+
+            # rewards (mL)
+            reward_volume: 0.01
 
 
     3_images_a_10uL_reward:
