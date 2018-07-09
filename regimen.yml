@@ -107,7 +107,7 @@ transitions:
   - trigger: progress
     source: 0_gratings_autorewards_15min
     dest: 1_gratings
-    conditions: autorewards_complete
+    conditions: one_complete
 
   - trigger: progress
     source: 1_gratings
