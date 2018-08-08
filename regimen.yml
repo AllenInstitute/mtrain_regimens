@@ -69,7 +69,7 @@ _flash_parameters: &flash_parameters
     # trial timing
     min_no_lick_time: 0.3
     timeout_duration: 0.3
-    pre_change_time: 2.25
+    pre_change_time: 0.0
     stimulus_window: 6.0
     max_task_duration_min: 60.0
     start_stop_padding: 10.0
@@ -77,8 +77,10 @@ _flash_parameters: &flash_parameters
     response_window: [0.15,0.75]
 
     # timing of changes
-    change_time_dist: exponential
-    change_time_scale: 2.0
+    change_time_dist: geometric
+    change_time_scale: 0.3
+    change_flashes_min: 4
+    change_flashes_max: 13
 
 _no_flash_parameters: &no_flash_parameters
     <<: *flash_parameters
@@ -86,6 +88,13 @@ _no_flash_parameters: &no_flash_parameters
     response_window: [0.15,1.0]
     reward_volume: 0.010
     free_reward_trials: 10
+    pre_change_time: 2.25
+
+    # timing of changes
+    change_time_dist: exponential
+    change_time_scale: 2.0
+    change_flashes_min: null
+    change_flashes_max: null
 
 
 _image_set_a_parameters: &image_set_a_parameters
@@ -101,7 +110,7 @@ _image_set_c_parameters: &image_set_c_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1A_v0.2.4
+name: VisualBehavior_Task1A_v0.3.0
 
 transitions:
 
