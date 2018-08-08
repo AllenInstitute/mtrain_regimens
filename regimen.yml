@@ -101,7 +101,7 @@ _image_set_c_parameters: &image_set_c_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1A_v0.2.3
+name: VisualBehavior_Task1A_v0.2.4
 
 transitions:
 
@@ -142,8 +142,13 @@ transitions:
 
   - trigger: handoff
     source: 4_images_a_handoff_ready
-    dest: 5_images_a_ophys
+    dest: 5_images_a_ophys_habituation
     conditions: meets_engagement_criteria
+
+  - trigger: progress
+    source: 5_images_a_ophys_habituation
+    dest: 5_images_a_ophys
+    conditions: one_complete
 
   - trigger: progress
     source: 5_images_a_ophys
@@ -248,6 +253,14 @@ stages:
             <<: *image_set_a_parameters
             stage: 4_images_a_handoff_lapsed
             free_reward_trials: 10
+
+    5_images_a_ophys_habituation:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_a_parameters
+            stage: 5_images_a_ophys_habituation
+            start_stop_padding: 300.0
 
     5_images_a_ophys:
         script: *change_detection_script
