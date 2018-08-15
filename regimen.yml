@@ -67,7 +67,7 @@ _flash_parameters: &flash_parameters
     free_reward_trials: 10000
 
     # trial timing
-    min_no_lick_time: 0.3
+    min_no_lick_time: 0.0
     timeout_duration: 0.3
     pre_change_time: 0.0
     stimulus_window: 6.0
@@ -75,12 +75,14 @@ _flash_parameters: &flash_parameters
     start_stop_padding: 10.0
     periodic_flash: [0.25, 0.5]
     response_window: [0.15,0.75]
+    end_after_response: True
+    end_after_response_sec: 3.5
 
     # timing of changes
     change_time_dist: geometric
     change_time_scale: 0.3
-    change_flashes_min: 4
-    change_flashes_max: 13
+    change_flashes_min: 4  # inclusive
+    change_flashes_max: 12  # exclusive
 
 _no_flash_parameters: &no_flash_parameters
     <<: *flash_parameters
