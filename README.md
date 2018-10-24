@@ -6,6 +6,22 @@ This repository contains training regimens for the Visual Behavior project.
 - `scripts/` - This folder contains useful scripts.
 - `tests/` - This folder contains test scripts to help ensure that the regimen is properly formatted for mtrain and can run in production.
 
+
+## Regimen names and semantic versioning
+
+For the Visual Behavior pipeline, we use a naming convention of `{project_name}_{task_name}_{semantic_version}` for regimens.
+
+- `project_name` is the name of the project this regimen is associated with. In this case, `VisualBehavior`.
+- `task_name` is the name of the task that the regimen implements, e.g. `Task1A`
+- `semantic_version` is a version of the regimen which conforms to [Semantic Versioning](https://semver.org/spec/v2.0.0.html), adapted somewhat from software versioning.
+
+Under semantic versioning, a "major revision" occurs when we make changes that are NOT backward compatible. For the purposes of mtrain regimens, this is most appropriate whenever we make substantial changes to stage parameters, transition logic, and/or stage names such that there is not a clear mapping between every stage in the last version and the new version of the regimen. Changes in stage names here are a clear change that warrant a major revision, since any code downstream that relies on stage names to measure time on each stage and time to reach imaging criteria, for example, will break with the new stage names. Similarly, we can't just "migrate all mice to the the new regimen" without giving him a mapping of how the old stage names correspond to these stage names.
+
+A minor revision might be e.g. keeping the stage names but tweaking timing parameters or adding the countdown to behavior sessions. It's clear how to migrate a mouse from 0.2.x to 0.3.x because there is correspondence in the stage names. And while the parameters might have changed, they didn't change the "essence" of the stage.
+
+Patch revisions (v0.3.1) occur when a bug is identified in a regimen and fixed. All the stage names stay the same & it's clear how to migrate a mouse between the stages. These are instances where we know that we want every mouse on v0.x.0 to move to v0.x.1. Moreover, we can safely assume that all mice on a given minor revision should be running on the latest patch revision. As soon as we know that we don't need to roll back, v0.x.0 is considered deprecated and can be de-activated in the mtrain service.
+
+
 ## Viewing a regimen
 
 To easily view a regimen as a JSON, the following script will print the regiment to the console.
@@ -40,20 +56,6 @@ python scripts/make_regimen_json.py > regimen.json
 8. Open a Pull Request & get someone to review the changes.
 9. When ready to merge, tag the commit with the name of the regimen.
 10. Get Nick to help add the tagged regimen to mtrain.
-
-### Regimen names and semantic versioning
-
-For the Visual Behavior pipeline, we use a naming convention of `{project_name}_{task_name}_{semantic_version}` for regimens.
-
-- `project_name` is the name of the project this regimen is associated with. In this case, `VisualBehavior`.
-- `task_name` is the name of the task that the regimen implements, e.g. `Task1A`
-- `semantic_version` is a version of the regimen which conforms to [Semantic Versioning](https://semver.org/spec/v2.0.0.html), adapted somewhat from software versioning.
-
-Under semantic versioning, a "major revision" occurs when we make changes that are NOT backward compatible. For the purposes of mtrain regimens, this is most appropriate whenever we make substantial changes to stage parameters, transition logic, and/or stage names such that there is not a clear mapping between every stage in the last version and the new version of the regimen. Changes in stage names here are a clear change that warrant a major revision, since any code downstream that relies on stage names to measure time on each stage and time to reach imaging criteria, for example, will break with the new stage names. Similarly, we can't just "migrate all mice to the the new regimen" without giving him a mapping of how the old stage names correspond to these stage names.
-
-A minor revision might be e.g. keeping the stage names but tweaking timing parameters or adding the countdown to behavior sessions. It's clear how to migrate a mouse from 0.2.x to 0.3.x because there is correspondence in the stage names. And while the parameters might have changed, they didn't change the "essence" of the stage.
-
-Patch revisions (v0.3.1) occur when a bug is identified in a regimen and fixed. All the stage names stay the same & it's clear how to migrate a mouse between the stages. These are instances where we know that we want every mouse on v0.x.0 to move to v0.x.1. Moreover, we can safely assume that all mice on a given minor revision should be running on the latest patch revision. As soon as we know that we don't need to roll back, v0.x.0 is considered deprecated and can be de-activated in the mtrain service.
 
 ## Updating the script
 
@@ -111,6 +113,7 @@ python 181022110055_OPHYS_1_images_a.py 181022110055_OPHYS_1_images_a.json
 
 ## Adding the regimen to the mtrain service
 
+Talk to Nick
 
 ## Viewing mice currently in mtrain
 
@@ -119,7 +122,7 @@ python 181022110055_OPHYS_1_images_a.py 181022110055_OPHYS_1_images_a.json
 python scripts/mtrain_view_mice.py
 ```
 
-### Migrating mice to new regimen
+## Migrating mice to new regimen
 
 Do a dry run (a fake username and password is fine for this)
 
