@@ -339,7 +339,8 @@ stages:
             warm_up_trials: 0
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
-            fingerprint: True
+            prologue: *countdown_movie
+            epilogue: *fingerprint_movie
 
     OPHYS_4_images_B:
         script: *change_detection_script
@@ -350,7 +351,8 @@ stages:
             warm_up_trials: 0
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
-            fingerprint: True
+            prologue: *countdown_movie
+            epilogue: *fingerprint_movie
 
     OPHYS_5_images_B_passive:
         script: *change_detection_script
@@ -374,7 +376,8 @@ stages:
             warm_up_trials: 0
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
-            fingerprint: True
+            prologue: *countdown_movie
+            epilogue: *fingerprint_movie
 
     OPHYS_7_receptive_field_mapping:
         script: *movie_clips_script
