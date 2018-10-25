@@ -9,7 +9,7 @@ import datetime as dt
 
 
 @click.command()
-@click.option('--regimen_yml', help='Path to regimen file.')
+@click.option('--regimen_yml', default=None, help='Path to regimen file.')
 @click.option('--stage', default=None, help='The stage to generate.')
 @click.option('--script_out', default=None, help='Where to write the script.')
 @click.option('--params_out', default=None, help='Where to write the parameters.')
@@ -20,6 +20,10 @@ def hello(regimen_yml, stage, script_out, params_out, mouse):
         mouse_dir = '/allen/programs/braintv/workgroups/neuralcoding/Behavior/Data/{}'
         params_out = os.path.join(mouse_dir.format(mouse),'adjustment')
         script_out = os.path.join(mouse_dir.format(mouse),'scriptlog')
+
+    if regimen_yml is None:
+        dirname = os.path.dirname(__file__)
+        regimen_yml = os.path.join(dirname,'..','regimen.yml')
 
     with open(regimen_yml, 'r') as f:
         regimen = yaml.load(f)
