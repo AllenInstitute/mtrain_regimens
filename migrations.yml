@@ -1,0 +1,33 @@
+#
+# This file defines *forward* migration paths between mtrain regimens
+#
+# The structure is
+#
+#   SourceRegimen:
+#     TargetRegimen:
+#       old_stage: new_stage
+#
+# ``` Python
+# with open('migrations.yml', 'r') as f:
+#     migration = yaml.load(f)
+# mapping = migration[SourceRegimen.split('.')[0]][TargetRegimen.split('.')[0]]
+# new_stage = mapping[old_stage]
+# ```
+#
+#
+
+VisualBehavior_Task1A_v0:
+  VisualBehavior_Task1A_v1:
+    0_gratings_autorewards_15min: TRAINING_0_gratings_autorewards_15min
+    1_gratings: TRAINING_1_gratings
+    2_gratings_flashed: TRAINING_2_gratings_flashed
+    3_images_a_10uL_reward: TRAINING_3_images_A_10uL_reward
+    4_images_a_training: TRAINING_4_images_A_training
+    4_images_a_handoff_ready: TRAINING_4_images_A_handoff_ready
+    4_images_a_handoff_lapsed: TRAINING_4_images_A_handoff_lapsed
+    5_images_a_ophys_habituation: OPHYS_0_images_A_habituation
+    5_images_a_ophys: OPHYS_1_images_A
+    6_images_a_ophys_no_lickspout: OPHYS_2_images_A_passive
+    7_images_b_ophys: OPHYS_4_images_B
+    8_images_b_ophys_no_lickspout: OPHYS_5_images_B_passive
+    9_receptive_field_mapping: OPHYS_7_receptive_field_mapping
