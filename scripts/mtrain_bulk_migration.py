@@ -1,54 +1,63 @@
 import click
 import requests
+import yaml
 import pandas as pd
 import os
 import json
 
-from utils import get_df
+from utils import get_df, API_BASE
 
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
-api_base = 'http://mtrain:5000/'
+
+def parse_regimen_major(regimen_name):
+    return '.'.join(regimen_name.split('.')[:-2])
+
+
+def is_minor_change(source_regimen, target_regimen):
+    return parse_regimen_major(source_regimen) == parse_regimen_major(target_regimen)
+
+
+def get_mapping(source_regimen,target_regimen,migration):
+    source = parse_regimen_major(source_regimen)
+    target = parse_regimen_major(target_regimen)
+    return migration[source][target]
+
 
 @click.command()
 @click.option('-s','--source',default='',help='Source regimen')
 @click.option('-t','--target',default='',help='Target regimen')
+@click.option('--migration_yml', default=None, help='Path to migration file.')
+@click.option('--api-base', default=API_BASE, help='URL for API.')
 @click.option('--username', prompt=True,
               default=lambda: os.environ.get('USER', ''),
               show_default='current user')
 @click.password_option()
 @click.option('--dry-run', default=True, help='If `True`,  does not actually migrate subjects, but prints expected migration to screen.')
-def main(dry_run,username,password,source,target):
+def main(dry_run,username,password,source,target,migration_yml,api_base):
 
     if dry_run==True:
         print("DRY RUN")
     else:
         print("REAL MIGRATION")
-    # dry_run = False
 
-    # src_regimen = 'v0.1.3'
-    # tgt_regimen = 'VisualBehavior_Task1A_v0.2.3'
+    src_regimen = source
+    tgt_regimen = target
 
-    src_regimen = source # 'VisualBehavior_Task1A_v0.2.2'
-    tgt_regimen = target # 'VisualBehavior_Task1A_v0.3.1'
+    if not is_minor_change(src_regimen,tgt_regimen):
+        needs_migration = True
+        if migration_yml is None:
+            dirname = os.path.dirname(__file__)
+            migration_yml = os.path.join(dirname,'..','migrations.yml')
 
-    # migration_dict = {
-    #     "1_AutoRewards": "0_gratings_autorewards_15min",
-    #     "static_full_field_gratings": "1_gratings",
-    #     "static_full_field_gratings_flash_500ms": "2_gratings_flashed",
-    #     "natural_images": "3_images_a_10uL_reward",
-    #     "natural_images_drop_reward": "4_images_a_training",
-    #     "ready_for_imaging": "4_images_a_handoff_ready",
-    #     "not_ready_for_imaging": "4_images_a_handoff_lapsed",
-    #     "ophys_A": "5_images_a_ophys",
-    # }
-
-    # migration_dict_rev = {}
-    # for key, val in migration_dict.items():
-    #     migration_dict_rev[val] = key
-
+        with open(migration_yml,'rb') as f:
+            migration = yaml.load(f)
+            migration_dict = get_mapping(src_regimen,tgt_regimen,migration)
+    else:
+        needs_migration = False
+        migration_dict = {}
 
     stages_df = get_df('stages').rename(columns={'id':'stage_id','name':'stage_name'}).drop(['parameters', 'script', 'script_md5', 'states'], axis=1)
     states_df = get_df('states').rename(columns={'id':'state_id'})
@@ -71,22 +80,26 @@ def main(dry_run,username,password,source,target):
 
     for ii, row in df.iterrows():
         src_stage_name = row['stage_name']
-        tgt_stage_name = src_stage_name #migration_dict[src_stage_name]
+        if needs_migration:
+            tgt_stage_name = migration_dict[src_stage_name]
+        else:
+            tgt_stage_name = src_stage_name
         LabTracks_ID = row['LabTracks_ID']
         if dry_run==True:
             print("%s: %s/%s -> %s/%s" % (LabTracks_ID, src_regimen, src_stage_name, tgt_regimen, tgt_stage_name))
         else:
-            result = sess.get(os.path.join(api_base, 'get_state/'), data=json.dumps({'regimen_name':tgt_regimen, 'stage_name':tgt_stage_name}))
+            result = sess.get('{}/get_state/'.format(api_base), data=json.dumps({'regimen_name':tgt_regimen, 'stage_name':tgt_stage_name}))
             if result.status_code == requests.codes.ok:
                 state_dict = result.json()
 
-                result = sess.post(os.path.join(api_base, 'set_state/%s' % LabTracks_ID), data=json.dumps({'state':state_dict}))
+                result = sess.post('{}/set_state/{}'.format(api_base, LabTracks_ID), data=json.dumps({'state':state_dict}))
                 if result.status_code == requests.codes.ok:
                     print("MERGED! %s: %s/%s -> %s/%s" % (LabTracks_ID, src_regimen, src_stage_name, tgt_regimen, tgt_stage_name))
                 else:
                     result.raise_for_status()
 
             else:
+                "Uh oh. Can't find that regimen/stage combination."
                 result.raise_for_status()
 
 
