@@ -32,7 +32,7 @@ api_base = 'http://mtrain:5000/'
               default=lambda: os.environ.get('USER', ''),
               show_default='current user')
 @click.password_option()
-@click.option('--dry-run', default=True, help='If `True`,  does not actually migrate subjects, but prints expected migration to screen.')
+@click.option('--dry-run', default=True, type=bool, help='If `True`,  does not actually migrate subjects, but prints expected migration to screen.')
 def main(dry_run,username,password,regimen):
 
     if dry_run==True:
@@ -51,7 +51,7 @@ def main(dry_run,username,password,regimen):
     # Add dev regimen:
     regimen_dict = url_preprocessor('http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/regimen.yml?at=refs%2Ftags%2F' + regimen)
     regimen_dict['name']=regimen
-    if dry_run is True:
+    if dry_run is False:
         result = sess.post(os.path.join(api_base, "set_regimen/"), data=json.dumps(regimen_dict))
         if result.status_code != 200:
             print(result.status_code, result.reason, result.text)
