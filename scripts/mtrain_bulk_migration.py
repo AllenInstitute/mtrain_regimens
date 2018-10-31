@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 import os
 import json
+import yaml
 
 from utils import get_df
 
@@ -19,36 +20,18 @@ api_base = 'http://mtrain:5000/'
               default=lambda: os.environ.get('USER', ''),
               show_default='current user')
 @click.password_option()
-@click.option('--dry-run', default=True, help='If `True`,  does not actually migrate subjects, but prints expected migration to screen.')
-def main(dry_run,username,password,source,target):
+@click.option('--dry-run', default=True, help='If `True`,  does not actually migrate subjects, but prints expected migration to screen.', type=bool)
+def main(dry_run,username,source,target):
 
     if dry_run==True:
         print("DRY RUN")
     else:
         print("REAL MIGRATION")
-    # dry_run = False
 
-    # src_regimen = 'v0.1.3'
-    # tgt_regimen = 'VisualBehavior_Task1A_v0.2.3'
+    migration_dict = yaml.load(open('../migrations.yml', 'r'))[source[:-4]][target[:-4]]
 
-    src_regimen = source # 'VisualBehavior_Task1A_v0.2.2'
-    tgt_regimen = target # 'VisualBehavior_Task1A_v0.3.1'
-
-    # migration_dict = {
-    #     "1_AutoRewards": "0_gratings_autorewards_15min",
-    #     "static_full_field_gratings": "1_gratings",
-    #     "static_full_field_gratings_flash_500ms": "2_gratings_flashed",
-    #     "natural_images": "3_images_a_10uL_reward",
-    #     "natural_images_drop_reward": "4_images_a_training",
-    #     "ready_for_imaging": "4_images_a_handoff_ready",
-    #     "not_ready_for_imaging": "4_images_a_handoff_lapsed",
-    #     "ophys_A": "5_images_a_ophys",
-    # }
-
-    # migration_dict_rev = {}
-    # for key, val in migration_dict.items():
-    #     migration_dict_rev[val] = key
-
+    src_regimen = source
+    tgt_regimen = target
 
     stages_df = get_df('stages').rename(columns={'id':'stage_id','name':'stage_name'}).drop(['parameters', 'script', 'script_md5', 'states'], axis=1)
     states_df = get_df('states').rename(columns={'id':'state_id'})
@@ -71,11 +54,13 @@ def main(dry_run,username,password,source,target):
 
     for ii, row in df.iterrows():
         src_stage_name = row['stage_name']
-        tgt_stage_name = src_stage_name #migration_dict[src_stage_name]
+        tgt_stage_name = migration_dict[src_stage_name]
         LabTracks_ID = row['LabTracks_ID']
         if dry_run==True:
             print("%s: %s/%s -> %s/%s" % (LabTracks_ID, src_regimen, src_stage_name, tgt_regimen, tgt_stage_name))
         else:
+            print sess.get(os.path.join(api_base, 'get_state/'), data=json.dumps({'regimen_name':tgt_regimen, 'stage_name':tgt_stage_name}))
+
             result = sess.get(os.path.join(api_base, 'get_state/'), data=json.dumps({'regimen_name':tgt_regimen, 'stage_name':tgt_stage_name}))
             if result.status_code == requests.codes.ok:
                 state_dict = result.json()
