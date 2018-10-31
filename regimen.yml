@@ -178,10 +178,10 @@ transitions:
 
   - trigger: manual
     source: TRAINING_4_images_A_handoff_ready
-    dest: TRAINING_OPHYS_1_images_A_habituation
+    dest: OPHYS_0_images_A_habituation
 
   - trigger: manual
-    source: TRAINING_OPHYS_1_images_A_habituation
+    source: OPHYS_0_images_A_habituation
     dest: OPHYS_1_images_A
 
   - trigger: manual
@@ -190,15 +190,15 @@ transitions:
 
   - trigger: manual
     source: OPHYS_2_images_A_passive
-    dest: OPHYS_3_images_B
+    dest: OPHYS_3_images_A
 
   - trigger: manual
-    source: OPHYS_3_images_B
-    dest: OPHYS_4_images_B_passive
+    source: OPHYS_3_images_A
+    dest: OPHYS_4_images_B
 
   - trigger: manual
-    source: OPHYS_4_images_B_passive
-    dest: OPHYS_5_receptive_field_mapping
+    source: OPHYS_4_images_B
+    dest: OPHYS_5_images_B_passive
 
   - trigger: manual
     source: OPHYS_5_images_B_passive
@@ -346,7 +346,7 @@ stages:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_d_parameters
+            <<: *image_set_c_parameters
             stage: OPHYS_4_images_B
             warm_up_trials: 0
             start_stop_padding: 300.0
@@ -358,7 +358,7 @@ stages:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_d_parameters
+            <<: *image_set_c_parameters
             stage: OPHYS_5_images_B_passive
             warm_up_trials: 0
             start_stop_padding: 300.0
@@ -371,7 +371,7 @@ stages:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_d_parameters
+            <<: *image_set_c_parameters
             stage: OPHYS_6_images_B
             warm_up_trials: 0
             start_stop_padding: 300.0
