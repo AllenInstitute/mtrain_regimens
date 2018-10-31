@@ -1,3 +1,9 @@
 *.pyc
 
 regimen.json
+
+[0-9]_*.py
+[0-9]_*.json
+
+*/[0-9]_*.py
+*/[0-9]_*.json
