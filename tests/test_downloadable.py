@@ -31,6 +31,6 @@ def test_add_already_tracked_regimen():
     result = requests.get(api_endpoint)
     assert result.status_code == 200
     data = result.json()
-    assert data['total_pages'] == 1
+    assert data['total_pages'] >= 1
     if regimen_data['name'] in [x['name'] for x in data['objects']]:
         warnings.warn('Regimen name %s already tracked on server %s' % (regimen_data['name'], api_endpoint))
