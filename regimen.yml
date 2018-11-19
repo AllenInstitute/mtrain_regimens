@@ -53,7 +53,6 @@ _image_set_d_stimulus: &image_set_d
 _countdown_movie: &countdown_movie
     name: countdown
     params:
-        # movie_path: //allen/programs/braintv/workgroups/nc-ophys/Justin/Outbox/countdown_30fps.npy
         movie_path: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/small_countdown.npy"
         frame_length: 0.03333333333333333
         size: [1920, 1080]
@@ -138,7 +137,7 @@ _image_set_d_parameters: &image_set_d_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1A_v1.0.1
+name: VisualBehavior_Task1A_v1.0.2
 
 transitions:
 
