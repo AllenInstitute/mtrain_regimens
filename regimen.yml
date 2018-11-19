@@ -1,6 +1,6 @@
 
 _change_detection_script: &change_detection_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=d58c56f11544329dbbc80ab3ed9c3096908fef3b
 
 _change_detection_script_md5: &change_detection_script_md5
     e0535f3b6f03ccc8eeccaed2118f3c1d
