@@ -4,8 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [VisualBehavior_Task1A_v1.0.2] - 2018-11-21 (BROKEN)
 
-## [VisualBehavior_Task1A_v1.0.0] - 2018-10-22
+### Changed
+- Fix ophys 7a hard crash issue, by pulling MovieStim.py file directly from cam2p_scripts instead of a hard-coded path
+
+### Notes
+- The intended fix (Stage 7a) works as intended, however the regimen is broken because the change branched upstream of the 1.0.1 bug fix branch
+- Regimen 1.0.3 is targeted to repair the issue
+
+## [VisualBehavior_Task1A_v1.0.1] - 2018-10-31
+
+### Changed
+- fixes bad stimulus class name
+
+## [VisualBehavior_Task1A_v1.0.0] - 2018-10-22 (BROKEN)
 
 ### Added
 - Added countdown stimulus to start of each ophys behavior session.
@@ -19,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modified ophys stimulus sequence to interleave passive sessions between active of the same image set.
 - Changed ophys stage names to be all unique (0-7).
 - Switched ophys stage B to use image_set_d_parameters instead of image_set_c_parameters.
+
+### Notes
+- This regimen fails because the stimulus class value is set to "grating  OPHYS_0_images_A_habituation" but should say "grating"
+- Regimen 1.0.1 addresses this issue
 
 ## [VisualBehavior_Task1A_v0.3.1] - 2018-09-05
 
@@ -58,7 +75,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Major refactor of planned training for production.
 
-
+[VisualBehavior_Task1A_v1.0.2]: https://github.com/AllenInstitute/mtrain_regimens/compare/VisualBehavior_Task1A_v1.0.1...VisualBehavior_Task1A_v1.0.2
+[VisualBehavior_Task1A_v1.0.1]: https://github.com/AllenInstitute/mtrain_regimens/compare/VisualBehavior_Task1A_v1.0.0...VisualBehavior_Task1A_v1.0.1
 [VisualBehavior_Task1A_v1.0.0]: https://github.com/AllenInstitute/mtrain_regimens/compare/VisualBehavior_Task1A_v0.3.1...VisualBehavior_Task1A_v1.0.0
 [VisualBehavior_Task1A_v0.3.1]: https://github.com/AllenInstitute/mtrain_regimens/compare/VisualBehavior_Task1A_v0.3.0...VisualBehavior_Task1A_v0.3.1
 [VisualBehavior_Task1A_v0.3.0]: https://github.com/AllenInstitute/mtrain_regimens/compare/VisualBehavior_Task1A_v0.2.4...VisualBehavior_Task1A_v0.3.0
