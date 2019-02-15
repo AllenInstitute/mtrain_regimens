@@ -299,7 +299,7 @@ stages:
         parameters:
             <<: *image_set_a_parameters
             stage: OPHYS_0_images_A_habituation
-            warm_up_trials: 0
+            warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             prologue: *countdown_movie
@@ -311,7 +311,7 @@ stages:
         parameters:
             <<: *image_set_a_parameters
             stage: OPHYS_1_images_A
-            warm_up_trials: 0
+            warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             prologue: *countdown_movie
@@ -336,7 +336,7 @@ stages:
         parameters:
             <<: *image_set_a_parameters
             stage: OPHYS_3_images_A
-            warm_up_trials: 0
+            warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             prologue: *countdown_movie
@@ -348,7 +348,7 @@ stages:
         parameters:
             <<: *image_set_c_parameters
             stage: OPHYS_4_images_B
-            warm_up_trials: 0
+            warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             prologue: *countdown_movie
@@ -373,7 +373,7 @@ stages:
         parameters:
             <<: *image_set_c_parameters
             stage: OPHYS_6_images_B
-            warm_up_trials: 0
+            warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             prologue: *countdown_movie
