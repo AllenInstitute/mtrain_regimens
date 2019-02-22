@@ -141,7 +141,7 @@ _image_set_d_parameters: &image_set_d_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1A_v1.0.3
+name: VisualBehavior_Task1A_v1.0.4
 
 transitions:
 
@@ -167,31 +167,26 @@ transitions:
 
   - trigger: progress
     source: TRAINING_4_images_A_training
-    dest: TRAINING_4_images_A_handoff_ready
-    conditions: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_4_images_A_training
     dest: TRAINING_5_images_A_epilogue
     conditions: meets_engagement_criteria
 
   - trigger: progress
     source: TRAINING_5_images_A_epilogue
-    dest: TRAINING_6_images_A_handoff_ready
+    dest: TRAINING_5_images_A_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_6_images_A_handoff_ready
-    dest: TRAINING_6_images_A_handoff_lapsed
+    source: TRAINING_5_images_A_handoff_ready
+    dest: TRAINING_5_images_A_handoff_lapsed
     unless: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_6_images_A_handoff_lapsed
-    dest: TRAINING_6_images_A_handoff_ready
+    source: TRAINING_5_images_A_handoff_lapsed
+    dest: TRAINING_5_images_A_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: manual
-    source: TRAINING_6_images_A_handoff_ready
+    source: TRAINING_5_images_A_handoff_ready
     dest: OPHYS_0_images_A_habituation
 
   - trigger: manual
@@ -302,7 +297,7 @@ stages:
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
-    TRAINING_6_images_A_handoff_ready:
+    TRAINING_5_images_A_handoff_ready:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
@@ -312,7 +307,7 @@ stages:
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
-    TRAINING_6_images_A_handoff_lapsed:
+    TRAINING_5_images_A_handoff_lapsed:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
@@ -330,7 +325,6 @@ stages:
             stage: OPHYS_0_images_A_habituation
             warm_up_trials: 5
             start_stop_padding: 300.0
-            prologue: None
             epilogue: *fingerprint_movie
 
     OPHYS_1_images_A:
@@ -342,7 +336,6 @@ stages:
             warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
-            prologue: None
             epilogue: *fingerprint_movie
 
     OPHYS_2_images_A_passive:
@@ -355,7 +348,6 @@ stages:
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             lick_spout: False
-            prologue: None
             epilogue: *fingerprint_movie
 
     OPHYS_3_images_A:
@@ -367,7 +359,6 @@ stages:
             warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
-            prologue: None
             epilogue: *fingerprint_movie
 
     OPHYS_4_images_B:
@@ -379,7 +370,6 @@ stages:
             warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
-            prologue: None
             epilogue: *fingerprint_movie
 
     OPHYS_5_images_B_passive:
@@ -392,7 +382,6 @@ stages:
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             lick_spout: False
-            prologue: None
             epilogue: *fingerprint_movie
 
     OPHYS_6_images_B:
@@ -404,7 +393,6 @@ stages:
             warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
-            prologue: None
             epilogue: *fingerprint_movie
 
     OPHYS_7_receptive_field_mapping:
