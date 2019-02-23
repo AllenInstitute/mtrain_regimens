@@ -302,7 +302,7 @@ stages:
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: TRAINING_6_images_A_handoff_ready
+            stage: TRAINING_5_images_A_handoff_ready
             warm_up_trials: 5
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
@@ -312,7 +312,7 @@ stages:
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: TRAINING_6_images_A_handoff_lapsed
+            stage: TRAINING_5_images_A_handoff_lapsed
             warm_up_trials: 5
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
