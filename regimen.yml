@@ -49,13 +49,6 @@ _image_set_d_stimulus: &image_set_d
         image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
         sampling: even
 
-_countdown_movie: &countdown_movie
-    name: countdown
-    params:
-        movie_path: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/small_countdown.npy
-        frame_length: 0.03333333333333333
-        size: [1920, 1080]
-
 _fingerprint_movie: &fingerprint_movie
     name: fingerprint
     params:
