@@ -6,10 +6,10 @@ _change_detection_script_md5: &change_detection_script_md5
     e0535f3b6f03ccc8eeccaed2118f3c1d
 
 _movie_clips_script: &movie_clips_script
-    http://stash.corp.alleninstitute.org/projects/ENG/repos/cam2p_scripts/raw/behavior/integration_testing/9_receptive_field_characterization/MovieClips.py?at=ec6f7d4abfe150ea793a7db14b84ca9418c1f649
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
 _movie_clips_script_md5: &movie_clips_script_md5
-    f3d68b1708d34fb75e01ae34af7e24a6
+    8cab71e3cf5acdeef9a4660b09e52798
 
 _full_field_gratings_stimulus: &full_field_gratings
     class: grating
