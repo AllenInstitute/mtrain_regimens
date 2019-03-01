@@ -52,7 +52,8 @@ def main(dry_run,username,password,regimen):
 
     # Add dev regimen:
     regimen_dict = url_preprocessor('http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/regimen.yml?at=refs%2Ftags%2F' + regimen)
-    regimen_dict['name']=regimen
+    if regimen_dict['name'] != regimen:
+        raise Exception('Regimen name in regimen.yml (%s) does not match name provided: %s' % (regimen_dict['name'], regimen))
     if dry_run is False:
         result = sess.post(os.path.join(api_base, "set_regimen/"), data=json.dumps(regimen_dict))
         if result.status_code != 200:
