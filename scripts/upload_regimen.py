@@ -51,7 +51,7 @@ def main(dry_run,username,password,regimen):
         print('Authenticate', result.status_code, 'OK')
 
     # Add dev regimen:
-    regimen_dict = url_preprocessor('http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/regimen.yml?at=refs%2Ftags%2F' + regimen)
+    regimen_dict = url_preprocessor('https://raw.githubusercontent.com/AllenInstitute/mtrain_regimens/%s/regimen.yml' % regimen)
     if regimen_dict['name'] != regimen:
         raise Exception('Regimen name in regimen.yml (%s) does not match name provided: %s' % (regimen_dict['name'], regimen))
     if dry_run is False:
