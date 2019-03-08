@@ -62,7 +62,15 @@ def main(dry_run,username,password,regimen):
         if hashlib.md5(result.content).hexdigest() != stage_dict['script_md5']:
             raise Exception('Script %s does not match md5 (%s) at stage %s' % (stage_dict['script'], stage_dict['script_md5'], stage_name))
     
-    
+    # Double-check regimen stages and transitions match:
+    transition_source_target_set = set()
+    for t in regimen_dict['transitions']:
+        transition_source_target_set.add(t['source'])
+        transition_source_target_set.add(t['dest'])
+    stage_set = set(regimen_dict['stages'].keys())
+    if not all([curr_stage in stage_set for curr_stage in transition_source_target_set]):
+        raise Exception('Stages and source/dest of transitions are not consistent')
+
     if dry_run is False:
         result = sess.post(os.path.join(api_base, "set_regimen/"), data=json.dumps(regimen_dict))
         if result.status_code != 200:
