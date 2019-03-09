@@ -137,7 +137,7 @@ _image_set_d_parameters: &image_set_d_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1A_v1.0.3
+name: VisualBehavior_EPHYSTask1A_v1.0.3
 
 transitions:
 
