@@ -54,8 +54,11 @@ python scripts/make_regimen_json.py > regimen.json
 6. Add an entry to the CHANGELOG.
 7. Commit your changes & push them.
 8. Open a Pull Request & get someone to review the changes.
-9. When ready to merge, tag the commit with the name of the regimen.
-10. Get Nick to help add the tagged regimen to mtrain.
+9. After review and merge, tag the commit with a repo tag that matches the name from #4
+10. Run scripts/upload_regimen.py (use the dry-run flag, to run the upload script, with all functionalty except the actual upload.
+``` Python
+python upload_regimen.py -r <tag name here> --dry-run=True
+```
 
 ## Updating the script
 
