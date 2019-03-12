@@ -1,0 +1,7 @@
+pytest
+bumpversion
+flake8
+pytest-cov
+pytest-html
+coverage
+pandas
