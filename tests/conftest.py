@@ -1,7 +1,9 @@
+import pytest
 import os
 import yaml
 
-def load_regimen():
+@pytest.fixture
+def regimen_dict():
     regimen_path = os.path.join(
         os.path.dirname(__file__),
         '..',
