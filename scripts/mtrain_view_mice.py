@@ -10,13 +10,13 @@ pd.set_option('display.width', 1000)
 
 @click.command()
 def main():
-    stages_df = get_df('stages').rename(columns={'id':'stage_id','name':'stage_name'}).drop(['parameters', 'script', 'script_md5', 'states'], axis=1)
-    states_df = get_df('states').rename(columns={'id':'state_id'})
-    subjects_df = get_df('subjects').rename(columns={'id':'state_id'})
+    stages_df = get_df('stages', api_base='http://mtrain:5000').rename(columns={'id':'stage_id','name':'stage_name'}).drop(['parameters', 'script', 'script_md5', 'states'], axis=1)
+    states_df = get_df('states', api_base='http://mtrain:5000').rename(columns={'id':'state_id'})
+    subjects_df = get_df('subjects', api_base='http://mtrain:5000').rename(columns={'id':'state_id'})
     subjects_df['state_id'] = subjects_df['state'].map(lambda x:x['id'])
     subjects_df.drop(['state'], axis=1, inplace=True)
     stages_states_df = pd.merge(stages_df, states_df, on='stage_id')
-    regimens_df = get_df('regimens').rename(columns={'id':'regimen_id','name':'regimen_name'}).drop(['states', 'active'], axis=1)
+    regimens_df = get_df('regimens', api_base='http://mtrain:5000').rename(columns={'id':'regimen_id','name':'regimen_name'}).drop(['states', 'active'], axis=1)
     stages_states_regimens_df = pd.merge(stages_states_df, regimens_df, on='regimen_id')
 
     # print stages_states_regimens_df
