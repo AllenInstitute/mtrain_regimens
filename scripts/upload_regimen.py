@@ -4,6 +4,7 @@ import requests
 import os
 import json
 import yaml
+import hashlib
 
 def url_preprocessor(url=None, file_type='yaml'):
     
@@ -51,8 +52,25 @@ def main(dry_run,username,password,regimen):
         print('Authenticate', result.status_code, 'OK')
 
     # Add dev regimen:
-    regimen_dict = url_preprocessor('http://stash.corp.alleninstitute.org/projects/VB/repos/mtrain_regimens/raw/regimen.yml?at=refs%2Ftags%2F' + regimen)
-    regimen_dict['name']=regimen
+    regimen_dict = url_preprocessor('https://raw.githubusercontent.com/AllenInstitute/mtrain_regimens/%s/regimen.yml' % regimen)
+    if regimen_dict['name'] != regimen:
+        raise Exception('Regimen name in regimen.yml (%s) does not match name provided: %s' % (regimen_dict['name'], regimen))
+    
+    # Validate that stage scripts exist, and that md5 matches:
+    for stage_name, stage_dict in regimen_dict['stages'].items():
+        result = requests.get(stage_dict['script'])
+        if hashlib.md5(result.content).hexdigest() != stage_dict['script_md5']:
+            raise Exception('Script %s does not match md5 (%s) at stage %s' % (stage_dict['script'], stage_dict['script_md5'], stage_name))
+    
+    # Double-check regimen stages and transitions match:
+    transition_source_target_set = set()
+    for t in regimen_dict['transitions']:
+        transition_source_target_set.add(t['source'])
+        transition_source_target_set.add(t['dest'])
+    stage_set = set(regimen_dict['stages'].keys())
+    if not all([curr_stage in stage_set for curr_stage in transition_source_target_set]):
+        raise Exception('Stages and source/dest of transitions are not consistent')
+
     if dry_run is False:
         result = sess.post(os.path.join(api_base, "set_regimen/"), data=json.dumps(regimen_dict))
         if result.status_code != 200:
