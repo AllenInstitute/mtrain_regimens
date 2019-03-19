@@ -1,268 +1,104 @@
-_change_detection_script: &change_detection_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd
+_day_1_script: &day_1_script
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day1.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_change_detection_script_md5: &change_detection_script_md5
-    e0535f3b6f03ccc8eeccaed2118f3c1d
+_day_1_script_md5: &day_1_script_md5
+    1284dde1bab18233f470a679d5a234f2
 
-_movie_clips_script: &movie_clips_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
+_day_2_script: &day_2_script
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day2.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_movie_clips_script_md5: &movie_clips_script_md5
-    8cab71e3cf5acdeef9a4660b09e52798
+_day_2_script_md5: &day_2_script_md5
+    5bd554df9c9bd5c40485a07956273cd9
+    
+_day_3_script: &day_3_script
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day3.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_full_field_gratings_stimulus: &full_field_gratings
-    class: grating
-    params:
-        sf: 0.04
-        tex: sqr
-        size: [200, 150,]
-        units: deg
-        phase: 0.25
-    groups:
-        vertical:
-            Ori: [0, 180]
-        horizontal:
-            Ori: [90, 270]
+_day_3_script_md5: &day_3_script_md5
+    505ef9e14e6ac3f80e691f4d0b5265a8
+    
+_day_4_script: &day_4_script
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day4.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_image_set_a_stimulus: &image_set_a
-    class: images
-    params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
-        sampling: even
+_day_4_script_md5: &day_4_script_md5
+    d82360a405c9ba1f1cc1d59b7707bc80
+    
+_day_5_script: &day_5_script
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day5.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_image_set_b_stimulus: &image_set_b
-    class: images
-    params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
-        sampling: even
+_day_5_script_md5: &day_5_script_md5
+    e53821b4b498bcecb4aa793e5dff67b5
+    
+_day_6_script: &day_6_script
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day6.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_image_set_c_stimulus: &image_set_c
-    class: images
-    params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
-        sampling: even
-
-_image_set_d_stimulus: &image_set_d
-    class: images
-    params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
-        sampling: even
-
-_fingerprint_movie: &fingerprint_movie
-    name: fingerprint
-    params:
-        movie_path: //allen/programs/braintv/workgroups/neuralcoding/Saskia/Visual Stimuli 151207/Movie_TOE1.npy
-        frame_length: 0.03333333333333333
-        size: [1920, 1080]
-        runs: 10
-
-
-_flash_parameters: &flash_parameters
-    task_id: DoC
-
-    catch_frequency: 0.25
-    failure_repeats: 5
-
-    # rewards (mL)
-    reward_volume: 0.007
-    volume_limit: 5.0
-
-    # auto rewards
-    auto_reward_vol: 0.005
-    warm_up_trials: 5
-    auto_reward_delay: 0.150
-    free_reward_trials: 10000
-
-    # trial timing
-    min_no_lick_time: 0.0
-    timeout_duration: 0.3
-    pre_change_time: 0.0
-    stimulus_window: 6.0
-    max_task_duration_min: 60.0
-    start_stop_padding: 20.0
-    periodic_flash: [0.25, 0.5]
-    response_window: [0.15,0.75]
-    end_after_response: True
-    end_after_response_sec: 3.5
-
-    # timing of changes
-    change_time_dist: geometric
-    change_time_scale: 0.3
-    change_flashes_min: 4  # inclusive
-    change_flashes_max: 12  # exclusive
-
-_no_flash_parameters: &no_flash_parameters
-    <<: *flash_parameters
-    periodic_flash: null
-    response_window: [0.15,1.0]
-    reward_volume: 0.010
-    free_reward_trials: 10
-    pre_change_time: 2.25
-
-    # timing of changes
-    change_time_dist: exponential
-    change_time_scale: 2.0
-    change_flashes_min: null
-    change_flashes_max: null
-
-
-_image_set_a_parameters: &image_set_a_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_a
-    catch_frequency: null
-
-_image_set_b_parameters: &image_set_b_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_b
-    catch_frequency: null
-
-_image_set_c_parameters: &image_set_c_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_c
-    catch_frequency: null
-
-_image_set_d_parameters: &image_set_d_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_d
-    catch_frequency: null
+_day_6_script_md5: &day_6_script_md5
+    b7e1e4e06b3736d04dafaa64793dee42
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.2
+name: Passive_VisualCoding_v1.0.0
 
 transitions:
 
   - trigger: progress
-    source: TRAINING_0_gratings_autorewards_15min
-    dest: TRAINING_1_gratings
+    source: DAY_1
+    dest: DAY_2
     conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_1_gratings
-    dest: TRAINING_2_gratings_flashed
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+    source: DAY_2
+    dest: DAY_3
+    conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_2_gratings_flashed
-    dest: TRAINING_3_images_A_10uL_reward
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+    source: DAY_3
+    dest: DAY_4
+    conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_3_images_A_10uL_reward
-    dest: TRAINING_4_images_A_training
-    conditions: three_complete
+    source: DAY_4
+    dest: DAY_5
+    conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_4_images_A_training
-    dest: TRAINING_4_images_A_handoff_ready
-    conditions: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_4_images_A_handoff_ready
-    dest: TRAINING_4_images_A_handoff_lapsed
-    unless: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_4_images_A_handoff_lapsed
-    dest: TRAINING_4_images_A_handoff_ready
-    conditions: meets_engagement_criteria
-
-  - trigger: manual
-    source: TRAINING_4_images_A_handoff_ready
-    dest: EPHYS_1_images_A
+    source: DAY_5
+    dest: DAY_6
+    conditions: one_complete
 
 stages:
-
-    TRAINING_0_gratings_autorewards_15min:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+    DAY_1:
+        script: *day_1_script
+        script_md5: *day_1_script_md5
         parameters:
-            <<: *no_flash_parameters
-            stage: TRAINING_0_gratings_autorewards_15min
-            stimulus: *full_field_gratings
+            stage: DAY_1
 
-            # auto rewards
-            warm_up_trials: -1 #infinite
-            abort_on_early_response: False
-            catch_frequency: 0.0
-
-            response_window: [0.0, 0.0]
-            min_no_lick_time: 0.0
-            failure_repeats: 0
-
-            # trial timing
-            max_task_duration_min: 15.0
-
-            # rewards (mL)
-            reward_volume: 0.0
-
-
-    TRAINING_1_gratings:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+    DAY_2:
+        script: *day_2_script
+        script_md5: *day_2_script_md5
         parameters:
-            <<: *no_flash_parameters
-            stage: TRAINING_1_gratings
+            stage: DAY_2
 
-            stimulus: *full_field_gratings
-
-
-    TRAINING_2_gratings_flashed:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+    DAY_3:
+        script: *day_3_script
+        script_md5: *day_3_script_md5
         parameters:
-            <<: *flash_parameters
-            stage: TRAINING_2_gratings_flashed
-            task_id: DoC
+            stage: DAY_3
 
-            stimulus: *full_field_gratings
-            free_reward_trials: 10
-
-            # rewards (mL)
-            reward_volume: 0.01
-
-
-    TRAINING_3_images_A_10uL_reward:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+    DAY_4:
+        script: *day_4_script
+        script_md5: *day_4_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_3_images_A_10uL_reward
+            stage: DAY_4
 
-            # rewards (mL)
-            reward_volume: 0.01
-            free_reward_trials: 10
-
-    TRAINING_4_images_A_training:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+    DAY_5:
+        script: *day_5_script
+        script_md5: *day_5_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_4_images_A_training
+            stage: DAY_5
 
-    TRAINING_4_images_A_handoff_ready:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+    DAY_6:
+        script: *day_6_script
+        script_md5: *day_6_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_4_images_A_handoff_ready
-            warm_up_trials: 0
-
-    TRAINING_4_images_A_handoff_lapsed:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_4_images_A_handoff_lapsed
-            free_reward_trials: 10
-
-    EPHYS_1_images_A:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: EPHYS_1_images_A
-            warm_up_trials: 2
-            flash_omit_probability: 0.05
-
+            stage: DAY_6
     
