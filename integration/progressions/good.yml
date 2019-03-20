@@ -1,0 +1,12 @@
+initial_state: TRAINING_0_gratings_autorewards_15min # initial state
+progressions:
+  - start_state: TRAINING_0_gratings_autorewards_15min # assert start state
+    end_state: TRAINING_1_gratings # assert end state
+  - start_state: TRAINING_1_gratings
+    end_state: TRAINING_2_gratings_flashed
+  - start_state: TRAINING_2_gratings_flashed
+    end_state: TRAINING_3_images_A_10uL_reward
+  - start_state: TRAINING_3_images_A_10uL_reward
+    end_state: TRAINING_4_images_A_training
+  - start_state: TRAINING_4_images_A_training
+    end_state: TRAINING_4_images_A_handoff_ready

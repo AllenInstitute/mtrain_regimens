@@ -1,0 +1,20 @@
+initial_state: TRAINING_0_gratings_autorewards_15min
+progressions:
+  - initial_state: TRAINING_0_gratings_autorewards_15min
+    end_state: TRAINING_0_gratings_autorewards_15min
+    overrides:
+      - hit_rate: 0.2
+      - false_alarm_rate: 0.8
+      - autorewarded: false
+  - initial_state: TRAINING_0_gratings_autorewards_15min
+    end_state: TRAINING_0_gratings_autorewards_15min
+    overrides:
+      - hit_rate: 0.2
+      - false_alarm_rate: 0.8
+      - autorewarded: false
+  - initial_state: TRAINING_0_gratings_autorewards_15min
+    end_state: TRAINING_0_gratings_autorewards_15min
+    overrides:
+      - hit_rate: 0.2
+      - false_alarm_rate: 0.8
+      - autorewarded: false
