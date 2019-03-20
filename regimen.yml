@@ -34,13 +34,13 @@ _image_set_a_stimulus: &image_set_a
 _image_set_b_stimulus: &image_set_b
     class: images
     params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
+        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
         sampling: even
 
 _image_set_c_stimulus: &image_set_c
     class: images
     params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
+        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
         sampling: even
 
 _image_set_d_stimulus: &image_set_d
@@ -353,7 +353,7 @@ stages:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_c_parameters
+            <<: *image_set_b_parameters
             stage: OPHYS_4_images_B
             warm_up_trials: 5
             start_stop_padding: 300.0
@@ -364,7 +364,7 @@ stages:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_c_parameters
+            <<: *image_set_b_parameters
             stage: OPHYS_5_images_B_passive
             warm_up_trials: 0
             start_stop_padding: 300.0
@@ -376,7 +376,7 @@ stages:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_c_parameters
+            <<: *image_set_b_parameters
             stage: OPHYS_6_images_B
             warm_up_trials: 5
             start_stop_padding: 300.0
