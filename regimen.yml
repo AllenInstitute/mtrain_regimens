@@ -129,7 +129,7 @@ _image_set_d_parameters: &image_set_d_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1A_v1.0.4
+name: VisualBehavior_Task1D_v1.0.0
 
 transitions:
 
@@ -145,64 +145,64 @@ transitions:
 
   - trigger: progress
     source: TRAINING_2_gratings_flashed
-    dest: TRAINING_3_images_A_10uL_reward
+    dest: TRAINING_3_images_D_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: TRAINING_3_images_A_10uL_reward
-    dest: TRAINING_4_images_A_training
+    source: TRAINING_3_images_D_10uL_reward
+    dest: TRAINING_4_images_D_training
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_4_images_A_training
-    dest: TRAINING_5_images_A_epilogue
+    source: TRAINING_4_images_D_training
+    dest: TRAINING_5_images_D_epilogue
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A_epilogue
-    dest: TRAINING_5_images_A_handoff_ready
+    source: TRAINING_5_images_D_epilogue
+    dest: TRAINING_5_images_D_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_ready
-    dest: TRAINING_5_images_A_handoff_lapsed
+    source: TRAINING_5_images_D_handoff_ready
+    dest: TRAINING_5_images_D_handoff_lapsed
     unless: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_lapsed
-    dest: TRAINING_5_images_A_handoff_ready
+    source: TRAINING_5_images_D_handoff_lapsed
+    dest: TRAINING_5_images_D_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: manual
-    source: TRAINING_5_images_A_handoff_ready
-    dest: OPHYS_0_images_A_habituation
+    source: TRAINING_5_images_D_handoff_ready
+    dest: OPHYS_0_images_D_habituation
 
   - trigger: manual
-    source: OPHYS_0_images_A_habituation
-    dest: OPHYS_1_images_A
+    source: OPHYS_0_images_D_habituation
+    dest: OPHYS_1_images_D
 
   - trigger: manual
-    source: OPHYS_1_images_A
-    dest: OPHYS_2_images_A_passive
+    source: OPHYS_1_images_D
+    dest: OPHYS_2_images_D_passive
 
   - trigger: manual
-    source: OPHYS_2_images_A_passive
-    dest: OPHYS_3_images_A
+    source: OPHYS_2_images_D_passive
+    dest: OPHYS_3_images_D
 
   - trigger: manual
-    source: OPHYS_3_images_A
-    dest: OPHYS_4_images_B
+    source: OPHYS_3_images_D
+    dest: OPHYS_4_images_C
 
   - trigger: manual
-    source: OPHYS_4_images_B
-    dest: OPHYS_5_images_B_passive
+    source: OPHYS_4_images_C
+    dest: OPHYS_5_images_C_passive
 
   - trigger: manual
-    source: OPHYS_5_images_B_passive
-    dest: OPHYS_6_images_B
+    source: OPHYS_5_images_C_passive
+    dest: OPHYS_6_images_C
 
   - trigger: manual
-    source: OPHYS_6_images_B
+    source: OPHYS_6_images_C
     dest: OPHYS_7_receptive_field_mapping
 
 stages:
@@ -256,128 +256,128 @@ stages:
             reward_volume: 0.01
 
 
-    TRAINING_3_images_A_10uL_reward:
+    TRAINING_3_images_D_10uL_reward:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_3_images_A_10uL_reward
+            <<: *image_set_d_parameters
+            stage: TRAINING_3_images_D_10uL_reward
 
             # rewards (mL)
             reward_volume: 0.01
             free_reward_trials: 10
 
-    TRAINING_4_images_A_training:
+    TRAINING_4_images_D_training:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_4_images_A_training
+            <<: *image_set_d_parameters
+            stage: TRAINING_4_images_D_training
             warm_up_trials: 5
 
-    TRAINING_5_images_A_epilogue:
+    TRAINING_5_images_D_epilogue:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_5_images_A_epilogue
-            warm_up_trials: 5
-            start_stop_padding: 300.0
-            epilogue: *fingerprint_movie
-
-    TRAINING_5_images_A_handoff_ready:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_5_images_A_handoff_ready
+            <<: *image_set_ad_parameters
+            stage: TRAINING_5_images_D_epilogue
             warm_up_trials: 5
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
-    TRAINING_5_images_A_handoff_lapsed:
+    TRAINING_5_images_D_handoff_ready:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_5_images_A_handoff_lapsed
+            <<: *image_set_d_parameters
+            stage: TRAINING_5_images_D_handoff_ready
             warm_up_trials: 5
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
-    OPHYS_0_images_A_habituation:
+    TRAINING_5_images_D_handoff_lapsed:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: OPHYS_0_images_A_habituation
+            <<: *image_set_d_parameters
+            stage: TRAINING_5_images_D_handoff_lapsed
             warm_up_trials: 5
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
-    OPHYS_1_images_A:
+    OPHYS_0_images_D_habituation:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: OPHYS_1_images_A
+            <<: *image_set_d_parameters
+            stage: OPHYS_0_images_D_habituation
+            warm_up_trials: 5
+            start_stop_padding: 300.0
+            epilogue: *fingerprint_movie
+
+    OPHYS_1_images_D:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_d_parameters
+            stage: OPHYS_1_images_D
             warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             epilogue: *fingerprint_movie
 
-    OPHYS_2_images_A_passive:
+    OPHYS_2_images_D_passive:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: OPHYS_2_images_A_passive
+            <<: *image_set_d_parameters
+            stage: OPHYS_2_images_D_passive
             warm_up_trials: 0
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             lick_spout: False
             epilogue: *fingerprint_movie
 
-    OPHYS_3_images_A:
+    OPHYS_3_images_D:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_a_parameters
-            stage: OPHYS_3_images_A
+            <<: *image_set_d_parameters
+            stage: OPHYS_3_images_D
             warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             epilogue: *fingerprint_movie
 
-    OPHYS_4_images_B:
+    OPHYS_4_images_C:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_b_parameters
-            stage: OPHYS_4_images_B
+            <<: *image_set_c_parameters
+            stage: OPHYS_4_images_C
             warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             epilogue: *fingerprint_movie
 
-    OPHYS_5_images_B_passive:
+    OPHYS_5_images_C_passive:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_b_parameters
-            stage: OPHYS_5_images_B_passive
+            <<: *image_set_c_parameters
+            stage: OPHYS_5_images_C_passive
             warm_up_trials: 0
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
             lick_spout: False
             epilogue: *fingerprint_movie
 
-    OPHYS_6_images_B:
+    OPHYS_6_images_C:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_b_parameters
-            stage: OPHYS_6_images_B
+            <<: *image_set_c_parameters
+            stage: OPHYS_6_images_C
             warm_up_trials: 5
             start_stop_padding: 300.0
             flash_omit_probability: 0.05
