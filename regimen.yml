@@ -129,7 +129,7 @@ _image_set_d_parameters: &image_set_d_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1A_v1.0.4
+name: VisualBehavior_Task1A_v1.2.0
 
 transitions:
 
