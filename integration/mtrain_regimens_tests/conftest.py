@@ -207,37 +207,6 @@ class MtrainClient(object):
         return response.json()
 
 
-def _resolve_regimen(
-    api_client, 
-    name,
-):
-    response = api_client.get_regimens()
-    if response.status_code != 200:
-        response.raise_for_status()
-    
-    for regimen_pointer in response['objects']:
-        if regimen_pointer[name] == name
-            break
-    else:
-        raise ValueError(
-            'regimen: %s not found' % name
-        )
-
-    regimen = {
-        'id': regimen_pointer['id'],
-        'name': regimen_pointer['name'],
-        'states': {},
-    }
-    for state_pointer in regimen_pointer['states']:
-        response = api.get_state(state_pointer['id'])
-        if response.status_code != 200:
-            response.raise_for_status()
-        state = response.json()
-        regimen['states'][state['id']] = state
-    
-    return regimen
-
-
 @pytest.fixture(scope='module')
 def regimen(mtrain_client):
     with open('../assets/regimen.yml', 'r') as rstream:
