@@ -2,11 +2,80 @@ initial_state: TRAINING_0_gratings_autorewards_15min # initial state
 progressions:
   - start_state: TRAINING_0_gratings_autorewards_15min # assert start state
     end_state: TRAINING_1_gratings # assert end state
+    behavior_file: base
+    epochs:
+      - start: start
+        end: middle
+        overrides:
+          trial_type: go
+          response: 1
+          auto_rewarded: false
+      - start: middle
+        end: end
+        overrides:
+          trial_type: catch
+          response: 0
+
   - start_state: TRAINING_1_gratings
     end_state: TRAINING_2_gratings_flashed
+    behavior_file: base
+    epochs:
+      - start: start
+        end: middle
+        overrides:
+          trial_type: go
+          response: 1
+          auto_rewarded: false
+      - start: middle
+        end: end
+        overrides:
+          trial_type: catch
+          response: 0
+
   - start_state: TRAINING_2_gratings_flashed
     end_state: TRAINING_3_images_A_10uL_reward
+    behavior_file: base
+    epochs:
+      - start: start
+        end: middle
+        overrides:
+          trial_type: go
+          response: 1
+          auto_rewarded: false
+      - start: middle
+        end: end
+        overrides:
+          trial_type: catch
+          response: 0
+
   - start_state: TRAINING_3_images_A_10uL_reward
     end_state: TRAINING_4_images_A_training
+    behavior_file: base
+    epochs:
+      - start: start
+        end: middle
+        overrides:
+          trial_type: go
+          response: 1
+          auto_rewarded: false
+      - start: middle
+        end: end
+        overrides:
+          trial_type: catch
+          response: 0
+
   - start_state: TRAINING_4_images_A_training
     end_state: TRAINING_4_images_A_handoff_ready
+    behavior_file: base
+    epochs:
+      - start: start
+        end: middle
+        overrides:
+          trial_type: go
+          response: 1
+          auto_rewarded: false
+      - start: middle
+        end: end
+        overrides:
+          trial_type: catch
+          response: 0

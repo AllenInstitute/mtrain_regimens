@@ -1,0 +1,7 @@
+version: '3'
+services:
+  mtrain_api_fixture:
+    image: mtrain_api_test
+    container_name: mtrain_api_fixture
+    ports:
+      - 5000

@@ -1,6 +1,7 @@
 # integration test runner written in python to coordinate 
 # timing and intricate stuff? lel...
 # no idea why this code looks so weird...~.~
+import shutil
 import subprocess
 from tempfile import mkstemp
 
@@ -39,10 +40,20 @@ session.commit()
 """
 
 
-# def init_services():
-#     subprocess.call([
-#         'docker-compose -f docker-compose.yml -p regimentest up'
-#     ])
+def init():
+    # make a copy of the regimen for the tests
+    _, regimen_yml = mkstemp(
+        suffix='.yml',
+        dir='./assets',
+    )
+    
+    with open('../regimen.yml', 'r') as src, \
+            open(regimen_yml, 'w') as dest:
+        dest.write(src.read())
+
+    return {
+        'regimen_yml': regimen_yml, 
+    }
 
 
 def init_user(
@@ -50,13 +61,12 @@ def init_user(
     password, 
     mtrain_api_container,
 ):
-    # how get username, password into file?
-    _, temp, = mkstemp(
+    _, vector_script, = mkstemp(
         suffix='.py',
-        dir='./temp',
+        dir='./assets',
     )
 
-    with open(temp, 'w') as fstream:
+    with open(vector_script, 'w') as fstream:
         fstream.write(
             INIT_USER_SCRIPT_TEMPLATE.format(
                 username=username,
@@ -64,51 +74,40 @@ def init_user(
             )
         )
     
-    subprocess.call([
-        (
-            'docker cp '
-            '{temp} ' 
-            '{mtrain_api_container}:/home/mtrain/app/mtrain_api'
-        ).format(
-            temp=temp,
-            mtrain_api_container=mtrain_api_container,
+    subprocess.run([
+        'docker cp {target} {dest}'.format(
+            target=vector_script,
+            dest='%s:/home/mtrain/app/mtrain_api' % \
+                mtrain_api_container,
         ),
-        (
-            'docker exec ',
-            '{mtrain_api_container} '
-            'python {temp}'
-        ).format(
-            temp=temp,
-            mtrain_api_container=mtrain_api_container,
-        )
-    ])
+    ], check=True, shell=False, )
+
+    subprocess.run([
+        'docker exec {container_name} {command}'.format(
+            container_name=mtrain_api_container,
+            command='python %s' % vector_script,
+        ),
+    ], check=True, shell=False, )
 
 
-def run_tests(username, password):
-    # use environment variables to pass in username, password
-    result = subprocess.call([
-        'export MTRAIN_API_USERNAME={}'.format(username),
-        'export MTRAIN_API_PASSWORD={}'.format(password),
+def run_tests():
+    subprocess.run([
         'pytest ./mtrain_regimens_tests',
-    ])  # inherit parent process context
+    ], check=True, shell=False, )  # inherit parent process context
 
 
 if __name__ == "__main__":
-    import time
+    import os
 
-    CONTAINER_NAME = 'regimentest_mtrain_api_1'
-    USERNAME = 'wut'
-    PASSWORD = 'did'
-
-    init_user(
-        username=USERNAME, 
-        password=PASSWORD, 
-        mtrain_api_container=CONTAINER_NAME,
+    meta = init()
+    init_user( 
+        username=os.environ['MTRAIN_USERNAME'], 
+        password=os.environ['MTRAIN_PASSWORD'], 
+        mtrain_api_container=os.environ['MTRAIN_CONTAINER_ID'],
     )
 
-    time.sleep(5)
-
-    run_tests(
-        username=USERNAME, 
-        password=PASSWORD,
-    )
+    # so we know where the regimen file is
+    os.environ['MTRAIN_REGIMEN_YML'] = \
+        meta['regimen_yml']
+    
+    run_tests()
