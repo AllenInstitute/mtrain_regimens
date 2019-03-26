@@ -420,10 +420,6 @@
             "version": "==1.24.1"
         },
         "visual-behavior": {
-            "hashes": [
-                "sha256:1308bc979761cb253489a1a9a98f8be418fb755490c44e25fdff90a789154ff9",
-                "sha256:15923a18f10742948206b4948f8c7c5d59eae4f452a3ede47c4bc0d196c4361f"
-            ],
             "index": "aibs-artifactory",
             "version": "==0.3.0"
         }

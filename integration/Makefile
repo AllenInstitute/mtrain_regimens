@@ -1,4 +1,6 @@
+services:
+	docker-compose up -d
 test:
-	pip install pipenv
-	pipenv install .
-	pipenv run python integration.py
+	python -m pip install pipenv
+	python -m pipenv install .
+	python -m pipenv run python integration.py

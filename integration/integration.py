@@ -1,59 +1,29 @@
-# integration test runner written in python to coordinate 
-# timing and intricate stuff? lel...
+# python integration test runner...control?
 # no idea why this code looks so weird...~.~
+import logging
+import requests
 import shutil
 import subprocess
-from tempfile import mkstemp
+import time
 
 
-INIT_USER_SCRIPT_TEMPLATE = \
-"""
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.engine.url import URL
-
-from mtrain_api.user.models import User
-
-
-engine = create_engine(URL(
-    'postgresql',
-    username='postgres',
-    password='postgres',
-    port=5432,
-    database='mtrain_test',
-    host='postgres_testdb'
-))
-
-Session = sessionmaker(bind=engine)
-
-session = Session()
-
-session.add(
-    User(
-        username='{username}', 
-        password='{password}', 
-        email='whoevencares@email.com', 
-        active=True, 
+def init_services(mtrain_root):
+    # daemon = subprocess.Popen(
+    #     ['docker-compose', 'up', ], 
+    # )
+    subprocess.run(
+        'docker-compose up -d',
+        check=True,
+        shell=True,
     )
-)
-session.commit()
-"""
+    logging.info('waiting for services to be available...', )
+    tic = time.time()
+    while time.time() - tic > 600:  # ~10 minutes max wait time
+        if requests.get(mtrain_root) \
+                .status_code == 200:
+            break
 
-
-def init():
-    # make a copy of the regimen for the tests
-    _, regimen_yml = mkstemp(
-        suffix='.yml',
-        dir='./assets',
-    )
-    
-    with open('../regimen.yml', 'r') as src, \
-            open(regimen_yml, 'w') as dest:
-        dest.write(src.read())
-
-    return {
-        'regimen_yml': regimen_yml, 
-    }
+        time.sleep(5)
 
 
 def init_user(
@@ -61,53 +31,56 @@ def init_user(
     password, 
     mtrain_api_container,
 ):
-    _, vector_script, = mkstemp(
-        suffix='.py',
-        dir='./assets',
-    )
-
-    with open(vector_script, 'w') as fstream:
-        fstream.write(
-            INIT_USER_SCRIPT_TEMPLATE.format(
-                username=username,
-                password=password,
-            )
-        )
-    
-    subprocess.run([
-        'docker cp {target} {dest}'.format(
-            target=vector_script,
-            dest='%s:/home/mtrain/app/mtrain_api' % \
-                mtrain_api_container,
-        ),
-    ], check=True, shell=False, )
-
-    subprocess.run([
+    subprocess.run(
         'docker exec {container_name} {command}'.format(
             container_name=mtrain_api_container,
-            command='python %s' % vector_script,
+            command='python ./scripts/init_user_script.py {username} {password}' \
+                .format(
+                    username=username,
+                    password=password,
+                ),
         ),
-    ], check=True, shell=False, )
+        check=True,
+        shell=True,
+    )
+
+
+def init_assets(*training_outputs):
+    shutil.copyfile(
+        '../regimen.yml', 
+        './tests/assets/regimen.yml',
+    )
+    for training_output in training_outputs:
+        shutil.copyfile(
+            training_output,
+            './tests/assets/training_output.pkl'
+        )
 
 
 def run_tests():
-    subprocess.run([
-        'pytest ./mtrain_regimens_tests',
-    ], check=True, shell=False, )  # inherit parent process context
+    subprocess.run(
+        'pipenv run python -m pytest',  # pipenv pipes in our env vars...we need it :(...
+        check=True,
+        shell=True,
+    )  # inherit parent process context
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     import os
 
-    meta = init()
-    init_user( 
-        username=os.environ['MTRAIN_USERNAME'], 
-        password=os.environ['MTRAIN_PASSWORD'], 
-        mtrain_api_container=os.environ['MTRAIN_CONTAINER_ID'],
+    init_services(
+        mtrain_root=os.environ['MTRAIN_ROOT'],
     )
 
-    # so we know where the regimen file is
-    os.environ['MTRAIN_REGIMEN_YML'] = \
-        meta['regimen_yml']
-    
+    try:
+        init_user( 
+            username=os.environ['MTRAIN_USERNAME'], 
+            password=os.environ['MTRAIN_PASSWORD'], 
+            mtrain_api_container=os.environ['MTRAIN_CONTAINER'],
+        )
+    except:
+        pass  # todo make more elegant
+
+    init_assets(os.environ['TRAINING_OUTPUT'], )
+
     run_tests()

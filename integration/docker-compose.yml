@@ -1,7 +1,23 @@
 version: '3'
 services:
-  mtrain_api_fixture:
-    image: mtrain_api_test
-    container_name: mtrain_api_fixture
+  mtrain_api:
+    image: docker.aibs-artifactory.corp.alleninstitute.org/mtrain_api:0.2.8
+    container_name: ${MTRAIN_CONTAINER}
+    working_dir: /home/mtrain/app/mtrain_api
     ports:
-      - 5000
+      - '5000:5000'
+    environment:
+      - FLASK_DEBUG=1
+      - TEST=1
+      - WEBPACK_MANIFEST_PATH=/home/mtrain/app/mtrain_api/mtrain_api/webpack/manifest.json
+    volumes:
+      - ./scripts:/home/mtrain/app/mtrain_api/scripts
+    depends_on:
+      - postgres_testdb
+
+  postgres_testdb:
+    image: postgres:9.4
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=mtrain_test
