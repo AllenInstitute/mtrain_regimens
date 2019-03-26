@@ -129,7 +129,7 @@ _image_set_d_parameters: &image_set_d_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.1
+name: VisualBehaviorEPHYS_Task1A_v0.0.3
 
 transitions:
 
@@ -171,6 +171,10 @@ transitions:
   - trigger: manual
     source: TRAINING_4_images_A_handoff_ready
     dest: EPHYS_1_images_A
+
+  - trigger: manual
+    source: EPHYS_1_images_A
+    dest: EPHYS_1_images_B
 
 stages:
 
@@ -267,4 +271,12 @@ stages:
             flash_omit_probability: 0.05
             
 
-    
+    EPHYS_1_images_B:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_b_parameters
+            stage: EPHYS_1_images_B
+            warm_up_trials: 2
+            flash_omit_probability: 0.05
+            
