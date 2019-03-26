@@ -1,4 +1,3 @@
-
 _change_detection_script: &change_detection_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd
 
@@ -6,10 +5,10 @@ _change_detection_script_md5: &change_detection_script_md5
     e0535f3b6f03ccc8eeccaed2118f3c1d
 
 _movie_clips_script: &movie_clips_script
-    http://stash.corp.alleninstitute.org/projects/ENG/repos/cam2p_scripts/raw/behavior/integration_testing/9_receptive_field_characterization/MovieClips.py?at=ec6f7d4abfe150ea793a7db14b84ca9418c1f649
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
 _movie_clips_script_md5: &movie_clips_script_md5
-    f3d68b1708d34fb75e01ae34af7e24a6
+    8cab71e3cf5acdeef9a4660b09e52798
 
 _full_field_gratings_stimulus: &full_field_gratings
     class: grating
@@ -28,34 +27,26 @@ _full_field_gratings_stimulus: &full_field_gratings
 _image_set_a_stimulus: &image_set_a
     class: images
     params:
-        # image_set: //allen/aibs/mpe/Software/stimulus_files/nimages_0_20170714.zip
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_TRAINING_2017.07.14.pkl
+        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
         sampling: even
 
 _image_set_b_stimulus: &image_set_b
     class: images
     params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
+        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
         sampling: even
 
 _image_set_c_stimulus: &image_set_c
     class: images
     params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
+        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
         sampling: even
 
 _image_set_d_stimulus: &image_set_d
     class: images
     params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/Doug/Stimulus_Code/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
+        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
         sampling: even
-
-_countdown_movie: &countdown_movie
-    name: countdown
-    params:
-        movie_path: //allen/programs/braintv/workgroups/nc-ophys/Justin/Outbox/countdown_30fps.npy
-        frame_length: 0.03333333333333333
-        size: [1920, 1080]
 
 _fingerprint_movie: &fingerprint_movie
     name: fingerprint
@@ -136,8 +127,8 @@ _image_set_d_parameters: &image_set_d_parameters
     catch_frequency: null
 
 ### mtrain definitions
-
-name: VisualBehavior_Task1A_v1.0.3
+#based on VisualBehavior_Task1A_v1.0.3
+name: VisualBehaviorEPHYS_Task1A_v0.0.2
 
 transitions:
 
@@ -178,35 +169,7 @@ transitions:
 
   - trigger: manual
     source: TRAINING_4_images_A_handoff_ready
-    dest: OPHYS_0_images_A_habituation
-
-  - trigger: manual
-    source: OPHYS_0_images_A_habituation
-    dest: OPHYS_1_images_A
-
-  - trigger: manual
-    source: OPHYS_1_images_A
-    dest: OPHYS_2_images_A_passive
-
-  - trigger: manual
-    source: OPHYS_2_images_A_passive
-    dest: OPHYS_3_images_A
-
-  - trigger: manual
-    source: OPHYS_3_images_A
-    dest: OPHYS_4_images_B
-
-  - trigger: manual
-    source: OPHYS_4_images_B
-    dest: OPHYS_5_images_B_passive
-
-  - trigger: manual
-    source: OPHYS_5_images_B_passive
-    dest: OPHYS_6_images_B
-
-  - trigger: manual
-    source: OPHYS_6_images_B
-    dest: OPHYS_7_receptive_field_mapping
+    dest: EPHYS_1_images_A
 
 stages:
 
@@ -293,94 +256,13 @@ stages:
             stage: TRAINING_4_images_A_handoff_lapsed
             free_reward_trials: 10
 
-    OPHYS_0_images_A_habituation:
+    EPHYS_1_images_A:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_a_parameters
-            stage: OPHYS_0_images_A_habituation
-            warm_up_trials: 0
-            start_stop_padding: 300.0
+            stage: EPHYS_1_images_A
+            warm_up_trials: 2
             flash_omit_probability: 0.05
-            prologue: *countdown_movie
-            epilogue: *fingerprint_movie
 
-    OPHYS_1_images_A:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: OPHYS_1_images_A
-            warm_up_trials: 0
-            start_stop_padding: 300.0
-            flash_omit_probability: 0.05
-            prologue: *countdown_movie
-            epilogue: *fingerprint_movie
-
-    OPHYS_2_images_A_passive:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: OPHYS_2_images_A_passive
-            warm_up_trials: 0
-            start_stop_padding: 300.0
-            flash_omit_probability: 0.05
-            lick_spout: False
-            prologue: *countdown_movie
-            epilogue: *fingerprint_movie
-
-    OPHYS_3_images_A:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: OPHYS_3_images_A
-            warm_up_trials: 0
-            start_stop_padding: 300.0
-            flash_omit_probability: 0.05
-            prologue: *countdown_movie
-            epilogue: *fingerprint_movie
-
-    OPHYS_4_images_B:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_c_parameters
-            stage: OPHYS_4_images_B
-            warm_up_trials: 0
-            start_stop_padding: 300.0
-            flash_omit_probability: 0.05
-            prologue: *countdown_movie
-            epilogue: *fingerprint_movie
-
-    OPHYS_5_images_B_passive:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_c_parameters
-            stage: OPHYS_5_images_B_passive
-            warm_up_trials: 0
-            start_stop_padding: 300.0
-            flash_omit_probability: 0.05
-            lick_spout: False
-            prologue: *countdown_movie
-            epilogue: *fingerprint_movie
-
-    OPHYS_6_images_B:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_c_parameters
-            stage: OPHYS_6_images_B
-            warm_up_trials: 0
-            start_stop_padding: 300.0
-            flash_omit_probability: 0.05
-            prologue: *countdown_movie
-            epilogue: *fingerprint_movie
-
-    OPHYS_7_receptive_field_mapping:
-        script: *movie_clips_script
-        script_md5: *movie_clips_script_md5
-        parameters:
-            stage: OPHYS_7_receptive_field_mapping
+    
