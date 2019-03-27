@@ -59,7 +59,7 @@ def init_assets(*training_outputs):
 
 def run_tests():
     subprocess.run(
-        'pipenv run python -m pytest',  # pipenv pipes in our env vars...we need it :(...
+        'python -m pipenv run pytest',  # pipenv pipes in our env vars...we need it :(...
         check=True,
         shell=True,
     )  # inherit parent process context
