@@ -317,14 +317,16 @@ def regimen(mtrain_client):
         regimen_dict = yaml.load(rstream.read())
     
     try:
-        return mtrain_client.create_regimen(
+        mtrain_client.create_regimen(
             regimen_dict,
         )
     except:
-        return mtrain_client.get_regimen(
-            mtrain_client.get_regimen_from_name(regimen_dict['name'])['id'],
-            join=True,
-        )
+        pass
+    
+    return mtrain_client.get_regimen(
+        mtrain_client.get_regimen_from_name(regimen_dict['name'])['id'],
+        join=True,
+    )
 
 
 @pytest.fixture(scope='module')  # hopefully we dont accidentally cause a sideeffect?
