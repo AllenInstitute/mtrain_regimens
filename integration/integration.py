@@ -26,6 +26,14 @@ def init_services(mtrain_root):
         time.sleep(5)
 
 
+def stop_services():
+    subprocess.run(
+        'docker-compose down',
+        check=True,
+        shell=True,
+    )
+
+
 def init_user(
     username, 
     password, 
@@ -85,3 +93,5 @@ if __name__ == '__main__':
     init_assets(os.environ['TRAINING_OUTPUT'], )
 
     run_tests()
+
+    stop_services()
