@@ -175,7 +175,7 @@ transitions:
 
   - trigger: manual
     source: TRAINING_5_images_B_handoff_ready
-    dest: OPHYS_0_images_A_habituation
+    dest: OPHYS_0_images_B_habituation
 
   - trigger: manual
     source: OPHYS_0_images_B_habituation
