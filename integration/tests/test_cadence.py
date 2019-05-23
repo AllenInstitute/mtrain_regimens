@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_regimen(
+def test_progression(
     mtrain_client, 
     progression_plan,
 ):
@@ -25,3 +25,25 @@ def test_regimen(
         assert mtrain_client.get_stage(mouse_id)['name'] == \
             progression['end_stage'], \
             'end at expected stage'
+
+
+def test_manual(
+    mtrain_client,
+    manual_transition,
+):
+    mouse_id = manual_transition['mouse_meta']['LabTracks_ID']
+
+    assert mtrain_client.get_stage(mouse_id)['name'] == \
+        manual_transition['initial_stage'], \
+        'not at expected initial stage before manual progression'
+
+    for target_stage in manual_transition['transitions']:
+        print(target_stage)
+        mtrain_client.set_stage(
+            mouse_id,
+            target_stage,
+        )
+
+    assert mtrain_client.get_stage(mouse_id)['name'] == target_stage, \
+        'end at expected stage'
+
