@@ -1,7 +1,7 @@
 
 _change_detection_script: &change_detection_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/browse/change_detection_with_fingerprint.py?at=a67b5a83ec5a4d0a30d4636b5e82df34a2c68dd4
-    
+
 _change_detection_script_md5: &change_detection_script_md5
     054a63071c78333256775a62469ac47e
 
@@ -28,14 +28,14 @@ _full_field_gratings_stimulus: &full_field_gratings
 _image_set_h_stimulus: &image_set_g
     class: images
     params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_E_viscod_2019.05.26.pkl
+        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
         sampling: even
     luminance_matching_intensity: -0.46
 
 _image_set_g_stimulus: &image_set_h
     class: images
     params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_F_viscod_2019.05.26.pkl
+        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
         sampling: even
     luminance_matching_intensity: -0.46
 
