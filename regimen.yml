@@ -129,7 +129,7 @@ _image_set_d_parameters: &image_set_d_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1B_v1.0.0
+name: VisualBehavior_Task1B_v1.0.2
 
 transitions:
 
@@ -175,7 +175,7 @@ transitions:
 
   - trigger: manual
     source: TRAINING_5_images_B_handoff_ready
-    dest: OPHYS_0_images_A_habituation
+    dest: OPHYS_0_images_B_habituation
 
   - trigger: manual
     source: OPHYS_0_images_B_habituation
