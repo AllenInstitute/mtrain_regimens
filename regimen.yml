@@ -10,6 +10,12 @@ _movie_clips_script: &movie_clips_script
 _movie_clips_script_md5: &movie_clips_script_md5
     8cab71e3cf5acdeef9a4660b09e52798
 
+_replay_script: &replay_script
+    https://raw.githubusercontent.com/AllenInstitute/aibs-scripts/master/scripts/replay_script/script.py?token=ACB7UGTZKETC7RLM5GY7W3K5CKSJE
+
+_replay_script_md5: &replay_script_md5
+    dd991296e782c032a9c244150f15aed9
+
 _full_field_gratings_stimulus: &full_field_gratings
     class: grating
     params:
@@ -126,9 +132,27 @@ _image_set_d_parameters: &image_set_d_parameters
     stimulus: *image_set_d
     catch_frequency: null
 
+_replay_a_parameters: &replay_a_parameters
+    <<: *flash_parameters
+    stimulus: *image_set_a
+    catch_frequency: null
+    mapping:
+        flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
+        gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
+    output_dir: C:/ProgramData/camstim/output
+
+_replay_b_parameters: &replay_b_parameters
+    <<: *flash_parameters
+    stimulus: *image_set_b
+    catch_frequency: null
+    mapping:
+        flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
+        gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
+    output_dir: C:/ProgramData/camstim/output
+
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.3
+name: VisualBehaviorEPHYS_Task1A_v0.0.4
 
 transitions:
 
@@ -263,19 +287,19 @@ stages:
             free_reward_trials: 10
 
     EPHYS_1_images_A:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+        script: *replay_script
+        script_md5: *replay_script_md5
         parameters:
-            <<: *image_set_a_parameters
+            <<: *replay_a_parameters
             stage: EPHYS_1_images_A
             warm_up_trials: 2
             flash_omit_probability: 0.05
 
     EPHYS_1_images_B:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+        script: *replay_script
+        script_md5: *replay_script_md5
         parameters:
-            <<: *image_set_b_parameters
+            <<: *replay_b_parameters
             stage: EPHYS_1_images_B
             warm_up_trials: 2
             flash_omit_probability: 0.05    
