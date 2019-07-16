@@ -33,7 +33,7 @@ progressions:
           response: 0
 
   - start_stage: TRAINING_2_gratings_flashed
-    end_stage: TRAINING_3_images_A_10uL_reward
+    end_stage: TRAINING_3_images_B_10uL_reward
     behavior_file: base
     epochs:
       - start: start
@@ -48,8 +48,8 @@ progressions:
           trial_type: catch
           response: 0
 
-  - start_stage: TRAINING_3_images_A_10uL_reward
-    end_stage: TRAINING_3_images_A_10uL_reward
+  - start_stage: TRAINING_3_images_B_10uL_reward
+    end_stage: TRAINING_3_images_B_10uL_reward
     behavior_file: base
     epochs:
       - start: start
@@ -64,8 +64,8 @@ progressions:
           trial_type: catch
           response: 0
 
-  - start_stage: TRAINING_3_images_A_10uL_reward
-    end_stage: TRAINING_3_images_A_10uL_reward
+  - start_stage: TRAINING_3_images_B_10uL_reward
+    end_stage: TRAINING_3_images_B_10uL_reward
     behavior_file: base
     epochs:
       - start: start
@@ -80,8 +80,8 @@ progressions:
           trial_type: catch
           response: 0
 
-  - start_stage: TRAINING_3_images_A_10uL_reward
-    end_stage: TRAINING_4_images_A_training
+  - start_stage: TRAINING_3_images_B_10uL_reward
+    end_stage: TRAINING_4_images_B_training
     behavior_file: base
     epochs:
       - start: start
@@ -96,8 +96,56 @@ progressions:
           trial_type: catch
           response: 0
 
-  - start_stage: TRAINING_4_images_A_training
-    end_stage: TRAINING_4_images_A_handoff_ready
+  - start_stage: TRAINING_4_images_B_training
+    end_stage: TRAINING_5_images_B_epilogue
+    behavior_file: base
+    epochs:
+      - start: start
+        end: middle
+        overrides:
+          trial_type: go
+          response: 1
+          auto_rewarded: false
+      - start: middle
+        end: end
+        overrides:
+          trial_type: catch
+          response: 0
+
+  - start_stage: TRAINING_5_images_B_epilogue
+    end_stage: TRAINING_5_images_B_handoff_ready
+    behavior_file: base
+    epochs:
+      - start: start
+        end: middle
+        overrides:
+          trial_type: go
+          response: 1
+          auto_rewarded: false
+      - start: middle
+        end: end
+        overrides:
+          trial_type: catch
+          response: 0
+
+  - start_stage: TRAINING_5_images_B_handoff_ready
+    end_stage: TRAINING_5_images_B_handoff_lapsed
+    behavior_file: base
+    epochs:
+      - start: start
+        end: middle
+        overrides:
+          trial_type: go
+          response: 1
+          auto_rewarded: false
+      - start: middle
+        end: end
+        overrides:
+          trial_type: catch
+          response: 0
+
+  - start_stage: TRAINING_5_images_B_handoff_lapsed
+    end_stage: TRAINING_5_images_B_handoff_ready
     behavior_file: base
     epochs:
       - start: start

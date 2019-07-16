@@ -36,6 +36,7 @@ TEST_ROOT = os.path.dirname(os.path.abspath(__file__))
 REGIMEN_YML = os.path.join(TEST_ROOT, './assets/regimen.yml', )
 TRAINING_OUTPUTS = glob.glob(os.path.join(TEST_ROOT, './assets/*.pkl', ))
 PROGRESSION_YMLS = glob.glob(os.path.join(TEST_ROOT,'./progressions/*.yml'))
+MANUAL_YMLS = glob.glob(os.path.join(TEST_ROOT,'./manual/*.yml'))
 
 # utils
 def resolve_epoch_bound(value, n_trials):
@@ -247,10 +248,10 @@ class MtrainClient(object):
             join=True,
         )
         
-        matches = filter(
+        matches = list(filter(
             lambda state: state['stage']['name'] == stage_name, 
             regimen['states'],
-        )
+        ))
 
         if not len(matches) > 0:
             raise Exception(
@@ -273,23 +274,27 @@ class MtrainClient(object):
         stage_id,
         state_id, 
     ):
+        print(mouse_id, regimen_id, stage_id, state_id)
         response = self.api_session \
             .post(
                 self.mtrain_root + \
                     'set_state/%s' % mouse_id,
                 data=json.dumps({
-                    'id': state_id,
-                    'stage_id': stage_id,
-                    'regimen_id': regimen_id,
+                    "state": {
+                        'id': state_id,
+                        'stage_id': stage_id,
+                        'regimen_id': regimen_id,
+                    },
                 }),
             )
         
         if response.status_code != 200:
             response.raise_for_status()
         
-        return response.json()
+        # return response.json()  # doesnt return json response :(
 
     def progress(self, mouse_id, behavior_session):
+        print('progres', 'mouse_id')
         response = self.api_session \
             .post(
                 self.mtrain_root + 'set_behavior_session/',
@@ -450,3 +455,48 @@ def progression_plan(
             .append(progression)
     
     return progression_plan
+
+
+manual_transition_ids = []
+manual_transition_params = []
+for config_path in MANUAL_YMLS:
+    with open(config_path, 'r', ) as pstream:
+        manual_transition_ids.append(
+            os.path.basename(config_path)
+        )
+        manual_transition_params.append(
+            yaml.load(pstream.read()),
+        )
+
+
+@pytest.fixture(
+    scope='function',
+    ids=manual_transition_ids,
+    params=manual_transition_params,
+)
+def manual_transition(
+    mouse_factory,
+    mtrain_client,
+    regimen,
+    request,
+    behavior_session_base,
+):
+    initial_stage = request.param['initial_stage']
+
+    initial_state = mtrain_client.get_state_from_stage(
+        regimen_name=regimen['name'],
+        stage_name=initial_stage,
+    )
+
+    mouse_meta = mouse_factory(
+        initial_state=initial_state,
+    )
+
+    return {
+        'mouse_meta': mouse_meta,
+        'initial_stage': initial_stage,
+        'transitions': [
+            transition
+            for transition in request.param['transitions']
+        ],
+    }
