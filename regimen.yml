@@ -1,161 +1,152 @@
-_change_detection_script: &change_detection_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd
+_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd
 
-_change_detection_script_md5: &change_detection_script_md5
-    e0535f3b6f03ccc8eeccaed2118f3c1d
+_change_detection_script_md5: &change_detection_script_md5 e0535f3b6f03ccc8eeccaed2118f3c1d
 
-_movie_clips_script: &movie_clips_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
+_movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
-_movie_clips_script_md5: &movie_clips_script_md5
-    8cab71e3cf5acdeef9a4660b09e52798
+_movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script
-    https://raw.githubusercontent.com/AllenInstitute/aibs-scripts/master/scripts/replay_script/script.py?token=ACB7UGTZKETC7RLM5GY7W3K5CKSJE
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/users/chrism/repos/aibs-scripts-stash/raw/scripts/replay_script/script.py?at=refs%2Fheads%2Fmaster
 
-_replay_script_md5: &replay_script_md5
-    dd991296e782c032a9c244150f15aed9
+_replay_script_md5: &replay_script_md5 dd991296e782c032a9c244150f15aed9
 
 _full_field_gratings_stimulus: &full_field_gratings
-    class: grating
-    params:
-        sf: 0.04
-        tex: sqr
-        size: [200, 150,]
-        units: deg
-        phase: 0.25
-    groups:
-        vertical:
-            Ori: [0, 180]
-        horizontal:
-            Ori: [90, 270]
+  class: grating
+  params:
+    sf: 0.04
+    tex: sqr
+    size: [200, 150]
+    units: deg
+    phase: 0.25
+  groups:
+    vertical:
+      Ori: [0, 180]
+    horizontal:
+      Ori: [90, 270]
 
 _image_set_a_stimulus: &image_set_a
-    class: images
-    params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
-        sampling: even
+  class: images
+  params:
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
+    sampling: even
 
 _image_set_b_stimulus: &image_set_b
-    class: images
-    params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
-        sampling: even
+  class: images
+  params:
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
+    sampling: even
 
 _image_set_c_stimulus: &image_set_c
-    class: images
-    params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
-        sampling: even
+  class: images
+  params:
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
+    sampling: even
 
 _image_set_d_stimulus: &image_set_d
-    class: images
-    params:
-        image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
-        sampling: even
+  class: images
+  params:
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
+    sampling: even
 
 _fingerprint_movie: &fingerprint_movie
-    name: fingerprint
-    params:
-        movie_path: //allen/programs/braintv/workgroups/neuralcoding/Saskia/Visual Stimuli 151207/Movie_TOE1.npy
-        frame_length: 0.03333333333333333
-        size: [1920, 1080]
-        runs: 10
-
+  name: fingerprint
+  params:
+    movie_path: //allen/programs/braintv/workgroups/neuralcoding/Saskia/Visual Stimuli 151207/Movie_TOE1.npy
+    frame_length: 0.03333333333333333
+    size: [1920, 1080]
+    runs: 10
 
 _flash_parameters: &flash_parameters
-    task_id: DoC
+  task_id: DoC
 
-    catch_frequency: 0.25
-    failure_repeats: 5
+  catch_frequency: 0.25
+  failure_repeats: 5
 
-    # rewards (mL)
-    reward_volume: 0.007
-    volume_limit: 5.0
+  # rewards (mL)
+  reward_volume: 0.007
+  volume_limit: 5.0
 
-    # auto rewards
-    auto_reward_vol: 0.005
-    warm_up_trials: 5
-    auto_reward_delay: 0.150
-    free_reward_trials: 10000
+  # auto rewards
+  auto_reward_vol: 0.005
+  warm_up_trials: 5
+  auto_reward_delay: 0.150
+  free_reward_trials: 10000
 
-    # trial timing
-    min_no_lick_time: 0.0
-    timeout_duration: 0.3
-    pre_change_time: 0.0
-    stimulus_window: 6.0
-    max_task_duration_min: 60.0
-    start_stop_padding: 20.0
-    periodic_flash: [0.25, 0.5]
-    response_window: [0.15,0.75]
-    end_after_response: True
-    end_after_response_sec: 3.5
+  # trial timing
+  min_no_lick_time: 0.0
+  timeout_duration: 0.3
+  pre_change_time: 0.0
+  stimulus_window: 6.0
+  max_task_duration_min: 60.0
+  start_stop_padding: 20.0
+  periodic_flash: [0.25, 0.5]
+  response_window: [0.15, 0.75]
+  end_after_response: True
+  end_after_response_sec: 3.5
 
-    # timing of changes
-    change_time_dist: geometric
-    change_time_scale: 0.3
-    change_flashes_min: 4  # inclusive
-    change_flashes_max: 12  # exclusive
+  # timing of changes
+  change_time_dist: geometric
+  change_time_scale: 0.3
+  change_flashes_min: 4 # inclusive
+  change_flashes_max: 12 # exclusive
 
 _no_flash_parameters: &no_flash_parameters
-    <<: *flash_parameters
-    periodic_flash: null
-    response_window: [0.15,1.0]
-    reward_volume: 0.010
-    free_reward_trials: 10
-    pre_change_time: 2.25
+  <<: *flash_parameters
+  periodic_flash: null
+  response_window: [0.15, 1.0]
+  reward_volume: 0.010
+  free_reward_trials: 10
+  pre_change_time: 2.25
 
-    # timing of changes
-    change_time_dist: exponential
-    change_time_scale: 2.0
-    change_flashes_min: null
-    change_flashes_max: null
-
+  # timing of changes
+  change_time_dist: exponential
+  change_time_scale: 2.0
+  change_flashes_min: null
+  change_flashes_max: null
 
 _image_set_a_parameters: &image_set_a_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_a
-    catch_frequency: null
+  <<: *flash_parameters
+  stimulus: *image_set_a
+  catch_frequency: null
 
 _image_set_b_parameters: &image_set_b_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_b
-    catch_frequency: null
+  <<: *flash_parameters
+  stimulus: *image_set_b
+  catch_frequency: null
 
 _image_set_c_parameters: &image_set_c_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_c
-    catch_frequency: null
+  <<: *flash_parameters
+  stimulus: *image_set_c
+  catch_frequency: null
 
 _image_set_d_parameters: &image_set_d_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_d
-    catch_frequency: null
+  <<: *flash_parameters
+  stimulus: *image_set_d
+  catch_frequency: null
 
 _replay_a_parameters: &replay_a_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_a
-    catch_frequency: null
-    mapping:
-        flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-        gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-    output_dir: C:/ProgramData/camstim/output
+  <<: *flash_parameters
+  stimulus: *image_set_a
+  catch_frequency: null
+  mapping:
+    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
+    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
+  output_dir: C:/ProgramData/camstim/output
 
 _replay_b_parameters: &replay_b_parameters
-    <<: *flash_parameters
-    stimulus: *image_set_b
-    catch_frequency: null
-    mapping:
-        flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-        gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-    output_dir: C:/ProgramData/camstim/output
+  <<: *flash_parameters
+  stimulus: *image_set_b
+  catch_frequency: null
+  mapping:
+    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
+    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
+  output_dir: C:/ProgramData/camstim/output
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.4
+name: VisualBehaviorEPHYS_Task1A_v0.0.5
 
 transitions:
-
   - trigger: progress
     source: TRAINING_0_gratings_autorewards_15min
     dest: TRAINING_1_gratings
@@ -199,107 +190,101 @@ transitions:
     source: EPHYS_1_images_A
     dest: EPHYS_1_images_B
 
-
-
 stages:
+  TRAINING_0_gratings_autorewards_15min:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *no_flash_parameters
+      stage: TRAINING_0_gratings_autorewards_15min
+      stimulus: *full_field_gratings
 
-    TRAINING_0_gratings_autorewards_15min:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *no_flash_parameters
-            stage: TRAINING_0_gratings_autorewards_15min
-            stimulus: *full_field_gratings
+      # auto rewards
+      warm_up_trials: -1 #infinite
+      abort_on_early_response: False
+      catch_frequency: 0.0
 
-            # auto rewards
-            warm_up_trials: -1 #infinite
-            abort_on_early_response: False
-            catch_frequency: 0.0
+      response_window: [0.0, 0.0]
+      min_no_lick_time: 0.0
+      failure_repeats: 0
 
-            response_window: [0.0, 0.0]
-            min_no_lick_time: 0.0
-            failure_repeats: 0
+      # trial timing
+      max_task_duration_min: 15.0
 
-            # trial timing
-            max_task_duration_min: 15.0
+      # rewards (mL)
+      reward_volume: 0.0
 
-            # rewards (mL)
-            reward_volume: 0.0
+  TRAINING_1_gratings:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *no_flash_parameters
+      stage: TRAINING_1_gratings
 
+      stimulus: *full_field_gratings
 
-    TRAINING_1_gratings:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *no_flash_parameters
-            stage: TRAINING_1_gratings
+  TRAINING_2_gratings_flashed:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *flash_parameters
+      stage: TRAINING_2_gratings_flashed
+      task_id: DoC
 
-            stimulus: *full_field_gratings
+      stimulus: *full_field_gratings
+      free_reward_trials: 10
 
+      # rewards (mL)
+      reward_volume: 0.01
 
-    TRAINING_2_gratings_flashed:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *flash_parameters
-            stage: TRAINING_2_gratings_flashed
-            task_id: DoC
+  TRAINING_3_images_A_10uL_reward:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: TRAINING_3_images_A_10uL_reward
 
-            stimulus: *full_field_gratings
-            free_reward_trials: 10
+      # rewards (mL)
+      reward_volume: 0.01
+      free_reward_trials: 10
 
-            # rewards (mL)
-            reward_volume: 0.01
+  TRAINING_4_images_A_training:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: TRAINING_4_images_A_training
 
+  TRAINING_4_images_A_handoff_ready:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: TRAINING_4_images_A_handoff_ready
+      warm_up_trials: 0
 
-    TRAINING_3_images_A_10uL_reward:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_3_images_A_10uL_reward
+  TRAINING_4_images_A_handoff_lapsed:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: TRAINING_4_images_A_handoff_lapsed
+      free_reward_trials: 10
 
-            # rewards (mL)
-            reward_volume: 0.01
-            free_reward_trials: 10
+  EPHYS_1_images_A:
+    script: *replay_script
+    script_md5: *replay_script_md5
+    parameters:
+      <<: *replay_a_parameters
+      stage: EPHYS_1_images_A
+      warm_up_trials: 2
+      flash_omit_probability: 0.05
 
-    TRAINING_4_images_A_training:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_4_images_A_training
-
-    TRAINING_4_images_A_handoff_ready:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_4_images_A_handoff_ready
-            warm_up_trials: 0
-
-    TRAINING_4_images_A_handoff_lapsed:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_a_parameters
-            stage: TRAINING_4_images_A_handoff_lapsed
-            free_reward_trials: 10
-
-    EPHYS_1_images_A:
-        script: *replay_script
-        script_md5: *replay_script_md5
-        parameters:
-            <<: *replay_a_parameters
-            stage: EPHYS_1_images_A
-            warm_up_trials: 2
-            flash_omit_probability: 0.05
-
-    EPHYS_1_images_B:
-        script: *replay_script
-        script_md5: *replay_script_md5
-        parameters:
-            <<: *replay_b_parameters
-            stage: EPHYS_1_images_B
-            warm_up_trials: 2
-            flash_omit_probability: 0.05    
+  EPHYS_1_images_B:
+    script: *replay_script
+    script_md5: *replay_script_md5
+    parameters:
+      <<: *replay_b_parameters
+      stage: EPHYS_1_images_B
+      warm_up_trials: 2
+      flash_omit_probability: 0.05
