@@ -8,7 +8,7 @@ _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e5279
 
 _replay_script: &replay_script http://stash.corp.alleninstitute.org/users/chrism/repos/aibs-scripts-stash/raw/scripts/replay_script/script.py?at=refs%2Fheads%2Fmaster
 
-_replay_script_md5: &replay_script_md5 b40070300d2f74e6eaebaa9520a0aa1f
+_replay_script_md5: &replay_script_md5 cc03f18fdac377959591d1b73eeca656
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -144,7 +144,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.6
+name: VisualBehaviorEPHYS_Task1A_v0.0.7
 
 transitions:
   - trigger: progress
