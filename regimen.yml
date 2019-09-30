@@ -144,51 +144,12 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.8
+name: TestRegimen_v0.0.1
 
 transitions:
-  - trigger: progress
+  - trigger: manual
     source: TRAINING_0_gratings_autorewards_15min
-    dest: TRAINING_1_gratings
-    conditions: one_complete
-
-  - trigger: progress
-    source: TRAINING_1_gratings
-    dest: TRAINING_2_gratings_flashed
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
-
-  - trigger: progress
-    source: TRAINING_2_gratings_flashed
-    dest: TRAINING_3_images_A_10uL_reward
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
-
-  - trigger: progress
-    source: TRAINING_3_images_A_10uL_reward
-    dest: TRAINING_4_images_A_training
-    conditions: three_complete
-
-  - trigger: progress
-    source: TRAINING_4_images_A_training
     dest: TRAINING_4_images_A_handoff_ready
-    conditions: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_4_images_A_handoff_ready
-    dest: TRAINING_4_images_A_handoff_lapsed
-    unless: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_4_images_A_handoff_lapsed
-    dest: TRAINING_4_images_A_handoff_ready
-    conditions: meets_engagement_criteria
-
-  - trigger: manual
-    source: TRAINING_4_images_A_handoff_ready
-    dest: EPHYS_1_images_A
-
-  - trigger: manual
-    source: EPHYS_1_images_A
-    dest: EPHYS_1_images_B
 
 stages:
   TRAINING_0_gratings_autorewards_15min:
@@ -214,47 +175,6 @@ stages:
       # rewards (mL)
       reward_volume: 0.0
 
-  TRAINING_1_gratings:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *no_flash_parameters
-      stage: TRAINING_1_gratings
-
-      stimulus: *full_field_gratings
-
-  TRAINING_2_gratings_flashed:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *flash_parameters
-      stage: TRAINING_2_gratings_flashed
-      task_id: DoC
-
-      stimulus: *full_field_gratings
-      free_reward_trials: 10
-
-      # rewards (mL)
-      reward_volume: 0.01
-
-  TRAINING_3_images_A_10uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_3_images_A_10uL_reward
-
-      # rewards (mL)
-      reward_volume: 0.01
-      free_reward_trials: 10
-
-  TRAINING_4_images_A_training:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_training
-
   TRAINING_4_images_A_handoff_ready:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
@@ -262,29 +182,3 @@ stages:
       <<: *image_set_a_parameters
       stage: TRAINING_4_images_A_handoff_ready
       warm_up_trials: 0
-
-  TRAINING_4_images_A_handoff_lapsed:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_handoff_lapsed
-      free_reward_trials: 10
-
-  EPHYS_1_images_A:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A
-      warm_up_trials: 2
-      flash_omit_probability: 0.05
-
-  EPHYS_1_images_B:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B
-      warm_up_trials: 2
-      flash_omit_probability: 0.05
