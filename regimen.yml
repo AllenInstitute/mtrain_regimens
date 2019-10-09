@@ -174,21 +174,21 @@ transitions:
 
   - trigger: progress
     source: TRAINING_4_images_A_handoff_ready
-    dest: TRAINING_4_images_A_handoff_ready_low_volume
-    unless: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_4_images_A_handoff_ready_low_volume
     dest: TRAINING_4_images_A_handoff_lapsed
     unless: meets_engagement_criteria
 
   - trigger: progress
     source: TRAINING_4_images_A_handoff_lapsed
-    dest: TRAINING_4_images_A_handoff_ready_low_volume
+    dest: TRAINING_4_images_A_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: manual
     source: TRAINING_4_images_A_handoff_ready
+    dest: TRAINING_4_images_A_handoff_ready_low_volume
+    conditions: meets_engagement_criteria
+
+  - trigger: manual
+    source: TRAINING_4_images_A_handoff_ready_low_volume
     dest: EPHYS_1_images_A
 
   - trigger: manual
