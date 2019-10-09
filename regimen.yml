@@ -144,7 +144,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.8
+name: VisualBehaviorEPHYS_Task1A_v0.0.9
 
 transitions:
   - trigger: progress
@@ -174,12 +174,17 @@ transitions:
 
   - trigger: progress
     source: TRAINING_4_images_A_handoff_ready
+    dest: TRAINING_4_images_A_handoff_ready_low_volume
+    unless: meets_engagement_criteria
+
+  - trigger: progress
+    source: TRAINING_4_images_A_handoff_ready_low_volume
     dest: TRAINING_4_images_A_handoff_lapsed
     unless: meets_engagement_criteria
 
   - trigger: progress
     source: TRAINING_4_images_A_handoff_lapsed
-    dest: TRAINING_4_images_A_handoff_ready
+    dest: TRAINING_4_images_A_handoff_ready_low_volume
     conditions: meets_engagement_criteria
 
   - trigger: manual
@@ -189,6 +194,14 @@ transitions:
   - trigger: manual
     source: EPHYS_1_images_A
     dest: EPHYS_1_images_B
+
+  - trigger: manual
+    source: EPHYS_1_images_B
+    dest: EPHYS_1_images_A_low_volume
+
+  - trigger: manual
+    source: EPHYS_1_images_A_low_volume
+    dest: EPHYS_1_images_B_low_volume
 
 stages:
   TRAINING_0_gratings_autorewards_15min:
@@ -263,6 +276,15 @@ stages:
       stage: TRAINING_4_images_A_handoff_ready
       warm_up_trials: 0
 
+  TRAINING_4_images_A_handoff_ready_low_volume:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: TRAINING_4_images_A_handoff_ready_low_volume
+      warm_up_trials: 0
+      reward_volume: 0.005
+
   TRAINING_4_images_A_handoff_lapsed:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
@@ -288,3 +310,23 @@ stages:
       stage: EPHYS_1_images_B
       warm_up_trials: 2
       flash_omit_probability: 0.05
+
+  EPHYS_1_images_A_low_volume:
+    script: *replay_script
+    script_md5: *replay_script_md5
+    parameters:
+      <<: *replay_a_parameters
+      stage: EPHYS_1_images_A_low_volume
+      warm_up_trials: 2
+      flash_omit_probability: 0.05
+      reward_volume: 0.005
+
+  EPHYS_1_images_B_low_volume:
+    script: *replay_script
+    script_md5: *replay_script_md5
+    parameters:
+      <<: *replay_b_parameters
+      stage: EPHYS_1_images_B_low_volume
+      warm_up_trials: 2
+      flash_omit_probability: 0.05
+      reward_volume: 0.005
