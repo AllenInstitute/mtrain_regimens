@@ -185,7 +185,6 @@ transitions:
   - trigger: manual
     source: TRAINING_4_images_A_handoff_ready
     dest: TRAINING_4_images_A_handoff_ready_low_volume
-    conditions: meets_engagement_criteria
 
   - trigger: manual
     source: TRAINING_4_images_A_handoff_ready_low_volume
