@@ -148,16 +148,17 @@ name: Test_Script_7_v0.0.3
 transitions:
   - trigger: manual
     source: OPHYS_7_receptive_field_mapping_0
-    dest: OPHYS_7_receptive_field_mapping_0
+    dest: OPHYS_7_receptive_field_mapping_1
 
 stages:
   OPHYS_7_receptive_field_mapping_0:
     script: *movie_clips_script
     script_md5: *movie_clips_script_md5
     parameters:
-      stage: OPHYS_7_receptive_field_mapping
-  c
+      stage: OPHYS_7_receptive_field_mapping_0
+
+  OPHYS_7_receptive_field_mapping_1:
     script: *movie_clips_script
     script_md5: *movie_clips_script_md5
     parameters:
-      stage: OPHYS_7_receptive_field_mapping
+      stage: OPHYS_7_receptive_field_mapping_1
