@@ -2,9 +2,9 @@ _change_detection_script: &change_detection_script http://stash.corp.alleninstit
 
 _change_detection_script_md5: &change_detection_script_md5 e0535f3b6f03ccc8eeccaed2118f3c1d
 
-_movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
+_movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/users/chrism/repos/aibs-scripts-stash/raw/scripts/script_7/script.py?at=ff7e555d5849786de1ab0c84471bd9f30df7ba64
 
-_movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
+_movie_clips_script_md5: &movie_clips_script_md5 c71e4b49a38542f21ea1053fd0c17920
 
 _replay_script: &replay_script http://stash.corp.alleninstitute.org/users/chrism/repos/aibs-scripts-stash/raw/scripts/replay_script/script.py?at=ff2495ae48d1c7fad57fb13f686cf4028fd5729a
 
@@ -143,189 +143,11 @@ _replay_b_parameters: &replay_b_parameters
   output_dir: C:/ProgramData/camstim/output
 
 ### mtrain definitions
-#based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.9
-
-transitions:
-  - trigger: progress
-    source: TRAINING_0_gratings_autorewards_15min
-    dest: TRAINING_1_gratings
-    conditions: one_complete
-
-  - trigger: progress
-    source: TRAINING_1_gratings
-    dest: TRAINING_2_gratings_flashed
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
-
-  - trigger: progress
-    source: TRAINING_2_gratings_flashed
-    dest: TRAINING_3_images_A_10uL_reward
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
-
-  - trigger: progress
-    source: TRAINING_3_images_A_10uL_reward
-    dest: TRAINING_4_images_A_training
-    conditions: three_complete
-
-  - trigger: progress
-    source: TRAINING_4_images_A_training
-    dest: TRAINING_4_images_A_handoff_ready
-    conditions: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_4_images_A_handoff_ready
-    dest: TRAINING_4_images_A_handoff_lapsed
-    unless: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_4_images_A_handoff_lapsed
-    dest: TRAINING_4_images_A_handoff_ready
-    conditions: meets_engagement_criteria
-
-  - trigger: manual
-    source: TRAINING_4_images_A_handoff_ready
-    dest: TRAINING_4_images_A_handoff_ready_low_volume
-
-  - trigger: manual
-    source: TRAINING_4_images_A_handoff_ready_low_volume
-    dest: EPHYS_1_images_A
-
-  - trigger: manual
-    source: EPHYS_1_images_A
-    dest: EPHYS_1_images_B
-
-  - trigger: manual
-    source: EPHYS_1_images_B
-    dest: EPHYS_1_images_A_low_volume
-
-  - trigger: manual
-    source: EPHYS_1_images_A_low_volume
-    dest: EPHYS_1_images_B_low_volume
+name: Test_Script_7_v0.0.1
 
 stages:
-  TRAINING_0_gratings_autorewards_15min:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  OPHYS_7_receptive_field_mapping:
+    script: *movie_clips_script
+    script_md5: *movie_clips_script_md5
     parameters:
-      <<: *no_flash_parameters
-      stage: TRAINING_0_gratings_autorewards_15min
-      stimulus: *full_field_gratings
-
-      # auto rewards
-      warm_up_trials: -1 #infinite
-      abort_on_early_response: False
-      catch_frequency: 0.0
-
-      response_window: [0.0, 0.0]
-      min_no_lick_time: 0.0
-      failure_repeats: 0
-
-      # trial timing
-      max_task_duration_min: 15.0
-
-      # rewards (mL)
-      reward_volume: 0.0
-
-  TRAINING_1_gratings:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *no_flash_parameters
-      stage: TRAINING_1_gratings
-
-      stimulus: *full_field_gratings
-
-  TRAINING_2_gratings_flashed:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *flash_parameters
-      stage: TRAINING_2_gratings_flashed
-      task_id: DoC
-
-      stimulus: *full_field_gratings
-      free_reward_trials: 10
-
-      # rewards (mL)
-      reward_volume: 0.01
-
-  TRAINING_3_images_A_10uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_3_images_A_10uL_reward
-
-      # rewards (mL)
-      reward_volume: 0.01
-      free_reward_trials: 10
-
-  TRAINING_4_images_A_training:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_training
-
-  TRAINING_4_images_A_handoff_ready:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_handoff_ready
-      warm_up_trials: 0
-
-  TRAINING_4_images_A_handoff_ready_low_volume:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_handoff_ready_low_volume
-      warm_up_trials: 0
-      reward_volume: 0.005
-
-  TRAINING_4_images_A_handoff_lapsed:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_handoff_lapsed
-      free_reward_trials: 10
-
-  EPHYS_1_images_A:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A
-      warm_up_trials: 2
-      flash_omit_probability: 0.05
-
-  EPHYS_1_images_B:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B
-      warm_up_trials: 2
-      flash_omit_probability: 0.05
-
-  EPHYS_1_images_A_low_volume:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_low_volume
-      warm_up_trials: 2
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-
-  EPHYS_1_images_B_low_volume:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_low_volume
-      warm_up_trials: 2
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
+      stage: OPHYS_7_receptive_field_mapping
