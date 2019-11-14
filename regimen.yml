@@ -143,7 +143,9 @@ _replay_b_parameters: &replay_b_parameters
   output_dir: C:/ProgramData/camstim/output
 
 ### mtrain definitions
-name: Test_Script_7_v0.0.1
+name: Test_Script_7_v0.0.2
+
+transitions:
 
 stages:
   OPHYS_7_receptive_field_mapping:
