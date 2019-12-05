@@ -1,14 +1,14 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd
+_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/users/chrism/repos/aibs-scripts-stash/raw/scripts/extended_doc_2/script.py?at=0d3b7dfefe5b4da9a40e766e1bb6932e82154811
 
-_change_detection_script_md5: &change_detection_script_md5 e0535f3b6f03ccc8eeccaed2118f3c1d
+_change_detection_script_md5: &change_detection_script_md5 e3bb665575df8ebe08b216aac6ffa229
 
 _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/users/chrism/repos/aibs-scripts-stash/raw/scripts/replay_script/script.py?at=ff2495ae48d1c7fad57fb13f686cf4028fd5729a
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/users/chrism/repos/aibs-scripts-stash/raw/scripts/replay_script_3/script.py?at=04c4879318622c3c9ba986078f36ecda2953409b
 
-_replay_script_md5: &replay_script_md5 bc07124394869a9d6506efd412044c5c
+_replay_script_md5: &replay_script_md5 e1d7ccb1b5ca2bbc5ae631f48f97a9e6
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -56,6 +56,14 @@ _fingerprint_movie: &fingerprint_movie
     size: [1920, 1080]
     runs: 10
 
+_other_movie: &other_movie
+  name: other_movie
+  params:
+    movie_path: //allen/programs/braintv/workgroups/neuralcoding/Saskia/Visual Stimuli 151207/Movie_TOE1.npy
+    frame_length: 0.03333333333333333
+    size: [1920, 1080]
+    runs: 10
+
 _flash_parameters: &flash_parameters
   task_id: DoC
 
@@ -78,7 +86,6 @@ _flash_parameters: &flash_parameters
   pre_change_time: 0.0
   stimulus_window: 6.0
   max_task_duration_min: 60.0
-  start_stop_padding: 20.0
   periodic_flash: [0.25, 0.5]
   response_window: [0.15, 0.75]
   end_after_response: True
@@ -144,7 +151,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.0.9
+name: VisualBehaviorEPHYS_Task1A_v0.10.0
 
 transitions:
   - trigger: progress
@@ -184,10 +191,10 @@ transitions:
 
   - trigger: manual
     source: TRAINING_4_images_A_handoff_ready
-    dest: TRAINING_4_images_A_handoff_ready_low_volume
+    dest: TRAINING_4_images_A_handoff_ready_5uL_reward
 
   - trigger: manual
-    source: TRAINING_4_images_A_handoff_ready_low_volume
+    source: TRAINING_4_images_A_handoff_ready_5uL_reward
     dest: EPHYS_1_images_A
 
   - trigger: manual
@@ -196,11 +203,11 @@ transitions:
 
   - trigger: manual
     source: EPHYS_1_images_B
-    dest: EPHYS_1_images_A_low_volume
+    dest: EPHYS_1_images_A_5uL_reward
 
   - trigger: manual
-    source: EPHYS_1_images_A_low_volume
-    dest: EPHYS_1_images_B_low_volume
+    source: EPHYS_1_images_A_5uL_reward
+    dest: EPHYS_1_images_B_5uL_reward
 
 stages:
   TRAINING_0_gratings_autorewards_15min:
@@ -226,6 +233,9 @@ stages:
       # rewards (mL)
       reward_volume: 0.0
 
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+
   TRAINING_1_gratings:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
@@ -234,6 +244,9 @@ stages:
       stage: TRAINING_1_gratings
 
       stimulus: *full_field_gratings
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
 
   TRAINING_2_gratings_flashed:
     script: *change_detection_script
@@ -249,6 +262,9 @@ stages:
       # rewards (mL)
       reward_volume: 0.01
 
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+
   TRAINING_3_images_A_10uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
@@ -260,12 +276,18 @@ stages:
       reward_volume: 0.01
       free_reward_trials: 10
 
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+
   TRAINING_4_images_A_training:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_a_parameters
       stage: TRAINING_4_images_A_training
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
 
   TRAINING_4_images_A_handoff_ready:
     script: *change_detection_script
@@ -275,7 +297,10 @@ stages:
       stage: TRAINING_4_images_A_handoff_ready
       warm_up_trials: 0
 
-  TRAINING_4_images_A_handoff_ready_low_volume:
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+
+  TRAINING_4_images_A_handoff_ready_5uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
@@ -284,6 +309,9 @@ stages:
       warm_up_trials: 0
       reward_volume: 0.005
 
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+
   TRAINING_4_images_A_handoff_lapsed:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
@@ -291,6 +319,48 @@ stages:
       <<: *image_set_a_parameters
       stage: TRAINING_4_images_A_handoff_lapsed
       free_reward_trials: 10
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+
+  TRAINING_5_images_A_epilogue:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: TRAINING_5_images_A_epilogue
+      warm_up_trials: 5
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
+      epilogue: *other_movie
+
+  TRAINING_5_images_A_handoff_ready:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: TRAINING_5_images_A_handoff_ready
+      warm_up_trials: 5
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
+      epilogue: *other_movie
+
+  TRAINING_5_images_A_handoff_lapsed:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: TRAINING_5_images_A_handoff_lapsed
+      warm_up_trials: 5
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
+      epilogue: *other_movie
 
   EPHYS_1_images_A:
     script: *replay_script
@@ -301,6 +371,9 @@ stages:
       warm_up_trials: 2
       flash_omit_probability: 0.05
 
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
   EPHYS_1_images_B:
     script: *replay_script
     script_md5: *replay_script_md5
@@ -310,22 +383,31 @@ stages:
       warm_up_trials: 2
       flash_omit_probability: 0.05
 
-  EPHYS_1_images_A_low_volume:
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
+  EPHYS_1_images_A_5uL_reward:
     script: *replay_script
     script_md5: *replay_script_md5
     parameters:
       <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_low_volume
+      stage: EPHYS_1_images_A_5uL_reward
       warm_up_trials: 2
       flash_omit_probability: 0.05
       reward_volume: 0.005
 
-  EPHYS_1_images_B_low_volume:
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
+  EPHYS_1_images_B_5uL_reward:
     script: *replay_script
     script_md5: *replay_script_md5
     parameters:
       <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_low_volume
+      stage: EPHYS_1_images_B_5uL_reward
       warm_up_trials: 2
       flash_omit_probability: 0.05
       reward_volume: 0.005
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
