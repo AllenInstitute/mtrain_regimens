@@ -5,8 +5,8 @@ _change_detection_script_md5: &change_detection_script_md5
     e0535f3b6f03ccc8eeccaed2118f3c1d
 
 _movie_clips_script: &movie_clips_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
-
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=9965d3f4e47bd29725f41da15d6cdfe26f7256d3
+    
 _movie_clips_script_md5: &movie_clips_script_md5
     8cab71e3cf5acdeef9a4660b09e52798
 
@@ -106,7 +106,7 @@ _image_set_g_parameters: &image_set_g_parameters
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1G_nonLum_v1.0.3
+name: VisualBehavior_Task1G_v1.0.4
 
 transitions:
 
