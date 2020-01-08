@@ -1,9 +1,8 @@
 
 _change_detection_script: &change_detection_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=82e056510f1c03fd529e24b4d3df9b688796c18b
-    
+    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd    
 _change_detection_script_md5: &change_detection_script_md5
-    7acc9fad89b10c4b630ca92398aa8861
+    e0535f3b6f03ccc8eeccaed2118f3c1d
 
 _movie_clips_script: &movie_clips_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=9965d3f4e47bd29725f41da15d6cdfe26f7256d3
@@ -30,15 +29,12 @@ _image_set_g_stimulus: &image_set_g
     params:
         image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
         sampling: even
-    luminance_matching_intensity: -0.46
 
 _image_set_h_stimulus: &image_set_h
     class: images
     params:
         image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
         sampling: even
-    luminance_matching_intensity: -0.46
-
         
 _fingerprint_movie: &fingerprint_movie
     name: fingerprint
