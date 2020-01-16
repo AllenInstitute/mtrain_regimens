@@ -182,26 +182,26 @@ transitions:
     source: TRAINING_5_images_A
     dest: TRAINING_5_images_A_handoff_ready
     conditions: meets_engagement_criteria
-  
+
   - trigger: progress
     source: TRAINING_5_images_A_handoff_ready
     dest: TRAINING_5_images_A_handoff_lapsed
     conditions: meets_engagement_criteria
-  
+
   - trigger: progress
     source: TRAINING_5_images_A_handoff_lapsed
     dest: TRAINING_5_images_A_handoff_ready
     conditions: meets_engagement_criteria
 
-   - trigger: manual
+  - trigger: manual
     source: TRAINING_5_images_A_handoff_ready
     dest: HABITUATION_5_images_A_handoff_ready
-    
-   - trigger: manual
+
+  - trigger: manual
     source: HABITUATION_5_images_A_handoff_ready
     dest: EPHYS_1_images_A_5uL_reward
 
-   - trigger: manual
+  - trigger: manual
     source: EPHYS_1_images_A_5uL_reward
     dest: EPHYS_1_images_B_5uL_reward
 
@@ -343,7 +343,6 @@ stages:
       start_padding_windowless: 20.0
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
-
 
   EPHYS_1_images_A_5uL_reward:
     script: *replay_script
