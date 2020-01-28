@@ -186,7 +186,7 @@ transitions:
   - trigger: progress
     source: TRAINING_5_images_A_handoff_ready
     dest: TRAINING_5_images_A_handoff_lapsed
-    conditions: meets_engagement_criteria
+    unless: meets_engagement_criteria
 
   - trigger: progress
     source: TRAINING_5_images_A_handoff_lapsed
