@@ -138,6 +138,7 @@ _replay_a_parameters: &replay_a_parameters
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
     gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
   output_dir: C:/ProgramData/camstim/output
+  agent_socket: "127.0.0.1:5000"
 
 _replay_b_parameters: &replay_b_parameters
   <<: *flash_parameters
@@ -147,10 +148,11 @@ _replay_b_parameters: &replay_b_parameters
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
     gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
   output_dir: C:/ProgramData/camstim/output
+  agent_socket: "127.0.0.1:5000"
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.1.1
+name: VisualBehaviorEPHYS_Task1A_v0.1.2
 
 transitions:
   - trigger: progress
