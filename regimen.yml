@@ -24,28 +24,16 @@ _full_field_gratings_stimulus: &full_field_gratings
     horizontal:
       Ori: [90, 270]
 
-_image_set_a_stimulus: &image_set_a
+_image_set_g_stimulus: &image_set_g
   class: images
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
     sampling: even
 
-_image_set_b_stimulus: &image_set_b
+_image_set_h_stimulus: &image_set_h
   class: images
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
-    sampling: even
-
-_image_set_c_stimulus: &image_set_c
-  class: images
-  params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
-    sampling: even
-
-_image_set_d_stimulus: &image_set_d
-  class: images
-  params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
     sampling: even
 
 _mapping_movie_list: &mapping_movie_list
@@ -110,29 +98,19 @@ _no_flash_parameters: &no_flash_parameters
   change_flashes_min: null
   change_flashes_max: null
 
-_image_set_a_parameters: &image_set_a_parameters
+_image_set_g_parameters: &image_set_g_parameters
   <<: *flash_parameters
-  stimulus: *image_set_a
+  stimulus: *image_set_g
   catch_frequency: null
 
-_image_set_b_parameters: &image_set_b_parameters
+_image_set_h_parameters: &image_set_h_parameters
   <<: *flash_parameters
-  stimulus: *image_set_b
+  stimulus: *image_set_h
   catch_frequency: null
 
-_image_set_c_parameters: &image_set_c_parameters
+_replay_g_parameters: &replay_g_parameters
   <<: *flash_parameters
-  stimulus: *image_set_c
-  catch_frequency: null
-
-_image_set_d_parameters: &image_set_d_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_d
-  catch_frequency: null
-
-_replay_a_parameters: &replay_a_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_a
+  stimulus: *image_set_g
   catch_frequency: null
   mapping:
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
@@ -140,9 +118,9 @@ _replay_a_parameters: &replay_a_parameters
   output_dir: C:/ProgramData/camstim/output
   agent_socket: "127.0.0.1:5000"
 
-_replay_b_parameters: &replay_b_parameters
+_replay_h_parameters: &replay_h_parameters
   <<: *flash_parameters
-  stimulus: *image_set_b
+  stimulus: *image_set_h
   catch_frequency: null
   mapping:
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
@@ -152,7 +130,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.1.2
+name: VisualBehaviorEPHYS_Task2A_v0.0.1
 
 transitions:
   - trigger: progress
@@ -167,45 +145,45 @@ transitions:
 
   - trigger: progress
     source: TRAINING_2_gratings_flashed
-    dest: TRAINING_3_images_A_10uL_reward
+    dest: TRAINING_3_images_G_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: TRAINING_3_images_A_10uL_reward
-    dest: TRAINING_4_images_A_training
+    source: TRAINING_3_images_G_10uL_reward
+    dest: TRAINING_4_images_G_training
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_4_images_A_training
-    dest: TRAINING_5_images_A
+    source: TRAINING_4_images_G_training
+    dest: TRAINING_5_images_G_epilogue
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A
-    dest: TRAINING_5_images_A_handoff_ready
+    source: TRAINING_5_images_G_epilogue
+    dest: TRAINING_5_images_G_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_ready
-    dest: TRAINING_5_images_A_handoff_lapsed
+    source: TRAINING_5_images_G_handoff_ready
+    dest: TRAINING_5_images_G_handoff_lapsed
     unless: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_lapsed
-    dest: TRAINING_5_images_A_handoff_ready
+    source: TRAINING_5_images_G_handoff_lapsed
+    dest: TRAINING_5_images_G_handoff_ready
     conditions: meets_engagement_criteria
 
   - trigger: manual
-    source: TRAINING_5_images_A_handoff_ready
-    dest: HABITUATION_5_images_A_handoff_ready
+    source: TRAINING_5_images_G_handoff_ready
+    dest: HABITUATION_5_images_G_handoff_ready
 
   - trigger: manual
-    source: HABITUATION_5_images_A_handoff_ready
-    dest: EPHYS_1_images_A_5uL_reward
+    source: HABITUATION_5_images_G_handoff_ready
+    dest: EPHYS_1_images_G_5uL_reward
 
   - trigger: manual
-    source: EPHYS_1_images_A_5uL_reward
-    dest: EPHYS_1_images_B_5uL_reward
+    source: EPHYS_1_images_G_5uL_reward
+    dest: EPHYS_1_images_H_5uL_reward
 
 stages:
   TRAINING_0_gratings_autorewards_15min:
@@ -263,12 +241,12 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_3_images_A_10uL_reward:
+  TRAINING_3_images_G_10uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_3_images_A_10uL_reward
+      <<: *image_set_g_parameters
+      stage: TRAINING_3_images_G_10uL_reward
 
       # rewards (mL)
       reward_volume: 0.01
@@ -277,22 +255,22 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_4_images_A_training:
+  TRAINING_4_images_G_training:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_training
+      <<: *image_set_g_parameters
+      stage: TRAINING_4_images_G_training
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_5_images_A:
+  TRAINING_5_images_G_epilogue:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_epilogue
+      <<: *image_set_g_parameters
+      stage: TRAINING_5_images_G_epilogue
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -302,12 +280,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  TRAINING_5_images_A_handoff_ready:
+  TRAINING_5_images_G_handoff_ready:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_ready
+      <<: *image_set_g_parameters
+      stage: TRAINING_5_images_G_handoff_ready
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -317,12 +295,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  TRAINING_5_images_A_handoff_lapsed:
+  TRAINING_5_images_G_handoff_lapsed:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_lapsed
+      <<: *image_set_g_parameters
+      stage: TRAINING_5_images_G_handoff_lapsed
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -332,12 +310,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  HABITUATION_5_images_A_handoff_ready:
+  HABITUATION_5_images_G_handoff_ready:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_ready
+      <<: *image_set_g_parameters
+      stage: HABITUATION_TRAINING_5_images_G_handoff_ready
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -346,22 +324,22 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  EPHYS_1_images_A_5uL_reward:
+  EPHYS_1_images_G_5uL_reward:
     script: *replay_script
     script_md5: *replay_script_md5
     parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_5uL_reward
+      <<: *replay_g_parameters
+      stage: EPHYS_1_images_G_5uL_reward
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
 
-  EPHYS_1_images_B_5uL_reward:
+  EPHYS_1_images_H_5uL_reward:
     script: *replay_script
     script_md5: *replay_script_md5
     parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_5uL_reward
+      <<: *replay_h_parameters
+      stage: EPHYS_1_images_H_5uL_reward
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
