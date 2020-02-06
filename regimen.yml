@@ -152,7 +152,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.1.2
+name: VisualBehaviorEPHYS_Task1A_v0.1.3
 
 transitions:
   - trigger: progress
@@ -206,6 +206,18 @@ transitions:
   - trigger: manual
     source: EPHYS_1_images_A_5uL_reward
     dest: EPHYS_1_images_B_5uL_reward
+
+  - trigger: manual
+    source: EPHYS_1_images_B_5uL_reward
+    dest: HABITUATION_5_images_A_handoff_ready_3uL
+
+  - trigger: manual
+    source: HABITUATION_5_images_A_handoff_ready_3uL
+    dest: EPHYS_1_images_A_3uL_reward
+
+  - trigger: manual
+    source: EPHYS_1_images_A_3uL_reward
+    dest: EPHYS_1_images_B_3uL_reward
 
 stages:
   TRAINING_0_gratings_autorewards_15min:
@@ -337,7 +349,7 @@ stages:
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_ready
+      stage: HABITUATION_5_images_A_handoff_ready
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -365,3 +377,37 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+
+  HABITUATION_5_images_A_handoff_ready_3uL:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: HABITUATION_5_images_A_handoff_ready_3uL
+      warm_up_trials: 5
+      reward_volume: 0.003
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+      # play list of movies mimicking a mapping session
+      epilogue_list: *mapping_movie_list
+  
+  EPHYS_1_images_A_3uL_reward:
+    script: *replay_script
+    script_md5: *replay_script_md5
+    parameters:
+      <<: *replay_a_parameters
+      stage: EPHYS_1_images_A_3uL_reward
+      warm_up_trials: 3
+      flash_omit_probability: 0.05
+      reward_volume: 0.003
+  
+  EPHYS_1_images_B_5uL_reward:
+    script: *replay_script
+    script_md5: *replay_script_md5
+    parameters:
+      <<: *replay_a_parameters
+      stage: EPHYS_1_images_B_3uL_reward
+      warm_up_trials: 3
+      flash_omit_probability: 0.05
+      reward_volume: 0.003
