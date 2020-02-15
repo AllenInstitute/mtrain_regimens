@@ -130,16 +130,16 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.0.1
+name: VisualBehaviorEPHYS_Task1G_v0.0.2
 
 transitions:
   - trigger: progress
     source: TRAINING_0_gratings_autorewards_15min_0uL_reward
-    dest: TRAINING_1_gratings_5uL_reward
+    dest: TRAINING_1_gratings_10uL_reward
     conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_1_gratings_5uL_reward
+    source: TRAINING_1_gratings_10uL_reward
     dest: TRAINING_2_gratings_flashed_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
@@ -150,11 +150,11 @@ transitions:
 
   - trigger: progress
     source: TRAINING_3_images_G_10uL_reward
-    dest: TRAINING_4_images_G_training_10uL_reward
+    dest: TRAINING_4_images_G_training_7uL_reward
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_4_images_G_training_10uL_reward
+    source: TRAINING_4_images_G_training_7uL_reward
     dest: TRAINING_5_images_G_epilogue_5uL_reward
     conditions: meets_engagement_criteria
 
@@ -224,12 +224,12 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_1_gratings_5uL_reward:
+  TRAINING_1_gratings_10uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *no_flash_parameters
-      stage: TRAINING_1_gratings_5uL_reward
+      stage: TRAINING_1_gratings_10uL_reward
 
       stimulus: *full_field_gratings
 
@@ -267,12 +267,12 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_4_images_G_training_10uL_reward:
+  TRAINING_4_images_G_training_7uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_g_parameters
-      stage: TRAINING_4_images_G_training_10uL_reward
+      stage: TRAINING_4_images_G_training_7uL_reward
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
