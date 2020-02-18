@@ -152,68 +152,80 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.1.2
+name: VisualBehaviorEPHYS_Task1A_v0.1.3
 
 transitions:
   - trigger: progress
-    source: TRAINING_0_gratings_autorewards_15min
-    dest: TRAINING_1_gratings
+    source: TRAINING_0_gratings_autorewards_15min_0uL_reward
+    dest: TRAINING_1_gratings_10uL_reward
     conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_1_gratings
-    dest: TRAINING_2_gratings_flashed
+    source: TRAINING_1_gratings_10uL_reward
+    dest: TRAINING_2_gratings_flashed_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: TRAINING_2_gratings_flashed
+    source: TRAINING_2_gratings_flashed_10uL_reward
     dest: TRAINING_3_images_A_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
     source: TRAINING_3_images_A_10uL_reward
-    dest: TRAINING_4_images_A_training
+    dest: TRAINING_4_images_A_training_7uL_reward
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_4_images_A_training
-    dest: TRAINING_5_images_A
+    source: TRAINING_4_images_A_training_7uL_reward
+    dest: TRAINING_5_images_A_epilogue_5uL_reward
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A
-    dest: TRAINING_5_images_A_handoff_ready
+    source: TRAINING_5_images_A_epilogue_5uL_reward
+    dest: TRAINING_5_images_A_handoff_ready_5uL_reward
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_ready
-    dest: TRAINING_5_images_A_handoff_lapsed
+    source: TRAINING_5_images_A_handoff_ready_5uL_reward
+    dest: TRAINING_5_images_A_handoff_lapsed_5uL_reward
     unless: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_lapsed
-    dest: TRAINING_5_images_A_handoff_ready
+    source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
+    dest: TRAINING_5_images_A_handoff_ready_5uL_reward
     conditions: meets_engagement_criteria
 
   - trigger: manual
-    source: TRAINING_5_images_A_handoff_ready
-    dest: HABITUATION_5_images_A_handoff_ready
+    source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
+    dest: HABITUATION_5_images_A_handoff_ready_5uL_reward
 
   - trigger: manual
-    source: HABITUATION_5_images_A_handoff_ready
+    source: HABITUATION_5_images_A_handoff_ready_5uL_reward
     dest: EPHYS_1_images_A_5uL_reward
 
   - trigger: manual
     source: EPHYS_1_images_A_5uL_reward
     dest: EPHYS_1_images_B_5uL_reward
 
+  - trigger: manual
+    source: EPHYS_1_images_B_5uL_reward
+    dest: HABITUATION_5_images_A_handoff_ready_3uL
+
+  - trigger: manual
+    source: HABITUATION_5_images_A_handoff_ready_3uL
+    dest: EPHYS_1_images_A_3uL_reward
+
+  - trigger: manual
+    source: EPHYS_1_images_A_3uL_reward
+    dest: EPHYS_1_images_B_3uL_reward
+
 stages:
-  TRAINING_0_gratings_autorewards_15min:
+  TRAINING_0_gratings_autorewards_15min_0uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *no_flash_parameters
-      stage: TRAINING_0_gratings_autorewards_15min
+      stage: TRAINING_0_gratings_autorewards_15min_0uL_reward
       stimulus: *full_field_gratings
 
       # auto rewards
@@ -234,24 +246,24 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_1_gratings:
+  TRAINING_1_gratings_10uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *no_flash_parameters
-      stage: TRAINING_1_gratings
+      stage: TRAINING_1_gratings_10uL_reward
 
       stimulus: *full_field_gratings
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_2_gratings_flashed:
+  TRAINING_2_gratings_flashed_10uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *flash_parameters
-      stage: TRAINING_2_gratings_flashed
+      stage: TRAINING_2_gratings_flashed_10uL_reward
       task_id: DoC
 
       stimulus: *full_field_gratings
@@ -277,22 +289,22 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_4_images_A_training:
+  TRAINING_4_images_A_training_7uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_training
+      stage: TRAINING_4_images_A_training_7uL_reward
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_5_images_A:
+  TRAINING_5_images_A_epilogue_5uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_epilogue
+      stage: TRAINING_5_images_A_epilogue_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -302,12 +314,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  TRAINING_5_images_A_handoff_ready:
+  TRAINING_5_images_A_handoff_ready_5uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_ready
+      stage: TRAINING_5_images_A_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -317,12 +329,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  TRAINING_5_images_A_handoff_lapsed:
+  TRAINING_5_images_A_handoff_lapsed_5uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_lapsed
+      stage: TRAINING_5_images_A_handoff_lapsed_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -332,12 +344,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  HABITUATION_5_images_A_handoff_ready:
+  HABITUATION_5_images_A_handoff_ready_5uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_ready
+      stage: HABITUATION_5_images_A_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -365,3 +377,37 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+
+  HABITUATION_5_images_A_handoff_ready_3uL:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_a_parameters
+      stage: HABITUATION_5_images_A_handoff_ready_3uL
+      warm_up_trials: 5
+      reward_volume: 0.003
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+      # play list of movies mimicking a mapping session
+      epilogue_list: *mapping_movie_list
+  
+  EPHYS_1_images_A_3uL_reward:
+    script: *replay_script
+    script_md5: *replay_script_md5
+    parameters:
+      <<: *replay_a_parameters
+      stage: EPHYS_1_images_A_3uL_reward
+      warm_up_trials: 3
+      flash_omit_probability: 0.05
+      reward_volume: 0.003
+  
+  EPHYS_1_images_B_5uL_reward:
+    script: *replay_script
+    script_md5: *replay_script_md5
+    parameters:
+      <<: *replay_a_parameters
+      stage: EPHYS_1_images_B_3uL_reward
+      warm_up_trials: 3
+      flash_omit_probability: 0.05
+      reward_volume: 0.003
