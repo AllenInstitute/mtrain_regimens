@@ -26,12 +26,14 @@ _full_field_gratings_stimulus: &full_field_gratings
 
 _image_set_g_stimulus: &image_set_g
   class: images
+  luminance_matching_intensity: -0.46
   params:
     image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
     sampling: even
 
 _image_set_h_stimulus: &image_set_h
   class: images
+  luminance_matching_intensity: -0.46
   params:
     image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
     sampling: even
