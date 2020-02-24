@@ -1,6 +1,6 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=07db49c7b1336663be281a93677118b1f3e29ee1
+_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=c0ad6c3cec966ae089c83e784d868feb0dd60648
 
-_change_detection_script_md5: &change_detection_script_md5 08e339fd1af048c928665c9f31ef434c
+_change_detection_script_md5: &change_detection_script_md5 b5c001381bb20679d3125d2c2c094954
 
 _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
@@ -26,12 +26,14 @@ _full_field_gratings_stimulus: &full_field_gratings
 
 _image_set_g_stimulus: &image_set_g
   class: images
+  luminance_matching_intensity: -0.46
   params:
     image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
     sampling: even
 
 _image_set_h_stimulus: &image_set_h
   class: images
+  luminance_matching_intensity: -0.46
   params:
     image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
     sampling: even
@@ -130,16 +132,16 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.0.1
+name: VisualBehaviorEPHYS_Task1G_v0.0.2
 
 transitions:
   - trigger: progress
     source: TRAINING_0_gratings_autorewards_15min_0uL_reward
-    dest: TRAINING_1_gratings_5uL_reward
+    dest: TRAINING_1_gratings_10uL_reward
     conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_1_gratings_5uL_reward
+    source: TRAINING_1_gratings_10uL_reward
     dest: TRAINING_2_gratings_flashed_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
@@ -150,11 +152,11 @@ transitions:
 
   - trigger: progress
     source: TRAINING_3_images_G_10uL_reward
-    dest: TRAINING_4_images_G_training_10uL_reward
+    dest: TRAINING_4_images_G_training_7uL_reward
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_4_images_G_training_10uL_reward
+    source: TRAINING_4_images_G_training_7uL_reward
     dest: TRAINING_5_images_G_epilogue_5uL_reward
     conditions: meets_engagement_criteria
 
@@ -224,12 +226,12 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_1_gratings_5uL_reward:
+  TRAINING_1_gratings_10uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *no_flash_parameters
-      stage: TRAINING_1_gratings_5uL_reward
+      stage: TRAINING_1_gratings_10uL_reward
 
       stimulus: *full_field_gratings
 
@@ -267,12 +269,12 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_4_images_G_training_10uL_reward:
+  TRAINING_4_images_G_training_7uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *image_set_g_parameters
-      stage: TRAINING_4_images_G_training_10uL_reward
+      stage: TRAINING_4_images_G_training_7uL_reward
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
