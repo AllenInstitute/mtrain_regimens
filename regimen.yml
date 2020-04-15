@@ -255,6 +255,9 @@ stages:
       # rewards (mL)
       reward_volume: 0.0
 
+      # appears to be necessary to avoid potential race conditions on first trial
+      start_stop_padding: 1.0
+
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
