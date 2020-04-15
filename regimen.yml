@@ -152,7 +152,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.1.5
+name: VisualBehaviorEPHYS_Task1A_v0.1.6
 
 transitions:
   - trigger: progress
