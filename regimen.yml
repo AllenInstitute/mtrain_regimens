@@ -86,6 +86,9 @@ _flash_parameters: &flash_parameters
   change_flashes_min: 4 # inclusive
   change_flashes_max: 12 # exclusive
 
+  # start stop padding > 1 can cause a critcally breaking bug
+  start_stop_padding: 1
+
 _no_flash_parameters: &no_flash_parameters
   <<: *flash_parameters
   periodic_flash: null
@@ -132,7 +135,7 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.0.2
+name: VisualBehaviorEPHYS_Task1G_v0.0.3
 
 transitions:
   - trigger: progress
@@ -163,17 +166,17 @@ transitions:
   - trigger: progress
     source: TRAINING_5_images_G_epilogue_5uL_reward
     dest: TRAINING_5_images_G_handoff_ready_5uL_reward
-    conditions: meets_engagement_criteria
+    conditions: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: progress
     source: TRAINING_5_images_G_handoff_ready_5uL_reward
     dest: TRAINING_5_images_G_handoff_lapsed_5uL_reward
-    unless: meets_engagement_criteria
+    unless: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: progress
     source: TRAINING_5_images_G_handoff_lapsed_5uL_reward
     dest: TRAINING_5_images_G_handoff_ready_5uL_reward
-    conditions: meets_engagement_criteria
+    conditions: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: manual
     source: TRAINING_5_images_G_handoff_ready_5uL_reward
