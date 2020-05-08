@@ -86,7 +86,7 @@ _flash_parameters: &flash_parameters
   change_flashes_min: 4 # inclusive
   change_flashes_max: 12 # exclusive
 
-  # start stop padding > 1 can cause a critcally breaking bug
+  # start stop padding < 1 can cause a critcally breaking bug
   start_stop_padding: 1
 
 _no_flash_parameters: &no_flash_parameters
