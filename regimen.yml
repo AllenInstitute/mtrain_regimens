@@ -6,9 +6,9 @@ _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/pr
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_script.py?at=cc7f17850dadce0f5f225419d639bda5732fc76e
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_script.py?at=baa53e251fe1c9b38692e4b551ea4c56e123aa31
 
-_replay_script_md5: &replay_script_md5 815b692de909ace7b49a8a1cfe8eec38
+_replay_script_md5: &replay_script_md5 d8da87eaa2bf272f072527b0c79ac7e
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -135,7 +135,7 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.0.3
+name: VisualBehaviorEPHYS_Task1G_v0.0.4
 
 transitions:
   - trigger: progress
@@ -350,6 +350,8 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+      opto_params:
+        test_levels: False
 
   EPHYS_1_images_H_5uL_reward:
     script: *replay_script
@@ -360,6 +362,8 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+      opto_params:
+        test_levels: False
 
   HABITUATION_5_images_G_handoff_ready_3uL_reward:
     script: *change_detection_script
@@ -384,6 +388,8 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.003
+      opto_params:
+        test_levels: False
 
   EPHYS_1_images_H_3uL_reward:
     script: *replay_script
@@ -394,3 +400,5 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.003
+      opto_params:
+        test_levels: False
