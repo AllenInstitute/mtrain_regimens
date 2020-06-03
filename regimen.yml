@@ -1,45 +1,46 @@
-snr_0_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
-snr_0_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
-http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
-snr_1_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_0_script: &snr_0_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-snr_1_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_0_script_md5: &snr_0_script_md5 2155507d769943fbf1a7250cd537643c
 
-snr_2_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_1_script: &snr_1_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_1.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-snr_2_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_1_script_md5: &snr_1_script_md5 0fef76857526dd89cc7f57a4daf185f6
 
-_snr_3_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_2_script: &snr_2_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_2.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_snr_3_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_2_script_md5: &snr_2_script_md5 4bc1e2f973400b2d35eff6c867f32194
 
-snr_4_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_3_script: &snr_3_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_3.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_snr_4_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_3_script_md5: &snr_3_script_md5 ac644977b500dd0e18d81d86c2cce09f
 
-_snr_5_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_4_script: &snr_4_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_4.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_snr_5_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_4_script_md5: &snr_4_script_md5 fcdced25f5367825423919bf23abed1d
 
-_snr_6_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_6.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_5_script: &snr_5_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_5.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_snr_6_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_5_script_md5: &snr_5_script_md5 9947b51277c12f1fa6bd643212e16e1c
 
-_snr_7_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_7.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_6_script: &snr_6_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_6.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_snr_7_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_6_script_md5: &snr_6_script_md5 dc8fc5c67d2fc18e05fe0fe1e00beb33
 
-_snr_8_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_8.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_7_script: &snr_7_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_7.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_snr_8_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_7_script_md5: &snr_7_script_md5 f8ae478c4f88d2a45da7bb66c5b6aaf4
 
-_snr_9_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_9.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+_snr_8_script: &snr_8_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_8.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_snr_9_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+_snr_8_script_md5: &snr_8_script_md5 5bc4e42d79c97966c347b4f004948dec
+
+_snr_9_script: &snr_9_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_9.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+
+_snr_9_script_md5: &snr_9_script_md5 4663c6546145474e40e647d422fb09a0
 
 ### mtrain definitions
 
-name: VisualCoding_Snr_v1.0.0
+name: VisualCoding_Snr_v1.0.1
 
 transitions:
   - trigger: manual
