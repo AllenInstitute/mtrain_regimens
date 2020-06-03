@@ -1,355 +1,140 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd
-_change_detection_script_md5: &change_detection_script_md5 e0535f3b6f03ccc8eeccaed2118f3c1d
+snr_0_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+snr_0_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+snr_1_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=5136c550fc6cac4737bb78db1307ec0cb470c4ab
+snr_1_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
-_movie_clips_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
+snr_2_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_full_field_gratings_stimulus: &full_field_gratings
-  class: grating
-  params:
-    sf: 0.04
-    tex: sqr
-    size: [200, 150]
-    units: deg
-    phase: 0.25
-  groups:
-    vertical:
-      Ori: [0, 180]
-    horizontal:
-      Ori: [90, 270]
+snr_2_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
-_image_set_g_stimulus: &image_set_g
-  class: images
-  params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
-    sampling: even
+_snr_3_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_image_set_h_stimulus: &image_set_h
-  class: images
-  params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
-    sampling: even
+_snr_3_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
-_fingerprint_movie: &fingerprint_movie
-  name: fingerprint
-  params:
-    movie_path: //allen/programs/braintv/workgroups/neuralcoding/Saskia/Visual Stimuli 151207/Movie_TOE1.npy
-    frame_length: 0.03333333333333333
-    size: [1920, 1080]
-    runs: 10
+snr_4_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_flash_parameters: &flash_parameters
-  task_id: DoC
+_snr_4_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
-  catch_frequency: 0.25
-  failure_repeats: 5
+_snr_5_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-  # rewards (mL)
-  reward_volume: 0.007
-  volume_limit: 5.0
+_snr_5_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
-  # auto rewards
-  auto_reward_vol: 0.005
-  warm_up_trials: 5
-  auto_reward_delay: 0.150
-  free_reward_trials: 10000
+_snr_6_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_6.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-  # trial timing
-  min_no_lick_time: 0.0
-  timeout_duration: 0.3
-  pre_change_time: 0.0
-  stimulus_window: 6.0
-  max_task_duration_min: 60.0
-  start_stop_padding: 20.0
-  periodic_flash: [0.25, 0.5]
-  response_window: [0.15, 0.75]
-  end_after_response: True
-  end_after_response_sec: 3.5
+_snr_6_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
-  # timing of changes
-  change_time_dist: geometric
-  change_time_scale: 0.3
-  change_flashes_min: 4 # inclusive
-  change_flashes_max: 12 # exclusive
+_snr_7_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_7.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_no_flash_parameters: &no_flash_parameters
-  <<: *flash_parameters
-  periodic_flash: null
-  response_window: [0.15, 1.0]
-  reward_volume: 0.010
-  free_reward_trials: 10
-  pre_change_time: 2.25
+_snr_7_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
-  # timing of changes
-  change_time_dist: exponential
-  change_time_scale: 2.0
-  change_flashes_min: null
-  change_flashes_max: null
+_snr_8_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_8.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
 
-_image_set_h_parameters: &image_set_h_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_h
-  catch_frequency: null
+_snr_8_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
-_image_set_g_parameters: &image_set_g_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_g
-  catch_frequency: null
+_snr_9_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_9.py?at=d80ae18a37fd5ec20fcbd9f2faf9b696f54d5281
+
+_snr_9_script_md5: &movie_clips_script_md5 d7a849f3abf9a7d653a5e56204eb76a3
 
 ### mtrain definitions
 
-name: VisualBehavior_Task1G_v1.0.6
+name: VisualCoding_Snr_v1.0.0
 
 transitions:
-  - trigger: progress
-    source: TRAINING_0_gratings_autorewards_15min
-    dest: TRAINING_1_gratings
-    conditions: one_complete
-
-  - trigger: progress
-    source: TRAINING_1_gratings
-    dest: TRAINING_2_gratings_flashed
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
-
-  - trigger: progress
-    source: TRAINING_2_gratings_flashed
-    dest: TRAINING_3_images_G_10uL_reward
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
-
-  - trigger: progress
-    source: TRAINING_3_images_G_10uL_reward
-    dest: TRAINING_4_images_G_training
-    conditions: three_complete
-
-  - trigger: progress
-    source: TRAINING_4_images_G_training
-    dest: TRAINING_5_images_G_epilogue
-    conditions: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_5_images_G_epilogue
-    dest: TRAINING_5_images_G_handoff_ready
-    conditions: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_5_images_G_handoff_ready
-    dest: TRAINING_5_images_G_handoff_lapsed
-    unless: meets_engagement_criteria
-
-  - trigger: progress
-    source: TRAINING_5_images_G_handoff_lapsed
-    dest: TRAINING_5_images_G_handoff_ready
-    conditions: meets_engagement_criteria
+  - trigger: manual
+    source: SNR_0
+    dest: SNR_1
 
   - trigger: manual
-    source: TRAINING_5_images_G_handoff_ready
-    dest: OPHYS_0_images_G_habituation
+    source: SNR_1
+    dest: SNR_2
 
   - trigger: manual
-    source: OPHYS_0_images_G_habituation
-    dest: OPHYS_1_images_G
+    source: SNR_2
+    dest: SNR_3
 
   - trigger: manual
-    source: OPHYS_1_images_G
-    dest: OPHYS_2_images_G_passive
+    source: SNR_3
+    dest: SNR_4
 
   - trigger: manual
-    source: OPHYS_2_images_G_passive
-    dest: OPHYS_3_images_G
+    source: SNR_4
+    dest: SNR_5
 
   - trigger: manual
-    source: OPHYS_3_images_G
-    dest: OPHYS_4_images_H
+    source: SNR_5
+    dest: SNR_6
 
   - trigger: manual
-    source: OPHYS_4_images_H
-    dest: OPHYS_5_images_H_passive
+    source: SNR_6
+    dest: SNR_7
 
   - trigger: manual
-    source: OPHYS_5_images_H_passive
-    dest: OPHYS_6_images_H
+    source: SNR_7
+    dest: SNR_8
 
   - trigger: manual
-    source: OPHYS_6_images_H
-    dest: OPHYS_7_receptive_field_mapping
+    source: SNR_8
+    dest: SNR_9
 
 stages:
-  TRAINING_0_gratings_autorewards_15min:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_0:
+    script: *snr_0_script
+    script_md5: *snr_0_script_md5
     parameters:
-      <<: *no_flash_parameters
-      stage: TRAINING_0_gratings_autorewards_15min
-      stimulus: *full_field_gratings
+      stage: SNR_0
 
-      # auto rewards
-      warm_up_trials: -1 #infinite
-      abort_on_early_response: False
-      catch_frequency: 0.0
-
-      response_window: [0.0, 0.0]
-      min_no_lick_time: 0.0
-      failure_repeats: 0
-
-      # trial timing
-      max_task_duration_min: 15.0
-
-      # rewards (mL)
-      reward_volume: 0.0
-
-  TRAINING_1_gratings:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_1:
+    script: *snr_1_script
+    script_md5: *snr_1_script_md5
     parameters:
-      <<: *no_flash_parameters
-      stage: TRAINING_1_gratings
+      stage: SNR_1
 
-      stimulus: *full_field_gratings
-
-  TRAINING_2_gratings_flashed:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_2:
+    script: *snr_2_script
+    script_md5: *snr_2_script_md5
     parameters:
-      <<: *flash_parameters
-      stage: TRAINING_2_gratings_flashed
-      task_id: DoC
+      stage: SNR_2
 
-      stimulus: *full_field_gratings
-      free_reward_trials: 10
-
-      # rewards (mL)
-      reward_volume: 0.01
-
-  TRAINING_3_images_G_10uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_3:
+    script: *snr_3_script
+    script_md5: *snr_3_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_3_images_G_10uL_reward
+      stage: SNR_3
 
-      # rewards (mL)
-      reward_volume: 0.01
-      free_reward_trials: 10
-
-  TRAINING_4_images_G_training:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_4:
+    script: *snr_4_script
+    script_md5: *snr_4_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_4_images_G_training
-      warm_up_trials: 5
+      stage: SNR_4
 
-  TRAINING_5_images_G_epilogue:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_5:
+    script: *snr_5_script
+    script_md5: *snr_5_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_5_images_G_epilogue
-      warm_up_trials: 5
-      start_stop_padding: 300.0
-      epilogue: *fingerprint_movie
+      stage: SNR_5
 
-  TRAINING_5_images_G_handoff_ready:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_6:
+    script: *snr_6_script
+    script_md5: *snr_6_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_5_images_G_handoff_ready
-      warm_up_trials: 5
-      start_stop_padding: 300.0
-      epilogue: *fingerprint_movie
+      stage: SNR_6
 
-  TRAINING_5_images_G_handoff_lapsed:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_7:
+    script: *snr_7_script
+    script_md5: *snr_7_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_5_images_G_handoff_lapsed
-      warm_up_trials: 5
-      start_stop_padding: 300.0
-      epilogue: *fingerprint_movie
+      stage: SNR_7
 
-  OPHYS_0_images_G_habituation:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_8:
+    script: *snr_8_script
+    script_md5: *snr_8_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: OPHYS_0_images_G_habituation
-      warm_up_trials: 5
-      start_stop_padding: 300.0
-      epilogue: *fingerprint_movie
+      stage: SNR_8
 
-  OPHYS_1_images_G:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  SNR_9:
+    script: *snr_9_script
+    script_md5: *snr_9_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: OPHYS_1_images_G
-      warm_up_trials: 5
-      start_stop_padding: 300.0
-      flash_omit_probability: 0.05
-      epilogue: *fingerprint_movie
-
-  OPHYS_2_images_G_passive:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_g_parameters
-      stage: OPHYS_2_images_G_passive
-      warm_up_trials: 0
-      start_stop_padding: 300.0
-      flash_omit_probability: 0.05
-      lick_spout: False
-      epilogue: *fingerprint_movie
-
-  OPHYS_3_images_G:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_g_parameters
-      stage: OPHYS_3_images_G
-      warm_up_trials: 5
-      start_stop_padding: 300.0
-      flash_omit_probability: 0.05
-      epilogue: *fingerprint_movie
-
-  OPHYS_4_images_H:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_h_parameters
-      stage: OPHYS_4_images_H
-      warm_up_trials: 5
-      start_stop_padding: 300.0
-      flash_omit_probability: 0.05
-      epilogue: *fingerprint_movie
-
-  OPHYS_5_images_H_passive:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_h_parameters
-      stage: OPHYS_5_images_H_passive
-      warm_up_trials: 0
-      start_stop_padding: 300.0
-      flash_omit_probability: 0.05
-      lick_spout: False
-      epilogue: *fingerprint_movie
-
-  OPHYS_6_images_H:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_h_parameters
-      stage: OPHYS_6_images_H
-      warm_up_trials: 5
-      start_stop_padding: 300.0
-      flash_omit_probability: 0.05
-      epilogue: *fingerprint_movie
-
-  OPHYS_7_receptive_field_mapping:
-    script: *movie_clips_script
-    script_md5: *movie_clips_script_md5
-    parameters:
-      stage: OPHYS_7_receptive_field_mapping
+      stage: SNR_9
