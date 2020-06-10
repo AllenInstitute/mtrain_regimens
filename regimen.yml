@@ -30,7 +30,7 @@ _snr_7_script: &snr_7_script http://stash.corp.alleninstitute.org/projects/VB/re
 
 _snr_7_script_md5: &snr_7_script_md5 f85d13a9cfc99166aeaf3b226bf056e0
 
-_snr_8_script: &snr_8_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_8.py?at=a0258f0611f30f1dcfb7a14370feb0a16bd18cfa
+_snr_8_script: &snr_8_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_8.py?at=fff79ae3f85df2e438afd1ec441fc5f289e793bc
 
 _snr_8_script_md5: &snr_8_script_md5 452c2c1199274240c5da74b6123e7a56
 
@@ -40,7 +40,7 @@ _snr_9_script_md5: &snr_9_script_md5 cdbf80043101fb684a800f574ed98e79
 
 ### mtrain definitions
 
-name: VisualCoding_Snr_v1.0.3
+name: VisualCoding_Snr_v1.0.4
 
 transitions:
   - trigger: manual
