@@ -6,9 +6,9 @@ _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/pr
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/replay_script.py?at=baa53e251fe1c9b38692e4b551ea4c56e123aa31
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=6e2e525378ecc1925e4c58eadbba6a63cf06c527
 
-_replay_script_md5: &replay_script_md5 5d8da87eaa2bf272f072527b0c79ac7e
+_replay_script_md5: &replay_script_md5 cad0b2dd561b9a1298afbd6f35144f4c
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -152,7 +152,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.1.8
+name: VisualBehaviorEPHYS_Task1A_v0.1.9
 
 transitions:
   - trigger: progress
@@ -183,17 +183,17 @@ transitions:
   - trigger: progress
     source: TRAINING_5_images_A_epilogue_5uL_reward
     dest: TRAINING_5_images_A_handoff_ready_5uL_reward
-    conditions: meets_engagement_criteria
+    conditions: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: progress
     source: TRAINING_5_images_A_handoff_ready_5uL_reward
     dest: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-    unless: meets_engagement_criteria
+    unless: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: progress
     source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
     dest: TRAINING_5_images_A_handoff_ready_5uL_reward
-    conditions: meets_engagement_criteria
+    conditions: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: manual
     source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
@@ -382,6 +382,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -394,6 +395,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -420,6 +422,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.003
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -432,6 +435,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.003
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -460,6 +464,7 @@ stages:
       flash_omit_probability: 0.05
       reward_volume: 0.005
       max_task_duration_min: 75.0
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -473,5 +478,6 @@ stages:
       flash_omit_probability: 0.05
       reward_volume: 0.005
       max_task_duration_min: 75.0
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
