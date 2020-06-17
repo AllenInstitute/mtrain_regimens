@@ -350,6 +350,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -362,6 +363,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -388,6 +390,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.003
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -400,5 +403,6 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.003
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
