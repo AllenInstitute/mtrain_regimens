@@ -6,9 +6,9 @@ _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/pr
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/replay_script.py?at=441d568023cedef540f6419b60ecd08229dde8fe
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=6e2e525378ecc1925e4c58eadbba6a63cf06c527
 
-_replay_script_md5: &replay_script_md5 de273e2a972221886bcaf91dd377fbd2
+_replay_script_md5: &replay_script_md5 cad0b2dd561b9a1298afbd6f35144f4c
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
