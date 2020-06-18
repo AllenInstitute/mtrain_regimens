@@ -135,7 +135,7 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.0.7
+name: VisualBehaviorEPHYS_Task1G_v0.0.8
 
 transitions:
   - trigger: progress
@@ -341,8 +341,7 @@ stages:
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
+      
 
   EPHYS_1_images_G_5uL_reward:
     script: *replay_script
@@ -384,8 +383,7 @@ stages:
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
+      
 
   EPHYS_1_images_G_3uL_reward:
     script: *replay_script
