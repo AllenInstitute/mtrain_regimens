@@ -338,6 +338,8 @@ stages:
       max_mapping_duration_min: 10
       disable_replay: True
       disable_opto: True
+      opto_params:
+        test_levels: False
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
@@ -380,6 +382,8 @@ stages:
       max_mapping_duration_min: 10
       disable_replay: True
       disable_opto: True
+      opto_params:
+        test_levels: False
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
