@@ -373,7 +373,6 @@ stages:
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      
 
   EPHYS_1_images_A_5uL_reward:
     script: *replay_script
@@ -415,7 +414,6 @@ stages:
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      
 
   EPHYS_1_images_A_3uL_reward:
     script: *replay_script
@@ -458,7 +456,7 @@ stages:
     
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      
+
   EPHYS_1_images_A_5uL_reward_75_min_duration:
     script: *replay_script
     script_md5: *replay_script_md5
