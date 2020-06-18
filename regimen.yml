@@ -135,7 +135,7 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.0.6
+name: VisualBehaviorEPHYS_Task1G_v0.0.8
 
 transitions:
   - trigger: progress
@@ -328,18 +328,20 @@ stages:
       epilogue_list: *mapping_movie_list
 
   HABITUATION_5_images_G_handoff_ready_5uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script: *replay_script
+    script_md5: *replay_script_md5
     parameters:
-      <<: *image_set_g_parameters
+      <<: *replay_g_parameters
       stage: HABITUATION_5_images_G_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
+      max_mapping_duration_min: 10
+      disable_replay: True
+      disable_opto: True
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
+      
 
   EPHYS_1_images_G_5uL_reward:
     script: *replay_script
@@ -368,18 +370,20 @@ stages:
         test_levels: False
 
   HABITUATION_5_images_G_handoff_ready_3uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script: *replay_script
+    script_md5: *replay_script_md5
     parameters:
-      <<: *image_set_g_parameters
+      <<: *replay_g_parameters
       stage: HABITUATION_5_images_G_handoff_ready_3uL_reward
       warm_up_trials: 5
       reward_volume: 0.003
+      max_mapping_duration_min: 10
+      disable_replay: True
+      disable_opto: True
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
+      
 
   EPHYS_1_images_G_3uL_reward:
     script: *replay_script
