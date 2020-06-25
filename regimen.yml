@@ -6,9 +6,9 @@ _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/pr
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/replay_script.py?at=baa53e251fe1c9b38692e4b551ea4c56e123aa31
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=c53a62aa059d17dae3c65ab83bc9326cc0737d5a
 
-_replay_script_md5: &replay_script_md5 5d8da87eaa2bf272f072527b0c79ac7e
+_replay_script_md5: &replay_script_md5 4fa0ec06a3015f1b618a6db30e259103
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -383,7 +383,7 @@ stages:
       flash_omit_probability: 0.05
       reward_volume: 0.005
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
   EPHYS_1_images_B_5uL_reward:
     script: *replay_script
@@ -395,7 +395,7 @@ stages:
       flash_omit_probability: 0.05
       reward_volume: 0.005
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
   HABITUATION_5_images_A_handoff_ready_3uL:
     script: *change_detection_script
@@ -421,7 +421,7 @@ stages:
       flash_omit_probability: 0.05
       reward_volume: 0.003
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
   EPHYS_1_images_B_3uL_reward:
     script: *replay_script
@@ -433,7 +433,7 @@ stages:
       flash_omit_probability: 0.05
       reward_volume: 0.003
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
   HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration:
     script: *change_detection_script
