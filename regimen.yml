@@ -6,9 +6,9 @@ _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/pr
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=6e2e525378ecc1925e4c58eadbba6a63cf06c527
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=c53a62aa059d17dae3c65ab83bc9326cc0737d5a
 
-_replay_script_md5: &replay_script_md5 cad0b2dd561b9a1298afbd6f35144f4c
+_replay_script_md5: &replay_script_md5 4fa0ec06a3015f1b618a6db30e259103
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -135,7 +135,7 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.0.9
+name: VisualBehaviorEPHYS_Task1G_v0.0.10
 
 transitions:
   - trigger: progress
@@ -339,11 +339,10 @@ stages:
       disable_replay: True
       disable_opto: True
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      
 
   EPHYS_1_images_G_5uL_reward:
     script: *replay_script
@@ -356,7 +355,7 @@ stages:
       reward_volume: 0.005
       max_mapping_duration_min: 35
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
   EPHYS_1_images_H_5uL_reward:
     script: *replay_script
@@ -369,7 +368,7 @@ stages:
       reward_volume: 0.005
       max_mapping_duration_min: 35
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
   HABITUATION_5_images_G_handoff_ready_3uL_reward:
     script: *replay_script
@@ -383,11 +382,10 @@ stages:
       disable_replay: True
       disable_opto: True
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-      
 
   EPHYS_1_images_G_3uL_reward:
     script: *replay_script
@@ -400,7 +398,7 @@ stages:
       reward_volume: 0.003
       max_mapping_duration_min: 35
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
   EPHYS_1_images_H_3uL_reward:
     script: *replay_script
@@ -413,4 +411,4 @@ stages:
       reward_volume: 0.003
       max_mapping_duration_min: 35
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
