@@ -152,7 +152,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.2.1
+name: VisualBehaviorEPHYS_Task1A_v0.2.2
 
 transitions:
   - trigger: progress
@@ -371,8 +371,8 @@ stages:
       disable_replay: True
       disable_opto: True
       opto_params:
-        test_levels: False
-        
+        operation_mode: "experiment"
+
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
@@ -414,8 +414,8 @@ stages:
       disable_replay: True
       disable_opto: True
       opto_params:
-        test_levels: False
-        
+        operation_mode: "experiment"
+
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
@@ -458,8 +458,8 @@ stages:
       disable_replay: True
       disable_opto: True
       opto_params:
-        test_levels: False      
-    
+        operation_mode: "experiment"
+
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
@@ -475,7 +475,7 @@ stages:
       max_task_duration_min: 75.0
       max_mapping_duration_min: 35
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
 
   EPHYS_1_images_B_5uL_reward_75_min_duration:
     script: *replay_script
@@ -489,4 +489,4 @@ stages:
       max_task_duration_min: 75.0
       max_mapping_duration_min: 35
       opto_params:
-        test_levels: False
+        operation_mode: "experiment"
