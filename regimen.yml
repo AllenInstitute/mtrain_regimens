@@ -183,17 +183,17 @@ transitions:
   - trigger: progress
     source: TRAINING_5_images_A_epilogue_5uL_reward
     dest: TRAINING_5_images_A_handoff_ready_5uL_reward
-    conditions: meets_engagement_criteria
+    conditions: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: progress
     source: TRAINING_5_images_A_handoff_ready_5uL_reward
     dest: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-    unless: meets_engagement_criteria
+    unless: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: progress
     source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
     dest: TRAINING_5_images_A_handoff_ready_5uL_reward
-    conditions: meets_engagement_criteria
+    conditions: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: manual
     source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
@@ -382,6 +382,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+      max_mapping_duration_min: 35
       opto_params:
         operation_mode: "experiment"
 
@@ -394,6 +395,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
+      max_mapping_duration_min: 35
       opto_params:
         operation_mode: "experiment"
 
@@ -420,6 +422,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.003
+      max_mapping_duration_min: 35
       opto_params:
         operation_mode: "experiment"
 
@@ -432,6 +435,7 @@ stages:
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.003
+      max_mapping_duration_min: 35
       opto_params:
         operation_mode: "experiment"
 
@@ -460,6 +464,7 @@ stages:
       flash_omit_probability: 0.05
       reward_volume: 0.005
       max_task_duration_min: 75.0
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
 
@@ -473,5 +478,6 @@ stages:
       flash_omit_probability: 0.05
       reward_volume: 0.005
       max_task_duration_min: 75.0
+      max_mapping_duration_min: 35
       opto_params:
         test_levels: False
