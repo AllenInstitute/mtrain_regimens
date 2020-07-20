@@ -135,7 +135,7 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.0.10
+name: VisualBehaviorEPHYS_Task1G_v0.1.0
 
 transitions:
   - trigger: progress
@@ -161,22 +161,22 @@ transitions:
   - trigger: progress
     source: TRAINING_4_images_G_training_7uL_reward
     dest: TRAINING_5_images_G_epilogue_5uL_reward
-    conditions: meets_engagement_criteria
+    conditions: meets_engagement_criteria_logged
 
   - trigger: progress
     source: TRAINING_5_images_G_epilogue_5uL_reward
     dest: TRAINING_5_images_G_handoff_ready_5uL_reward
-    conditions: [meets_engagement_criteria, meets_hit_threshold]
+    conditions: meets_engagement_and_hit_threshold
 
   - trigger: progress
     source: TRAINING_5_images_G_handoff_ready_5uL_reward
     dest: TRAINING_5_images_G_handoff_lapsed_5uL_reward
-    unless: [meets_engagement_criteria, meets_hit_threshold]
+    unless: meets_engagement_and_hit_threshold
 
   - trigger: progress
     source: TRAINING_5_images_G_handoff_lapsed_5uL_reward
     dest: TRAINING_5_images_G_handoff_ready_5uL_reward
-    conditions: [meets_engagement_criteria, meets_hit_threshold]
+    conditions: meets_engagement_and_hit_threshold
 
   - trigger: manual
     source: TRAINING_5_images_G_handoff_ready_5uL_reward
