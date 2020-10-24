@@ -152,7 +152,7 @@ _replay_b_parameters: &replay_b_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.2.2
+name: VisualBehaviorEPHYS_Task1A_v0.2.3
 
 transitions:
   - trigger: progress
@@ -367,6 +367,7 @@ stages:
       stage: HABITUATION_5_images_A_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
+      free_reward_trials: 10
       max_mapping_duration_min: 10
       disable_replay: True
       disable_opto: True
@@ -410,6 +411,7 @@ stages:
       stage: HABITUATION_5_images_A_handoff_ready_3uL
       warm_up_trials: 5
       reward_volume: 0.003
+      free_reward_trials: 10
       max_mapping_duration_min: 10
       disable_replay: True
       disable_opto: True
