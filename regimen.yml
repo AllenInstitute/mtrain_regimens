@@ -1,52 +1,165 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=07db49c7b1336663be281a93677118b1f3e29ee1
+_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/phase4/phase4_1.py?at=74dcc3c300262872b202c1a692f7610636e5e80d
 
-_change_detection_script_md5: &change_detection_script_md5 08e339fd1af048c928665c9f31ef434c
+_change_detection_script_md5: &change_detection_script_md5 53182b4ce7d311a24865738f741f5c04
 
 _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=c53a62aa059d17dae3c65ab83bc9326cc0737d5a
-
-_replay_script_md5: &replay_script_md5 4fa0ec06a3015f1b618a6db30e259103
-
-_full_field_gratings_stimulus: &full_field_gratings
+_T0_full_field_gratings_stimulus: &T0_full_field_gratings
   class: grating
   params:
-    sf: 0.04
-    tex: sqr
-    size: [200, 150]
+    tex: sin
+    phase: 0
+    pre_flash: 
+      phase_shift: 0
+    sf: 0.08
+    contrast: 0.95
+    size: 150
+    pos: [0,0]
+    texRes: '256'
     units: deg
-    phase: 0.25
+    stim_off_after_change: false    
   groups:
-    vertical:
-      Ori: [0, 180]
-    horizontal:
-      Ori: [90, 270]
+    home:
+      Ori: [0]
+    change_ori:
+      Ori: [90]
 
-_image_set_a_stimulus: &image_set_a
-  class: images
+_T1_full_field_gratings_stimulus: &T1_full_field_gratings
+  class: grating
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
-    sampling: even
+    tex: sin
+    phase: 0
+    pre_flash: 
+      phase_shift: 0
+    sf: 0.08
+    contrast: 0.95
+    size: 150
+    pos: [0,0]
+    texRes: '256'
+    units: deg
+    stim_off_after_change: true    
+  groups:
+    home:
+      Ori: [0]
+    change_ori:
+      Ori: [90]
 
-_image_set_b_stimulus: &image_set_b
-  class: images
+_T2_masked_gratings_stimulus: &T2_masked_gratings
+  class: grating
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
-    sampling: even
+    tex: sin
+    phase: 0
+    pre_flash: 
+      phase_shift: 0
+    sf: 0.08
+    contrast: 0.95
+    size: 150
+    pos: [0,0]
+    texRes: '256'
+    units: deg
+    stim_off_after_change: true
+    mask: raisedCos
+    maskParams:
+      fringeWidth: 0.1
+  groups:
+    home:
+      Ori: [0]
+    change_ori:
+      Ori: [90]
 
-_image_set_c_stimulus: &image_set_c
-  class: images
+_T3_masked_gratings_stimulus: &T3_masked_gratings
+  class: grating
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
-    sampling: even
+    tex: sin
+    phase: 0
+    pre_flash: 
+      phase_shift: 0.5
+    sf: 0.08
+    contrast: 0.95
+    size: 60
+    pos: [0,0]
+    texRes: '256'
+    units: deg
+    stim_off_after_change: true
+    mask: raisedCos
+    maskParams:
+      fringeWidth: 0.1
+  groups:
+    home:
+      Ori: [0]
+    change_ori:
+      Ori: [90]
 
-_image_set_d_stimulus: &image_set_d
-  class: images
+_T4_masked_gratings_stimulus: &T4_masked_gratings
+  class: grating
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
-    sampling: even
+    tex: sin
+    phase: 0
+    pre_flash: 
+      phase_shift: 0.5
+    sf: 0.08
+    contrast: 0.95
+    size: 60
+    pos: [0,0]
+    texRes: '256'
+    units: deg
+    stim_off_after_change: true
+    mask: raisedCos
+    maskParams:
+      fringeWidth: 0.1
+  groups:
+    home:
+      Ori: [0]
+    change_ori:
+      Ori: [22, 45, 90, 90]
+
+_T5_masked_gratings_stimulus: &T5_masked_gratings
+  class: grating
+  params:
+    tex: sin
+    phase: 0
+    pre_flash: 
+      phase_shift: 0.5
+    sf: 0.08
+    contrast: 0.95
+    size: 60
+    pos: [0,0]
+    texRes: '256'
+    units: deg
+    stim_off_after_change: true
+    mask: raisedCos
+    maskParams:
+      fringeWidth: 0.1
+  groups:
+    home:
+      Ori: [0]
+    change_ori:
+      Ori: [10, 22, 45]
+
+_T6_masked_gratings_stimulus: &T6_masked_gratings
+  class: grating
+  params:
+    tex: sin
+    phase: 0
+    pre_flash: 
+      phase_shift: 0.5
+    sf: 0.08
+    contrast: 0.95
+    size: 60
+    pos: [0,0]
+    texRes: '256'
+    units: deg
+    stim_off_after_change: true
+    mask: raisedCos
+    maskParams:
+      fringeWidth: 0.1
+  groups:
+    home:
+      Ori: [0]
+    change_ori:
+      Ori: [10, 22, 45]
 
 _mapping_movie_list: &mapping_movie_list
   - name: gabor
@@ -64,43 +177,48 @@ _mapping_movie_list: &mapping_movie_list
       size: [1920, 1080]
 
 _flash_parameters: &flash_parameters
-  task_id: DoC
 
-  catch_frequency: 0.25
-  failure_repeats: 5
-
-  # rewards (mL)
-  reward_volume: 0.007
-  volume_limit: 5.0
-
-  # auto rewards
+  abort_early_response: true
+  auto_reward_delay: 0.15
   auto_reward_vol: 0.005
-  warm_up_trials: 5
-  auto_reward_delay: 0.150
-  free_reward_trials: 10000
-
-  # trial timing
-  min_no_lick_time: 0.0
-  timeout_duration: 0.3
-  pre_change_time: 0.0
-  stimulus_window: 6.0
-  max_task_duration_min: 60.0
-  periodic_flash: [0.25, 0.5]
-  response_window: [0.15, 0.75]
-  end_after_response: True
-  end_after_response_sec: 3.5
-
-  # timing of changes
+  catch_freq: 0.25
+  change_flashes_max: 7
+  change_flashes_min: 1
   change_time_dist: geometric
   change_time_scale: 0.3
-  change_flashes_min: 4 # inclusive
-  change_flashes_max: 12 # exclusive
+  dev: false
+  end_after_response: true
+  end_after_response_sec: 0
+  failure_repeats: 5
+  free_reward_trials: 10000
+  home_pos:
+    group: home
+    params:
+        - param: Ori
+          value: [-45, 45]
+  initial_blank: 0.0
+  max_task_duration_min: 60.0
+  min_no_lick_time: 0.0
+  no_stim_no_lick_randrange: [3,5]
+  periodic_flash: [0.25, 0.5]
+  pre_change_time: 1.0
+  prechange_no_lick_duration: 0.75
+  response_window: [0.15, 0.75]
+  reward_volume: 0.005
+  start_padding_windowless: 0.0
+  start_stop_padding: 1.0
+  stimulus_window: 6.0
+  stimulus_window_no_lick: 0
+  task_id: DoC-2
+  timeout_duration: 0.3
+  volume_limit: 5.0
+  warm_up_trials: 0
 
 _no_flash_parameters: &no_flash_parameters
   <<: *flash_parameters
   periodic_flash: null
   response_window: [0.15, 1.0]
-  reward_volume: 0.010
+  reward_volume: 0.005
   free_reward_trials: 10
   pre_change_time: 2.25
 
@@ -110,135 +228,67 @@ _no_flash_parameters: &no_flash_parameters
   change_flashes_min: null
   change_flashes_max: null
 
-_image_set_a_parameters: &image_set_a_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_a
-  catch_frequency: null
-
-_image_set_b_parameters: &image_set_b_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_b
-  catch_frequency: null
-
-_image_set_c_parameters: &image_set_c_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_c
-  catch_frequency: null
-
-_image_set_d_parameters: &image_set_d_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_d
-  catch_frequency: null
-
-_replay_a_parameters: &replay_a_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_a
-  catch_frequency: null
-  mapping:
-    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-  output_dir: C:/ProgramData/camstim/output
-  agent_socket: "127.0.0.1:5000"
-
-_replay_b_parameters: &replay_b_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_b
-  catch_frequency: null
-  mapping:
-    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-  output_dir: C:/ProgramData/camstim/output
-  agent_socket: "127.0.0.1:5000"
-
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.2.3
+name: phase4_1_v0.0.0
 
 transitions:
   - trigger: progress
-    source: TRAINING_0_gratings_autorewards_15min_0uL_reward
-    dest: TRAINING_1_gratings_10uL_reward
+    source: TRAINING_0
+    dest: TRAINING_1
     conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_1_gratings_10uL_reward
-    dest: TRAINING_2_gratings_flashed_10uL_reward
+    source: TRAINING_1
+    dest: TRAINING_2
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: TRAINING_2_gratings_flashed_10uL_reward
-    dest: TRAINING_3_images_A_10uL_reward
+    source: TRAINING_2
+    dest: TRAINING_3
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: TRAINING_3_images_A_10uL_reward
-    dest: TRAINING_4_images_A_training_7uL_reward
+    source: TRAINING_3
+    dest: TRAINING_4
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_4_images_A_training_7uL_reward
-    dest: TRAINING_5_images_A_epilogue_5uL_reward
+    source: TRAINING_4
+    dest: TRAINING_5
     conditions: meets_engagement_criteria
 
   - trigger: progress
-    source: TRAINING_5_images_A_epilogue_5uL_reward
-    dest: TRAINING_5_images_A_handoff_ready_5uL_reward
+    source: TRAINING_5
+    dest: TRAINING_6_handoff
     conditions: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_ready_5uL_reward
-    dest: TRAINING_5_images_A_handoff_lapsed_5uL_reward
+    source: TRAINING_6_handoff
+    dest: TRAINING_5_lapsed
     unless: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-    dest: TRAINING_5_images_A_handoff_ready_5uL_reward
+    source: TRAINING_5_lapsed
+    dest: TRAINING_6_handoff
     conditions: [meets_engagement_criteria, meets_hit_threshold]
 
   - trigger: manual
-    source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-    dest: HABITUATION_5_images_A_handoff_ready_5uL_reward
+    source: TRAINING_6_handoff
+    dest: HABITUATION
 
   - trigger: manual
-    source: HABITUATION_5_images_A_handoff_ready_5uL_reward
-    dest: EPHYS_1_images_A_5uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_A_5uL_reward
-    dest: EPHYS_1_images_B_5uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_B_5uL_reward
-    dest: HABITUATION_5_images_A_handoff_ready_3uL
-
-  - trigger: manual
-    source: HABITUATION_5_images_A_handoff_ready_3uL
-    dest: EPHYS_1_images_A_3uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_A_3uL_reward
-    dest: EPHYS_1_images_B_3uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_B_3uL_reward
-    dest: HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration
-
-  - trigger: manual
-    source: HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration
-    dest: EPHYS_1_images_A_5uL_reward_75_min_duration
-
-  - trigger: manual
-    source: EPHYS_1_images_A_5uL_reward_75_min_duration
-    dest: EPHYS_1_images_B_5uL_reward_75_min_duration
+    source: HABITUATION
+    dest: EPHYS
 
 stages:
-  TRAINING_0_gratings_autorewards_15min_0uL_reward:
+  TRAINING_0:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *no_flash_parameters
-      stage: TRAINING_0_gratings_autorewards_15min_0uL_reward
-      stimulus: *full_field_gratings
+      stage: TRAINING_0
+      stimulus: *T0_full_field_gratings
 
       # auto rewards
       warm_up_trials: -1 #infinite
@@ -259,236 +309,84 @@ stages:
       start_stop_padding: 1.0
 
       # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
+      start_padding_windowless: 1.0
 
-  TRAINING_1_gratings_10uL_reward:
+  TRAINING_1:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *no_flash_parameters
-      stage: TRAINING_1_gratings_10uL_reward
-
-      stimulus: *full_field_gratings
+      stage: TRAINING_1
+      stimulus: *T1_full_field_gratings
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_2_gratings_flashed_10uL_reward:
+  TRAINING_2:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
       <<: *flash_parameters
-      stage: TRAINING_2_gratings_flashed_10uL_reward
-      task_id: DoC
+      stage: TRAINING_2
+      stimulus: *T2_masked_gratings
 
-      stimulus: *full_field_gratings
-      free_reward_trials: 10
-
-      # rewards (mL)
-      reward_volume: 0.01
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  TRAINING_3_images_A_10uL_reward:
+  TRAINING_3:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_3_images_A_10uL_reward
+      <<: *flash_parameters
+      stage: TRAINING_3
+      stimulus: *T3_masked_gratings
+      
 
-      # rewards (mL)
-      reward_volume: 0.01
-      free_reward_trials: 10
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  TRAINING_4_images_A_training_7uL_reward:
+  TRAINING_4:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_training_7uL_reward
+      <<: *flash_parameters
+      stage: TRAINING_4
+      stimulus: *T4_masked_gratings
 
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  TRAINING_5_images_A_epilogue_5uL_reward:
+  TRAINING_5:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_epilogue_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
+      <<: *flash_parameters
+      stage: TRAINING_5
+      stimulus: *T5_masked_gratings
 
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 300.0
+  TRAINING_6_handoff:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *flash_parameters
+      stage: TRAINING_6_handoff
+      stimulus: *T6_masked_gratings
+      
+  TRAINING_5_lapsed:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *flash_parameters
+      stage: TRAINING_5_lapsed
+      stimulus: *T5_masked_gratings
 
+  HABITUATION:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *flash_parameters
+      stage: HABITUATION
+      stimulus: *T6_masked_gratings
+      
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  TRAINING_5_images_A_handoff_ready_5uL_reward:
+  EPHYS:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_ready_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 300.0
-
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
-
-  TRAINING_5_images_A_handoff_lapsed_5uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
-    parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 300.0
-
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
-
-  HABITUATION_5_images_A_handoff_ready_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: HABITUATION_5_images_A_handoff_ready_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
-      free_reward_trials: 10
-      max_mapping_duration_min: 10
-      disable_replay: True
-      disable_opto: True
-      opto_params:
-        operation_mode: "experiment"
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  EPHYS_1_images_A_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_5uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  EPHYS_1_images_B_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_5uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  HABITUATION_5_images_A_handoff_ready_3uL:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: HABITUATION_5_images_A_handoff_ready_3uL
-      warm_up_trials: 5
-      reward_volume: 0.003
-      free_reward_trials: 10
-      max_mapping_duration_min: 10
-      disable_replay: True
-      disable_opto: True
-      opto_params:
-        operation_mode: "experiment"
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  EPHYS_1_images_A_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_3uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.003
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  EPHYS_1_images_B_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_3uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.003
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration
-      warm_up_trials: 5
-      reward_volume: 0.005
-      max_task_duration_min: 75.0
-      max_mapping_duration_min: 10
-      disable_replay: True
-      disable_opto: True
-      opto_params:
-        operation_mode: "experiment"
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  EPHYS_1_images_A_5uL_reward_75_min_duration:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_5uL_reward_75_min_duration
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_task_duration_min: 75.0
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  EPHYS_1_images_B_5uL_reward_75_min_duration:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_5uL_reward_75_min_duration
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_task_duration_min: 75.0
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
+      <<: *flash_parameters
+      stage: EPHYS
+      stimulus: *T6_masked_gratings
+      
