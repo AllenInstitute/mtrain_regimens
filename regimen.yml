@@ -135,7 +135,7 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.1.1
+name: VisualBehaviorEPHYS_Task1H_v0.0.1
 
 transitions:
   - trigger: progress
@@ -150,57 +150,57 @@ transitions:
 
   - trigger: progress
     source: TRAINING_2_gratings_flashed_10uL_reward
-    dest: TRAINING_3_images_G_10uL_reward
+    dest: TRAINING_3_images_H_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: TRAINING_3_images_G_10uL_reward
-    dest: TRAINING_4_images_G_training_7uL_reward
+    source: TRAINING_3_images_H_10uL_reward
+    dest: TRAINING_4_images_H_training_7uL_reward
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_4_images_G_training_7uL_reward
-    dest: TRAINING_5_images_G_epilogue_5uL_reward
+    source: TRAINING_4_images_H_training_7uL_reward
+    dest: TRAINING_5_images_H_epilogue_5uL_reward
     conditions: meets_engagement_criteria_logged
 
   - trigger: progress
-    source: TRAINING_5_images_G_epilogue_5uL_reward
-    dest: TRAINING_5_images_G_handoff_ready_5uL_reward
+    source: TRAINING_5_images_H_epilogue_5uL_reward
+    dest: TRAINING_5_images_H_handoff_ready_5uL_reward
     conditions: meets_engagement_and_hit_threshold
 
   - trigger: progress
-    source: TRAINING_5_images_G_handoff_ready_5uL_reward
-    dest: TRAINING_5_images_G_handoff_lapsed_5uL_reward
+    source: TRAINING_5_images_H_handoff_ready_5uL_reward
+    dest: TRAINING_5_images_H_handoff_lapsed_5uL_reward
     unless: meets_engagement_and_hit_threshold
 
   - trigger: progress
-    source: TRAINING_5_images_G_handoff_lapsed_5uL_reward
-    dest: TRAINING_5_images_G_handoff_ready_5uL_reward
+    source: TRAINING_5_images_H_handoff_lapsed_5uL_reward
+    dest: TRAINING_5_images_H_handoff_ready_5uL_reward
     conditions: meets_engagement_and_hit_threshold
 
   - trigger: manual
-    source: TRAINING_5_images_G_handoff_ready_5uL_reward
-    dest: HABITUATION_5_images_G_handoff_ready_5uL_reward
+    source: TRAINING_5_images_H_handoff_ready_5uL_reward
+    dest: HABITUATION_5_images_H_handoff_ready_5uL_reward
 
   - trigger: manual
-    source: HABITUATION_5_images_G_handoff_ready_5uL_reward
-    dest: EPHYS_1_images_G_5uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_G_5uL_reward
+    source: HABITUATION_5_images_H_handoff_ready_5uL_reward
     dest: EPHYS_1_images_H_5uL_reward
 
   - trigger: manual
-    source: TRAINING_5_images_G_handoff_ready_5uL_reward
-    dest: HABITUATION_5_images_G_handoff_ready_3uL_reward
+    source: EPHYS_1_images_H_5uL_reward
+    dest: EPHYS_1_images_G_5uL_reward
 
   - trigger: manual
-    source: HABITUATION_5_images_G_handoff_ready_3uL_reward
-    dest: EPHYS_1_images_G_3uL_reward
+    source: TRAINING_5_images_H_handoff_ready_5uL_reward
+    dest: HABITUATION_5_images_H_handoff_ready_3uL_reward
 
   - trigger: manual
-    source: EPHYS_1_images_G_3uL_reward
+    source: HABITUATION_5_images_H_handoff_ready_3uL_reward
     dest: EPHYS_1_images_H_3uL_reward
+
+  - trigger: manual
+    source: EPHYS_1_images_H_3uL_reward
+    dest: EPHYS_1_images_G_3uL_reward
 
 stages:
   TRAINING_0_gratings_autorewards_15min_0uL_reward:
@@ -258,12 +258,12 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_3_images_G_10uL_reward:
+  TRAINING_3_images_H_10uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_3_images_G_10uL_reward
+      <<: *image_set_h_parameters
+      stage: TRAINING_3_images_H_10uL_reward
 
       # rewards (mL)
       reward_volume: 0.01
@@ -272,22 +272,22 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_4_images_G_training_7uL_reward:
+  TRAINING_4_images_H_training_7uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_4_images_G_training_7uL_reward
+      <<: *image_set_h_parameters
+      stage: TRAINING_4_images_H_training_7uL_reward
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  TRAINING_5_images_G_epilogue_5uL_reward:
+  TRAINING_5_images_H_epilogue_5uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_5_images_G_epilogue_5uL_reward
+      <<: *image_set_h_parameters
+      stage: TRAINING_5_images_H_epilogue_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -297,12 +297,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  TRAINING_5_images_G_handoff_ready_5uL_reward:
+  TRAINING_5_images_H_handoff_ready_5uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_5_images_G_handoff_ready_5uL_reward
+      <<: *image_set_h_parameters
+      stage: TRAINING_5_images_H_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -312,12 +312,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  TRAINING_5_images_G_handoff_lapsed_5uL_reward:
+  TRAINING_5_images_H_handoff_lapsed_5uL_reward:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
     parameters:
-      <<: *image_set_g_parameters
-      stage: TRAINING_5_images_G_handoff_lapsed_5uL_reward
+      <<: *image_set_h_parameters
+      stage: TRAINING_5_images_H_handoff_lapsed_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
 
@@ -327,12 +327,12 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  HABITUATION_5_images_G_handoff_ready_5uL_reward:
+  HABITUATION_5_images_H_handoff_ready_5uL_reward:
     script: *replay_script
     script_md5: *replay_script_md5
     parameters:
-      <<: *replay_g_parameters
-      stage: HABITUATION_5_images_G_handoff_ready_5uL_reward
+      <<: *replay_h_parameters
+      stage: HABITUATION_5_images_H_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
       free_reward_trials: 10
@@ -371,12 +371,12 @@ stages:
       opto_params:
         operation_mode: "experiment"
 
-  HABITUATION_5_images_G_handoff_ready_3uL_reward:
+  HABITUATION_5_images_H_handoff_ready_3uL_reward:
     script: *replay_script
     script_md5: *replay_script_md5
     parameters:
-      <<: *replay_g_parameters
-      stage: HABITUATION_5_images_G_handoff_ready_3uL_reward
+      <<: *replay_h_parameters
+      stage: HABITUATION_5_images_H_handoff_ready_3uL_reward
       warm_up_trials: 5
       reward_volume: 0.003
       free_reward_trials: 10
