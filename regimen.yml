@@ -1,6 +1,6 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/phase4/phase4_1.py?at=74dcc3c300262872b202c1a692f7610636e5e80d
+_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/phase4/phase4_1.py?at=3bdcd200ba2de261e39acc29f326f1ec68148c7f
 
-_change_detection_script_md5: &change_detection_script_md5 53182b4ce7d311a24865738f741f5c04
+_change_detection_script_md5: &change_detection_script_md5 8b33c772f48bfe41d73109e786406c32
 
 _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
