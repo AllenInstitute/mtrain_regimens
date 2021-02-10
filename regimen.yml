@@ -212,7 +212,7 @@ _flash_parameters: &flash_parameters
   task_id: DoC-2
   timeout_duration: 0.3
   volume_limit: 5.0
-  warm_up_trials: 0
+  warm_up_trials: 5
 
   # start stop padding < 1 can cause a critcally breaking bug
   start_stop_padding: 1
@@ -322,9 +322,6 @@ stages:
       stage: TRAINING_1
       stimulus: *T1_full_field_gratings
 
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
   TRAINING_2:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
@@ -341,7 +338,6 @@ stages:
       stage: TRAINING_3
       stimulus: *T3_masked_gratings
       
-
   TRAINING_4:
     script: *change_detection_script
     script_md5: *change_detection_script_md5
