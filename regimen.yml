@@ -233,7 +233,7 @@ _no_flash_parameters: &no_flash_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: phase4_1_v0.0.0
+name: phase4_1_v0.0.1
 
 transitions:
   - trigger: progress
