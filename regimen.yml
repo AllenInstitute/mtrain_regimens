@@ -1,14 +1,14 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=c0ad6c3cec966ae089c83e784d868feb0dd60648
+_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=2ff2dc9e4393b81ba2d831cd07ca247dbef84aeb
 
-_change_detection_script_md5: &change_detection_script_md5 b5c001381bb20679d3125d2c2c094954
+_change_detection_script_md5: &change_detection_script_md5 9c18779b269d9ffaf4760b218cadc5a1
 
 _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=c53a62aa059d17dae3c65ab83bc9326cc0737d5a
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=58c191f1ca012fcfb38558691d66b23da102f664
 
-_replay_script_md5: &replay_script_md5 4fa0ec06a3015f1b618a6db30e259103
+_replay_script_md5: &replay_script_md5 ee0f394c15f7d7037eb2dfc0a9dc4fd0
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -135,7 +135,7 @@ _replay_h_parameters: &replay_h_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.1.1
+name: VisualBehaviorEPHYS_Task1G_v0.1.2
 
 transitions:
   - trigger: progress
