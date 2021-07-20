@@ -31,10 +31,10 @@ def hello(regimen_yml, stage, script_out, params_out, mouse):
     # print regimen.keys()
     # regimen =
     if stage is None:
-        print '\n'.join(regimen['stages'].keys())
+        print('\n'.join(regimen['stages'].keys()))
         stage = click.prompt('please select a stage', type=str)
 
-    print stage
+    print(stage)
 
     script_url = regimen['stages'][stage]['script']
     params = regimen['stages'][stage]['parameters']
@@ -52,7 +52,7 @@ def hello(regimen_yml, stage, script_out, params_out, mouse):
     if params_out is None:
         params_out = os.getcwd()
     params_dest = os.path.join(params_out,'{}_{}.json'.format(timestamp,stage))
-    with open(params_dest,'wb') as f:
+    with open(params_dest,'w', encoding="utf8") as f:
         json.dump(
             params,
             f,
