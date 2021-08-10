@@ -1,14 +1,14 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=c0ad6c3cec966ae089c83e784d868feb0dd60648
+_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=5adfa6e285774719135d0ebcba421f15f6f56168
 
-_change_detection_script_md5: &change_detection_script_md5 b5c001381bb20679d3125d2c2c094954
+_change_detection_script_md5: &change_detection_script_md5 410d697d666405eed63f72e4d3e189bb
 
 _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=c53a62aa059d17dae3c65ab83bc9326cc0737d5a
+_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=7fc7eda96c536b5b701241a27b8e0d2e7b30fd15
 
-_replay_script_md5: &replay_script_md5 4fa0ec06a3015f1b618a6db30e259103
+_replay_script_md5: &replay_script_md5 7627ba45e1554dccf1e0159217785dfa
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
