@@ -2,13 +2,9 @@ _change_detection_script: &change_detection_script http://stash.corp.alleninstit
 
 _change_detection_script_md5: &change_detection_script_md5 410d697d666405eed63f72e4d3e189bb
 
-_movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
+_experiment_script: &experiment_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/toggled_licks/experiment_script.py?at=cd1869d380352d066b63ffd443b7b1c5d88d881d
 
-_movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
-
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=7fc7eda96c536b5b701241a27b8e0d2e7b30fd15
-
-_replay_script_md5: &replay_script_md5 7627ba45e1554dccf1e0159217785dfa
+_experiment_script_md5: &experiment_script_md5 a32eb279dbe15a7cd52c140f60017297
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -36,6 +32,41 @@ _image_set_h_stimulus: &image_set_h
   luminance_matching_intensity: -0.46
   params:
     image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
+    sampling: even
+
+_image_set_day_0_stimulus: &_image_set_day_0
+  class: images
+  luminance_matching_intensity: -0.46
+  params:
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
+    sampling: even
+
+_image_set_day_1_stimulus: &_image_set_day_1
+  class: images
+  luminance_matching_intensity: -0.46
+  params:
+    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-1.pkl"
+    sampling: even
+
+_image_set_day_2_stimulus: &_image_set_day_2
+  class: images
+  luminance_matching_intensity: -0.46
+  params:
+    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-2.pkl"
+    sampling: even
+
+_image_set_day_3_stimulus: &_image_set_day_3
+  class: images
+  luminance_matching_intensity: -0.46
+  params:
+    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-3.pkl"
+    sampling: even
+
+_image_set_day_4_stimulus: &_image_set_day_4
+  class: images
+  luminance_matching_intensity: -0.46
+  params:
+    image_set: /"//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-4.pkl"
     sampling: even
 
 _mapping_movie_list: &mapping_movie_list
@@ -113,9 +144,9 @@ _image_set_h_parameters: &image_set_h_parameters
   stimulus: *image_set_h
   catch_frequency: null
 
-_replay_g_parameters: &replay_g_parameters
+_toggled_licks_parameters: &_toggled_licks_parameters
   <<: *flash_parameters
-  stimulus: *image_set_g
+  stimulus: *_image_set_day_0
   catch_frequency: null
   mapping:
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
@@ -123,19 +154,34 @@ _replay_g_parameters: &replay_g_parameters
   output_dir: C:/ProgramData/camstim/output
   agent_socket: "127.0.0.1:5000"
 
-_replay_h_parameters: &replay_h_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_h
-  catch_frequency: null
-  mapping:
-    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-  output_dir: C:/ProgramData/camstim/output
-  agent_socket: "127.0.0.1:5000"
+day_0_parameters: &_day_0_parameters
+  <<: *_toggled_licks_parameters
+  stimulus: *_image_set_day_0
+  reward_volume: 0.003
+
+day_1_parameters: &_day_1_parameters
+  <<: *_toggled_licks_parameters
+  stimulus: *_image_set_day_1
+  reward_volume: 0.003
+
+day_2_parameters: &_day_2_parameters
+  <<: *_toggled_licks_parameters
+  stimulus: *_image_set_day_2
+  reward_volume: 0.003
+
+day_3_parameters: &_day_3_parameters
+  <<: *_toggled_licks_parameters
+  stimulus: *_image_set_day_3
+  reward_volume: 0.003
+
+day_4_parameters: &_day_4_parameters
+  <<: *_toggled_licks_parameters
+  stimulus: *_image_set_day_4
+  reward_volume: 0.003
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.1.2
+name: VisualBehavior_Task1GH_v0.0.12
 
 transitions:
   - trigger: progress
@@ -184,11 +230,23 @@ transitions:
 
   - trigger: manual
     source: HABITUATION_5_images_G_handoff_ready_5uL_reward
-    dest: EPHYS_1_images_G_5uL_reward
+    dest: EPHYS_day_0
 
   - trigger: manual
-    source: EPHYS_1_images_G_5uL_reward
-    dest: EPHYS_1_images_H_5uL_reward
+    source: EPHYS_day_0
+    dest: EPHYS_day_1
+
+  - trigger: manual
+    source: EPHYS_day_1
+    dest: EPHYS_day_2
+
+  - trigger: manual
+    source: EPHYS_day_2
+    dest: EPHYS_day_3
+
+  - trigger: manual
+    source: EPHYS_day_3
+    dest: EPHYS_day_4
 
   - trigger: manual
     source: TRAINING_5_images_G_handoff_ready_5uL_reward
@@ -196,11 +254,23 @@ transitions:
 
   - trigger: manual
     source: HABITUATION_5_images_G_handoff_ready_3uL_reward
-    dest: EPHYS_1_images_G_3uL_reward
+    dest: EPHYS_day_0
 
   - trigger: manual
-    source: EPHYS_1_images_G_3uL_reward
-    dest: EPHYS_1_images_H_3uL_reward
+    source: EPHYS_day_0
+    dest: EPHYS_day_1
+
+  - trigger: manual
+    source: EPHYS_day_1
+    dest: EPHYS_day_2
+
+  - trigger: manual
+    source: EPHYS_day_2
+    dest: EPHYS_day_3
+
+  - trigger: manual
+    source: EPHYS_day_3
+    dest: EPHYS_day_4
 
 stages:
   TRAINING_0_gratings_autorewards_15min_0uL_reward:
@@ -328,10 +398,10 @@ stages:
       epilogue_list: *mapping_movie_list
 
   HABITUATION_5_images_G_handoff_ready_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+    script: *_experiment_script
+    script_md5: *_experiment_script_md5
     parameters:
-      <<: *replay_g_parameters
+      <<: *_toggled_licks_parameters
       stage: HABITUATION_5_images_G_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
@@ -345,12 +415,24 @@ stages:
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
 
-  EPHYS_1_images_G_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+  EPHYS_day_0:
+    script: *_experiment_script
+    script_md5: *_experiment_script_md5
     parameters:
-      <<: *replay_g_parameters
-      stage: EPHYS_1_images_G_5uL_reward
+      <<: *_day_0_parameters
+      stage: EPHYS_day_0
+      warm_up_trials: 3
+      flash_omit_probability: 0.05
+      max_mapping_duration_min: 35
+      opto_params:
+        operation_mode: "experiment"
+
+  EPHYS_day_1:
+    script: *_experiment_script
+    script_md5: *_experiment_script_md5
+    parameters:
+      <<: *_day_1_parameters
+      stage: EPHYS_day_1
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
@@ -358,12 +440,38 @@ stages:
       opto_params:
         operation_mode: "experiment"
 
-  EPHYS_1_images_H_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+  EPHYS_day_2:
+    script: *_experiment_script
+    script_md5: *_experiment_script_md5
     parameters:
-      <<: *replay_h_parameters
-      stage: EPHYS_1_images_H_5uL_reward
+      <<: *_day_2_parameters
+      stage: EPHYS_day_2
+      warm_up_trials: 3
+      flash_omit_probability: 0.05
+      reward_volume: 0.005
+      max_mapping_duration_min: 35
+      opto_params:
+        operation_mode: "experiment"
+
+  EPHYS_day_3:
+    script: *_experiment_script
+    script_md5: *_experiment_script_md5
+    parameters:
+      <<: *_day_3_parameters
+      stage: EPHYS_day_3
+      warm_up_trials: 3
+      flash_omit_probability: 0.05
+      reward_volume: 0.005
+      max_mapping_duration_min: 35
+      opto_params:
+        operation_mode: "experiment"
+
+  EPHYS_day_4:
+    script: *_experiment_script
+    script_md5: *_experiment_script_md5
+    parameters:
+      <<: *_day_4_parameters
+      stage: EPHYS_day_4
       warm_up_trials: 3
       flash_omit_probability: 0.05
       reward_volume: 0.005
@@ -372,10 +480,10 @@ stages:
         operation_mode: "experiment"
 
   HABITUATION_5_images_G_handoff_ready_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+    script: *experiment_script
+    script_md5: *experiment_script_md5
     parameters:
-      <<: *replay_g_parameters
+      <<: *_toggled_licks_parameters
       stage: HABITUATION_5_images_G_handoff_ready_3uL_reward
       warm_up_trials: 5
       reward_volume: 0.003
@@ -388,29 +496,3 @@ stages:
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 20.0
-
-  EPHYS_1_images_G_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_g_parameters
-      stage: EPHYS_1_images_G_3uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.003
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  EPHYS_1_images_H_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_h_parameters
-      stage: EPHYS_1_images_H_3uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.003
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
