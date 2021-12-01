@@ -2,7 +2,7 @@ _change_detection_script: &change_detection_script http://stash.corp.alleninstit
 
 _change_detection_script_md5: &change_detection_script_md5 410d697d666405eed63f72e4d3e189bb
 
-_experiment_script: &experiment_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/toggled_licks/experiment_script.py?at=cd1869d380352d066b63ffd443b7b1c5d88d881d
+_experiment_script: &experiment_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/toggled_licks/experiment_script.py?at=b1f860f9eb1bb88ca9e4ea9550b22e1e1913575e
 
 _experiment_script_md5: &experiment_script_md5 a32eb279dbe15a7cd52c140f60017297
 
@@ -38,7 +38,7 @@ _image_set_day_0_stimulus: &_image_set_day_0
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
+    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-0.pkl"
     sampling: even
 
 _image_set_day_1_stimulus: &_image_set_day_1
@@ -62,13 +62,6 @@ _image_set_day_3_stimulus: &_image_set_day_3
     image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-3.pkl"
     sampling: even
 
-_image_set_day_4_stimulus: &_image_set_day_4
-  class: images
-  luminance_matching_intensity: -0.46
-  params:
-    image_set: /"//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-4.pkl"
-    sampling: even
-
 _mapping_movie_list: &mapping_movie_list
   - name: gabor
     params:
@@ -85,7 +78,7 @@ _mapping_movie_list: &mapping_movie_list
       size: [1920, 1080]
 
 _flash_parameters: &flash_parameters
-  task_id: DoC
+  task_id: DoCFlash
 
   catch_frequency: 0.25
   failure_repeats: 5
@@ -110,6 +103,7 @@ _flash_parameters: &flash_parameters
   response_window: [0.15, 0.75]
   end_after_response: True
   end_after_response_sec: 3.5
+  start_stop_padding: 0.1
 
   # timing of changes
   change_time_dist: geometric
@@ -122,6 +116,7 @@ _flash_parameters: &flash_parameters
 
 _no_flash_parameters: &no_flash_parameters
   <<: *flash_parameters
+  task_id: DoCNoFlash
   periodic_flash: null
   response_window: [0.15, 1.0]
   reward_volume: 0.010
@@ -146,13 +141,16 @@ _image_set_h_parameters: &image_set_h_parameters
 
 _toggled_licks_parameters: &_toggled_licks_parameters
   <<: *flash_parameters
+  task_id: ToggledLicks
   stimulus: *_image_set_day_0
   catch_frequency: null
   mapping:
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
     gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-  output_dir: C:/ProgramData/camstim/output
+  output_dir: C:/Users/svc_neuropix/Desktop/toggled_licks_script_bundles
   agent_socket: "127.0.0.1:5000"
+  lick_disable_intervals: [900, 2400]
+  lick_on_auto_rewards: 5
 
 day_0_parameters: &_day_0_parameters
   <<: *_toggled_licks_parameters
