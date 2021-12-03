@@ -38,24 +38,31 @@ _image_set_day_0_stimulus: &_image_set_day_0
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-0.pkl"
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
     sampling: even
 
 _image_set_day_1_stimulus: &_image_set_day_1
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-1.pkl"
+    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-0.pkl"
     sampling: even
 
 _image_set_day_2_stimulus: &_image_set_day_2
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-2.pkl"
+    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-1.pkl"
     sampling: even
 
 _image_set_day_3_stimulus: &_image_set_day_3
+  class: images
+  luminance_matching_intensity: -0.46
+  params:
+    image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-2.pkl"
+    sampling: even
+
+_image_set_day_4_stimulus: &_image_set_day_4
   class: images
   luminance_matching_intensity: -0.46
   params:
@@ -179,7 +186,7 @@ day_4_parameters: &_day_4_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehavior_Task1GH_v0.0.12
+name: DynamicRouting_Task1_GH_v0.0.2
 
 transitions:
   - trigger: progress
