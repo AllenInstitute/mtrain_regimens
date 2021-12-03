@@ -30,9 +30,9 @@ _snr_7_script: &snr_7_script http://stash.corp.alleninstitute.org/projects/VB/re
 
 _snr_7_script_md5: &snr_7_script_md5 2cb4710b61a8d08180221a18bfda9aa0
 
-_snr_8_script: &snr_8_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_8.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
+_snr_8_script: &snr_8_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_8.py?at=3b5fc3507737be94c102b8f07074ddd68bbb065f
 
-_snr_8_script_md5: &snr_8_script_md5 a0dd0818b451483940f28ca6a23cf139
+_snr_8_script_md5: &snr_8_script_md5 58a215ede61e5c2f6762b3c584444be8
 
 _snr_9_script: &snr_9_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_9.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
 
@@ -40,7 +40,7 @@ _snr_9_script_md5: &snr_9_script_md5 7a3cc57da1a826f17b15375c06d550c1
 
 ### mtrain definitions
 
-name: VisualCoding_Snr_v1.0.7
+name: VisualCoding_Snr_v1.0.8
 
 transitions:
   - trigger: manual
