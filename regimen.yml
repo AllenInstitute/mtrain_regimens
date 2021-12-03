@@ -186,7 +186,7 @@ _day_4_parameters: &day_4_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: DynamicRouting_Task1_GH_v0.0.2
+name: DynamicRouting_Task1_GH_v0.0.3
 
 transitions:
   - trigger: progress
