@@ -186,7 +186,7 @@ _day_4_parameters: &day_4_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: DynamicRouting_Task1_GH_v0.0.3
+name: DynamicRouting_Task1_GH_v0.0.5
 
 transitions:
   - trigger: progress
@@ -261,22 +261,6 @@ transitions:
     source: HABITUATION_5_images_G_handoff_ready_3uL_reward
     dest: EPHYS_day_0
 
-  - trigger: manual
-    source: EPHYS_day_0
-    dest: EPHYS_day_1
-
-  - trigger: manual
-    source: EPHYS_day_1
-    dest: EPHYS_day_2
-
-  - trigger: manual
-    source: EPHYS_day_2
-    dest: EPHYS_day_3
-
-  - trigger: manual
-    source: EPHYS_day_3
-    dest: EPHYS_day_4
-
 stages:
   TRAINING_0_gratings_autorewards_15min_0uL_reward:
     script: *change_detection_script
@@ -322,7 +306,6 @@ stages:
     parameters:
       <<: *flash_parameters
       stage: TRAINING_2_gratings_flashed_10uL_reward
-      task_id: DoC
 
       stimulus: *full_field_gratings
       free_reward_trials: 10
