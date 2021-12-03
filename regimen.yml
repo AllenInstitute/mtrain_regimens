@@ -34,35 +34,35 @@ _image_set_h_stimulus: &image_set_h
     image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
     sampling: even
 
-_image_set_day_0_stimulus: &_image_set_day_0
+_image_set_day_0_stimulus: &image_set_day_0
   class: images
   luminance_matching_intensity: -0.46
   params:
     image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
     sampling: even
 
-_image_set_day_1_stimulus: &_image_set_day_1
+_image_set_day_1_stimulus: &image_set_day_1
   class: images
   luminance_matching_intensity: -0.46
   params:
     image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-0.pkl"
     sampling: even
 
-_image_set_day_2_stimulus: &_image_set_day_2
+_image_set_day_2_stimulus: &image_set_day_2
   class: images
   luminance_matching_intensity: -0.46
   params:
     image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-1.pkl"
     sampling: even
 
-_image_set_day_3_stimulus: &_image_set_day_3
+_image_set_day_3_stimulus: &image_set_day_3
   class: images
   luminance_matching_intensity: -0.46
   params:
     image_set: "//allen/programs/braintv/workgroups/nc-ophys/corbettb/Task 2B engagement/stimuli/image-set-day-2.pkl"
     sampling: even
 
-_image_set_day_4_stimulus: &_image_set_day_4
+_image_set_day_4_stimulus: &image_set_day_4
   class: images
   luminance_matching_intensity: -0.46
   params:
@@ -146,10 +146,10 @@ _image_set_h_parameters: &image_set_h_parameters
   stimulus: *image_set_h
   catch_frequency: null
 
-_toggled_licks_parameters: &_toggled_licks_parameters
+_toggled_licks_parameters: &toggled_licks_parameters
   <<: *flash_parameters
   task_id: ToggledLicks
-  stimulus: *_image_set_day_0
+  stimulus: *image_set_day_0
   catch_frequency: null
   mapping:
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
@@ -159,29 +159,29 @@ _toggled_licks_parameters: &_toggled_licks_parameters
   lick_disable_intervals: [900, 2400]
   lick_on_auto_rewards: 5
 
-day_0_parameters: &_day_0_parameters
-  <<: *_toggled_licks_parameters
-  stimulus: *_image_set_day_0
+_day_0_parameters: &day_0_parameters
+  <<: *toggled_licks_parameters
+  stimulus: *image_set_day_0
   reward_volume: 0.003
 
-day_1_parameters: &_day_1_parameters
-  <<: *_toggled_licks_parameters
-  stimulus: *_image_set_day_1
+_day_1_parameters: &day_1_parameters
+  <<: *toggled_licks_parameters
+  stimulus: *image_set_day_1
   reward_volume: 0.003
 
-day_2_parameters: &_day_2_parameters
-  <<: *_toggled_licks_parameters
-  stimulus: *_image_set_day_2
+_day_2_parameters: &day_2_parameters
+  <<: *toggled_licks_parameters
+  stimulus: *image_set_day_2
   reward_volume: 0.003
 
-day_3_parameters: &_day_3_parameters
-  <<: *_toggled_licks_parameters
-  stimulus: *_image_set_day_3
+_day_3_parameters: &day_3_parameters
+  <<: *toggled_licks_parameters
+  stimulus: *image_set_day_3
   reward_volume: 0.003
 
-day_4_parameters: &_day_4_parameters
-  <<: *_toggled_licks_parameters
-  stimulus: *_image_set_day_4
+_day_4_parameters: &day_4_parameters
+  <<: *toggled_licks_parameters
+  stimulus: *image_set_day_4
   reward_volume: 0.003
 
 ### mtrain definitions
@@ -403,10 +403,10 @@ stages:
       epilogue_list: *mapping_movie_list
 
   HABITUATION_5_images_G_handoff_ready_5uL_reward:
-    script: *_experiment_script
-    script_md5: *_experiment_script_md5
+    script: *experiment_script
+    script_md5: *experiment_script_md5
     parameters:
-      <<: *_toggled_licks_parameters
+      <<: *toggled_licks_parameters
       stage: HABITUATION_5_images_G_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
@@ -421,10 +421,10 @@ stages:
       start_padding_windowless: 20.0
 
   EPHYS_day_0:
-    script: *_experiment_script
-    script_md5: *_experiment_script_md5
+    script: *experiment_script
+    script_md5: *experiment_script_md5
     parameters:
-      <<: *_day_0_parameters
+      <<: *day_0_parameters
       stage: EPHYS_day_0
       warm_up_trials: 3
       flash_omit_probability: 0.05
@@ -433,10 +433,10 @@ stages:
         operation_mode: "experiment"
 
   EPHYS_day_1:
-    script: *_experiment_script
-    script_md5: *_experiment_script_md5
+    script: *experiment_script
+    script_md5: *experiment_script_md5
     parameters:
-      <<: *_day_1_parameters
+      <<: *day_1_parameters
       stage: EPHYS_day_1
       warm_up_trials: 3
       flash_omit_probability: 0.05
@@ -446,10 +446,10 @@ stages:
         operation_mode: "experiment"
 
   EPHYS_day_2:
-    script: *_experiment_script
-    script_md5: *_experiment_script_md5
+    script: *experiment_script
+    script_md5: *experiment_script_md5
     parameters:
-      <<: *_day_2_parameters
+      <<: *day_2_parameters
       stage: EPHYS_day_2
       warm_up_trials: 3
       flash_omit_probability: 0.05
@@ -459,10 +459,10 @@ stages:
         operation_mode: "experiment"
 
   EPHYS_day_3:
-    script: *_experiment_script
-    script_md5: *_experiment_script_md5
+    script: *experiment_script
+    script_md5: *experiment_script_md5
     parameters:
-      <<: *_day_3_parameters
+      <<: *day_3_parameters
       stage: EPHYS_day_3
       warm_up_trials: 3
       flash_omit_probability: 0.05
@@ -472,10 +472,10 @@ stages:
         operation_mode: "experiment"
 
   EPHYS_day_4:
-    script: *_experiment_script
-    script_md5: *_experiment_script_md5
+    script: *experiment_script
+    script_md5: *experiment_script_md5
     parameters:
-      <<: *_day_4_parameters
+      <<: *day_4_parameters
       stage: EPHYS_day_4
       warm_up_trials: 3
       flash_omit_probability: 0.05
@@ -488,7 +488,7 @@ stages:
     script: *experiment_script
     script_md5: *experiment_script_md5
     parameters:
-      <<: *_toggled_licks_parameters
+      <<: *toggled_licks_parameters
       stage: HABITUATION_5_images_G_handoff_ready_3uL_reward
       warm_up_trials: 5
       reward_volume: 0.003
