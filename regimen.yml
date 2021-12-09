@@ -156,7 +156,7 @@ _toggled_licks_parameters: &toggled_licks_parameters
     gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
   output_dir: C:/Users/svc_neuropix/Desktop/toggled_licks_script_bundles
   agent_socket: "127.0.0.1:5000"
-  lick_disable_intervals: [900, 2400]
+  lick_disable_intervals: [[900, 2400]]
   lick_on_auto_rewards: 5
 
 _day_0_parameters: &day_0_parameters
@@ -186,7 +186,7 @@ _day_4_parameters: &day_4_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: DynamicRouting_Task1_GH_v0.0.6
+name: DynamicRouting_Task1_GH_v0.0.7
 
 transitions:
   - trigger: progress
