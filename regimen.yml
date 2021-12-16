@@ -186,7 +186,7 @@ _day_4_parameters: &day_4_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: DynamicRouting_Task1_GH_v0.0.7
+name: DynamicRouting_Task1_GH_v0.0.8
 
 transitions:
   - trigger: progress
@@ -393,7 +393,6 @@ stages:
       stage: HABITUATION_5_images_G_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
-      free_reward_trials: 10
       max_mapping_duration_min: 10
       disable_replay: True
       disable_opto: True
@@ -475,7 +474,6 @@ stages:
       stage: HABITUATION_5_images_G_handoff_ready_3uL_reward
       warm_up_trials: 5
       reward_volume: 0.003
-      free_reward_trials: 10
       max_mapping_duration_min: 10
       disable_replay: True
       disable_opto: True
