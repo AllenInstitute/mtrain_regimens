@@ -1,141 +1,30 @@
-_snr_0_script: &snr_0_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_0.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
+_vipssn_0_script: &snr_0_script http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day0/SparseNoise_day0.py?at=dcf2b6696b7e43cef74f5c78833612af
 
-_snr_0_script_md5: &snr_0_script_md5 14beb09723844cd322d3fdb34c291557
+_vipssn_0_script_md5: &snr_0_script_md5 dcf2b6696b7e43cef74f5c78833612af
 
-_snr_1_script: &snr_1_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_1.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
+_vipssn_1_script: &snr_1_script http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=7aa443201bed11a14b40edbf900181a7
 
-_snr_1_script_md5: &snr_1_script_md5 e2fcfcfdc2e31c8563c5cf2acf1c81f0
+_vipssn_1_script_md5: &snr_1_script_md5 7aa443201bed11a14b40edbf900181a7
 
-_snr_2_script: &snr_2_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_2.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
-
-_snr_2_script_md5: &snr_2_script_md5 4972ab26e1e49c96bff6a8be14cba907
-
-_snr_3_script: &snr_3_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_3.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
-
-_snr_3_script_md5: &snr_3_script_md5 af04a5de98a6e2b77aaaa6f3804e3572
-
-_snr_4_script: &snr_4_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_4.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
-
-_snr_4_script_md5: &snr_4_script_md5 fbf43f8a0c4d0c6e60799857b27e022f
-
-_snr_5_script: &snr_5_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_5.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
-
-_snr_5_script_md5: &snr_5_script_md5 6876e922cd26fb784d2a3b823c7cfe17
-
-_snr_6_script: &snr_6_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_6.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
-
-_snr_6_script_md5: &snr_6_script_md5 a73ae68eb7ccf97489ab71bbfceda104
-
-_snr_7_script: &snr_7_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_7.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
-
-_snr_7_script_md5: &snr_7_script_md5 2cb4710b61a8d08180221a18bfda9aa0
-
-_snr_8_script: &snr_8_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_8.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
-
-_snr_8_script_md5: &snr_8_script_md5 a0dd0818b451483940f28ca6a23cf139
-
-_snr_9_script: &snr_9_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/snr/ten_session_movies/TenSessionClips_9.py?at=2b247ed3de67fd3bb61df38e5c41b104a42bdb45
-
-_snr_9_script_md5: &snr_9_script_md5 7a3cc57da1a826f17b15375c06d550c1
 
 ### mtrain definitions
 
-name: VisualCoding_Snr_v1.0.7
+name: VisualCoding_VipSsn_v1.0.0
 
 transitions:
   - trigger: manual
-    source: SNR_0
-    dest: SNR_1
-
-  - trigger: manual
-    source: SNR_1
-    dest: SNR_2
-
-  - trigger: manual
-    source: SNR_2
-    dest: SNR_3
-
-  - trigger: manual
-    source: SNR_3
-    dest: SNR_4
-
-  - trigger: manual
-    source: SNR_4
-    dest: SNR_5
-
-  - trigger: manual
-    source: SNR_5
-    dest: SNR_6
-
-  - trigger: manual
-    source: SNR_6
-    dest: SNR_7
-
-  - trigger: manual
-    source: SNR_7
-    dest: SNR_8
-
-  - trigger: manual
-    source: SNR_8
-    dest: SNR_9
+    source: VipSsn_0
+    dest: VipSsn_1
 
 stages:
-  SNR_0:
-    script: *snr_0_script
-    script_md5: *snr_0_script_md5
+  VipSsn_0_rf_sweeps:
+    script: *vipssn_0_script
+    script_md5: *vipssn_0_script_md5
     parameters:
-      stage: SNR_0
+      stage: VipSsn_0
 
-  SNR_1:
-    script: *snr_1_script
-    script_md5: *snr_1_script_md5
+  VipSsn_1_size_contrast:
+    script: *vipssn_1_script
+    script_md5: *vipssn_1_script_md5
     parameters:
-      stage: SNR_1
-
-  SNR_2:
-    script: *snr_2_script
-    script_md5: *snr_2_script_md5
-    parameters:
-      stage: SNR_2
-
-  SNR_3:
-    script: *snr_3_script
-    script_md5: *snr_3_script_md5
-    parameters:
-      stage: SNR_3
-
-  SNR_4:
-    script: *snr_4_script
-    script_md5: *snr_4_script_md5
-    parameters:
-      stage: SNR_4
-
-  SNR_5:
-    script: *snr_5_script
-    script_md5: *snr_5_script_md5
-    parameters:
-      stage: SNR_5
-
-  SNR_6:
-    script: *snr_6_script
-    script_md5: *snr_6_script_md5
-    parameters:
-      stage: SNR_6
-
-  SNR_7:
-    script: *snr_7_script
-    script_md5: *snr_7_script_md5
-    parameters:
-      stage: SNR_7
-
-  SNR_8:
-    script: *snr_8_script
-    script_md5: *snr_8_script_md5
-    parameters:
-      stage: SNR_8
-
-  SNR_9:
-    script: *snr_9_script
-    script_md5: *snr_9_script_md5
-    parameters:
-      stage: SNR_9
+      stage: VipSsn_1
