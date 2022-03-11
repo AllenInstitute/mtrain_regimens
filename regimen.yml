@@ -1,10 +1,10 @@
-_vipssn_0_script: &snr_0_script http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day0/SparseNoise_day0.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
+_vipssn_0_script: &vipssn_0_script http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day0/SparseNoise_day0.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
 
-_vipssn_0_script_md5: &snr_0_script_md5 4a1feb73c6a2128760e8cd505ecb1e12
+_vipssn_0_script_md5: &vipssn_0_script_md5 4a1feb73c6a2128760e8cd505ecb1e12
 
-_vipssn_1_script: &snr_1_script http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
+_vipssn_1_script: &vipssn_1_script http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
 
-_vipssn_1_script_md5: &snr_1_script_md5 34040f965e7d1494e41be18d12753278
+_vipssn_1_script_md5: &vipssn_1_script_md5 34040f965e7d1494e41be18d12753278
 
 
 ### mtrain definitions
