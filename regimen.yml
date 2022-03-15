@@ -6,7 +6,7 @@ _script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visua
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualCoding_VipSsn_v1.0.0
+name: VisualCoding_VipSsn_v1.0.1
 
 transitions:
   - trigger: manual
