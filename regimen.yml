@@ -4,9 +4,11 @@ _script_0_md5: &script_0_md5 4a1feb73c6a2128760e8cd505ecb1e12
 
 _script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
 
+_script_1_md5: &script_1_md5 34040f965e7d1494e41be18d12753278
+
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualCoding_VipSsn_v1.0.1
+name: VisualCoding_VipSsn_v1.0.2
 
 transitions:
   - trigger: manual
