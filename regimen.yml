@@ -1,10 +1,8 @@
-_vipssn_0_script: &vipssn_0_script http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day0/SparseNoise_day0.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
+_script_0: &script_0 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day0/SparseNoise_day0.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
 
-_vipssn_0_script_md5: &vipssn_0_script_md5 4a1feb73c6a2128760e8cd505ecb1e12
+_script_0_md5: &script_0_md5 4a1feb73c6a2128760e8cd505ecb1e12
 
-_vipssn_1_script: &vipssn_1_script http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
-
-_vipssn_1_script_md5: &vipssn_1_script_md5 34040f965e7d1494e41be18d12753278
+_script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
@@ -12,17 +10,17 @@ name: VisualCoding_VipSsn_v1.0.0
 
 transitions:
   - trigger: manual
-    source: VipSsn_0
-    dest: VipSsn_1
+  source: STAGE_0
+  dest: STAGE_1
 
 stages:
-  VipSsn_0:
-    script: *vipssn_0_script
-    script_md5: *vipssn_0_script_md5
+  STAGE_0:
+    script: *script_0
+    script_md5: *script_0_md5
     parameters:
-      stage: VipSsn_0
-  VipSsn_1:
-    script: *vipssn_1_script
-    script_md5: *vipssn_1_script_md5
+      stage: STAGE_0
+  STAGE_1:
+    script: *script_1
+    script_md5: *script_1_md5
     parameters:
-      stage: VipSsn_1
+      stage: STAGE_1
