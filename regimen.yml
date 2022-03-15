@@ -17,13 +17,13 @@ transitions:
     dest: VipSsn_1
 
 stages:
-  VipSsn_0_rf_sweeps:
+  VipSsn_0:
     script: *vipssn_0_script
     script_md5: *vipssn_0_script_md5
     parameters:
       stage: VipSsn_0
 
-  VipSsn_1_size_contrast:
+  VipSsn_1:
     script: *vipssn_1_script
     script_md5: *vipssn_1_script_md5
     parameters:
