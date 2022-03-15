@@ -6,9 +6,8 @@ _vipssn_1_script: &vipssn_1_script http://stash.corp.alleninstitute.org/users/sa
 
 _vipssn_1_script_md5: &vipssn_1_script_md5 34040f965e7d1494e41be18d12753278
 
-
 ### mtrain definitions
-
+#based on VisualBehavior_Task1A_v1.0.3
 name: VisualCoding_VipSsn_v1.0.0
 
 transitions:
@@ -22,7 +21,6 @@ stages:
     script_md5: *vipssn_0_script_md5
     parameters:
       stage: VipSsn_0
-
   VipSsn_1:
     script: *vipssn_1_script
     script_md5: *vipssn_1_script_md5
