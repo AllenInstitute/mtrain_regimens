@@ -12,8 +12,8 @@ name: VisualCoding_VipSsn_v1.0.2
 
 transitions:
   - trigger: manual
-  source: STAGE_0
-  dest: STAGE_1
+    source: STAGE_0
+    dest: STAGE_1
 
 stages:
   STAGE_0:
