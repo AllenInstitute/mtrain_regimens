@@ -3,7 +3,7 @@ _resource_id: &resource_id bf8441cfa18d67accc173f72231989ae342091e9
 _gratings_stimulus: &gratings_stimulus
   class: gratings
   params:
-    SF: [0.04]
+    sf: 0.04
     size: [200, 150]
     units: deg
   groups:
@@ -15,7 +15,7 @@ _gratings_stimulus: &gratings_stimulus
       phase: [0.25]
 
 _parameters: &parameters
-  monitor: testMonitor
+  monitor: "Gamma1.Luminance50"
   auto_reward_delay: 0.6
   auto_reward_vol: 0.007
   catch_frequency: null
@@ -41,14 +41,14 @@ _parameters: &parameters
   timeout_duration: 0.3
   volume_limit: 5.0
   warm_up_trials: 1
-  explicit_monitor: testMonitor
+  explicit_monitor: "Gamma1.Luminance50"
   previous_consumption_change_flash_extension: 5.0
   allow_contiguous_holds: false
   auto_reward_hold_freq: 0.2
   consumption_window: null
 
 ### mtrain definitions
-name: AssociativeLearning_v0.0.1
+name: AssociativeLearning_v0.0.2
 
 transitions:
   # in case a transition is required by mtrain
