@@ -8,7 +8,7 @@ _script_1_md5: &script_1_md5 4a32f50639b895576579f157ab2ad247
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualCoding_VipSsn_v1.0.5
+name: VisualCoding_VipSsn_v1.0.6
 
 transitions:
   - trigger: manual
