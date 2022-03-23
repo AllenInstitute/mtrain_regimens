@@ -1,14 +1,14 @@
-_script_0: &script_0 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day0/SparseNoise_day0.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
+_script_0: &script_0 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day0/SparseNoise_day0.py?at=b0b070e2521247cbd178ecd70bbd42b65c397fd6
 
-_script_0_md5: &script_0_md5 3eef5b360f063baf33fbe280a6f9633e
+_script_0_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
 
-_script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=5422d7a6a385d311d39e866a42637b6a5a7c7a7a
+_script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=2da56e99faa6548152bc0a8388013e39ccc131d2
 
-_script_1_md5: &script_1_md5 ff6808267fd159de7b28c81349f02cd1
+_script_1_md5: &script_1_md5 4a32f50639b895576579f157ab2ad247
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualCoding_VipSsn_v1.0.4
+name: VisualCoding_VipSsn_v1.0.5
 
 transitions:
   - trigger: manual
