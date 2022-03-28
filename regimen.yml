@@ -1,4 +1,4 @@
-_resource_id: &resource_id bf8441cfa18d67accc173f72231989ae342091e9
+_resource_id: &resource_id bcd1d5d18f28dbc7df17b0eabfa2c2759de52d1c
 
 _gratings_stimulus: &gratings_stimulus
   class: gratings
@@ -48,7 +48,7 @@ _parameters: &parameters
   consumption_window: null
 
 ### mtrain definitions
-name: AssociativeLearning_v0.0.2
+name: AssociativeLearning_v0.0.3
 
 transitions:
   # in case a transition is required by mtrain
