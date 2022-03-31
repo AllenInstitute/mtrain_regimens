@@ -6,7 +6,7 @@ _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/pr
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_bi_script: &bi_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=7fc7eda96c536b5b701241a27b8e0d2e7b30fd15
+_bi_script: &bi_script SCRIPT_RESOURCE_ID_PLACEHOLDER
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -118,9 +118,10 @@ _base_even_sampling_stimulus_groups: &base_even_sampling_stimulus_groups
     contrast: [1.0, 0.7]
 
 _base_even_sampling_stimulus: &base_even_sampling_stimulus
+  flash_omit_probability: 0.05
   class: "images-params"
   params:
-    image_set: "//allen/programs/mindscope/workgroups/dynamicrouting/Task1/imageSets/dynamic_routing_image_set.pkl"
+    image_set: IMAGE_SET_RESOURCE_ID_PLACEHOLDER
 
 _even_sampling_parameters: &even_sampling_parameters
   omitted_go_reward_frequency: 0.0
@@ -128,12 +129,12 @@ _even_sampling_parameters: &even_sampling_parameters
   auto_reward_delay: 0.15
   auto_reward_vol: 0.005
   catch_frequency: 0.25
-  change_time_dist: exponential
-  change_time_scale: 2.0
+  change_time_dist: geometric
+  change_time_scale: 0.3
   failure_repeats: 5
   free_reward_trials: 10000
   max_task_duration_min: 65.0
-  min_no_lick_time: 0.3
+  min_no_lick_time: 0
   periodic_flash: [0.25, 0.5]
   pre_change_time: 2.25
   response_window: [0.15, 0.75]
@@ -146,11 +147,11 @@ _even_sampling_parameters: &even_sampling_parameters
   mapping:
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
     gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-  output_dir: C:/ProgramData/camstim/output
   agent_socket: "127.0.0.1:5000"
   warm_up_trials: 5
   reward_volume: 0.005
   max_mapping_duration_min: 10
+  disable_mapping_portion: False
   disable_opto_portion: True
   opto_params:  # required by code despite being disabled
     test_levels: True
@@ -159,7 +160,6 @@ _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
   <<: *even_sampling_parameters
   warm_up_trials: 3
   reward_volume: 0.005
-  free_reward_trials: 0
   flash_omit_probability: 0.05
   max_mapping_duration_min: 35
   disable_opto_portion: False
@@ -168,7 +168,7 @@ _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: Ephys_DynamicRouting_Task1_v0.0.1
+name: DynamicRouting_Task1_v0.0.1
 
 transitions:
   - trigger: progress
