@@ -118,7 +118,6 @@ _base_even_sampling_stimulus_groups: &base_even_sampling_stimulus_groups
     contrast: [1.0, 0.7]
 
 _base_even_sampling_stimulus: &base_even_sampling_stimulus
-  flash_omit_probability: 0.05
   class: "images-params"
   params:
     image_set: IMAGE_SET_RESOURCE_ID_PLACEHOLDER
@@ -129,6 +128,7 @@ _even_sampling_parameters: &even_sampling_parameters
   auto_reward_delay: 0.15
   auto_reward_vol: 0.005
   catch_frequency: 0.25
+  flash_omit_probability: 0.05
   change_time_dist: geometric
   change_time_scale: 0.3
   failure_repeats: 5
