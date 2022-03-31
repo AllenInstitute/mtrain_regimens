@@ -6,9 +6,7 @@ _movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/pr
 
 _movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
 
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=7fc7eda96c536b5b701241a27b8e0d2e7b30fd15
-
-_replay_script_md5: &replay_script_md5 7627ba45e1554dccf1e0159217785dfa
+_bi_script: &bi_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=7fc7eda96c536b5b701241a27b8e0d2e7b30fd15
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -113,29 +111,64 @@ _image_set_h_parameters: &image_set_h_parameters
   stimulus: *image_set_h
   catch_frequency: null
 
-_replay_g_parameters: &replay_g_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_g
-  catch_frequency: null
-  mapping:
-    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-  output_dir: C:/ProgramData/camstim/output
-  agent_socket: "127.0.0.1:5000"
+_base_even_sampling_stimulus_groups: &base_even_sampling_stimulus_groups
+  im047_r:
+    contrast: [1.0]
+  im115_r:
+    contrast: [1.0, 0.7]
 
-_replay_h_parameters: &replay_h_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_h
-  catch_frequency: null
+_base_even_sampling_stimulus: &base_even_sampling_stimulus
+  class: "images-params"
+  params:
+    image_set: "//allen/programs/mindscope/workgroups/dynamicrouting/Task1/imageSets/dynamic_routing_image_set.pkl"
+
+_even_sampling_parameters: &even_sampling_parameters
+  omitted_go_reward_frequency: 0.0
+  random_rewards: {}
+  auto_reward_delay: 0.15
+  auto_reward_vol: 0.005
+  catch_frequency: 0.25
+  change_time_dist: exponential
+  change_time_scale: 2.0
+  failure_repeats: 5
+  free_reward_trials: 10000
+  max_task_duration_min: 65.0
+  min_no_lick_time: 0.3
+  periodic_flash: [0.25, 0.5]
+  pre_change_time: 2.25
+  response_window: [0.15, 0.75]
+  start_stop_padding: 10.0
+  stimulus_window: 6.0
+  task_id: DoC
+  timeout_duration: 0.3
+  volume_limit: 5.0
+  lick_disable_intervals: [[900,2400]]
   mapping:
     flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
     gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
   output_dir: C:/ProgramData/camstim/output
   agent_socket: "127.0.0.1:5000"
+  warm_up_trials: 5
+  reward_volume: 0.005
+  max_mapping_duration_min: 10
+  disable_opto_portion: True
+  opto_params:  # required by code despite being disabled
+    test_levels: True
+
+_even_sampling_ephys_parameters: &even_sampling_ephys_parameters
+  <<: *even_sampling_parameters
+  warm_up_trials: 3
+  reward_volume: 0.005
+  free_reward_trials: 0
+  flash_omit_probability: 0.05
+  max_mapping_duration_min: 35
+  disable_opto_portion: False
+  opto_params:
+    operation_mode: "experiment"
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1G_v0.1.2
+name: Ephys_DynamicRouting_Task1_v0.0.1
 
 transitions:
   - trigger: progress
@@ -180,27 +213,91 @@ transitions:
 
   - trigger: manual
     source: TRAINING_5_images_G_handoff_ready_5uL_reward
-    dest: HABITUATION_5_images_G_handoff_ready_5uL_reward
+    dest: HABITUATION_1
 
-  - trigger: manual
-    source: HABITUATION_5_images_G_handoff_ready_5uL_reward
-    dest: EPHYS_1_images_G_5uL_reward
+  - trigger: progress
+    source: HABITUATION_1
+    dest: HABITUATION_2
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_2
+    dest: HABITUATION_3
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_3
+    dest: HABITUATION_4
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_4
+    dest: HABITUATION_5
+    conditions: one_complete
 
+  - trigger: progress
+    source: HABITUATION_5
+    dest: HABITUATION_6
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_6
+    dest: HABITUATION_7
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_7
+    dest: HABITUATION_8
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_8
+    dest: HABITUATION_9
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_9
+    dest: HABITUATION_10
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_10
+    dest: HABITUATION_11
+    conditions: one_complete
+  
+  - trigger: progress
+    source: HABITUATION_11
+    dest: HABITUATION_12
+    conditions: one_complete
+  
   - trigger: manual
-    source: EPHYS_1_images_G_5uL_reward
-    dest: EPHYS_1_images_H_5uL_reward
+    source: HABITUATION_12
+    dest: EPHYS_1
 
-  - trigger: manual
-    source: TRAINING_5_images_G_handoff_ready_5uL_reward
-    dest: HABITUATION_5_images_G_handoff_ready_3uL_reward
-
-  - trigger: manual
-    source: HABITUATION_5_images_G_handoff_ready_3uL_reward
-    dest: EPHYS_1_images_G_3uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_G_3uL_reward
-    dest: EPHYS_1_images_H_3uL_reward
+  - trigger: progress
+    source: EPHYS_1
+    dest: EPHYS_2
+    conditions: one_complete
+  
+  - trigger: progress
+    source: EPHYS_2
+    dest: EPHYS_3
+    conditions: one_complete
+  
+  - trigger: progress
+    source: EPHYS_3
+    dest: EPHYS_4
+    conditions: one_complete
+  
+  - trigger: progress
+    source: EPHYS_4
+    dest: EPHYS_5
+    conditions: one_complete
+  
+  - trigger: progress
+    source: EPHYS_5
+    dest: EPHYS_6
+    conditions: one_complete
 
 stages:
   TRAINING_0_gratings_autorewards_15min_0uL_reward:
@@ -327,90 +424,236 @@ stages:
       # play list of movies mimicking a mapping session
       epilogue_list: *mapping_movie_list
 
-  HABITUATION_5_images_G_handoff_ready_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+  # break
+  HABITUATION_1:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
     parameters:
-      <<: *replay_g_parameters
-      stage: HABITUATION_5_images_G_handoff_ready_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
-      free_reward_trials: 10
-      max_mapping_duration_min: 10
-      disable_replay: True
-      disable_opto: True
-      opto_params:
-        operation_mode: "experiment"
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  EPHYS_1_images_G_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im000_r:
+            contrast: [1.0]
+      stage: HABITUATION_1
+  
+  HABITUATION_2:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
     parameters:
-      <<: *replay_g_parameters
-      stage: EPHYS_1_images_G_5uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im031_r:
+            contrast: [1.0]
+      stage: HABITUATION_2
 
-  EPHYS_1_images_H_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+  HABITUATION_3:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
     parameters:
-      <<: *replay_h_parameters
-      stage: EPHYS_1_images_H_5uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  HABITUATION_5_images_G_handoff_ready_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im045_r:
+            contrast: [1.0]
+      stage: HABITUATION_3
+  
+  HABITUATION_4:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
     parameters:
-      <<: *replay_g_parameters
-      stage: HABITUATION_5_images_G_handoff_ready_3uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.003
-      free_reward_trials: 10
-      max_mapping_duration_min: 10
-      disable_replay: True
-      disable_opto: True
-      opto_params:
-        operation_mode: "experiment"
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  EPHYS_1_images_G_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im054_r:
+            contrast: [1.0]
+      stage: HABITUATION_4
+  
+  HABITUATION_5:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
     parameters:
-      <<: *replay_g_parameters
-      stage: EPHYS_1_images_G_3uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.003
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  EPHYS_1_images_H_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im073_r:
+            contrast: [1.0]
+      stage: HABITUATION_5
+  
+  HABITUATION_6:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
     parameters:
-      <<: *replay_h_parameters
-      stage: EPHYS_1_images_H_3uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.003
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im106_r:
+            contrast: [1.0]
+      stage: HABITUATION_6
+  
+  HABITUATION_7:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im008_r:
+            contrast: [1.0]
+      stage: HABITUATION_7
+
+  HABITUATION_8:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im029_r:
+            contrast: [1.0]
+      stage: HABITUATION_8
+  
+  HABITUATION_9:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_parameters
+      stimulus:
+        groups:
+          <<: *base_even_sampling_groups
+          im040_r:
+            contrast: [1.0]
+      stage: HABITUATION_9
+
+  HABITUATION_10:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im046_r:
+            contrast: [1.0]
+      stage: HABITUATION_10
+  
+  HABITUATION_11:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im037_r:
+            contrast: [1.0]
+      stage: HABITUATION_11
+
+  HABITUATION_12:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im053_r:
+            contrast: [1.0]
+      stage: HABITUATION_12
+
+  EPHYS_1:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_ephys_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im104_r:
+            contrast: [1.0]
+      stage: EPHYS_1
+
+  EPHYS_2:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_ephys_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im114_r:
+            contrast: [1.0]
+      stage: EPHYS_2
+
+  EPHYS_3:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_ephys_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im005_r:
+            contrast: [1.0]
+      stage: EPHYS_3
+  
+  EPHYS_4:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_ephys_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im087_r:
+            contrast: [1.0]
+      stage: EPHYS_4
+
+  EPHYS_5:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_ephys_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im024_r:
+            contrast: [1.0]
+      stage: EPHYS_5
+  
+  EPHYS_6:
+    script: *bi_script
+    script_md5: *bi_script  # same if script is a resource id
+    parameters:
+      <<: *even_sampling_ephys_parameters
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        groups:
+          <<: *base_even_sampling_groups
+          im034_r:
+            contrast: [1.0]
+      stage: EPHYS_6
