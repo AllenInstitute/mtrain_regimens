@@ -119,6 +119,7 @@ _base_even_sampling_stimulus_groups: &base_even_sampling_stimulus_groups
 
 _base_even_sampling_stimulus: &base_even_sampling_stimulus
   class: "images-params"
+  luminance_matching_intensity: -0.46
   params:
     image_set: IMAGE_SET_RESOURCE_ID_PLACEHOLDER
 
