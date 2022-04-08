@@ -71,7 +71,6 @@ stages:
     script: *10min_cohort1_passive_training_cluster_script
     script_md5: *10min_cohort1_passive_training_cluster_script_md5
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
 
       # control number of repetition to make longer script
@@ -81,7 +80,6 @@ stages:
     script: *20min_cohort1_passive_training_cluster_script
     script_md5: *20min_cohort1_passive_training_cluster_script_md5
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
 
       # control number of repetition to make longer script
@@ -91,7 +89,6 @@ stages:
     script: *30min_cohort1_passive_training_cluster_script
     script_md5: *30min_cohort1_passive_training_cluster_script_md5
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
 
       # control number of repetition to make longer script
@@ -102,7 +99,6 @@ stages:
     script_md5: *40min_cohort1_passive_training_cluster_script_md5
     
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
 
       # control number of repetition to make longer script
@@ -113,7 +109,6 @@ stages:
     script_md5: *50min_cohort1_passive_training_cluster_script_md5
 
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
 
       # control number of repetition to make longer script
@@ -124,7 +119,6 @@ stages:
     script_md5: *60min_cohort1_passive_training_cluster_script
 
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
 
       # control number of repetition to make longer script
@@ -135,7 +129,6 @@ stages:
     script_md5: *90min_cohort1_passive_training_cluster_script_md5
 
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
 
       # control number of repetition to make longer script
@@ -146,7 +139,6 @@ stages:
     script_md5: *120min_cohort1_passive_training_cluster_script_md5
 
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
 
       # no optotagging
@@ -157,7 +149,6 @@ stages:
     script_md5: *120min_cohort1_passive_prod_ephys_script_md5
 
     parameters:
-      <<: *no_parameters
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
 
       # optotagging
