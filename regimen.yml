@@ -1,29 +1,29 @@
 _10min_cohort1_passive_training_cluster_script: &script_0 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-1-habituation-10min-drifting.py
-_10min_cohort1_passive_training_cluster_script_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
+_10min_cohort1_passive_training_cluster_script_md5: &script_0_md5 f941f20cb3a31735e295520be719d783
 
 _20min_cohort1_passive_training_cluster_script: &script_0 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-2-habituation-20min-drifting.py
-_20min_cohort1_passive_training_cluster_script_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
+_20min_cohort1_passive_training_cluster_script_md5: &script_0_md5 be706559e398309d01e06599ddf4eadc
 
 _30min_cohort1_passive_training_cluster_script: &script_0 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-3-habituation-30min-drifting.py
-_30min_cohort1_passive_training_cluster_script_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
+_30min_cohort1_passive_training_cluster_script_md5: &script_0_md5 0cb5d9866ea25f0064d388350d00d36d
 
 _40min_cohort1_passive_training_cluster_script: &script_0 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-4-habituation-40min-drifting.py
-_40min_cohort1_passive_training_cluster_script_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
+_40min_cohort1_passive_training_cluster_script_md5: &script_0_md5 c171ca1fb7f4d53a8f52f0004c9629fd
 
 _50min_cohort1_passive_training_cluster_script: &script_0 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-5-habituation-50min-drifting.py
-_50min_cohort1_passive_training_cluster_script_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
+_50min_cohort1_passive_training_cluster_script_md5: &script_0_md5 ad747ca993124766b60a1b1167b88145
 
 _60min_cohort1_passive_training_cluster_script: &script_0 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-6,7-habituation-60min-drifting.py
-_60min_cohort1_passive_training_cluster_script_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
+_60min_cohort1_passive_training_cluster_script_md5: &script_0_md5 c0927a81caeaa05fc2117968c02a3da2
 
 _90min_cohort1_passive_training_cluster_script: &script_0 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-8,9-habituation-90min-drifting.py
-_90min_cohort1_passive_training_cluster_script_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
+_90min_cohort1_passive_training_cluster_script_md5: &script_0_md5 75fc1dd5024d0ed3aef124d7f82a651c
 
 _120min_cohort1_passive_training_cluster_script: &script_0 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-10-habituation-120min-drifting.py
-_120min_cohort1_passive_training_cluster_script_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
+_120min_cohort1_passive_training_cluster_script_md5: &script_0_md5 641da3e4fe792d566f52e141fffc64e3
 
 _120min_cohort1_passive_prod_ephys_script: &script_1 https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/ephysrecording/cohort-1-day-11-ephysrecording-120min-drifting.py
-_120min_cohort1_passive_prod_ephys_script_md5: &script_1_md5 4a32f50639b895576579f157ab2ad247
+_120min_cohort1_passive_prod_ephys_script_md5: &script_1_md5 ca61eb586dfa59fc3b5fe1047790db7c
 
 
 ### mtrain definitions
