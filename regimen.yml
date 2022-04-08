@@ -22,7 +22,7 @@ _90min_cohort1_passive_training_cluster_script_md5: &90min_cohort1_passive_train
 _120min_cohort1_passive_training_cluster_script: &120min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-10-habituation-120min-drifting.py
 _120min_cohort1_passive_training_cluster_script_md5: &120min_cohort1_passive_training_cluster_script_md5 641da3e4fe792d566f52e141fffc64e3
 
-_120min_cohort1_passive_prod_ephys_script: &120min_cohort1_passive_prod_ephys_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/ephysrecording/cohort-1-day-11-ephysrecording-120min-drifting.py
+_120min_cohort1_passive_prod_ephys_script: &120min_cohort1_passive_prod_ephys_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/ef5f1f69fd364f1e63f843c09f7aa1d0cddfd912/pilot-scripts/cohort-1/ephysrecording/cohort-1-day-11-ephysrecording-120min-drifting.py
 _120min_cohort1_passive_prod_ephys_script_md5: &120min_cohort1_passive_prod_ephys_script_md5 ca61eb586dfa59fc3b5fe1047790db7c
 
 
