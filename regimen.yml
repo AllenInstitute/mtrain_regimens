@@ -27,7 +27,7 @@ _120min_cohort1_passive_prod_ephys_script_md5: &120min_cohort1_passive_prod_ephy
 
 
 ### mtrain definitions
-name: OpenScope_GlobalLocalOddball_v1.0.1
+name: OpenScope_GlobalLocalOddball_v1.0.2
 
 transitions:
   - trigger: progress
