@@ -63,7 +63,7 @@ transitions:
     dest: PASSIVE_EPHYS_HAB_120MIN_DAY5
 
   - trigger: manual
-    source: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
+    source: PASSIVE_EPHYS_HAB_120MIN_DAY5
     dest: PASSIVE_EPHYS_PROD_120MIN_DAY1
 
 stages:
