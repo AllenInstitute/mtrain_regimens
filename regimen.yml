@@ -27,7 +27,7 @@ _120min_cohort1_passive_prod_ephys_script_md5: &120min_cohort1_passive_prod_ephy
 
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort1_v1.0.3
+name: Openscope_GlobalLocalOdd_Cohort1_v1.0.4
 
 transitions:
   - trigger: progress
@@ -116,7 +116,7 @@ stages:
 
   PASSIVE_EPHYS_HAB_60MIN_DAY1_2:
     script: *60min_cohort1_passive_training_cluster_script
-    script_md5: *60min_cohort1_passive_training_cluster_script
+    script_md5: *60min_cohort1_passive_training_cluster_script_md5
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
