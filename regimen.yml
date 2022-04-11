@@ -1,5 +1,5 @@
 # dynamic routing task v1 development params
-# used for local script development with the camstim v2 api, TODO: add a version number? 
+# used for local script development with the camstim v2 api, TODO: add a version number?
 
 _change_detection_script: &change_detection_script change_detection_extended_v2.py
 
@@ -143,7 +143,7 @@ _even_sampling_parameters: &even_sampling_parameters
   task_id: DoC
   timeout_duration: 0.3
   volume_limit: 5.0
-  lick_disable_intervals: [[900,2400]]
+  lick_disable_intervals: [[900, 2400]]
   mapping:
     flash_path: flash_250ms.stim
     gabor_path: gabor_20_deg_250ms.stim
@@ -153,13 +153,12 @@ _even_sampling_parameters: &even_sampling_parameters
   max_mapping_duration_min: 10
   disable_mapping_portion: False
   disable_opto_portion: True
-  manifest_path: "\\allen\programs\braintv\workgroups\nc-ophys\1022\camstim-contrast-tests\v3\manifest-4x4.json"
-  opto_params:  # required by code despite being disabled
+  manifest_path: //allen/programs/braintv/workgroups/nc-ophys/1022/camstim-contrast-tests/v3/manifest-4x4.json
+  opto_params: # required by code despite being disabled
     test_levels: True
   initial_image_params:
     Image: "im047_r"
     contrast: 1.0
-
 
 _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
   <<: *even_sampling_parameters
@@ -172,7 +171,7 @@ _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
     operation_mode: "experiment"
 
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.2
+name: DynamicRouting_Task1_v0.0.3
 
 transitions:
   - trigger: progress
@@ -223,17 +222,17 @@ transitions:
     source: HABITUATION_1
     dest: HABITUATION_2
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_2
     dest: HABITUATION_3
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_3
     dest: HABITUATION_4
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_4
     dest: HABITUATION_5
@@ -243,37 +242,37 @@ transitions:
     source: HABITUATION_5
     dest: HABITUATION_6
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_6
     dest: HABITUATION_7
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_7
     dest: HABITUATION_8
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_8
     dest: HABITUATION_9
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_9
     dest: HABITUATION_10
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_10
     dest: HABITUATION_11
     conditions: one_complete
-  
+
   - trigger: progress
     source: HABITUATION_11
     dest: HABITUATION_12
     conditions: one_complete
-  
+
   - trigger: manual
     source: HABITUATION_12
     dest: EPHYS_1
@@ -282,22 +281,22 @@ transitions:
     source: EPHYS_1
     dest: EPHYS_2
     conditions: one_complete
-  
+
   - trigger: progress
     source: EPHYS_2
     dest: EPHYS_3
     conditions: one_complete
-  
+
   - trigger: progress
     source: EPHYS_3
     dest: EPHYS_4
     conditions: one_complete
-  
+
   - trigger: progress
     source: EPHYS_4
     dest: EPHYS_5
     conditions: one_complete
-  
+
   - trigger: progress
     source: EPHYS_5
     dest: EPHYS_6
@@ -431,7 +430,7 @@ stages:
   # break
   HABITUATION_1:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -441,10 +440,10 @@ stages:
           im000_r:
             contrast: [1.0]
       stage: HABITUATION_1
-  
+
   HABITUATION_2:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -457,7 +456,7 @@ stages:
 
   HABITUATION_3:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -467,10 +466,10 @@ stages:
           im045_r:
             contrast: [1.0]
       stage: HABITUATION_3
-  
+
   HABITUATION_4:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -480,10 +479,10 @@ stages:
           im054_r:
             contrast: [1.0]
       stage: HABITUATION_4
-  
+
   HABITUATION_5:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -493,10 +492,10 @@ stages:
           im073_r:
             contrast: [1.0]
       stage: HABITUATION_5
-  
+
   HABITUATION_6:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -506,10 +505,10 @@ stages:
           im106_r:
             contrast: [1.0]
       stage: HABITUATION_6
-  
+
   HABITUATION_7:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -522,7 +521,7 @@ stages:
 
   HABITUATION_8:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -532,10 +531,10 @@ stages:
           im029_r:
             contrast: [1.0]
       stage: HABITUATION_8
-  
+
   HABITUATION_9:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -547,7 +546,7 @@ stages:
 
   HABITUATION_10:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -557,10 +556,10 @@ stages:
           im046_r:
             contrast: [1.0]
       stage: HABITUATION_10
-  
+
   HABITUATION_11:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -573,7 +572,7 @@ stages:
 
   HABITUATION_12:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
       stimulus:
@@ -586,7 +585,7 @@ stages:
 
   EPHYS_1:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
       stimulus:
@@ -599,7 +598,7 @@ stages:
 
   EPHYS_2:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
       stimulus:
@@ -612,7 +611,7 @@ stages:
 
   EPHYS_3:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
       stimulus:
@@ -622,10 +621,10 @@ stages:
           im005_r:
             contrast: [1.0]
       stage: EPHYS_3
-  
+
   EPHYS_4:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
       stimulus:
@@ -638,7 +637,7 @@ stages:
 
   EPHYS_5:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
       stimulus:
@@ -648,10 +647,10 @@ stages:
           im024_r:
             contrast: [1.0]
       stage: EPHYS_5
-  
+
   EPHYS_6:
     script: *bi_script
-    script_md5: *bi_script  # same if script is a resource id
+    script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
       stimulus:
