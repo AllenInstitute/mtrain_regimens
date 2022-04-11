@@ -25,14 +25,14 @@ _image_set_g_stimulus: &image_set_g
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
     sampling: even
 
 _image_set_h_stimulus: &image_set_h
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
     sampling: even
 
 _mapping_movie_list: &mapping_movie_list
@@ -171,7 +171,7 @@ _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
     operation_mode: "experiment"
 
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.3
+name: DynamicRouting_Task1_v0.0.4
 
 transitions:
   - trigger: progress
