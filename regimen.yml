@@ -1,12 +1,11 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=5adfa6e285774719135d0ebcba421f15f6f56168
+# dynamic routing task v1 development params
+# used for local script development with the camstim v2 api, TODO: add a version number? 
 
-_change_detection_script_md5: &change_detection_script_md5 410d697d666405eed63f72e4d3e189bb
+_change_detection_script: &change_detection_script change_detection_extended_v2.py
 
-_movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
+_movie_clips_script: &movie_clips_script receptive_field_mapping_v2.py
 
-_movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
-
-_bi_script: &bi_script SCRIPT_RESOURCE_ID_PLACEHOLDER
+_bi_script: &bi_script bi_script_v2.py
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -26,28 +25,28 @@ _image_set_g_stimulus: &image_set_g
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
+    image_set: Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
     sampling: even
 
 _image_set_h_stimulus: &image_set_h
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
+    image_set: Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
     sampling: even
 
 _mapping_movie_list: &mapping_movie_list
   - name: gabor
     params:
       frame_length: 0.016666666666666666
-      movie_path: //allen/programs/braintv/workgroups/nc-ophys/1022/mapping_stim_movies/gabor-remastered-1576117355.npy
+      movie_path: gabor-remastered-1576117355.npy
       runs: 5 # 1 min each run
       size: [1920, 1080]
 
   - name: flash
     params:
       frame_length: 0.016666666666666666
-      movie_path: //allen/programs/braintv/workgroups/nc-ophys/1022/mapping_stim_movies/flash-remastered-1576272856.npy
+      movie_path: flash-remastered-1576272856.npy
       runs: 5 # 1 min each
       size: [1920, 1080]
 
@@ -111,7 +110,7 @@ _image_set_h_parameters: &image_set_h_parameters
   stimulus: *image_set_h
   catch_frequency: null
 
-_base_even_sampling_stimulus_groups: &base_even_sampling_stimulus_groups
+_base_even_sampling_stimulus_groups: &base_even_sampling_groups
   im047_r:
     contrast: [1.0]
   im115_r:
@@ -121,7 +120,7 @@ _base_even_sampling_stimulus: &base_even_sampling_stimulus
   class: "images-params"
   luminance_matching_intensity: -0.46
   params:
-    image_set: IMAGE_SET_RESOURCE_ID_PLACEHOLDER
+    image_set: "\\allen\programs\braintv\workgroups\nc-ophys\1022\dynamic-routing-task1\dynamic_routing_image_set.pkl"
 
 _even_sampling_parameters: &even_sampling_parameters
   omitted_go_reward_frequency: 0.0
@@ -146,16 +145,21 @@ _even_sampling_parameters: &even_sampling_parameters
   volume_limit: 5.0
   lick_disable_intervals: [[900,2400]]
   mapping:
-    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
+    flash_path: flash_250ms.stim
+    gabor_path: gabor_20_deg_250ms.stim
   agent_socket: "127.0.0.1:5000"
   warm_up_trials: 5
   reward_volume: 0.005
   max_mapping_duration_min: 10
   disable_mapping_portion: False
   disable_opto_portion: True
+  manifest_path: "\\allen\programs\braintv\workgroups\nc-ophys\1022\camstim-contrast-tests\v3\manifest-4x4.json"
   opto_params:  # required by code despite being disabled
     test_levels: True
+  initial_image_params:
+    Image: "im047_r"
+    contrast: 1.0
+
 
 _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
   <<: *even_sampling_parameters
@@ -168,7 +172,6 @@ _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
     operation_mode: "experiment"
 
 ### mtrain definitions
-#based on VisualBehavior_Task1A_v1.0.3
 name: DynamicRouting_Task1_v0.0.1
 
 transitions:
@@ -303,7 +306,7 @@ transitions:
 stages:
   TRAINING_0_gratings_autorewards_15min_0uL_reward:
     script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script_md5: *change_detection_script
     parameters:
       <<: *no_flash_parameters
       stage: TRAINING_0_gratings_autorewards_15min_0uL_reward
@@ -329,7 +332,7 @@ stages:
 
   TRAINING_1_gratings_10uL_reward:
     script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script_md5: *change_detection_script
     parameters:
       <<: *no_flash_parameters
       stage: TRAINING_1_gratings_10uL_reward
@@ -341,7 +344,7 @@ stages:
 
   TRAINING_2_gratings_flashed_10uL_reward:
     script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script_md5: *change_detection_script
     parameters:
       <<: *flash_parameters
       stage: TRAINING_2_gratings_flashed_10uL_reward
@@ -358,7 +361,7 @@ stages:
 
   TRAINING_3_images_G_10uL_reward:
     script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script_md5: *change_detection_script
     parameters:
       <<: *image_set_g_parameters
       stage: TRAINING_3_images_G_10uL_reward
@@ -372,7 +375,7 @@ stages:
 
   TRAINING_4_images_G_training_7uL_reward:
     script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script_md5: *change_detection_script
     parameters:
       <<: *image_set_g_parameters
       stage: TRAINING_4_images_G_training_7uL_reward
@@ -382,7 +385,7 @@ stages:
 
   TRAINING_5_images_G_epilogue_5uL_reward:
     script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script_md5: *change_detection_script
     parameters:
       <<: *image_set_g_parameters
       stage: TRAINING_5_images_G_epilogue_5uL_reward
@@ -397,7 +400,7 @@ stages:
 
   TRAINING_5_images_G_handoff_ready_5uL_reward:
     script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script_md5: *change_detection_script
     parameters:
       <<: *image_set_g_parameters
       stage: TRAINING_5_images_G_handoff_ready_5uL_reward
@@ -412,7 +415,7 @@ stages:
 
   TRAINING_5_images_G_handoff_lapsed_5uL_reward:
     script: *change_detection_script
-    script_md5: *change_detection_script_md5
+    script_md5: *change_detection_script
     parameters:
       <<: *image_set_g_parameters
       stage: TRAINING_5_images_G_handoff_lapsed_5uL_reward
