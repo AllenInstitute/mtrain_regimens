@@ -170,8 +170,13 @@ _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
   opto_params:
     operation_mode: "experiment"
 
+_bi_parameters: &bi_parameters
+  behavior_script: "even_sampling_script_v2.py"
+  mapping_script: "mapping_script_v2.py"
+  opto_script: "opto_tagging_v2.py"
+
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.4
+name: DynamicRouting_Task1_v0.0.5
 
 transitions:
   - trigger: progress
@@ -433,6 +438,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -446,6 +452,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -459,6 +466,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -472,6 +480,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -485,6 +494,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -498,6 +508,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -511,6 +522,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -524,6 +536,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -537,6 +550,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         groups:
           <<: *base_even_sampling_groups
@@ -549,6 +563,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -562,6 +577,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -575,6 +591,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -588,6 +605,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -601,6 +619,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -614,6 +633,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -627,6 +647,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -640,6 +661,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
@@ -653,6 +675,7 @@ stages:
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
+      <<: *bi_parameters
       stimulus:
         <<: *base_even_sampling_stimulus
         groups:
