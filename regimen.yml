@@ -1,5 +1,5 @@
 _10min_cohort1_passive_training_cluster_script: &10min_cohort1_passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/cohort-1/habituation/cohort-1-day-1-habituation-10min-drifting.py?at=7f9bca45df56e02389734e65383085c8b011127d
-_10min_cohort1_passive_training_cluster_script_md5: &10min_cohort1_passive_training_cluster_script_md5 f941f20cb3a31735e295520be719d783
+_10min_cohort1_passive_training_cluster_script_md5: &10min_cohort1_passive_training_cluster_script_md5 76d8a1ad058f259b4c63cc97b865c0a4
 
 _20min_cohort1_passive_training_cluster_script: &20min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-2-habituation-20min-drifting.py
 _20min_cohort1_passive_training_cluster_script_md5: &20min_cohort1_passive_training_cluster_script_md5 be706559e398309d01e06599ddf4eadc
@@ -27,7 +27,7 @@ _120min_cohort1_passive_prod_ephys_script_md5: &120min_cohort1_passive_prod_ephy
 
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort1_short_test_v3
+name: Openscope_GlobalLocalOdd_Cohort1_short_test_v4
 
 transitions:
   - trigger: progress
