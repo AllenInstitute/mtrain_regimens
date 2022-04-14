@@ -25,9 +25,11 @@ _120min_cohort1_passive_training_cluster_script_md5: &120min_cohort1_passive_tra
 _120min_cohort1_passive_prod_ephys_script: &120min_cohort1_passive_prod_ephys_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/ef5f1f69fd364f1e63f843c09f7aa1d0cddfd912/pilot-scripts/cohort-1/ephysrecording/cohort-1-day-11-ephysrecording-120min-drifting.py
 _120min_cohort1_passive_prod_ephys_script_md5: &120min_cohort1_passive_prod_ephys_script_md5 ca61eb586dfa59fc3b5fe1047790db7c
 
+_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/cohort-1/ephysrecording/opto-tagging-only.py?at=ced1c84e6b7ecabe40bb202581a31bab0cfed945
+_optotagging_script_md5: &optotagging_script_md5 731b1dc38fc7e46e2d01c5710e252795
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort1_short_test_v4
+name: Openscope_GlobalLocalOdd_Cohort1_short_test_v5
 
 transitions:
   - trigger: progress
@@ -65,6 +67,10 @@ transitions:
   - trigger: manual
     source: PASSIVE_EPHYS_HAB_120MIN_DAY5
     dest: PASSIVE_EPHYS_PROD_120MIN_DAY1
+
+  - trigger: manual
+    source: PASSIVE_EPHYS_PROD_120MIN_DAY1
+    dest: OPTOTAGGING_ONLY
 
 stages:
   PASSIVE_CLUSTER_HAB_10MIN_DAY6:
@@ -153,3 +159,15 @@ stages:
 
       # optotagging
       opto: true
+
+  OPTOTAGGING_ONLY:
+    script: *optotagging_script
+    script_md5: *optotagging_script_md5
+    parameters:
+      stage: OPTOTAGGING_ONLY
+
+      # optotagging      
+      disable_opto: False
+
+      opto_params: 
+        operation_mode: "experiment"
