@@ -25,14 +25,14 @@ _image_set_g_stimulus: &image_set_g
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
+    image_set: Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
     sampling: even
 
 _image_set_h_stimulus: &image_set_h
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
+    image_set: Natural_Images_Lum_Matched_set_ophys_H_2019.05.26.pkl
     sampling: even
 
 _mapping_movie_list: &mapping_movie_list
@@ -120,7 +120,7 @@ _base_even_sampling_stimulus: &base_even_sampling_stimulus
   class: "images-params"
   luminance_matching_intensity: -0.46
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/1022/dynamic-routing-task1/dynamic_routing_image_set.pkl
+    image_set: dynamic_routing_image_set.pkl
 
 _even_sampling_parameters: &even_sampling_parameters
   omitted_go_reward_frequency: 0.0
@@ -176,7 +176,7 @@ _bi_parameters: &bi_parameters
   opto_script: "opto_tagging_v2.py"
 
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.5
+name: DynamicRouting_Task1_v0.0.6
 
 transitions:
   - trigger: progress
