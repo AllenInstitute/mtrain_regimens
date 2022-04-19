@@ -1,35 +1,14 @@
-_10min_cohort1_passive_training_cluster_script: &10min_cohort1_passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/cohort-1/habituation/cohort-1-day-1-habituation-10min-drifting.py?at=7f9bca45df56e02389734e65383085c8b011127d
-_10min_cohort1_passive_training_cluster_script_md5: &10min_cohort1_passive_training_cluster_script_md5 76d8a1ad058f259b4c63cc97b865c0a4
+_passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-habituation-drifting.py?at=b6886c086569527123c8cee48c921336c876c7ca
+_passive_training_cluster_script_md5: &passive_training_cluster_script_md5 5f2ace77f11b7cb851b4057a826da638
 
-_20min_cohort1_passive_training_cluster_script: &20min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-2-habituation-20min-drifting.py
-_20min_cohort1_passive_training_cluster_script_md5: &20min_cohort1_passive_training_cluster_script_md5 be706559e398309d01e06599ddf4eadc
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-day-11-ephysrecording-120min-drifting.py?at=fcfc2065509ea1effeb8731835b5baf67be11a68
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 b3e0f721c4eafc3d4130ba53bcaa2007
 
-_30min_cohort1_passive_training_cluster_script: &30min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-3-habituation-30min-drifting.py
-_30min_cohort1_passive_training_cluster_script_md5: &30min_cohort1_passive_training_cluster_script_md5 0cb5d9866ea25f0064d388350d00d36d
-
-_40min_cohort1_passive_training_cluster_script: &40min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-4-habituation-40min-drifting.py
-_40min_cohort1_passive_training_cluster_script_md5: &40min_cohort1_passive_training_cluster_script_md5 c171ca1fb7f4d53a8f52f0004c9629fd
-
-_50min_cohort1_passive_training_cluster_script: &50min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-5-habituation-50min-drifting.py
-_50min_cohort1_passive_training_cluster_script_md5: &50min_cohort1_passive_training_cluster_script_md5 ad747ca993124766b60a1b1167b88145
-
-_60min_cohort1_passive_training_cluster_script: &60min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-6,7-habituation-60min-drifting.py
-_60min_cohort1_passive_training_cluster_script_md5: &60min_cohort1_passive_training_cluster_script_md5 c0927a81caeaa05fc2117968c02a3da2
-
-_90min_cohort1_passive_training_cluster_script: &90min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-8,9-habituation-90min-drifting.py
-_90min_cohort1_passive_training_cluster_script_md5: &90min_cohort1_passive_training_cluster_script_md5 75fc1dd5024d0ed3aef124d7f82a651c
-
-_120min_cohort1_passive_training_cluster_script: &120min_cohort1_passive_training_cluster_script https://raw.githubusercontent.com/westerberg-science/openscope-glo-stim/a9bec00ccf599907c6520965f3f0379db18cc782/pilot-scripts/cohort-1/habituation/cohort-1-day-10-habituation-120min-drifting.py
-_120min_cohort1_passive_training_cluster_script_md5: &120min_cohort1_passive_training_cluster_script_md5 641da3e4fe792d566f52e141fffc64e3
-
-_120min_cohort1_passive_prod_ephys_script: &120min_cohort1_passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/cohort-1/ephysrecording/cohort-1-day-11-ephysrecording-120min-drifting.py?at=74bcdd3cdd6ad498f8d2d257c0d44dc1d8d0b0e5
-_120min_cohort1_passive_prod_ephys_script_md5: &120min_cohort1_passive_prod_ephys_script_md5 80c02c0f3b05f414733daff239fdb448
-
-_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/cohort-1/ephysrecording/opto-tagging-only.py?at=ced1c84e6b7ecabe40bb202581a31bab0cfed945
+_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=fcfc2065509ea1effeb8731835b5baf67be11a68
 _optotagging_script_md5: &optotagging_script_md5 731b1dc38fc7e46e2d01c5710e252795
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort1_short_test_v6
+name: Openscope_GlobalLocalOdd_Cohort1_v1
 
 transitions:
   - trigger: progress
@@ -74,91 +53,96 @@ transitions:
 
 stages:
   PASSIVE_CLUSTER_HAB_10MIN_DAY6:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
-
-      # control number of repetition to make longer script
-      n_rep: 2
+      habituation_time_min: 9.6
+      cohort: 1
+      stimulus_drift_rate: 4.0
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
-
-      # control number of repetition to make longer script
-      n_rep: 5
+      habituation_time_min: 19.4
+      cohort: 1
+      stimulus_drift_rate: 4.0
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
-
-      # control number of repetition to make longer script
-      n_rep: 8
+      habituation_time_min: 29.0
+      cohort: 1
+      stimulus_drift_rate: 4.0
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
     
     parameters:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
-
-      # control number of repetition to make longer script
-      n_rep: 10
+      habituation_time_min:  38.8
+      cohort: 1
+      stimulus_drift_rate: 4.0
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
 
     parameters:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
-
-      # control number of repetition to make longer script
-      n_rep: 14
+      habituation_time_min: 48.6
+      cohort: 1
+      stimulus_drift_rate: 4.0
 
   PASSIVE_EPHYS_HAB_60MIN_DAY1_2:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
-
-      # control number of repetition to make longer script
-      durfac: 2
+      habituation_time_min: 58.4
+      cohort: 1
+      stimulus_drift_rate: 4.0
 
   PASSIVE_EPHYS_HAB_90MIN_DAY3_4:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
-
-      # control number of repetition to make longer script
-      durfac: 3
+      habituation_time_min: 88.0
+      cohort: 1
+      stimulus_drift_rate: 4.0
       
   PASSIVE_EPHYS_HAB_120MIN_DAY5:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
+      habituation_time_min: 117.4
+      cohort: 1
+      stimulus_drift_rate: 4.0
 
-      # no optotagging
-      opto: false
-      
   PASSIVE_EPHYS_PROD_120MIN_DAY1:
-    script: *10min_cohort1_passive_training_cluster_script
-    script_md5: *10min_cohort1_passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
 
     parameters:
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
+      cohort: 1
+      stimulus_drift_rate: 4.0
 
-      # optotagging
-      opto: true
+      # optotagging      
+      disable_opto: False
+
+      opto_params: 
+        operation_mode: "experiment"
 
   OPTOTAGGING_ONLY:
     script: *optotagging_script
