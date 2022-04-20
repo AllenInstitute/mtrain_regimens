@@ -1,17 +1,17 @@
 _passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_pilot.py?at=405a3c84ebfd97c4fbe452f08198a56d1f2ecee6
 _passive_training_cluster_script_md5: &passive_training_cluster_script_md5 76dc085a38d7322f7ef35a70df5245c0
 
-_passive_training_ephys_script: &passive_training_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_habit.py?at=92e7913f5d453e59cd6aa6d275e522788b110693
-_passive_training_ephys_script_md5: &passive_training_ephys_script_md5 381af3741e906398b29aec1b990187ed
+_passive_training_ephys_script: &passive_training_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_habit.py?at=7627975290d3f0a10f8793ce86ccd761f6e3f963
+_passive_training_ephys_script_md5: &passive_training_ephys_script_md5 05e379788f0d6533a7e1556450801b84
 
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_fullpipe.py?at=ed5ef5abfa2b7fce79ee7c9f2097a8dd9d2d366d
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 130739f6fa85e56957883a27a6fc534b
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_fullpipe.py?at=7627975290d3f0a10f8793ce86ccd761f6e3f963
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 ccda3458e682a550966899dd3c9ce0f7
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/opto-tagging-only.py?at=f33c884c53c598557a9b93b16191633243049a91
 _optotagging_script_md5: &optotagging_script_md5 fec596b7e8e1c2755d1696cedadd9990
 
 ### mtrain definitions
-name: Openscope_Illusion_v4
+name: Openscope_Illusion_v5
 
 transitions:
   - trigger: progress
