@@ -10,8 +10,11 @@ _passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 47f00d3a04b2a1917
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/opto-tagging-only.py?at=b030e4afe9ae3b97ec13a294d75f3f011f40284f
 _optotagging_script_md5: &optotagging_script_md5 58ff3bbc5f64c142742bfce948b4f99a
 
+_visual_test_optotagging_script: &visual_test_optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_test_with_optotagging.py?at=54658f8f3b42a26d5e2ad8f36b215acf4ada8c27
+_visual_test_optotagging_script_md5: &visual_test_optotagging_script_md5 0a94feb8cfac3e860662263e8122e462
+
 ### mtrain definitions
-name: Openscope_Illusion_v8
+name: Openscope_Illusion_v9
 
 transitions:
   - trigger: progress
@@ -53,6 +56,10 @@ transitions:
   - trigger: manual
     source: PASSIVE_EPHYS_PROD_120MIN_DAY1
     dest: OPTOTAGGING_ONLY
+
+  - trigger: manual
+    source: OPTOTAGGING_ONLY
+    dest: VISUALTEST_OPTOTAGGING_ONLY
 
 stages:
   PASSIVE_CLUSTER_HAB_10MIN_DAY6:
@@ -168,6 +175,23 @@ stages:
     script_md5: *optotagging_script_md5
     parameters:
       stage: OPTOTAGGING_ONLY
+
+      # optotagging      
+      disable_opto: False
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  VISUALTEST_OPTOTAGGING_ONLY:
+    script: *visual_test_optotagging_script
+    script_md5: *visual_test_optotagging_script_md5
+    parameters:
+      stage: VISUALTEST_OPTOTAGGING_ONLY
+      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
+      monitor_name: "Gamma1.Luminance50"
+
+      # control number of repetition to make longer script
+      Nrep: 2
 
       # optotagging      
       disable_opto: False
