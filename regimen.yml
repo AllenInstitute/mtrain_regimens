@@ -1,14 +1,14 @@
-_passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-habituation-drifting.py?at=b6886c086569527123c8cee48c921336c876c7ca
-_passive_training_cluster_script_md5: &passive_training_cluster_script_md5 5f2ace77f11b7cb851b4057a826da638
+_passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-habituation-drifting.py?at=884770095caa92f71a24dbe88568275f1b421254
+_passive_training_cluster_script_md5: &passive_training_cluster_script_md5 ec9af9ac7e39295ac34bee0729a36756
 
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-day-11-ephysrecording-120min-drifting.py?at=fcfc2065509ea1effeb8731835b5baf67be11a68
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 b3e0f721c4eafc3d4130ba53bcaa2007
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-day-11-ephysrecording-120min-drifting.py?at=a71334e00151835c8614b1bd33410daf99770e93
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 240ed98b16a14c1041ccc8c70922374d
 
-_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=fcfc2065509ea1effeb8731835b5baf67be11a68
-_optotagging_script_md5: &optotagging_script_md5 731b1dc38fc7e46e2d01c5710e252795
+_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
+_optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort2_v1
+name: Openscope_GlobalLocalOdd_Cohort2_v2
 
 transitions:
   - trigger: progress
