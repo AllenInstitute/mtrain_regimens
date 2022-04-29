@@ -2,13 +2,13 @@ _script_0: &script_0 http://stash.corp.alleninstitute.org/users/sams/repos/visua
 
 _script_0_md5: &script_0_md5 676f99bef36d899c6aa276ca601c59d7
 
-_script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=214fb1c95bbb99591804cdb8b9d3bc68f0b38b28
+_script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/vip_stabilized_network/Phase_4_VIP_day1to9/SizeByContrast_day1to9.py?at=f0bfcf80984f2730b2d7da0f3c176291a1aa2697
 
-_script_1_md5: &script_1_md5 c45a89b0e339380aebe5b382b76affe5
+_script_1_md5: &script_1_md5 be10677a4553e5acaf415eb308995407
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualCoding_VipSsn_v1.0.7
+name: VisualCoding_VipSsn_v1.0.8
 
 transitions:
   - trigger: manual
