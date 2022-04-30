@@ -177,7 +177,7 @@ _bi_parameters: &bi_parameters
   opto_script: "opto_tagging_v2.py"
 
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.7
+name: DynamicRouting_Task1_v0.0.8
 
 transitions:
   - trigger: progress
@@ -440,19 +440,19 @@ stages:
 
   # break
   HABITUATION_0:
-    script: *bi_script
-    script_md5: *bi_script # same if script is a resource id
+    script: *change_detection_script
+    script_md5: *change_detection_script
     parameters:
-      <<: *even_sampling_parameters
-      <<: *bi_parameters
-      stimulus:
-        <<: *base_even_sampling_stimulus
-        start_stop_padding: 0.05
-        groups:
-          <<: *base_even_sampling_groups
-          im000_r:
-            contrast: [1.0]
+      <<: *image_set_g_parameters
       stage: HABITUATION_0
+      warm_up_trials: 5
+      reward_volume: 0.005
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 0.1
+
+      # play list of movies mimicking a mapping session
+      epilogue_list: *mapping_movie_list
 
   HABITUATION_1:
     script: *bi_script
