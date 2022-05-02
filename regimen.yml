@@ -1,11 +1,11 @@
-_passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_pilot.py?at=b4483d5e684a62a2a02ccae5b1259b8b91df6d9d
-_passive_training_cluster_script_md5: &passive_training_cluster_script_md5 9f5631b846fab562e76f9ceb35fa6774
+_passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_pilot.py?at=73b9bdcbed6c467dbbdca9bcd0e9ae18cf2ccc03
+_passive_training_cluster_script_md5: &passive_training_cluster_script_md5 bf348e6e0b55818f8fc4bf7b61999adb
 
-_passive_training_ephys_script: &passive_training_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_habit.py?at=b4483d5e684a62a2a02ccae5b1259b8b91df6d9d
-_passive_training_ephys_script_md5: &passive_training_ephys_script_md5 4ff8137f88e231492410ffde2a5f69e5
+_passive_training_ephys_script: &passive_training_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_habit.py?at=73b9bdcbed6c467dbbdca9bcd0e9ae18cf2ccc03
+_passive_training_ephys_script_md5: &passive_training_ephys_script_md5 7b7b5945b9fc51a3185628826be97ff8
 
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_fullpipe.py?at=b4483d5e684a62a2a02ccae5b1259b8b91df6d9d
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 910b3021126d7ee772ef40cf283c8112
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_fullpipe.py?at=73b9bdcbed6c467dbbdca9bcd0e9ae18cf2ccc03
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 659e45e612879b5b0ad01fb2f90983e3
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/opto-tagging-only.py?at=b4483d5e684a62a2a02ccae5b1259b8b91df6d9d
 _optotagging_script_md5: &optotagging_script_md5 1decc7c7dcf5f81ef976912ca58560e9
@@ -14,7 +14,7 @@ _visual_test_optotagging_script: &visual_test_optotagging_script http://stash.co
 _visual_test_optotagging_script_md5: &visual_test_optotagging_script_md5 1dc35094c4aeecb5b102a4a86663951f
 
 ### mtrain definitions
-name: Openscope_Illusion_v11
+name: Openscope_Illusion_v12
 
 transitions:
   - trigger: progress
@@ -71,7 +71,7 @@ stages:
       monitor_name: "Gamma1.Luminance50"
 
       # control number of repetition to make longer script
-      Nrep: 3
+      Nrep: 2
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
     script: *passive_training_cluster_script
@@ -82,7 +82,7 @@ stages:
       monitor_name: "Gamma1.Luminance50"
 
       # control number of repetition to make longer script
-      Nrep: 8
+      Nrep: 5
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
     script: *passive_training_cluster_script
@@ -93,7 +93,7 @@ stages:
       monitor_name: "Gamma1.Luminance50"
 
       # control number of repetition to make longer script
-      Nrep: 14
+      Nrep: 8
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
     script: *passive_training_cluster_script
@@ -105,7 +105,7 @@ stages:
       monitor_name: "Gamma1.Luminance50"
 
       # control number of repetition to make longer script
-      Nrep: 17
+      Nrep: 10
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
     script: *passive_training_cluster_script
@@ -117,7 +117,7 @@ stages:
       monitor_name: "Gamma1.Luminance50"
 
       # control number of repetition to make longer script
-      Nrep: 24
+      Nrep: 14
 
   PASSIVE_EPHYS_HAB_60MIN_DAY1_2:
     script: *passive_training_ephys_script
