@@ -1,14 +1,14 @@
-_passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-habituation-drifting.py?at=eb34a185e64b6977fe6762e6e40c0cd939c2cf4b
-_passive_training_cluster_script_md5: &passive_training_cluster_script_md5 dc9904310f368424fe8d3c59d3800e6d
+_passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-habituation-drifting.py?at=ac055d5057f77d0340bd43e3576d37d8c947a889
+_passive_training_cluster_script_md5: &passive_training_cluster_script_md5 46b7cd563de8978fe84ddfd18e34bbbf
 
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-day-11-ephysrecording-120min-drifting.py?at=eb34a185e64b6977fe6762e6e40c0cd939c2cf4b
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 e60f47cbbcbd424a38ee66f62a2cffe1
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-day-11-ephysrecording-120min-drifting.py?at=951b14226bfbe06797bf79ff505ff0469f4b79a3
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 895286b60a6434d51589522cbf918993
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort2_v3
+name: Openscope_GlobalLocalOdd_Cohort2_v4
 
 transitions:
   - trigger: progress
