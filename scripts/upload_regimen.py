@@ -56,12 +56,6 @@ def main(dry_run,username,password,regimen):
     if regimen_dict['name'] != regimen:
         raise Exception('Regimen name in regimen.yml (%s) does not match name provided: %s' % (regimen_dict['name'], regimen))
     
-    # Validate that stage scripts exist, and that md5 matches:
-    for stage_name, stage_dict in regimen_dict['stages'].items():
-        result = requests.get(stage_dict['script'])
-        if hashlib.md5(result.content).hexdigest() != stage_dict['script_md5']:
-            raise Exception('Script %s does not match md5 (%s) at stage %s' % (stage_dict['script'], stage_dict['script_md5'], stage_name))
-    
     # Double-check regimen stages and transitions match:
     transition_source_target_set = set()
     for t in regimen_dict['transitions']:
