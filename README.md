@@ -1,3 +1,7 @@
+# this branch is using the new regimen script system for camstim v2 api.
+
+For a guide for development using the camstim v2 api see [here](https://alleninstitute.sharepoint.com/sites/Instrumentation/SitePages/CAMStim_V2_API.aspx).
+
 # mtrain_regimens
 
 This repository contains training regimens for the Visual Behavior project.
