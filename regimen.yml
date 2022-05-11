@@ -49,7 +49,7 @@ _parameters: &parameters
   consumption_window: null
 
 ### mtrain definitions
-name: AssociativeLearning_v0.0.6
+name: AssociativeLearning_v0.0.7
 
 transitions:
   # in case a transition is required by mtrain
