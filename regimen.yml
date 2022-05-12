@@ -27,7 +27,7 @@ _parameters: &parameters
   end_after_response: true
   end_after_response_sec: 0.0
   failure_repeats: 5
-  flash_omit_probability: 0.0
+  flash_omit_probability: 0.05
   free_reward_trials: 1
   max_task_duration_min: 60.0
   max_trials: 2000
@@ -43,7 +43,7 @@ _parameters: &parameters
   volume_limit: 5.0
   warm_up_trials: 1
   explicit_monitor: "Gamma1.Luminance50"
-  previous_consumption_change_flash_extension: 0.0
+  previous_consumption_change_flash_extension: 5.0
   allow_contiguous_holds: false
   auto_reward_hold_freq: 0.2
   consumption_window: null
