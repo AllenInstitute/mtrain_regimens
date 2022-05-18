@@ -14,7 +14,7 @@ _visual_test_optotagging_script: &visual_test_optotagging_script http://stash.co
 _visual_test_optotagging_script_md5: &visual_test_optotagging_script_md5 cef5c89acdd2dd7d9e257713da409160
 
 ### mtrain definitions
-name: Openscope_Illusion_v13
+name: Openscope_Illusion_v14
 
 transitions:
   - trigger: progress
