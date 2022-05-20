@@ -4,17 +4,17 @@ _passive_training_cluster_script_md5: &passive_training_cluster_script_md5 9bf47
 _passive_training_ephys_script: &passive_training_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_habit.py?at=b12acd132215ea83b80f73ef58b0527178c4ac99
 _passive_training_ephys_script_md5: &passive_training_ephys_script_md5 cb1934874254b2c9e09d809fa57fb847
 
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_fullpipe.py?at=b12acd132215ea83b80f73ef58b0527178c4ac99
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 984cf073e19c534363c296e5db278afc
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_fullpipe.py?at=dad0e0899f5b72d496d89445b17cd0648a7e075a
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 ec08c227683d7da6316477a0d400f762
 
-_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/opto-tagging-only.py?at=f947a5d45c70aa11faf87e0d2e8e88eff0589df1
-_optotagging_script_md5: &optotagging_script_md5 6c21fbc11f22a670b00189ac81118f71
+_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/opto-tagging-only.py?at=dad0e0899f5b72d496d89445b17cd0648a7e075a
+_optotagging_script_md5: &optotagging_script_md5 7af419f532f5a2e03261b8b7fa19b8ca
 
-_visual_test_optotagging_script: &visual_test_optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_test_with_optotagging.py?at=f947a5d45c70aa11faf87e0d2e8e88eff0589df1
-_visual_test_optotagging_script_md5: &visual_test_optotagging_script_md5 cef5c89acdd2dd7d9e257713da409160
+_visual_test_optotagging_script: &visual_test_optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_test_with_optotagging.py?at=dad0e0899f5b72d496d89445b17cd0648a7e075a
+_visual_test_optotagging_script_md5: &visual_test_optotagging_script_md5 e9e8329d46a4489a71e0d2ec948e689d
 
 ### mtrain definitions
-name: Openscope_Illusion_v14
+name: Openscope_Illusion_v15
 
 transitions:
   - trigger: progress
