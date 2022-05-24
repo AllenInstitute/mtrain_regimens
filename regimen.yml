@@ -1,20 +1,9 @@
-_passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_pilot.py?at=b12acd132215ea83b80f73ef58b0527178c4ac99
-_passive_training_cluster_script_md5: &passive_training_cluster_script_md5 9bf47847f181b1580137fcc30a19c1ed
+_pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_dendritic_coupling/raw/pilot_scripts/full_pipeline_script.py?at=4a552b11ad767fb3360629724e02a1354f2d4014
+_pipeline_script_md5: &pipeline_script_md5 b70ee11dfeecd5e43fa1622cfe592d90
 
-_passive_training_ephys_script: &passive_training_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_habit.py?at=b12acd132215ea83b80f73ef58b0527178c4ac99
-_passive_training_ephys_script_md5: &passive_training_ephys_script_md5 cb1934874254b2c9e09d809fa57fb847
-
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_fullpipe.py?at=dad0e0899f5b72d496d89445b17cd0648a7e075a
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 ec08c227683d7da6316477a0d400f762
-
-_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/opto-tagging-only.py?at=dad0e0899f5b72d496d89445b17cd0648a7e075a
-_optotagging_script_md5: &optotagging_script_md5 7af419f532f5a2e03261b8b7fa19b8ca
-
-_visual_test_optotagging_script: &visual_test_optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/illusionopenscope/raw/illusion_stimulus_test_with_optotagging.py?at=dad0e0899f5b72d496d89445b17cd0648a7e075a
-_visual_test_optotagging_script_md5: &visual_test_optotagging_script_md5 e9e8329d46a4489a71e0d2ec948e689d
 
 ### mtrain definitions
-name: Openscope_Illusion_v15
+name: Openscope_DendriticCoupling_v1
 
 transitions:
   - trigger: progress
@@ -36,165 +25,128 @@ transitions:
     source: PASSIVE_CLUSTER_HAB_40MIN_DAY9
     dest: PASSIVE_CLUSTER_HAB_50MIN_DAY10
     conditions: one_complete
-  
+
   - trigger: manual
     source: PASSIVE_CLUSTER_HAB_50MIN_DAY10
-    dest: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
+    dest: PASSIVE_OPHYS_PROD_EXP_DAY11_15
 
   - trigger: manual
-    source: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
-    dest: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
+    source: PASSIVE_OPHYS_PROD_EXP_DAY11_15
+    dest: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
 
-  - trigger: manual
-    source: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
-    dest: PASSIVE_EPHYS_HAB_120MIN_DAY5
-
-  - trigger: manual
-    source: PASSIVE_EPHYS_HAB_120MIN_DAY5
-    dest: PASSIVE_EPHYS_PROD_120MIN_DAY1
-
-  - trigger: manual
-    source: PASSIVE_EPHYS_PROD_120MIN_DAY1
-    dest: OPTOTAGGING_ONLY
-
-  - trigger: manual
-    source: OPTOTAGGING_ONLY
-    dest: VISUALTEST_OPTOTAGGING_ONLY
 
 stages:
   PASSIVE_CLUSTER_HAB_10MIN_DAY6:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
       monitor_name: "Gamma1.Luminance50"
+      type: 'hab'
+      session_dur: 10*60
+      pre_blank:  30
+      post_blank: 30
+      inter_blank:  30
+      gab_dur:  2.25*60
+      rot_gab_dur: 2.25*60
+      sq_dur: 0*60
 
-      # control number of repetition to make longer script
-      Nrep: 2
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
       monitor_name: "Gamma1.Luminance50"
+      type: 'hab'
+      session_dur: 20*60
+      pre_blank:  30
+      post_blank: 30
+      inter_blank:  30
+      gab_dur:  4.75*60
+      rot_gab_dur: 4.75*60
+      sq_dur: 0*60
 
-      # control number of repetition to make longer script
-      Nrep: 5
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
       monitor_name: "Gamma1.Luminance50"
+      type: 'hab'
+      session_dur: 30*60
+      pre_blank:  30
+      post_blank: 30
+      inter_blank:  30
+      gab_dur:  7.25*60
+      rot_gab_dur: 7.25*60
+      sq_dur: 0*60
 
-      # control number of repetition to make longer script
-      Nrep: 8
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
     
     parameters:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
       monitor_name: "Gamma1.Luminance50"
+      type: 'hab'
+      session_dur: 40*60
+      pre_blank:  30
+      post_blank: 30
+      inter_blank:  30
+      gab_dur:  8.75*60
+      rot_gab_dur: 8.75*60
+      sq_dur: 0*60
 
-      # control number of repetition to make longer script
-      Nrep: 10
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
 
     parameters:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
       monitor_name: "Gamma1.Luminance50"
+      type: 'hab'
+      session_dur: 50*60
+      pre_blank:  30
+      post_blank: 30
+      inter_blank:  30
+      gab_dur:  12.25*60
+      rot_gab_dur: 12.25*60
+      sq_dur: 0*60
 
-      # control number of repetition to make longer script
-      Nrep: 14
 
-  PASSIVE_EPHYS_HAB_60MIN_DAY1_2:
-    script: *passive_training_ephys_script
-    script_md5: *passive_training_ephys_script_md5
+  PASSIVE_OPHYS_PROD_EXP_DAY11_15:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
 
     parameters:
-      stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
+      stage: PASSIVE_OPHYS_PROD_EXP_DAY11_15
       monitor_name: "Gamma1.Luminance50"
+      type: 'hab'
+      session_dur: 60*60
+      pre_blank:  30
+      post_blank: 30
+      inter_blank:  30
+      gab_dur:  14.75*60
+      rot_gab_dur: 14.75*60
+      sq_dur: 0*60
 
-      # control number of repetition to make longer script
-      DURFAC: 2
 
-  PASSIVE_EPHYS_HAB_90MIN_DAY3_4:
-    script: *passive_training_ephys_script
-    script_md5: *passive_training_ephys_script_md5
+  PASSIVE_OPHYS_PROD_UNEXP_DAY16_18:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
 
     parameters:
-      stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
       monitor_name: "Gamma1.Luminance50"
-
-      # control number of repetition to make longer script
-      DURFAC: 3
-      
-  PASSIVE_EPHYS_HAB_120MIN_DAY5:
-    script: *passive_prod_ephys_script
-    script_md5: *passive_prod_ephys_script_md5
-
-    parameters:
-      stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
-      monitor_name: "Gamma1.Luminance50"
-
-      # no optotagging
-      disable_opto: True
-      
-  PASSIVE_EPHYS_PROD_120MIN_DAY1:
-    script: *passive_prod_ephys_script
-    script_md5: *passive_prod_ephys_script_md5
-
-    parameters:
-      stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
-      monitor_name: "Gamma1.Luminance50"
-
-      # optotagging      
-      disable_opto: False
-
-      opto_params: 
-        operation_mode: "experiment"
-
-  OPTOTAGGING_ONLY:
-    script: *optotagging_script
-    script_md5: *optotagging_script_md5
-    parameters:
-      stage: OPTOTAGGING_ONLY
-
-      # optotagging      
-      disable_opto: False
-
-      opto_params: 
-        operation_mode: "experiment"
-
-  VISUALTEST_OPTOTAGGING_ONLY:
-    script: *visual_test_optotagging_script
-    script_md5: *visual_test_optotagging_script_md5
-    parameters:
-      stage: VISUALTEST_OPTOTAGGING_ONLY
-      shared_repository_location: //allen/programs/mindscope/workgroups/openscope/2022-Illusion/Scripts/Production/illusionopenscope
-      monitor_name: "Gamma1.Luminance50"
-
-      # control number of repetition to make longer script
-      Nrep: 1
-
-      # optotagging      
-      disable_opto: False
-
-      opto_params: 
-        operation_mode: "experiment"
+      type: 'ophys'
+      session_dur: 70*60
+      pre_blank:  5
+      post_blank: 30
+      inter_blank:  30
+      gab_dur:  34.25*60
+      rot_gab_dur: 34.25*60
+      sq_dur: 0*60
