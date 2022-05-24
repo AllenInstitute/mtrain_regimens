@@ -3,7 +3,7 @@ _pipeline_script_md5: &pipeline_script_md5 b70ee11dfeecd5e43fa1622cfe592d90
 
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_v1
+name: Openscope_DendriticCoupling_v2
 
 transitions:
   - trigger: progress
@@ -144,9 +144,9 @@ stages:
       monitor_name: "Gamma1.Luminance50"
       type: 'ophys'
       session_dur: 4200
-      pre_blank:  5
+      pre_blank:  30
       post_blank: 30
       inter_blank:  30
-      gab_dur:  2055
-      rot_gab_dur: 2055
+      gab_dur:  1035
+      rot_gab_dur: 1035
       sq_dur: 0
