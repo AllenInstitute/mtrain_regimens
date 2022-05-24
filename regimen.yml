@@ -43,13 +43,13 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 10*60
+      session_dur: 600
       pre_blank:  30
       post_blank: 30
       inter_blank:  30
-      gab_dur:  2.25*60
-      rot_gab_dur: 2.25*60
-      sq_dur: 0*60
+      gab_dur:  135
+      rot_gab_dur: 135
+      sq_dur: 0
 
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
@@ -59,13 +59,13 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 20*60
+      session_dur: 1200
       pre_blank:  30
       post_blank: 30
       inter_blank:  30
-      gab_dur:  4.75*60
-      rot_gab_dur: 4.75*60
-      sq_dur: 0*60
+      gab_dur:  285
+      rot_gab_dur: 285
+      sq_dur: 0
 
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
@@ -75,13 +75,13 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 30*60
+      session_dur: 1800
       pre_blank:  30
       post_blank: 30
       inter_blank:  30
-      gab_dur:  7.25*60
-      rot_gab_dur: 7.25*60
-      sq_dur: 0*60
+      gab_dur:  435
+      rot_gab_dur: 435
+      sq_dur: 0
 
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
@@ -92,13 +92,13 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 40*60
+      session_dur: 2400
       pre_blank:  30
       post_blank: 30
       inter_blank:  30
-      gab_dur:  8.75*60
-      rot_gab_dur: 8.75*60
-      sq_dur: 0*60
+      gab_dur:  525
+      rot_gab_dur: 525
+      sq_dur: 0
 
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
@@ -109,13 +109,13 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 50*60
+      session_dur: 3000
       pre_blank:  30
       post_blank: 30
       inter_blank:  30
-      gab_dur:  12.25*60
-      rot_gab_dur: 12.25*60
-      sq_dur: 0*60
+      gab_dur:  735
+      rot_gab_dur: 735
+      sq_dur: 0
 
 
   PASSIVE_OPHYS_PROD_EXP_DAY11_15:
@@ -126,13 +126,13 @@ stages:
       stage: PASSIVE_OPHYS_PROD_EXP_DAY11_15
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 60*60
+      session_dur: 3600
       pre_blank:  30
       post_blank: 30
       inter_blank:  30
-      gab_dur:  14.75*60
-      rot_gab_dur: 14.75*60
-      sq_dur: 0*60
+      gab_dur:  885
+      rot_gab_dur: 885
+      sq_dur: 0
 
 
   PASSIVE_OPHYS_PROD_UNEXP_DAY16_18:
@@ -143,10 +143,10 @@ stages:
       stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
       monitor_name: "Gamma1.Luminance50"
       type: 'ophys'
-      session_dur: 70*60
+      session_dur: 4200
       pre_blank:  5
       post_blank: 30
       inter_blank:  30
-      gab_dur:  34.25*60
-      rot_gab_dur: 34.25*60
-      sq_dur: 0*60
+      gab_dur:  2055
+      rot_gab_dur: 2055
+      sq_dur: 0
