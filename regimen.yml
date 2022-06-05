@@ -168,7 +168,7 @@ _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
   opto_params:
     operation_mode: "experiment"
 
-_bi_base_params: &_bi_base_params:
+_bi_base_params: &bi_base_params:
   script: *bi_script
   script_md5: *bi_script # same if script is a resource id
   parameters:
@@ -180,7 +180,7 @@ _bi_base_params: &_bi_base_params:
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_builtin_v0.0.1
+name: DynamicRouting_Task1_builtin_v0.0.2
 
 transitions:
   - trigger: progress
