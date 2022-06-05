@@ -110,17 +110,12 @@ _image_set_h_parameters: &image_set_h_parameters
   stimulus: *image_set_h
   catch_frequency: null
 
-_base_even_sampling_stimulus_groups: &base_even_sampling_groups
-  im047_r:
-    contrast: [1.0]
-  im115_r:
-    contrast: [1.0, 0.7]
-
 _base_even_sampling_stimulus: &base_even_sampling_stimulus
-  class: "images-params"
+  class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: dynamic_routing_image_set.pkl
+    image_set: image-set-im000_r.pkl
+    sampling: even
 
 _even_sampling_parameters: &even_sampling_parameters
   omitted_go_reward_frequency: 0.0
@@ -154,15 +149,17 @@ _even_sampling_parameters: &even_sampling_parameters
   max_mapping_duration_min: 10
   disable_mapping_portion: False
   disable_opto_portion: True
-  manifest_path: //allen/programs/braintv/workgroups/nc-ophys/1022/camstim-contrast-tests/v3/manifest-4x4.json
   opto_params: # required by code despite being disabled
     test_levels: True
-  initial_image_params:
-    Image: "im047_r"
-    contrast: 1.0
+
+_bi_parameters: &bi_parameters
+  <<: *even_sampling_parameters
+  behavior_script: "even_sampling_script_v2_builtin.py"
+  mapping_script: "mapping_script_v2.py"
+  opto_script: "opto_tagging_v2.py"
 
 _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
-  <<: *even_sampling_parameters
+  <<: *bi_parameters
   warm_up_trials: 3
   reward_volume: 0.005
   flash_omit_probability: 0.05
@@ -171,13 +168,19 @@ _even_sampling_ephys_parameters: &even_sampling_ephys_parameters
   opto_params:
     operation_mode: "experiment"
 
-_bi_parameters: &bi_parameters
-  behavior_script: "even_sampling_script_v2.py"
-  mapping_script: "mapping_script_v2.py"
-  opto_script: "opto_tagging_v2.py"
+_bi_base_params: &_bi_base_params:
+  script: *bi_script
+  script_md5: *bi_script # same if script is a resource id
+  parameters:
+    <<: *bi_parameters
+    stimulus:
+      <<: *base_even_sampling_stimulus
+      params:
+        image_set: image-set-im000_r.pkl
+        sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.8
+name: DynamicRouting_Task1_builtin_v0.0.1
 
 transitions:
   - trigger: progress
@@ -458,249 +461,211 @@ stages:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_1
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im000_r:
-            contrast: [1.0]
-      stage: HABITUATION_1
 
   HABITUATION_2:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_2
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im031_r:
-            contrast: [1.0]
-      stage: HABITUATION_2
+        params:
+          image_set: image-set-im031_r.pkl
+          sampling: even
 
   HABITUATION_3:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_3
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im045_r:
-            contrast: [1.0]
-      stage: HABITUATION_3
+        params:
+          image_set: image-set-im045_r.pkl
+          sampling: even
 
   HABITUATION_4:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_4
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im054_r:
-            contrast: [1.0]
-      stage: HABITUATION_4
+        params:
+          image_set: image-set-im054_r.pkl
+          sampling: even
 
   HABITUATION_5:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_5
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im073_r:
-            contrast: [1.0]
-      stage: HABITUATION_5
+        params:
+          image_set: image-set-im073_r.pkl
+          sampling: even
 
   HABITUATION_6:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_6
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im106_r:
-            contrast: [1.0]
-      stage: HABITUATION_6
+        params:
+          image_set: image-set-im106_r.pkl
+          sampling: even
 
   HABITUATION_7:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_7
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im008_r:
-            contrast: [1.0]
-      stage: HABITUATION_7
+        params:
+          image_set: image-set-im008_r.pkl
+          sampling: even
 
   HABITUATION_8:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_8
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im029_r:
-            contrast: [1.0]
-      stage: HABITUATION_8
+        params:
+          image_set: image-set-im029_r.pkl
+          sampling: even
 
   HABITUATION_9:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
-      stimulus:
-        groups:
-          <<: *base_even_sampling_groups
-          im040_r:
-            contrast: [1.0]
       stage: HABITUATION_9
+      stimulus:
+        <<: *base_even_sampling_stimulus
+        params:
+          image_set: image-set-im040_r.pkl
+          sampling: even
 
   HABITUATION_10:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_10
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im046_r:
-            contrast: [1.0]
-      stage: HABITUATION_10
+        params:
+          image_set: image-set-im046_r.pkl
+          sampling: even
 
   HABITUATION_11:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_11
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im037_r:
-            contrast: [1.0]
-      stage: HABITUATION_11
+        params:
+          image_set: image-set-im037_r.pkl
+          sampling: even
 
   HABITUATION_12:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
-      <<: *even_sampling_parameters
       <<: *bi_parameters
+      stage: HABITUATION_12
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im053_r:
-            contrast: [1.0]
-      stage: HABITUATION_12
+        params:
+          image_set: image-set-im053_r.pkl
+          sampling: even
 
   EPHYS_1:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
-      <<: *bi_parameters
+      stage: EPHYS_1
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im104_r:
-            contrast: [1.0]
-      stage: EPHYS_1
+        params:
+          image_set: image-set-im104_r.pkl
+          sampling: even
 
   EPHYS_2:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
-      <<: *bi_parameters
+      stage: EPHYS_2
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im114_r:
-            contrast: [1.0]
-      stage: EPHYS_2
+        params:
+          image_set: image-set-im114_r.pkl
+          sampling: even
 
   EPHYS_3:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
-      <<: *bi_parameters
+      stage: EPHYS_3
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im005_r:
-            contrast: [1.0]
-      stage: EPHYS_3
+        params:
+          image_set: image-set-im005_r.pkl
+          sampling: even
 
   EPHYS_4:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
-      <<: *bi_parameters
+      stage: EPHYS_4
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im087_r:
-            contrast: [1.0]
-      stage: EPHYS_4
+        params:
+          image_set: image-set-im087_r.pkl
+          sampling: even
 
   EPHYS_5:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
-      <<: *bi_parameters
+      stage: EPHYS_5
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im024_r:
-            contrast: [1.0]
-      stage: EPHYS_5
+        params:
+          image_set: image-set-im024_r.pkl
+          sampling: even
 
   EPHYS_6:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
       <<: *even_sampling_ephys_parameters
-      <<: *bi_parameters
+      stage: EPHYS_6
       stimulus:
         <<: *base_even_sampling_stimulus
-        groups:
-          <<: *base_even_sampling_groups
-          im034_r:
-            contrast: [1.0]
-      stage: EPHYS_6
+        params:
+          image_set: image-set-im034_r.pkl
+          sampling: even
