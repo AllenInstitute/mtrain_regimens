@@ -180,7 +180,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_builtin_v0.0.4
+name: DynamicRouting_Task1_builtin_v0.0.5
 
 transitions:
   - trigger: progress
@@ -465,6 +465,7 @@ stages:
       stage: HABITUATION_1
       dev: True
       max_task_duration_min: 5
+      max_mapping_duration_min: 1
       stimulus:
         <<: *base_even_sampling_stimulus
 
