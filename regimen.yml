@@ -2,7 +2,7 @@ _pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/je
 _pipeline_script_md5: &pipeline_script_md5 9a3dd9435fb64de6855e98d89fde5b17
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_v6
+name: Openscope_DendriticCoupling_v7
 
 transitions:
   - trigger: progress
@@ -52,7 +52,7 @@ stages:
       movie_dur: 160 #hab_block length*movie_blocks
       movie_blocks: 1
       gratings_dur: 30
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/second_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/third_version_movies
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
     script: *pipeline_script
@@ -71,7 +71,7 @@ stages:
       movie_dur: 320
       movie_blocks: 2
       gratings_dur: 60
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/second_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/third_version_movies
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
     script: *pipeline_script
@@ -90,7 +90,7 @@ stages:
       movie_dur: 640
       movie_blocks: 4
       gratings_dur: 130
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/second_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/third_version_movies
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
     script: *pipeline_script
@@ -110,7 +110,7 @@ stages:
       movie_dur: 960
       movie_blocks: 6
       gratings_dur: 230
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/second_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/third_version_movies
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
     script: *pipeline_script
@@ -130,7 +130,7 @@ stages:
       movie_dur: 1120
       movie_blocks: 7
       gratings_dur: 360
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/second_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/third_version_movies
 
   PASSIVE_OPHYS_PROD_EXP_DAY11_15:
     script: *pipeline_script
@@ -150,7 +150,7 @@ stages:
       movie_dur: 1280
       movie_blocks: 8
       gratings_dur: 550
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/second_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/third_version_movies
 
   PASSIVE_OPHYS_PROD_UNEXP_DAY16_18:
     script: *pipeline_script
@@ -170,4 +170,4 @@ stages:
       movie_dur: 1440
       movie_blocks: 9
       gratings_dur: 600
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/second_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/third_version_movies
