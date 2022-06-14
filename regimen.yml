@@ -2,7 +2,7 @@ _pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/je
 _pipeline_script_md5: &pipeline_script_md5 3202f12edb84ff4f2c7c9f3180b5a10f
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_v9
+name: Openscope_DendriticCoupling_v10
 
 transitions:
   - trigger: progress
@@ -51,7 +51,7 @@ stages:
       sq_dur: 0
       movie_dur: 160 #hab_block length*movie_blocks
       movie_blocks: 1
-      gratings_dur: 30
+      gratings_dur: 0 # commented for debugging 30
       movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/second_version_movies
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
