@@ -2,7 +2,7 @@ _pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/je
 _pipeline_script_md5: &pipeline_script_md5 a5ba1b9867c865c176391ad036d3fe5d
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_v12
+name: Openscope_DendriticCoupling_v13
 
 transitions:
   - trigger: progress
@@ -42,17 +42,17 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 720
+      session_dur: 718.8
       pre_blank: 30
       post_blank: 30
       inter_blank: 30
-      gab_dur: 83 
-      rot_gab_dur: 83 
+      gab_dur: 82.5 
+      rot_gab_dur: 82.5 
       sq_dur: 0
       movie_dur: 120 #hab_block length*movie_blocks
       movie_blocks: 1
       gratings_dur: 4 #runs. 1 run = 14.7s so 58.8s
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fourth_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fifth_version_movies
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
     script: *pipeline_script
@@ -61,17 +61,17 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 1440
+      session_dur: 1441.5
       pre_blank: 30
       post_blank: 30
       inter_blank: 30
-      gab_dur:  200
-      rot_gab_dur: 200
+      gab_dur:  199.5
+      rot_gab_dur: 199.5
       sq_dur: 0
       movie_dur: 360
       movie_blocks: 3
       gratings_dur: 5 #runs. 1 run = 14.7s so 73.5s
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fourth_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fifth_version_movies
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
     script: *pipeline_script
@@ -80,7 +80,7 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 2160
+      session_dur: 2157
       pre_blank: 30
       post_blank: 30
       inter_blank: 30
@@ -90,7 +90,7 @@ stages:
       movie_dur: 600
       movie_blocks: 5
       gratings_dur: 10 #runs. 1 run = 14.7s so 147s
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fourth_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fifth_version_movies
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
     script: *pipeline_script
@@ -100,17 +100,17 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 2880
+      session_dur: 2883.9
       pre_blank: 30
       post_blank: 30
       inter_blank: 30
-      gab_dur:  365
-      rot_gab_dur: 365
+      gab_dur:  366
+      rot_gab_dur: 366
       sq_dur: 0
       movie_dur: 960
       movie_blocks: 8
       gratings_dur: 17 #runs. 1 run = 14.7s so 249.9s
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fourth_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fifth_version_movies
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
     script: *pipeline_script
@@ -120,17 +120,17 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 3600
+      session_dur: 3602.7
       pre_blank: 30
       post_blank: 30
       inter_blank: 30
-      gab_dur:  410
-      rot_gab_dur: 410
+      gab_dur:  411
+      rot_gab_dur: 411
       sq_dur: 0
       movie_dur: 1440
       movie_blocks: 12
       gratings_dur: 21 #runs. 1 run = 14.7s so 308.7s
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fourth_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fifth_version_movies
 
   PASSIVE_OPHYS_PROD_EXP_DAY11_15:
     script: *pipeline_script
@@ -140,7 +140,7 @@ stages:
       stage: PASSIVE_OPHYS_PROD_EXP_DAY11_15
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
-      session_dur: 4200
+      session_dur: 4118.7
       pre_blank: 30
       post_blank: 30
       inter_blank: 30
@@ -150,7 +150,7 @@ stages:
       movie_dur: 1800
       movie_blocks: 15
       gratings_dur: 26 #runs. 1 run = 14.7s so 308.7s
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fourth_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fifth_version_movies
 
   PASSIVE_OPHYS_PROD_UNEXP_DAY16_18:
     script: *pipeline_script
@@ -160,7 +160,7 @@ stages:
       stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
       monitor_name: "Gamma1.Luminance50"
       type: 'ophys'
-      session_dur: 4200
+      session_dur: 4118.7
       pre_blank: 30
       post_blank: 30
       inter_blank: 30
@@ -170,4 +170,4 @@ stages:
       movie_dur: 1800
       movie_blocks: 15
       gratings_dur: 26 #runs. 1 run = 14.7s so 382.2s
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fourth_version_movies
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/fifth_version_movies
