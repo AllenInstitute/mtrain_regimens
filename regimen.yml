@@ -1,8 +1,8 @@
-_pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_dendritic_coupling/raw/pilot_scripts/full_pipeline_script.py?at=db58fcc031352a3a5d59821f7725a0e3ec975730
-_pipeline_script_md5: &pipeline_script_md5 137a47c0969093fcb1cfe9b5b18d684a
+_pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_dendritic_coupling/raw/pilot_scripts/full_pipeline_script.py?at=75625ecb0cc429293f7a9a9fa5d31db65b66e3e2
+_pipeline_script_md5: &pipeline_script_md5 f848745873e73ffb618df4fb6faab765
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_dummy
+name: Openscope_DendriticCoupling_v15
 
 transitions:
   - trigger: progress
@@ -27,10 +27,14 @@ transitions:
 
   - trigger: manual
     source: PASSIVE_CLUSTER_HAB_50MIN_DAY10
-    dest: PASSIVE_OPHYS_PROD_EXP_DAY11_15
+    dest: PASSIVE_CLUSTER_STACK_120MIN_DAY11_12
 
   - trigger: manual
-    source: PASSIVE_OPHYS_PROD_EXP_DAY11_15
+    source: PASSIVE_CLUSTER_STACK_120MIN_DAY11_12
+    dest: PASSIVE_OPHYS_PROD_EXP_DAY13_15
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_PROD_EXP_DAY13_15
     dest: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
 
 
@@ -132,12 +136,33 @@ stages:
       gratings_dur: 21 #runs. 1 run = 14.7s so 308.7s
       movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/sixth_version_movies
 
-  PASSIVE_OPHYS_PROD_EXP_DAY11_15:
+  PASSIVE_CLUSTER_STACK_120MIN_DAY11_12:
     script: *pipeline_script
     script_md5: *pipeline_script_md5
 
     parameters:
-      stage: PASSIVE_OPHYS_PROD_EXP_DAY11_15
+      stage: PASSIVE_CLUSTER_STACK_120MIN_DAY11_12
+      monitor_name: "Gamma1.Luminance50"
+      type: 'hab'
+      session_dur: 7199.4
+      pre_blank: 30
+      post_blank: 30
+      inter_blank: 30
+      gab_dur:  813
+      rot_gab_dur: 813
+      sq_dur: 0
+      movie_dur: 3120
+      movie_blocks: 26
+      gratings_dur: 42 #runs. 1 run = 14.7s so 617.4s
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/sixth_version_movies
+
+
+  PASSIVE_OPHYS_PROD_EXP_DAY13_15:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_EXP_DAY13_15
       monitor_name: "Gamma1.Luminance50"
       type: 'hab'
       session_dur: 4118.7
