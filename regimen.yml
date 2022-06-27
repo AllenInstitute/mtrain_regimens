@@ -122,18 +122,19 @@ _even_sampling_parameters: &even_sampling_parameters
   random_rewards: {}
   auto_reward_delay: 0.15
   auto_reward_vol: 0.005
-  catch_frequency: 0.25
   flash_omit_probability: 0.05
   change_time_dist: geometric
   change_time_scale: 0.3
+  change_flashes_min: 4
+  change_flashes_max: 12
   failure_repeats: 5
   free_reward_trials: 10000
   max_task_duration_min: 65.0
   min_no_lick_time: 0
   periodic_flash: [0.25, 0.5]
-  pre_change_time: 2.25
+  pre_change_time: 0.0
   response_window: [0.15, 0.75]
-  start_stop_padding: 10.0
+  start_stop_padding: 1.0
   stimulus_window: 6.0
   task_id: DoC
   timeout_duration: 0.3
@@ -144,17 +145,17 @@ _even_sampling_parameters: &even_sampling_parameters
     flash_path: flash_250ms.stim
     gabor_path: gabor_20_deg_250ms.stim
   agent_socket: "127.0.0.1:5000"
-  warm_up_trials: 5
+  warm_up_trials: 3
   reward_volume: 0.005
   max_mapping_duration_min: 10
   disable_mapping_portion: False
   disable_opto_portion: True
   end_after_response: True
   end_after_response_sec: 3.5
-  dev: True
-  mouse_type: "StupidDoCMouse"
   opto_params: # required by code despite being disabled
     test_levels: True
+  dev: True
+  mouse_type: "StupidDoCMouse"
 
 _bi_parameters: &bi_parameters
   <<: *even_sampling_parameters
@@ -184,7 +185,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_builtin_v0.0.7
+name: DynamicRouting_Task1_builtin_v0.0.8
 
 transitions:
   - trigger: progress
@@ -467,8 +468,6 @@ stages:
     parameters:
       <<: *bi_parameters
       stage: HABITUATION_1
-      max_task_duration_min: 5
-      max_mapping_duration_min: 1
       stimulus:
         <<: *base_even_sampling_stimulus
 
