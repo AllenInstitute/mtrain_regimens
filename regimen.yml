@@ -149,6 +149,8 @@ _even_sampling_parameters: &even_sampling_parameters
   max_mapping_duration_min: 10
   disable_mapping_portion: False
   disable_opto_portion: True
+  end_after_response: True
+  end_after_response_sec: 3.5
   opto_params: # required by code despite being disabled
     test_levels: True
 
@@ -180,7 +182,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_builtin_v0.0.5
+name: DynamicRouting_Task1_builtin_v0.0.6
 
 transitions:
   - trigger: progress
