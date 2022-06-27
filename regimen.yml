@@ -151,6 +151,8 @@ _even_sampling_parameters: &even_sampling_parameters
   disable_opto_portion: True
   end_after_response: True
   end_after_response_sec: 3.5
+  dev: True
+  mouse_type: "StupidDoCMouse"
   opto_params: # required by code despite being disabled
     test_levels: True
 
@@ -182,7 +184,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_builtin_v0.0.6
+name: DynamicRouting_Task1_builtin_v0.0.7
 
 transitions:
   - trigger: progress
@@ -465,7 +467,6 @@ stages:
     parameters:
       <<: *bi_parameters
       stage: HABITUATION_1
-      dev: True
       max_task_duration_min: 5
       max_mapping_duration_min: 1
       stimulus:
