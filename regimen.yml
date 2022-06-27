@@ -123,6 +123,7 @@ _even_sampling_parameters: &even_sampling_parameters
   auto_reward_delay: 0.15
   auto_reward_vol: 0.005
   flash_omit_probability: 0.05
+  catch_frequency: null
   change_time_dist: geometric
   change_time_scale: 0.3
   change_flashes_min: 4
@@ -185,7 +186,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_builtin_v0.0.8
+name: DynamicRouting_Task1_builtin_v0.0.9
 
 transitions:
   - trigger: progress
