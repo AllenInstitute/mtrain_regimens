@@ -20,8 +20,8 @@ _parameters: &parameters
   auto_reward_delay: 0.6
   auto_reward_vol: 0.005
   catch_frequency: null
-  change_flashes_max: 12
-  change_flashes_min: 4
+  change_flashes_max: 27
+  change_flashes_min: 13
   change_time_dist: geometric
   change_time_scale: 0.3
   end_after_response: true
@@ -49,7 +49,7 @@ _parameters: &parameters
   consumption_window: null
 
 ### mtrain definitions
-name: AssociativeLearning_v0.0.9
+name: AssociativeLearning_v0.1.0
 
 transitions:
   # in case a transition is required by mtrain
