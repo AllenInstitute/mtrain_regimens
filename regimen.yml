@@ -37,7 +37,7 @@ _parameters: &parameters
   response_window: [0.15, 1.0]
   reward_volume: 0.005
   start_stop_padding: 5.0
-  stimulus_window: 6.0
+  stimulus_window": 6.0
   task_id: DoC
   timeout_duration: 0.3
   volume_limit: 5.0
@@ -49,7 +49,7 @@ _parameters: &parameters
   consumption_window: null
 
 ### mtrain definitions
-name: AssociativeLearning_v0.2.0
+name: AssociativeLearning_v0.2.1
 
 transitions:
   # in case a transition is required by mtrain
