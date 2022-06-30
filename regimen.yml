@@ -155,7 +155,6 @@ _even_sampling_parameters: &even_sampling_parameters
   end_after_response_sec: 3.5
   opto_params: # required by code despite being disabled
     test_levels: True
-  dev: True
   mouse_type: "StupidDoCMouse"
 
 _bi_parameters: &bi_parameters
@@ -186,7 +185,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_builtin_v0.0.9
+name: DynamicRouting_Task1_builtin_v0.0.10
 
 transitions:
   - trigger: progress
