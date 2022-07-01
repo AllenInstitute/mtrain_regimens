@@ -1,8 +1,8 @@
-_pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_dendritic_coupling/raw/pilot_scripts/full_pipeline_script.py?at=75625ecb0cc429293f7a9a9fa5d31db65b66e3e2
-_pipeline_script_md5: &pipeline_script_md5 f848745873e73ffb618df4fb6faab765
+_pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_dendritic_coupling/raw/pilot_scripts/full_pipeline_script.py?at=e769b99282d89a71bc2db4d3db3467114513d617
+_pipeline_script_md5: &pipeline_script_md5 8d8fe6b059680127ddc7f38e1547e5ea
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_dummy_v2
+name: Openscope_DendriticCoupling_v16
 
 transitions:
   - trigger: progress
