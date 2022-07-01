@@ -185,7 +185,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_builtin_v0.0.10
+name: DynamicRouting_Task1_builtin_v0.0.11
 
 transitions:
   - trigger: progress
