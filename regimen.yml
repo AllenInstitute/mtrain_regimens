@@ -2,7 +2,7 @@ _pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/je
 _pipeline_script_md5: &pipeline_script_md5 8d8fe6b059680127ddc7f38e1547e5ea
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_v16
+name: Openscope_DendriticCoupling_dummy_v3
 
 transitions:
   - trigger: progress
