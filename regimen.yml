@@ -177,7 +177,7 @@ _bi_parameters: &bi_parameters
   opto_script: "opto_tagging_v2.py"
 
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.8
+name: DynamicRouting_Task1_v0.0.12
 
 transitions:
   - trigger: progress
@@ -401,6 +401,7 @@ stages:
       stage: TRAINING_5_images_G_epilogue_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
+      max_task_duration_min: 2
 
       # ephys-specific no grayscreen pre-exp time
       start_padding_windowless: 300.0
