@@ -177,7 +177,7 @@ _bi_parameters: &bi_parameters
   opto_script: "opto_tagging_v2.py"
 
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.12
+name: DynamicRouting_Task1_v0.0.13
 
 transitions:
   - trigger: progress
