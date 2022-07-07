@@ -2,7 +2,7 @@ _pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/je
 _pipeline_script_md5: &pipeline_script_md5 ac73c8f2bcae3b0ef967422e56045761
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_dummy_huge_v2
+name: Openscope_DendriticCoupling_dummy_huge_v3
 
 transitions:
   - trigger: progress
@@ -32,10 +32,6 @@ transitions:
   - trigger: manual
     source: PASSIVE_CLUSTER_STACK_120MIN_DAY11_12
     dest: PASSIVE_OPHYS_PROD_EXP_DAY13_15
-
-  - trigger: manual
-    source: PASSIVE_OPHYS_PROD_EXP_DAY13_15
-    dest: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
 
   - trigger: manual
     source: PASSIVE_OPHYS_PROD_EXP_DAY13_15
