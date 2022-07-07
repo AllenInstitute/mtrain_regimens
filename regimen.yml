@@ -428,3 +428,163 @@ PASSIVE_OPHYS_DUMMY_29:
     parameters:
       stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
       monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_30:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_31:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_32:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_33:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_34:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_35:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_36:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_37:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_38:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+      
+PASSIVE_OPHYS_DUMMY_39:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_40:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_41:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_42:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_43:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_44:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_45:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_46:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_47:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+
+PASSIVE_OPHYS_DUMMY_48:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
+      
+PASSIVE_OPHYS_DUMMY_49:
+    script: *pipeline_script
+    script_md5: *pipeline_script_md5
+
+    parameters:
+      stage: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+      monitor_name: "Gamma1.Luminance50"
