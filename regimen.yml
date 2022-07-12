@@ -1,8 +1,8 @@
-_pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_dendritic_coupling/raw/pilot_scripts/full_pipeline_script.py?at=8e5ebb82eec04c759a6a7532869dcd0ee67af248
-_pipeline_script_md5: &pipeline_script_md5 1585809ecb85416084bb9efccae9cdaf
+_pipeline_script: &pipeline_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_dendritic_coupling/raw/pilot_scripts/full_pipeline_script.py?at=063cd907910431dc27adaaedaa591e2edc4852a7
+_pipeline_script_md5: &pipeline_script_md5 ac73c8f2bcae3b0ef967422e56045761
 
 ### mtrain definitions
-name: Openscope_DendriticCoupling_v22
+name: Openscope_DendriticCoupling_dummy_huge_v6
 
 transitions:
   - trigger: progress
@@ -37,6 +37,201 @@ transitions:
     source: PASSIVE_OPHYS_PROD_EXP_DAY13_15
     dest: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
 
+  - trigger: manual
+    source: PASSIVE_OPHYS_PROD_UNEXP_DAY16_18
+    dest: PASSIVE_OPHYS_DUMMY_1
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_1
+    dest: PASSIVE_OPHYS_DUMMY_2
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_2
+    dest: PASSIVE_OPHYS_DUMMY_3
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_3
+    dest: PASSIVE_OPHYS_DUMMY_4
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_4
+    dest: PASSIVE_OPHYS_DUMMY_5
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_5
+    dest: PASSIVE_OPHYS_DUMMY_6
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_6
+    dest: PASSIVE_OPHYS_DUMMY_7
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_7
+    dest: PASSIVE_OPHYS_DUMMY_8
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_8
+    dest: PASSIVE_OPHYS_DUMMY_9
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_9
+    dest: PASSIVE_OPHYS_DUMMY_10
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_10
+    dest: PASSIVE_OPHYS_DUMMY_11
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_11
+    dest: PASSIVE_OPHYS_DUMMY_12
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_12
+    dest: PASSIVE_OPHYS_DUMMY_13
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_13
+    dest: PASSIVE_OPHYS_DUMMY_14
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_14
+    dest: PASSIVE_OPHYS_DUMMY_15
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_15
+    dest: PASSIVE_OPHYS_DUMMY_16
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_16
+    dest: PASSIVE_OPHYS_DUMMY_17
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_17
+    dest: PASSIVE_OPHYS_DUMMY_18
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_18
+    dest: PASSIVE_OPHYS_DUMMY_19
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_19
+    dest: PASSIVE_OPHYS_DUMMY_20
+  
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_20
+    dest: PASSIVE_OPHYS_DUMMY_21
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_21
+    dest: PASSIVE_OPHYS_DUMMY_22
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_22
+    dest: PASSIVE_OPHYS_DUMMY_23
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_23
+    dest: PASSIVE_OPHYS_DUMMY_24
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_24
+    dest: PASSIVE_OPHYS_DUMMY_25
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_25
+    dest: PASSIVE_OPHYS_DUMMY_26
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_26
+    dest: PASSIVE_OPHYS_DUMMY_27
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_27
+    dest: PASSIVE_OPHYS_DUMMY_28
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_28
+    dest: PASSIVE_OPHYS_DUMMY_29
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_29
+    dest: PASSIVE_OPHYS_DUMMY_30
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_30
+    dest: PASSIVE_OPHYS_DUMMY_31
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_31
+    dest: PASSIVE_OPHYS_DUMMY_32
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_32
+    dest: PASSIVE_OPHYS_DUMMY_33
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_33
+    dest: PASSIVE_OPHYS_DUMMY_34
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_34
+    dest: PASSIVE_OPHYS_DUMMY_35
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_35
+    dest: PASSIVE_OPHYS_DUMMY_36
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_36
+    dest: PASSIVE_OPHYS_DUMMY_37
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_37
+    dest: PASSIVE_OPHYS_DUMMY_38
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_38
+    dest: PASSIVE_OPHYS_DUMMY_39
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_39
+    dest: PASSIVE_OPHYS_DUMMY_40
+  
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_40
+    dest: PASSIVE_OPHYS_DUMMY_41
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_41
+    dest: PASSIVE_OPHYS_DUMMY_42
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_42
+    dest: PASSIVE_OPHYS_DUMMY_43
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_43
+    dest: PASSIVE_OPHYS_DUMMY_44
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_44
+    dest: PASSIVE_OPHYS_DUMMY_45
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_45
+    dest: PASSIVE_OPHYS_DUMMY_46
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_46
+    dest: PASSIVE_OPHYS_DUMMY_47
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_47
+    dest: PASSIVE_OPHYS_DUMMY_48
+
+  - trigger: manual
+    source: PASSIVE_OPHYS_DUMMY_48
+    dest: PASSIVE_OPHYS_DUMMY_49
 
 stages:
   PASSIVE_CLUSTER_HAB_10MIN_DAY6:
@@ -196,3 +391,395 @@ stages:
       movie_blocks: 15
       gratings_dur: 26 #runs. 1 run = 14.7s so 382.2s
       movie_folder: //allen/programs/mindscope/workgroups/openscope/2022-DendriteCoupling/Scripts/Production/sixth_version_movies
+
+  PASSIVE_OPHYS_DUMMY_1:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_1
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_2:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_2
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_3:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_3
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_4:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_4
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_5:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_5
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_6:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_6
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_7:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_7
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_8:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_8
+        monitor_name: "Gamma1.Luminance50"
+        
+  PASSIVE_OPHYS_DUMMY_9:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_9
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_10:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_10
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_11:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_11
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_12:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_12
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_13:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_13
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_14:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_14
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_15:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_15
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_16:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_16
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_17:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_17
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_18:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_18
+        monitor_name: "Gamma1.Luminance50"
+        
+  PASSIVE_OPHYS_DUMMY_19:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_19
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_20:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_20
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_21:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_21
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_22:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_22
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_23:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_23
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_24:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_24
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_25:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_25
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_26:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_26
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_27:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_27
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_28:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_28
+        monitor_name: "Gamma1.Luminance50"
+        
+  PASSIVE_OPHYS_DUMMY_29:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_29
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_30:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_30
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_31:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_31
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_32:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_32
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_33:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_33
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_34:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_34
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_35:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_35
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_36:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_36
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_37:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_37
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_38:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_38
+        monitor_name: "Gamma1.Luminance50"
+        
+  PASSIVE_OPHYS_DUMMY_39:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_39
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_40:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_40
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_41:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_41
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_42:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_42
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_43:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_43
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_44:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_44
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_45:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_45
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_46:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_46
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_47:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_47
+        monitor_name: "Gamma1.Luminance50"
+
+  PASSIVE_OPHYS_DUMMY_48:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_48
+        monitor_name: "Gamma1.Luminance50"
+        
+  PASSIVE_OPHYS_DUMMY_49:
+      script: *pipeline_script
+      script_md5: *pipeline_script_md5
+
+      parameters:
+        stage: PASSIVE_OPHYS_DUMMY_49
+        monitor_name: "Gamma1.Luminance50"
