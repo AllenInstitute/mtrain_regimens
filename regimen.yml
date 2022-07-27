@@ -1,14 +1,17 @@
 _passive_training_cluster_script: &passive_training_cluster_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-habituation-drifting.py?at=11eb68cda5a9b30806252fee8ae0620b3950e869
 _passive_training_cluster_script_md5: &passive_training_cluster_script_md5 1517bd9d13c7c279b1b66cde0f7b3926
 
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-day-11-ephysrecording-120min-drifting.py?at=11eb68cda5a9b30806252fee8ae0620b3950e869
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 afd6cbc63e5688e18e33f90bdba2adc9
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-day-11-ephysrecording-120min-ALTERNATIVE.py?at=38446bafbcd69ea7e6c44c5688cf2a7b3d226d2f
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 2ce5d899d5c0de6b87d28824f4505341
+
+_passive_prod_ephys_alter_script: &passive_prod_ephys_alter_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/both-cohorts-day-11-ephysrecording-120min-drifting.py?at=2adfd28bff86ae901f98f0a36a900e5ae34eccfa
+_passive_prod_ephys_alter_script_md5: &passive_prod_ephys_alter_script_md5 7bb857e46e1893c5e5f5a435d6ae8cc1
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort2_v5
+name: Openscope_GlobalLocalOdd_Cohort2_v6
 
 transitions:
   - trigger: progress
@@ -49,6 +52,10 @@ transitions:
 
   - trigger: manual
     source: PASSIVE_EPHYS_PROD_120MIN_DAY1
+    dest: PASSIVE_EPHYS_PROD_120MIN_DAY1_ALT
+
+  - trigger: manual
+    source: PASSIVE_EPHYS_PROD_120MIN_DAY1_ALT
     dest: OPTOTAGGING_ONLY
 
 stages:
@@ -135,6 +142,21 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
+      cohort: 2
+      stimulus_drift_rate: 0.0
+
+      # optotagging      
+      disable_opto: False
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  PASSIVE_EPHYS_PROD_120MIN_DAY1_ALT:
+    script: *passive_prod_ephys_alter_script
+    script_md5: *passive_prod_ephys_alter_script_md5
+
+    parameters:
+      stage: PASSIVE_EPHYS_PROD_120MIN_DAY1_ALT
       cohort: 2
       stimulus_drift_rate: 0.0
 
