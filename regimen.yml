@@ -11,7 +11,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort1_v7
+name: Openscope_GlobalLocalOdd_Cohort2_v7
 
 transitions:
   - trigger: progress
@@ -65,8 +65,8 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
       habituation_time_min: 9.6
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
     script: *passive_training_cluster_script
@@ -74,8 +74,8 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
       habituation_time_min: 19.4
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
     script: *passive_training_cluster_script
@@ -83,8 +83,8 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
       habituation_time_min: 29.0
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
     script: *passive_training_cluster_script
@@ -93,8 +93,8 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
       habituation_time_min:  38.8
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
     script: *passive_training_cluster_script
@@ -103,8 +103,8 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
       habituation_time_min: 48.6
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
   PASSIVE_EPHYS_HAB_60MIN_DAY1_2:
     script: *passive_training_cluster_script
@@ -113,8 +113,8 @@ stages:
     parameters:
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
       habituation_time_min: 58.4
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
   PASSIVE_EPHYS_HAB_90MIN_DAY3_4:
     script: *passive_training_cluster_script
@@ -123,8 +123,8 @@ stages:
     parameters:
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
       habituation_time_min: 88.0
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
       
   PASSIVE_EPHYS_HAB_120MIN_DAY5:
     script: *passive_training_cluster_script
@@ -133,8 +133,8 @@ stages:
     parameters:
       stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
       habituation_time_min: 117.4
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
   PASSIVE_EPHYS_PROD_120MIN_DAY1:
     script: *passive_prod_ephys_script
@@ -142,8 +142,8 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
       # optotagging      
       disable_opto: False
@@ -157,8 +157,8 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1_ALT
-      cohort: 1
-      stimulus_drift_rate: 4.0
+      cohort: 2
+      stimulus_drift_rate: 0.0
 
       # optotagging      
       disable_opto: False
