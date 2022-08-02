@@ -8,7 +8,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort2_v10
+name: Openscope_GlobalLocalOdd_Cohort1_v10
 
 transitions:
   - trigger: progress
@@ -58,7 +58,7 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
       habituation_time_min: 9.6
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
@@ -67,7 +67,7 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
       habituation_time_min: 19.4
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
@@ -76,7 +76,7 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
       habituation_time_min: 29.0
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
@@ -86,7 +86,7 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
       habituation_time_min:  38.8
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
@@ -96,7 +96,7 @@ stages:
     parameters:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
       habituation_time_min: 48.6
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
 
   PASSIVE_EPHYS_HAB_60MIN_DAY1_2:
@@ -106,7 +106,7 @@ stages:
     parameters:
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
       habituation_time_min: 58.4
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
 
   PASSIVE_EPHYS_HAB_90MIN_DAY3_4:
@@ -116,7 +116,7 @@ stages:
     parameters:
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
       habituation_time_min: 88.0
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
       
   PASSIVE_EPHYS_HAB_120MIN_DAY5:
@@ -126,7 +126,7 @@ stages:
     parameters:
       stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
       habituation_time_min: 117.4
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
 
   PASSIVE_EPHYS_PROD_120MIN_DAY1:
@@ -135,7 +135,7 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
-      cohort: 2
+      cohort: 1
       stimulus_drift_rate: 4.0
 
       # optotagging      
