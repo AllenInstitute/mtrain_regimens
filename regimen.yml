@@ -8,7 +8,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_GlobalLocalOdd_Cohort2_v9
+name: Openscope_GlobalLocalOdd_Cohort2_v10
 
 transitions:
   - trigger: progress
@@ -49,10 +49,6 @@ transitions:
 
   - trigger: manual
     source: PASSIVE_EPHYS_PROD_120MIN_DAY1
-    dest: PASSIVE_EPHYS_PROD_120MIN_DAY1_ALT
-
-  - trigger: manual
-    source: PASSIVE_EPHYS_PROD_120MIN_DAY1_ALT
     dest: OPTOTAGGING_ONLY
 
 stages:
