@@ -205,7 +205,7 @@ stages:
       stimulus:
         <<: *base_even_sampling_stimulus
 
-  HABITUATION_2:
+  STAGE_1:
     script: *bi_script
     script_md5: *bi_script # same if script is a resource id
     parameters:
