@@ -188,7 +188,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: Pretest_v0.1.1
+name: Pretest_v0.1.2
 
 transitions:
   - trigger: manual
