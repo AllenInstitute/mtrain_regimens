@@ -160,7 +160,7 @@ _even_sampling_parameters: &even_sampling_parameters
 _bi_parameters: &bi_parameters
   <<: *even_sampling_parameters
   pretest: true
-  max_task_duration_min: `1.0
+  max_task_duration_min: 1.0
   max_mapping_duration_min: 1
   behavior_script: "even_sampling_script_v2_builtin.py"
   mapping_script: "mapping_script_v2.py"
@@ -188,7 +188,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: Pretest_v0.1.0
+name: Pretest_v0.1.1
 
 transitions:
   - trigger: manual
