@@ -26,7 +26,6 @@ _parameters: &parameters
   change_time_dist: exponential
   change_time_scale: 2.0
   pre_change_time: 18.0
-  stimulus_window: 6.0
   end_after_response: true
   end_after_response_sec: 0.0
   failure_repeats: 5
@@ -44,7 +43,7 @@ _parameters: &parameters
   consumption_window: null
 
 ### mtrain definitions
-name: AssociativeLearning_Static_v0.0.2
+name: AssociativeLearning_Static_v0.0.3
 
 transitions:
   # in case a transition is required by mtrain
