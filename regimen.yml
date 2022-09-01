@@ -31,9 +31,9 @@ _parameters: &parameters
   end_after_response: true
   end_after_response_sec: 0.0
   failure_repeats: 0
-  start_stop_padding: 1
   free_reward_trials: 1
   max_task_duration_min: 60.0
+  start_stop_padding: 1
   max_trials: 2000
   min_no_lick_time: 0.0
   response_window: [0.15, 1.0]
@@ -44,10 +44,9 @@ _parameters: &parameters
   allow_contiguous_holds: false
   auto_reward_hold_freq: 0.2
   consumption_window: null
-  task_id: DoC
 
 ### mtrain definitions
-name: AssociativeLearning_Static_v0.0.4
+name: AssociativeLearning_Static_dev1
 
 transitions:
   # in case a transition is required by mtrain
@@ -57,15 +56,13 @@ transitions:
 
 stages:
   STAGE_0:
-    script: *resource_id
-    script_md5: *resource_id # v2 compatability?
+    script: associative-script-v1.py
     parameters:
       <<: *parameters
       stage: STAGE_0
       stimulus: *gratings_stimulus
   STAGE_1:
-    script: *resource_id
-    script_md5: *resource_id # v2 compatability?
+    script: associative-script-v1.py
     parameters:
       <<: *parameters
       stage: STAGE_1
