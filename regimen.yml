@@ -16,8 +16,9 @@ _gratings_stimulus: &gratings_stimulus
       phase: [0.25]
 
 _parameters: &parameters
-  abort_on_early_response: false,
-  auto_reward_delay: 0.15
+  dev: false
+  monitor: "Gamma1.Luminance50" 
+  auto_reward_delay: 0.6 
   auto_reward_vol: 0.005 
   catch_frequency: 0.0 
   change_flashes_max: null 
@@ -25,24 +26,27 @@ _parameters: &parameters
   periodic_flash: null 
   change_time_dist: exponential
   change_time_scale: 2.0
-  pre_change_time: 2.25
+  pre_change_time: 18.0
   stimulus_window: 6.0
   end_after_response: true
-  end_after_response_sec: 3.5
+  end_after_response_sec: 0.0
   failure_repeats: 0
+  free_reward_trials: 1
+  max_task_duration_min: 60.0
   start_stop_padding: 1
-  free_reward_trials: 10
-  max_task_duration_min: 15.0
+  max_trials: 2000
   min_no_lick_time: 0.0
-  response_window: [0.0, 0.0]
+  response_window: [0.15, 1.0]
   reward_volume: 0.0
   volume_limit: 5.0
-  warm_up_trials: -1
-  task_id: DoC
-  timeout_duration: 0.3
+  warm_up_trials: 1
+  explicit_monitor: "Gamma1.Luminance50"
+  allow_contiguous_holds: false
+  auto_reward_hold_freq: 0.2
+  consumption_window: null
 
 ### mtrain definitions
-name: AssociativeLearning_MatchVB
+name: AssociativeLearning_Static_dev1
 
 transitions:
   # in case a transition is required by mtrain
@@ -52,15 +56,13 @@ transitions:
 
 stages:
   STAGE_0:
-    script: *resource_id
-    script_md5: *resource_id # v2 compatability?
+    script: associative-script-v1.py
     parameters:
       <<: *parameters
       stage: STAGE_0
       stimulus: *gratings_stimulus
   STAGE_1:
-    script: *resource_id
-    script_md5: *resource_id # v2 compatability?
+    script: associative-script-v1.py
     parameters:
       <<: *parameters
       stage: STAGE_1
