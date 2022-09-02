@@ -46,7 +46,7 @@ _parameters: &parameters
   consumption_window: null
 
 ### mtrain definitions
-name: AssociativeLearning_Static_dev1
+name: AssociativeLearning_Static_dev2
 
 transitions:
   # in case a transition is required by mtrain
@@ -56,12 +56,14 @@ transitions:
 
 stages:
   STAGE_0:
+    script_md5: associative-script-v1.py
     script: associative-script-v1.py
     parameters:
       <<: *parameters
       stage: STAGE_0
       stimulus: *gratings_stimulus
   STAGE_1:
+    script_md5: associative-script-v1.py
     script: associative-script-v1.py
     parameters:
       <<: *parameters
