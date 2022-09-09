@@ -17,7 +17,8 @@ import datetime as dt
 def hello(regimen_yml, stage, script_out, params_out, mouse):
 
     if mouse is not None:
-        mouse_dir = '/allen/programs/braintv/workgroups/neuralcoding/Behavior/Data/{}'
+        mouse_dir = '/home/matt.davis/code/mtrain_regimens/scripts'
+    
         params_out = os.path.join(mouse_dir.format(mouse),'adjustment')
         script_out = os.path.join(mouse_dir.format(mouse),'scriptlog')
 
@@ -36,18 +37,18 @@ def hello(regimen_yml, stage, script_out, params_out, mouse):
 
     print(stage)
 
-    script_url = regimen['stages'][stage]['script']
+    # script_url = regimen['stages'][stage]['script']
     params = regimen['stages'][stage]['parameters']
 
 
     timestamp = dt.datetime.now().strftime('%y%m%d%H%M%S')
 
-    r = requests.get(script_url, allow_redirects=True)
-    if script_out is None:
-        script_out = os.getcwd()
-    script_dest = os.path.join(script_out,'{}_{}.py'.format(timestamp,stage))
-    with open(script_dest,'wb') as f:
-        f.write(r.content)
+    # r = requests.get(script_url, allow_redirects=True)
+    # if script_out is None:
+    #     script_out = os.getcwd()
+    # script_dest = os.path.join(script_out,'{}_{}.py'.format(timestamp,stage))
+    # with open(script_dest,'wb') as f:
+    #     f.write(r.content)
 
     if params_out is None:
         params_out = os.getcwd()

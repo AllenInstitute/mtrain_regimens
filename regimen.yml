@@ -19,14 +19,15 @@ _parameters: &parameters
   dev: false
   monitor: "Gamma1.Luminance50" 
   auto_reward_delay: 0.6 
-  auto_reward_vol: 0.005 
+  auto_reward_vol: 0.005
+  auto_reward_hold_freq: 0.2
   catch_frequency: 0.0 
   change_flashes_max: null 
   change_flashes_min: null 
   periodic_flash: null 
   change_time_dist: exponential
   change_time_scale: 2.0
-  pre_change_time: 18.0
+  pre_change_time: 13.0
   stimulus_window: 6.0
   end_after_response: true
   end_after_response_sec: 0.0
@@ -44,9 +45,10 @@ _parameters: &parameters
   allow_contiguous_holds: false
   auto_reward_hold_freq: 0.2
   consumption_window: null
-
+  previous_consumption_change_flash_extension: 0
+  
 ### mtrain definitions
-name: AssociativeLearning_Static_dev2
+name: AssociativeLearning_Static_dev3
 
 transitions:
   # in case a transition is required by mtrain
