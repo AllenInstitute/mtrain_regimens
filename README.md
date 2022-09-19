@@ -6,6 +6,8 @@ This repository contains training regimens for the Visual Behavior project.
 - `scripts/` - This folder contains useful scripts.
 - `tests/` - This folder contains test scripts to help ensure that the regimen is properly formatted for mtrain and can run in production.
 
+## v2 scripts
+camstim v2 scripts need to be installed locally in order to work. If a referenced script is just a filename and is postfixed with _v2 it is likely a v2 script and hopefully exists [here](https://github.com/AllenInstitute/camstim-scripts/tree/master/v2) with the same name.
 
 ## Regimen names and semantic versioning
 
