@@ -5,7 +5,7 @@ _change_detection_script: &change_detection_script change_detection_extended_v2.
 
 _movie_clips_script: &movie_clips_script receptive_field_mapping_v2.py
 
-_bi_script: &bi_script bi_script_v2.py
+_bi_script: &bi_script bi_script_mapping_first_v2.py
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -185,7 +185,7 @@ _bi_base_params: &bi_base_params
         sampling: even
 
 ### mtrain definitions
-name: DynamicRouting_Task1_v0.0.14
+name: DynamicRouting_Task1_v0.0.15
 
 transitions:
   - trigger: progress
