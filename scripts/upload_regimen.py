@@ -14,7 +14,7 @@ def url_preprocessor(url=None, file_type='yaml'):
 
     if file_type == 'yaml':
         
-        content = yaml.load(content)
+        content = yaml.load(content, Loader=yaml.Loader)
     elif file_type == "json":
         pass
     else:
