@@ -66,8 +66,8 @@ _even_sampling_parameters: &even_sampling_parameters
   disable_opto_portion: False
   end_after_response: True
   end_after_response_sec: 3.5
-  opto_params: # required by code despite being disabled
-    test_levels: True
+  opto_params:
+    operation_mode: "pretest"
   mouse_type: "StupidDoCMouse"
 
 _bi_parameters: &bi_parameters
@@ -83,7 +83,7 @@ _bi_parameters: &bi_parameters
 
 
 ### mtrain definitions
-name: Pretest_v0.1.3
+name: Pretest_v0.1.4
 
 transitions:
   - trigger: manual
