@@ -1,89 +1,13 @@
 # dynamic routing task v1 development params
 # used for local script development with the camstim v2 api, TODO: add a version number?
 
-_change_detection_script: &change_detection_script change_detection_extended_v2.py
+_script: &script dynamic_routing.py
 
-_movie_clips_script: &movie_clips_script receptive_field_mapping_v2.py
-
-_bi_script: &bi_script bi_script_pretest_v2.py
-
-
-_mapping_movie_list: &mapping_movie_list
-  - name: gabor
-    params:
-      frame_length: 0.016666666666666666
-      movie_path: gabor-remastered-1576117355.npy
-      runs: 5 # 1 min each run
-      size: [1920, 1080]
-
-  - name: flash
-    params:
-      frame_length: 0.016666666666666666
-      movie_path: flash-remastered-1576272856.npy
-      runs: 5 # 1 min each
-      size: [1920, 1080]
-
-_base_even_sampling_stimulus: &base_even_sampling_stimulus
-  class: images
-  luminance_matching_intensity: -0.46
-  params:
-    image_set: image-set-im000_r.pkl
-    sampling: even
-
-_even_sampling_parameters: &even_sampling_parameters
-  omitted_go_reward_frequency: 0.0
-  random_rewards: {}
-  auto_reward_delay: 0.15
-  auto_reward_vol: 0.005
-  flash_omit_probability: 0.05
-  catch_frequency: null
-  change_time_dist: geometric
-  change_time_scale: 0.3
-  change_flashes_min: 4
-  change_flashes_max: 12
-  failure_repeats: 5
-  free_reward_trials: 10000
-  max_task_duration_min: 65.0
-  min_no_lick_time: 0
-  periodic_flash: [0.25, 0.5]
-  pre_change_time: 0.0
-  response_window: [0.15, 0.75]
-  start_stop_padding: 1.0
-  stimulus_window: 6.0
-  task_id: DoC
-  timeout_duration: 0.3
-  volume_limit: 5.0
-  lick_on_auto_rewards: 3
-  lick_disable_intervals: [[900, 2400]]
-  mapping:
-    flash_path: flash_250ms.stim
-    gabor_path: gabor_20_deg_250ms.stim
-  agent_socket: "127.0.0.1:5000"
-  warm_up_trials: 3
-  reward_volume: 0.005
-  max_mapping_duration_min: 10
-  disable_mapping_portion: True
-  disable_opto_portion: False
-  end_after_response: True
-  end_after_response_sec: 3.5
-  opto_params:
-    operation_mode: "pretest"
-  mouse_type: "StupidDoCMouse"
-
-_bi_parameters: &bi_parameters
-  <<: *even_sampling_parameters
-  pretest: true
-  max_task_duration_min: 0.3
-  disable_mapping_portion: True
-  disable_opto_portion: False
-  behavior_script: "even_sampling_script_v2_builtin.py"
-  mapping_script: "mapping_script_v2.py"
-  opto_script: "opto_tagging_v2.py"
-
-
+_parameters: &parameters
+  mtrain_translator: "dynamic_routing"
 
 ### mtrain definitions
-name: Pretest_v0.1.4
+name: DynamicRoutingTest_v0.0.1
 
 transitions:
   - trigger: manual
@@ -92,21 +16,17 @@ transitions:
 
 stages:
   STAGE_0:
-    script: *bi_script
-    script_md5: *bi_script # same if script is a resource id
+    script: *script
+    script_md5: *script # same if script is a resource id
     parameters:
-      <<: *bi_parameters
+      <<: *parameters
       stage: STAGE_0
-      stimulus:
-        <<: *base_even_sampling_stimulus
 
 
   STAGE_1:
-    script: *bi_script
-    script_md5: *bi_script # same if script is a resource id
+    script: *script
+    script_md5: *script # same if script is a resource id
     parameters:
-      <<: *bi_parameters
+      <<: *parameters
       stage: STAGE_1
-      stimulus:
-        <<: *base_even_sampling_stimulus
         
