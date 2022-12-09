@@ -7,12 +7,20 @@ _parameters: &parameters
   mtrain_translator: "dynamic_routing"
 
 ### mtrain definitions
-name: DynamicRoutingTest_v0.0.2
+name: DynamicRoutingTest_v0.0.3
 
 transitions:
   - trigger: progress
     source: STAGE_0
     dest: STAGE_1
+  - trigger: progress
+    source: STAGE_1
+    dest: STAGE_2
+    conditions: sessions_metrics_meets_hitCount_and_dprimeSameModal
+  - trigger: progress
+    source: STAGE_2
+    dest: STAGE_3
+    conditions: sessions_metrics_meets_dprimeSameModal_and_dprimeOtherModal
 
 stages:
   STAGE_0:
@@ -22,11 +30,25 @@ stages:
       <<: *parameters
       stage: STAGE_0
 
-
   STAGE_1:
     script: *script
     script_md5: *script # same if script is a resource id
     parameters:
       <<: *parameters
       stage: STAGE_1
+  
+  STAGE_2:
+    script: *script
+    script_md5: *script # same if script is a resource id
+    parameters:
+      <<: *parameters
+      stage: STAGE_2
+  
+  STAGE_3:
+    script: *script
+    script_md5: *script # same if script is a resource id
+    parameters:
+      <<: *parameters
+      stage: STAGE_3
+
         
