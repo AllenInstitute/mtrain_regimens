@@ -7,7 +7,7 @@ _parameters: &parameters
   mtrain_translator: "dynamic_routing"
 
 ### mtrain definitions
-name: DynamicRoutingTest_v0.0.6
+name: DynamicRoutingTest_v0.0.7
 
 transitions:
   - trigger: progress
@@ -26,11 +26,6 @@ transitions:
     source: STAGE_2
     dest: STAGE_3
     conditions: sessions_metrics_meets_hitCount_and_dprimeSameModal
-    unless: sessions_metrics_fails_minimum_hitCount
-  - trigger: progress
-    source: STAGE_2
-    dest: STAGE_0
-    conditions: sessions_metrics_fails_minimum_hitCount
   - trigger: progress
     source: STAGE_3
     dest: STAGE_4
