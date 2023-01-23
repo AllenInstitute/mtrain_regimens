@@ -7,29 +7,12 @@ _parameters: &parameters
   mtrain_translator: "dynamic_routing"
 
 ### mtrain definitions
-name: DynamicRoutingTest_v0.0.8
+name: DynamicRoutingTestBasic_v0.0.1
 
 transitions:
   - trigger: progress
     source: STAGE_0
     dest: STAGE_1
-  - trigger: progress
-    source: STAGE_1
-    dest: STAGE_2
-    conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
-    unless: v2_dynamic_routing_fails_minimum_hit_count
-  - trigger: progress
-    source: STAGE_1
-    dest: STAGE_0
-    conditions: v2_dynamic_routing_fails_minimum_hit_count
-  - trigger: progress
-    source: STAGE_2
-    dest: STAGE_3
-    conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
-  - trigger: progress
-    source: STAGE_3
-    dest: STAGE_4
-    conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal
 
 stages:
   STAGE_0:
@@ -39,32 +22,10 @@ stages:
       <<: *parameters
       stage: STAGE_0
 
+
   STAGE_1:
     script: *script
     script_md5: *script # same if script is a resource id
     parameters:
       <<: *parameters
       stage: STAGE_1
-  
-  STAGE_2:
-    script: *script
-    script_md5: *script # same if script is a resource id
-    parameters:
-      <<: *parameters
-      stage: STAGE_2
-  
-  STAGE_3:
-    script: *script
-    script_md5: *script # same if script is a resource id
-    parameters:
-      <<: *parameters
-      stage: STAGE_3
-  
-  STAGE_4:
-    script: *script
-    script_md5: *script # same if script is a resource id
-    parameters:
-      <<: *parameters
-      stage: STAGE_4
-
-        
