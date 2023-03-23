@@ -1,494 +1,115 @@
-_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=5adfa6e285774719135d0ebcba421f15f6f56168
-
-_change_detection_script_md5: &change_detection_script_md5 410d697d666405eed63f72e4d3e189bb
-
-_movie_clips_script: &movie_clips_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/receptive_field_mapping.py?at=46ae5481552b2ab22ffa580260426399ae40ffba
-
-_movie_clips_script_md5: &movie_clips_script_md5 8cab71e3cf5acdeef9a4660b09e52798
-
-_replay_script: &replay_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/replay_session/triscript.py?at=7fc7eda96c536b5b701241a27b8e0d2e7b30fd15
-
-_replay_script_md5: &replay_script_md5 7627ba45e1554dccf1e0159217785dfa
-
-_full_field_gratings_stimulus: &full_field_gratings
-  class: grating
-  params:
-    sf: 0.04
-    tex: sqr
-    size: [200, 150]
-    units: deg
-    phase: 0.25
-  groups:
-    vertical:
-      Ori: [0, 180]
-    horizontal:
-      Ori: [90, 270]
-
-_image_set_a_stimulus: &image_set_a
-  class: images
-  params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_training_2017.07.14.pkl
-    sampling: even
-
-_image_set_b_stimulus: &image_set_b
-  class: images
-  params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_3_2017.07.14.pkl
-    sampling: even
-
-_image_set_c_stimulus: &image_set_c
-  class: images
-  params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_6_2017.07.14.pkl
-    sampling: even
-
-_image_set_d_stimulus: &image_set_d
-  class: images
-  params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_5_2017.07.14.pkl
-    sampling: even
-
-_mapping_movie_list: &mapping_movie_list
-  - name: gabor
-    params:
-      frame_length: 0.016666666666666666
-      movie_path: //allen/programs/braintv/workgroups/nc-ophys/1022/mapping_stim_movies/gabor-remastered-1576117355.npy
-      runs: 5 # 1 min each run
-      size: [1920, 1080]
-
-  - name: flash
-    params:
-      frame_length: 0.016666666666666666
-      movie_path: //allen/programs/braintv/workgroups/nc-ophys/1022/mapping_stim_movies/flash-remastered-1576272856.npy
-      runs: 5 # 1 min each
-      size: [1920, 1080]
-
-_flash_parameters: &flash_parameters
-  task_id: DoC
-
-  catch_frequency: 0.25
-  failure_repeats: 5
-
-  # rewards (mL)
-  reward_volume: 0.007
-  volume_limit: 5.0
-
-  # auto rewards
-  auto_reward_vol: 0.005
-  warm_up_trials: 5
-  auto_reward_delay: 0.150
-  free_reward_trials: 10000
-
-  # trial timing
-  min_no_lick_time: 0.0
-  timeout_duration: 0.3
-  pre_change_time: 0.0
-  stimulus_window: 6.0
-  max_task_duration_min: 60.0
-  periodic_flash: [0.25, 0.5]
-  response_window: [0.15, 0.75]
-  end_after_response: True
-  end_after_response_sec: 3.5
-
-  # timing of changes
-  change_time_dist: geometric
-  change_time_scale: 0.3
-  change_flashes_min: 4 # inclusive
-  change_flashes_max: 12 # exclusive
-
-_no_flash_parameters: &no_flash_parameters
-  <<: *flash_parameters
-  periodic_flash: null
-  response_window: [0.15, 1.0]
-  reward_volume: 0.010
-  free_reward_trials: 10
-  pre_change_time: 2.25
-
-  # timing of changes
-  change_time_dist: exponential
-  change_time_scale: 2.0
-  change_flashes_min: null
-  change_flashes_max: null
-
-_image_set_a_parameters: &image_set_a_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_a
-  catch_frequency: null
-
-_image_set_b_parameters: &image_set_b_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_b
-  catch_frequency: null
-
-_image_set_c_parameters: &image_set_c_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_c
-  catch_frequency: null
-
-_image_set_d_parameters: &image_set_d_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_d
-  catch_frequency: null
-
-_replay_a_parameters: &replay_a_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_a
-  catch_frequency: null
-  mapping:
-    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-  output_dir: C:/ProgramData/camstim/output
-  agent_socket: "127.0.0.1:5000"
-
-_replay_b_parameters: &replay_b_parameters
-  <<: *flash_parameters
-  stimulus: *image_set_b
-  catch_frequency: null
-  mapping:
-    flash_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/flash_250ms.stim
-    gabor_path: //allen/programs/braintv/workgroups/nc-ophys/1022/replay-stim/gabor_20_deg_250ms.stim
-  output_dir: C:/ProgramData/camstim/output
-  agent_socket: "127.0.0.1:5000"
-
+_script: &script dynamic_routing.py
+_script_md5: &script_md5 dynamic_routing.py # same if script is a resource id
+_parameters: &parameters
+  mtrain_translator: "dynamic_routing"
 ### mtrain definitions
-#based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_Task1A_v0.2.5
-
+name: DynamicRoutingDev_v0.0.0
 transitions:
   - trigger: progress
-    source: TRAINING_0_gratings_autorewards_15min_0uL_reward
-    dest: TRAINING_1_gratings_10uL_reward
-    conditions: one_complete
-
+    source: STAGE_0.0
+    dest: STAGE_0.1
   - trigger: progress
-    source: TRAINING_1_gratings_10uL_reward
-    dest: TRAINING_2_gratings_flashed_10uL_reward
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
-
+    source: STAGE_0.1
+    dest: STAGE_0.2
+    conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
+    unless: v2_dynamic_routing_fails_minimum_hit_count
   - trigger: progress
-    source: TRAINING_2_gratings_flashed_10uL_reward
-    dest: TRAINING_3_images_A_10uL_reward
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
-
+    source: STAGE_0.1
+    dest: STAGE_0.0
+    conditions: v2_dynamic_routing_fails_minimum_hit_count
   - trigger: progress
-    source: TRAINING_3_images_A_10uL_reward
-    dest: TRAINING_4_images_A_training_7uL_reward
-    conditions: three_complete
-
+    source: STAGE_0.2
+    dest: STAGE_0.3_ORI_AMN
+    conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal
   - trigger: progress
-    source: TRAINING_4_images_A_training_7uL_reward
-    dest: TRAINING_5_images_A_epilogue_5uL_reward
-    conditions: meets_engagement_criteria
-
+    source: STAGE_0.3_ORI_AMN
+    dest: STAGE_0.3_AMN_ORI
+    unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
   - trigger: progress
-    source: TRAINING_5_images_A_epilogue_5uL_reward
-    dest: TRAINING_5_images_A_handoff_ready_5uL_reward
-    conditions: [meets_engagement_criteria, meets_hit_threshold]
-
+    source: STAGE_0.3_AMN_ORI
+    dest: STAGE_0.3_ORI_AMN
+    unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_ready_5uL_reward
-    dest: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-    unless: [meets_engagement_criteria, meets_hit_threshold]
-
+    source: STAGE_0.3_ORI_AMN
+    dest: STAGE_0.4_ORI_AMN
+    conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
   - trigger: progress
-    source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-    dest: TRAINING_5_images_A_handoff_ready_5uL_reward
-    conditions: [meets_engagement_criteria, meets_hit_threshold]
-
+    source: STAGE_0.3_AMN_ORI
+    dest: STAGE_0.4_AMN_ORI
+    conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+  - trigger: progress
+    source: STAGE_0.4_AMN_ORI
+    dest: STAGE_0.4_ORI_AMN
+  - trigger: progress
+    source: STAGE_0.4_ORI_AMN
+    dest: STAGE_0.4_AMN_ORI
   - trigger: manual
-    source: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-    dest: HABITUATION_5_images_A_handoff_ready_5uL_reward
-
+    source: STAGE_0.4_AMN_ORI
+    dest: STAGE_0.5_AMN_ORI
   - trigger: manual
-    source: HABITUATION_5_images_A_handoff_ready_5uL_reward
-    dest: EPHYS_1_images_A_5uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_A_5uL_reward
-    dest: EPHYS_1_images_B_5uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_B_5uL_reward
-    dest: HABITUATION_5_images_A_handoff_ready_3uL
-
-  - trigger: manual
-    source: HABITUATION_5_images_A_handoff_ready_3uL
-    dest: EPHYS_1_images_A_3uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_A_3uL_reward
-    dest: EPHYS_1_images_B_3uL_reward
-
-  - trigger: manual
-    source: EPHYS_1_images_B_3uL_reward
-    dest: HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration
-
-  - trigger: manual
-    source: HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration
-    dest: EPHYS_1_images_A_5uL_reward_75_min_duration
-
-  - trigger: manual
-    source: EPHYS_1_images_A_5uL_reward_75_min_duration
-    dest: EPHYS_1_images_B_5uL_reward_75_min_duration
-
+    source: STAGE_0.4_ORI_AMN
+    dest: STAGE_0.5_ORI_AMN
 stages:
-  TRAINING_0_gratings_autorewards_15min_0uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+  STAGE_0.0:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *no_flash_parameters
-      stage: TRAINING_0_gratings_autorewards_15min_0uL_reward
-      stimulus: *full_field_gratings
-
-      # auto rewards
-      warm_up_trials: -1 #infinite
-      abort_on_early_response: False
-      catch_frequency: 0.0
-
-      response_window: [0.0, 0.0]
-      min_no_lick_time: 0.0
-      failure_repeats: 0
-
-      # trial timing
-      max_task_duration_min: 15.0
-
-      # rewards (mL)
-      reward_volume: 0.0
-
-      # appears to be necessary to avoid potential race conditions on first trial
-      start_stop_padding: 1.0
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  TRAINING_1_gratings_10uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+      <<: *parameters
+      stage: STAGE_0.0
+      taskVersion: "stage 0 moving"
+  STAGE_0.1:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *no_flash_parameters
-      stage: TRAINING_1_gratings_10uL_reward
-
-      stimulus: *full_field_gratings
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  TRAINING_2_gratings_flashed_10uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+      <<: *parameters
+      stage: STAGE_0.1
+      taskVersion: "stage 1 AMN moving timeouts"
+  STAGE_0.2:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *flash_parameters
-      stage: TRAINING_2_gratings_flashed_10uL_reward
-      task_id: DoC
-
-      stimulus: *full_field_gratings
-      free_reward_trials: 10
-
-      # rewards (mL)
-      reward_volume: 0.01
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  TRAINING_3_images_A_10uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+      <<: *parameters
+      stage: STAGE_0.2
+      taskVersion: "stage 2 AMN timeouts"
+  STAGE_0.3_ORI_AMN:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_3_images_A_10uL_reward
-
-      # rewards (mL)
-      reward_volume: 0.01
-      free_reward_trials: 10
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  TRAINING_4_images_A_training_7uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+      <<: *parameters
+      stage: STAGE_0.3_ORI_AMN
+      taskVersion: "stage 5 ori AMN moving timeouts"
+  STAGE_0.3_AMN_ORI:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_4_images_A_training_7uL_reward
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  TRAINING_5_images_A_epilogue_5uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+      <<: *parameters
+      stage: STAGE_0.3_AMN_ORI
+      taskVersion: "stage 5 AMN ori moving timeouts"
+  STAGE_0.4_ORI_AMN:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_epilogue_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 300.0
-
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
-
-  TRAINING_5_images_A_handoff_ready_5uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+      <<: *parameters
+      stage: STAGE_0.4_ORI_AMN
+      taskVersion: "stage 5 ori AMN moving"
+  STAGE_0.4_AMN_ORI:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_ready_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 300.0
-
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
-
-  TRAINING_5_images_A_handoff_lapsed_5uL_reward:
-    script: *change_detection_script
-    script_md5: *change_detection_script_md5
+      <<: *parameters
+      stage: STAGE_0.4_AMN_ORI
+      taskVersion: "stage 5 AMN ori moving"
+  STAGE_0.5_ORI_AMN:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *image_set_a_parameters
-      stage: TRAINING_5_images_A_handoff_lapsed_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 300.0
-
-      # play list of movies mimicking a mapping session
-      epilogue_list: *mapping_movie_list
-
-  HABITUATION_5_images_A_handoff_ready_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+      <<: *parameters
+      stage: STAGE_0.5_ORI_AMN
+      taskVersion: "stage 5 ori AMN moving"
+  STAGE_0.5_AMN_ORI:
+    script: *script
+    script_md5: *script_md5
     parameters:
-      <<: *replay_a_parameters
-      stage: HABITUATION_5_images_A_handoff_ready_5uL_reward
-      warm_up_trials: 5
-      reward_volume: 0.005
-      free_reward_trials: 10
-      max_mapping_duration_min: 10
-      disable_replay: True
-      disable_opto: True
-      opto_params:
-        operation_mode: "experiment"
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  EPHYS_1_images_A_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_5uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  EPHYS_1_images_B_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_5uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  HABITUATION_5_images_A_handoff_ready_3uL:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: HABITUATION_5_images_A_handoff_ready_3uL
-      warm_up_trials: 5
-      reward_volume: 0.003
-      free_reward_trials: 10
-      max_mapping_duration_min: 10
-      disable_replay: True
-      disable_opto: True
-      opto_params:
-        operation_mode: "experiment"
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  EPHYS_1_images_A_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_3uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.003
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  EPHYS_1_images_B_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_3uL_reward
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.003
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: HABITUATION_5_images_A_handoff_ready_5uL_reward_75_min_duration
-      warm_up_trials: 5
-      reward_volume: 0.005
-      max_task_duration_min: 75.0
-      max_mapping_duration_min: 10
-      disable_replay: True
-      disable_opto: True
-      opto_params:
-        operation_mode: "experiment"
-
-      # ephys-specific no grayscreen pre-exp time
-      start_padding_windowless: 20.0
-
-  EPHYS_1_images_A_5uL_reward_75_min_duration:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_a_parameters
-      stage: EPHYS_1_images_A_5uL_reward_75_min_duration
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_task_duration_min: 75.0
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
-
-  EPHYS_1_images_B_5uL_reward_75_min_duration:
-    script: *replay_script
-    script_md5: *replay_script_md5
-    parameters:
-      <<: *replay_b_parameters
-      stage: EPHYS_1_images_B_5uL_reward_75_min_duration
-      warm_up_trials: 3
-      flash_omit_probability: 0.05
-      reward_volume: 0.005
-      max_task_duration_min: 75.0
-      max_mapping_duration_min: 35
-      opto_params:
-        operation_mode: "experiment"
+      <<: *parameters
+      stage: STAGE_0.5_AMN_ORI
+      taskVersion: "stage 5 AMN ori moving"
