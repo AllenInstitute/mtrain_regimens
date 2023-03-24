@@ -30,12 +30,12 @@ transitions:
     dest: STAGE_0.3_ORI_AMN
     unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
   - trigger: progress
-    source: STAGE_0.3_ORI_AMN
+    source: STAGE_0.3_AMN_ORI
     dest: STAGE_0.4_ORI_AMN
     conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
   - trigger: progress
     source: STAGE_0.3_AMN_ORI
-    dest: STAGE_0.4_AMN_ORI
+    dest: STAGE_0.4_ORI_AMN
     conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
   - trigger: progress
     source: STAGE_0.4_AMN_ORI
@@ -45,9 +45,15 @@ transitions:
     dest: STAGE_0.4_AMN_ORI
   - trigger: manual
     source: STAGE_0.4_AMN_ORI
-    dest: STAGE_0.5_AMN_ORI
+    dest: STAGE_0.5_ORI_AMN
   - trigger: manual
     source: STAGE_0.4_ORI_AMN
+    dest: STAGE_0.5_AMN_ORI
+  - trigger: progress
+    source: STAGE_0.5_ORI_AMN
+    dest: STAGE_0.5_AMN_ORI
+  - trigger: progress
+    source: STAGE_0.5_AMN_ORI
     dest: STAGE_0.5_ORI_AMN
 stages:
   STAGE_0.0:
