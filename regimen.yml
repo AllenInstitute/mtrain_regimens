@@ -2,8 +2,9 @@ _script: &script dynamic_routing.py
 _script_md5: &script_md5 dynamic_routing.py # same if script is a resource id
 _parameters: &parameters
   mtrain_translator: "dynamic_routing"
+  taskScript: "\\allen\programs\mindscope\workgroups\dynamicrouting\DynamicRoutingTask\DynamicRouting1.py"
 ### mtrain definitions
-name: DynamicRoutingDev_v0.0.1
+name: DynamicRoutingDev_v0.0.2
 transitions:
   - trigger: progress
     source: STAGE_0
