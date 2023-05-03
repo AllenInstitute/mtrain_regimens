@@ -1,104 +1,179 @@
-_day_1_script: &day_1_script
+_day_6_script: &day_6_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day1.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_day_1_script_md5: &day_1_script_md5
+_day_6_script_md5: &day_6_script_md5
     1284dde1bab18233f470a679d5a234f2
 
-_day_2_script: &day_2_script
+_day_7_script: &day_7_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day2.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_day_2_script_md5: &day_2_script_md5
+_day_7_script_md5: &day_7_script_md5
     5bd554df9c9bd5c40485a07956273cd9
     
-_day_3_script: &day_3_script
+_day_8_script: &day_8_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day3.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_day_3_script_md5: &day_3_script_md5
+_day_8_script_md5: &day_8_script_md5
     505ef9e14e6ac3f80e691f4d0b5265a8
     
-_day_4_script: &day_4_script
+_day_9_script: &day_9_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day4.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_day_4_script_md5: &day_4_script_md5
+_day_9_script_md5: &day_9_script_md5
     d82360a405c9ba1f1cc1d59b7707bc80
     
-_day_5_script: &day_5_script
+_day_10_script: &day_10_script
     http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day5.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
 
-_day_5_script_md5: &day_5_script_md5
+_day_10_script_md5: &day_10_script_md5
     e53821b4b498bcecb4aa793e5dff67b5
     
-_day_6_script: &day_6_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day6.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
+_sequencelearning_script: &sequencelearning_script
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_sequencelearning_stim/raw/production_stimulus.py?at=22c9dff0eb4dd20d438a3ac8b1a082d91858c048
 
-_day_6_script_md5: &day_6_script_md5
-    b7e1e4e06b3736d04dafaa64793dee42
+_sequencelearning_script_md5: &sequencelearning_script_md5
+    36334321ad0652300af4cf88a31e5ad7
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: Passive_VisualCoding_v1.0.0
+name: Openscope_SequenceLearning_v1
 
 transitions:
 
   - trigger: progress
-    source: DAY_1
-    dest: DAY_2
+    source: DAY_6
+    dest: DAY_7
     conditions: one_complete
 
   - trigger: progress
-    source: DAY_2
-    dest: DAY_3
+    source: DAY_7
+    dest: DAY_8
     conditions: one_complete
 
   - trigger: progress
-    source: DAY_3
-    dest: DAY_4
+    source: DAY_8
+    dest: DAY_9
     conditions: one_complete
 
   - trigger: progress
-    source: DAY_4
-    dest: DAY_5
+    source: DAY_9
+    dest: DAY_10
     conditions: one_complete
 
   - trigger: progress
-    source: DAY_5
-    dest: DAY_6
-    conditions: one_complete
+    source: DAY_10
+    dest: HAB_SEQUENCELEARNING
+    conditions: manual
+
+  - trigger: progress
+    source: HAB_SEQUENCELEARNING
+    dest: RANDOM_ORDER_SEQUENCELEARNING_DAY0
+    conditions: manual
+
+  - trigger: progress
+    source: RANDOM_ORDER_SEQUENCELEARNING_DAY0
+    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
+    conditions: manual
+
+  - trigger: progress
+    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
+    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
+    conditions: manual
+
+  - trigger: progress
+    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
+    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
+    conditions: manual
+
+  - trigger: progress
+    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
+    dest: RANDOM_ORDER_SEQUENCELEARNING_DAY4
+    conditions: manual
 
 stages:
-    DAY_1:
-        script: *day_1_script
-        script_md5: *day_1_script_md5
-        parameters:
-            stage: DAY_1
-
-    DAY_2:
-        script: *day_2_script
-        script_md5: *day_2_script_md5
-        parameters:
-            stage: DAY_2
-
-    DAY_3:
-        script: *day_3_script
-        script_md5: *day_3_script_md5
-        parameters:
-            stage: DAY_3
-
-    DAY_4:
-        script: *day_4_script
-        script_md5: *day_4_script_md5
-        parameters:
-            stage: DAY_4
-
-    DAY_5:
-        script: *day_5_script
-        script_md5: *day_5_script_md5
-        parameters:
-            stage: DAY_5
-
     DAY_6:
         script: *day_6_script
         script_md5: *day_6_script_md5
         parameters:
             stage: DAY_6
-    
+
+    DAY_7:
+        script: *day_7_script
+        script_md5: *day_7_script_md5
+        parameters:
+            stage: DAY_7
+
+    DAY_8:
+        script: *day_8_script
+        script_md5: *day_8_script_md5
+        parameters:
+            stage: DAY_8
+
+    DAY_9:
+        script: *day_9_script
+        script_md5: *day_9_script_md5
+        parameters:
+            stage: DAY_9
+
+    DAY_10:
+        script: *day_10_script
+        script_md5: *day_10_script_md5
+        parameters:
+            stage: DAY_10
+
+
+    HAB_SEQUENCELEARNING:
+        script: *sequencelearning_script
+        script_md5: *sequencelearning_script
+        parameters:
+            stage: HAB_SEQUENCELEARNING
+            monitor_name: "Gamma1.Luminance50"
+            day: 0
+            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+
+
+    RANDOM_ORDER_SEQUENCELEARNING_DAY0:
+        script: *sequencelearning_script
+        script_md5: *sequencelearning_script
+        parameters:
+            stage: RANDOM_ORDER_SEQUENCELEARNING_DAY0
+            monitor_name: "Gamma1.Luminance50"
+            day: 0
+            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+
+
+    REPEATED_MOVIE_SEQUENCELEARNING_DAY1:
+        script: *sequencelearning_script
+        script_md5: *sequencelearning_script
+        parameters:
+            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
+            monitor_name: "Gamma1.Luminance50"
+            day: 1
+            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+
+    REPEATED_MOVIE_SEQUENCELEARNING_DAY2:
+        script: *sequencelearning_script
+        script_md5: *sequencelearning_script
+        parameters:
+            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
+            monitor_name: "Gamma1.Luminance50"
+            day: 2
+            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+
+    REPEATED_MOVIE_SEQUENCELEARNING_DAY3:
+        script: *sequencelearning_script
+        script_md5: *sequencelearning_script
+        parameters:
+            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
+            monitor_name: "Gamma1.Luminance50"
+            day: 3
+            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+
+    RANDOM_ORDER_SEQUENCELEARNING_DAY4:
+        script: *sequencelearning_script
+        script_md5: *sequencelearning_script
+        parameters:
+            stage: RANDOM_ORDER_SEQUENCELEARNING_DAY4
+            monitor_name: "Gamma1.Luminance50"
+            day: 0
+            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
