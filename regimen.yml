@@ -36,7 +36,7 @@ _sequencelearning_script_md5: &sequencelearning_script_md5
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: Openscope_SequenceLearning_v1
+name: Openscope_SequenceLearning_v2
 
 transitions:
 
@@ -124,7 +124,7 @@ stages:
 
     HAB_SEQUENCELEARNING:
         script: *sequencelearning_script
-        script_md5: *sequencelearning_script
+        script_md5: *sequencelearning_script_md5
         parameters:
             stage: HAB_SEQUENCELEARNING
             monitor_name: "Gamma1.Luminance50"
@@ -134,7 +134,7 @@ stages:
 
     RANDOM_ORDER_SEQUENCELEARNING_DAY0:
         script: *sequencelearning_script
-        script_md5: *sequencelearning_script
+        script_md5: *sequencelearning_script_md5
         parameters:
             stage: RANDOM_ORDER_SEQUENCELEARNING_DAY0
             monitor_name: "Gamma1.Luminance50"
@@ -144,7 +144,7 @@ stages:
 
     REPEATED_MOVIE_SEQUENCELEARNING_DAY1:
         script: *sequencelearning_script
-        script_md5: *sequencelearning_script
+        script_md5: *sequencelearning_script_md5
         parameters:
             stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
             monitor_name: "Gamma1.Luminance50"
@@ -153,7 +153,7 @@ stages:
 
     REPEATED_MOVIE_SEQUENCELEARNING_DAY2:
         script: *sequencelearning_script
-        script_md5: *sequencelearning_script
+        script_md5: *sequencelearning_script_md5
         parameters:
             stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
             monitor_name: "Gamma1.Luminance50"
@@ -162,7 +162,7 @@ stages:
 
     REPEATED_MOVIE_SEQUENCELEARNING_DAY3:
         script: *sequencelearning_script
-        script_md5: *sequencelearning_script
+        script_md5: *sequencelearning_script_md5
         parameters:
             stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
             monitor_name: "Gamma1.Luminance50"
@@ -171,7 +171,7 @@ stages:
 
     RANDOM_ORDER_SEQUENCELEARNING_DAY4:
         script: *sequencelearning_script
-        script_md5: *sequencelearning_script
+        script_md5: *sequencelearning_script_md5
         parameters:
             stage: RANDOM_ORDER_SEQUENCELEARNING_DAY4
             monitor_name: "Gamma1.Luminance50"
