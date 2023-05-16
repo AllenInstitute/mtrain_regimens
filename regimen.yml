@@ -36,7 +36,7 @@ _sequencelearning_script_md5: &sequencelearning_script_md5
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: Openscope_SequenceLearning_v2
+name: Openscope_SequenceLearning_v3
 
 transitions:
 
@@ -60,35 +60,29 @@ transitions:
     dest: DAY_10
     conditions: one_complete
 
-  - trigger: progress
+  - trigger: manual
     source: DAY_10
     dest: HAB_SEQUENCELEARNING
-    conditions: manual
 
-  - trigger: progress
+  - trigger: manual
     source: HAB_SEQUENCELEARNING
     dest: RANDOM_ORDER_SEQUENCELEARNING_DAY0
-    conditions: manual
 
-  - trigger: progress
+  - trigger: manual
     source: RANDOM_ORDER_SEQUENCELEARNING_DAY0
     dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
-    conditions: manual
 
-  - trigger: progress
+  - trigger: manual
     source: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
     dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
-    conditions: manual
 
-  - trigger: progress
+  - trigger: manual
     source: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
     dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
-    conditions: manual
 
-  - trigger: progress
+  - trigger: manual
     source: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
     dest: RANDOM_ORDER_SEQUENCELEARNING_DAY4
-    conditions: manual
 
 stages:
     DAY_6:
