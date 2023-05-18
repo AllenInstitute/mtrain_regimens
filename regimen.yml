@@ -5,7 +5,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Barcoding_v1
+name: Openscope_Barcoding_v2
 
 transitions:
   - trigger: progress
@@ -50,8 +50,8 @@ transitions:
 
 stages:
   PASSIVE_CLUSTER_HAB_10MIN_DAY6:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
       add_flashes: True
@@ -70,8 +70,8 @@ stages:
         operation_mode: "experiment"
 
   PASSIVE_CLUSTER_HAB_20MIN_DAY7:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
       add_flashes: True
@@ -90,8 +90,8 @@ stages:
         operation_mode: "experiment"
 
   PASSIVE_CLUSTER_HAB_30MIN_DAY8:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
       add_flashes: True
@@ -110,8 +110,8 @@ stages:
         operation_mode: "experiment"
 
   PASSIVE_CLUSTER_HAB_40MIN_DAY9:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
     
     parameters:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
@@ -131,8 +131,8 @@ stages:
         operation_mode: "experiment"
 
   PASSIVE_CLUSTER_HAB_50MIN_DAY10:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
 
     parameters:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
@@ -152,8 +152,8 @@ stages:
         operation_mode: "experiment"
 
   PASSIVE_EPHYS_HAB_60MIN_DAY1_2:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
@@ -173,8 +173,8 @@ stages:
         operation_mode: "experiment"
 
   PASSIVE_EPHYS_HAB_90MIN_DAY3_4:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
@@ -194,8 +194,8 @@ stages:
         operation_mode: "experiment"
       
   PASSIVE_EPHYS_HAB_120MIN_DAY5:
-    script: *passive_training_cluster_script
-    script_md5: *passive_training_cluster_script_md5
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
