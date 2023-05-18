@@ -5,7 +5,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Barcoding_v2
+name: Openscope_Barcoding_v3
 
 transitions:
   - trigger: progress
@@ -178,7 +178,7 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
-       add_flashes: True
+      add_flashes: True
       add_static: True
       add_drift: True
       add_rf: True
