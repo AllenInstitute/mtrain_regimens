@@ -1,11 +1,11 @@
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/test-scripts/production_script.py?at=7e4fd89ae45901c06036d5df8ad39d7e746e6d58
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/test-scripts/production_script.py?at=65d6194e5377ba2c8ffd2a1fddd70bfd02b1d066
 _passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 8b985f4f5e3acae2ef7ea24a7c2fe4c9
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Barcoding_v4
+name: Openscope_Barcoding_v5
 
 transitions:
   - trigger: progress
@@ -59,7 +59,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 1
-      n_repeats: 3
+      n_repeats: 2
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
@@ -79,7 +79,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 2
-      n_repeats: 6
+      n_repeats: 4
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
@@ -99,7 +99,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 3
-      n_repeats: 9
+      n_repeats: 6
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
@@ -119,7 +119,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 4
-      n_repeats: 12
+      n_repeats: 8
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
@@ -140,7 +140,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 5
-      n_repeats: 15
+      n_repeats: 10
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
@@ -161,7 +161,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 6
-      n_repeats: 18
+      n_repeats: 12
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
@@ -182,7 +182,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 8
-      n_repeats: 27
+      n_repeats: 18
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
@@ -203,7 +203,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 8
-      n_repeats: 32
+      n_repeats: 24
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
@@ -225,7 +225,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 8
-      n_repeats: 32
+      n_repeats: 24
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
