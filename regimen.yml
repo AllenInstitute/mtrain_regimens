@@ -1,173 +1,258 @@
-_day_6_script: &day_6_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day1.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/test-scripts/production_script.py?at=7e4fd89ae45901c06036d5df8ad39d7e746e6d58
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 8b985f4f5e3acae2ef7ea24a7c2fe4c9
 
-_day_6_script_md5: &day_6_script_md5
-    1284dde1bab18233f470a679d5a234f2
-
-_day_7_script: &day_7_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day2.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_7_script_md5: &day_7_script_md5
-    5bd554df9c9bd5c40485a07956273cd9
-    
-_day_8_script: &day_8_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day3.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_8_script_md5: &day_8_script_md5
-    505ef9e14e6ac3f80e691f4d0b5265a8
-    
-_day_9_script: &day_9_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day4.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_9_script_md5: &day_9_script_md5
-    d82360a405c9ba1f1cc1d59b7707bc80
-    
-_day_10_script: &day_10_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day5.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_10_script_md5: &day_10_script_md5
-    e53821b4b498bcecb4aa793e5dff67b5
-    
-_sequencelearning_script: &sequencelearning_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_sequencelearning_stim/raw/production_stimulus.py?at=22c9dff0eb4dd20d438a3ac8b1a082d91858c048
-
-_sequencelearning_script_md5: &sequencelearning_script_md5
-    36334321ad0652300af4cf88a31e5ad7
+_optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
+_optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-#based on VisualBehavior_Task1A_v1.0.3
-name: Openscope_SequenceLearning_v3
+name: Openscope_Barcoding_v1
 
 transitions:
-
   - trigger: progress
-    source: DAY_6
-    dest: DAY_7
+    source: PASSIVE_CLUSTER_HAB_10MIN_DAY6
+    dest: PASSIVE_CLUSTER_HAB_20MIN_DAY7
     conditions: one_complete
 
   - trigger: progress
-    source: DAY_7
-    dest: DAY_8
+    source: PASSIVE_CLUSTER_HAB_20MIN_DAY7
+    dest: PASSIVE_CLUSTER_HAB_30MIN_DAY8
     conditions: one_complete
 
   - trigger: progress
-    source: DAY_8
-    dest: DAY_9
+    source: PASSIVE_CLUSTER_HAB_30MIN_DAY8
+    dest: PASSIVE_CLUSTER_HAB_40MIN_DAY9
     conditions: one_complete
 
   - trigger: progress
-    source: DAY_9
-    dest: DAY_10
+    source: PASSIVE_CLUSTER_HAB_40MIN_DAY9
+    dest: PASSIVE_CLUSTER_HAB_50MIN_DAY10
     conditions: one_complete
+  
+  - trigger: manual
+    source: PASSIVE_CLUSTER_HAB_50MIN_DAY10
+    dest: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
 
   - trigger: manual
-    source: DAY_10
-    dest: HAB_SEQUENCELEARNING
+    source: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
+    dest: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
 
   - trigger: manual
-    source: HAB_SEQUENCELEARNING
-    dest: RANDOM_ORDER_SEQUENCELEARNING_DAY0
+    source: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
+    dest: PASSIVE_EPHYS_HAB_120MIN_DAY5
 
   - trigger: manual
-    source: RANDOM_ORDER_SEQUENCELEARNING_DAY0
-    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
+    source: PASSIVE_EPHYS_HAB_120MIN_DAY5
+    dest: PASSIVE_EPHYS_PROD_120MIN_DAY1
 
   - trigger: manual
-    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
-    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
-
-  - trigger: manual
-    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
-    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
-
-  - trigger: manual
-    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
-    dest: RANDOM_ORDER_SEQUENCELEARNING_DAY4
+    source: PASSIVE_EPHYS_PROD_120MIN_DAY1
+    dest: OPTOTAGGING_ONLY
 
 stages:
-    DAY_6:
-        script: *day_6_script
-        script_md5: *day_6_script_md5
-        parameters:
-            stage: DAY_6
+  PASSIVE_CLUSTER_HAB_10MIN_DAY6:
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
+    parameters:
+      stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
+      add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 1
+      n_repeats: 3
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
 
-    DAY_7:
-        script: *day_7_script
-        script_md5: *day_7_script_md5
-        parameters:
-            stage: DAY_7
+      # optotagging      
+      disable_opto: True
 
-    DAY_8:
-        script: *day_8_script
-        script_md5: *day_8_script_md5
-        parameters:
-            stage: DAY_8
+      opto_params: 
+        operation_mode: "experiment"
 
-    DAY_9:
-        script: *day_9_script
-        script_md5: *day_9_script_md5
-        parameters:
-            stage: DAY_9
+  PASSIVE_CLUSTER_HAB_20MIN_DAY7:
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
+    parameters:
+      stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
+      add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 2
+      n_repeats: 6
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
 
-    DAY_10:
-        script: *day_10_script
-        script_md5: *day_10_script_md5
-        parameters:
-            stage: DAY_10
+      # optotagging      
+      disable_opto: True
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  PASSIVE_CLUSTER_HAB_30MIN_DAY8:
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
+    parameters:
+      stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
+      add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 3
+      n_repeats: 9
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+
+      # optotagging      
+      disable_opto: True
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  PASSIVE_CLUSTER_HAB_40MIN_DAY9:
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
+    
+    parameters:
+      stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
+      add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 4
+      n_repeats: 12
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+
+      # optotagging      
+      disable_opto: True
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  PASSIVE_CLUSTER_HAB_50MIN_DAY10:
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
+
+    parameters:
+      stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
+      add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 5
+      n_repeats: 15
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+
+      # optotagging      
+      disable_opto: True
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  PASSIVE_EPHYS_HAB_60MIN_DAY1_2:
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
+
+    parameters:
+      stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
+      add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 6
+      n_repeats: 18
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+
+      # optotagging      
+      disable_opto: True
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  PASSIVE_EPHYS_HAB_90MIN_DAY3_4:
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
+
+    parameters:
+      stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
+       add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 8
+      n_repeats: 27
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+
+      # optotagging      
+      disable_opto: True
+
+      opto_params: 
+        operation_mode: "experiment"
+      
+  PASSIVE_EPHYS_HAB_120MIN_DAY5:
+    script: *passive_training_cluster_script
+    script_md5: *passive_training_cluster_script_md5
+
+    parameters:
+      stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
+      add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 8
+      n_repeats: 32
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+
+      # optotagging      
+      disable_opto: True
+
+      opto_params: 
+        operation_mode: "experiment"
 
 
-    HAB_SEQUENCELEARNING:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
-        parameters:
-            stage: HAB_SEQUENCELEARNING
-            monitor_name: "Gamma1.Luminance50"
-            day: 0
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+  PASSIVE_EPHYS_PROD_120MIN_DAY1:
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
 
+    parameters:
+      stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
+      add_flashes: True
+      add_static: True
+      add_drift: True
+      add_rf: True
+      number_runs_rf: 8
+      n_repeats: 32
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
 
-    RANDOM_ORDER_SEQUENCELEARNING_DAY0:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
-        parameters:
-            stage: RANDOM_ORDER_SEQUENCELEARNING_DAY0
-            monitor_name: "Gamma1.Luminance50"
-            day: 0
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+      # optotagging      
+      disable_opto: False
 
+      opto_params: 
+        operation_mode: "experiment"
 
-    REPEATED_MOVIE_SEQUENCELEARNING_DAY1:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
-        parameters:
-            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
-            monitor_name: "Gamma1.Luminance50"
-            day: 1
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+  OPTOTAGGING_ONLY:
+    script: *optotagging_script
+    script_md5: *optotagging_script_md5
+    parameters:
+      add_flashes: False
+      add_static: False
+      add_drift: False
+      add_rf: False
+      number_runs_rf: 1
+      n_repeats: 1
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      
+      stage: OPTOTAGGING_ONLY
 
-    REPEATED_MOVIE_SEQUENCELEARNING_DAY2:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
-        parameters:
-            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
-            monitor_name: "Gamma1.Luminance50"
-            day: 2
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+      # optotagging      
+      disable_opto: False
 
-    REPEATED_MOVIE_SEQUENCELEARNING_DAY3:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
-        parameters:
-            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
-            monitor_name: "Gamma1.Luminance50"
-            day: 3
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
-
-    RANDOM_ORDER_SEQUENCELEARNING_DAY4:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
-        parameters:
-            stage: RANDOM_ORDER_SEQUENCELEARNING_DAY4
-            monitor_name: "Gamma1.Luminance50"
-            day: 0
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+      opto_params: 
+        operation_mode: "experiment"
