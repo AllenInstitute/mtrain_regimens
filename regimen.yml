@@ -5,7 +5,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Barcoding_v3
+name: Openscope_Barcoding_v4
 
 transitions:
   - trigger: progress
@@ -61,7 +61,7 @@ stages:
       number_runs_rf: 1
       n_repeats: 3
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
       # optotagging      
       disable_opto: True
@@ -81,7 +81,7 @@ stages:
       number_runs_rf: 2
       n_repeats: 6
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
       # optotagging      
       disable_opto: True
@@ -101,9 +101,8 @@ stages:
       number_runs_rf: 3
       n_repeats: 9
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
-      # optotagging      
       disable_opto: True
 
       opto_params: 
@@ -122,7 +121,7 @@ stages:
       number_runs_rf: 4
       n_repeats: 12
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
       # optotagging      
       disable_opto: True
@@ -143,7 +142,7 @@ stages:
       number_runs_rf: 5
       n_repeats: 15
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
       # optotagging      
       disable_opto: True
@@ -164,7 +163,7 @@ stages:
       number_runs_rf: 6
       n_repeats: 18
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
       # optotagging      
       disable_opto: True
@@ -185,7 +184,7 @@ stages:
       number_runs_rf: 8
       n_repeats: 27
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
       # optotagging      
       disable_opto: True
@@ -206,7 +205,7 @@ stages:
       number_runs_rf: 8
       n_repeats: 32
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
       # optotagging      
       disable_opto: True
@@ -228,7 +227,7 @@ stages:
       number_runs_rf: 8
       n_repeats: 32
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
 
       # optotagging      
       disable_opto: False
@@ -247,7 +246,7 @@ stages:
       number_runs_rf: 1
       n_repeats: 1
       monitor_name: "Gamma1.Luminance50"
-      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope_dendritic_coupling/pilot_scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
       
       stage: OPTOTAGGING_ONLY
 
