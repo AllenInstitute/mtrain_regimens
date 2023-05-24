@@ -1,11 +1,11 @@
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/test-scripts/production_script.py?at=65d6194e5377ba2c8ffd2a1fddd70bfd02b1d066
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 928b6a6cc046af1fcaaaa51542f2424d
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/test-scripts/production_script.py?at=4493e5325371ee479e4470de1d6d9258a289af62
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 6f8db958792b5ab3a24efc2d42bc2d49
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Barcoding_v6
+name: Openscope_Barcoding_v7
 
 transitions:
   - trigger: progress
