@@ -1,122 +1,29 @@
-_script: &script https://raw.githubusercontent.com/samgale/DynamicRoutingTask/697a16a1b8e024bf78d1bf5c408923390ce6bde1/runTask.py
-_script_md5: &script_md5 9ce7574ff7618135488f0898760f53c2
+_script: &script dynamic_routing.py
+_script_md5: &script_md5 dynamic_routing.py
 _parameters: &parameters
   mtrain_translator: "dynamic_routing"
   taskScript: //allen/programs/mindscope/workgroups/dynamicrouting/DynamicRoutingTask/DynamicRouting1.py
 ### mtrain definitions
-name: DynamicRoutingDev_v0.0.4
+name: DynamicRoutingAlternating_0_v0.0.0
 transitions:
   - trigger: progress
-    source: STAGE_0
-    dest: STAGE_1
+    source: STAGE_5_ORI_AMN_MOVING_NOGO
+    dest: STAGE_5_AMN_ORI_MOVING_NOGO
   - trigger: progress
-    source: STAGE_1
-    dest: STAGE_2
-    conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
-    unless: v2_dynamic_routing_fails_minimum_hit_count
-  - trigger: progress
-    source: STAGE_1
-    dest: STAGE_0
-    conditions: v2_dynamic_routing_fails_minimum_hit_count
-  - trigger: progress
-    source: STAGE_2
-    dest: STAGE_3_ORI_AMN
-    conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
-  - trigger: progress
-    source: STAGE_3_ORI_AMN
-    dest: STAGE_3_AMN_ORI
-    unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
-  - trigger: progress
-    source: STAGE_3_AMN_ORI
-    dest: STAGE_3_ORI_AMN
-    unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
-  - trigger: progress
-    source: STAGE_3_ORI_AMN
-    dest: STAGE_4_AMN_ORI
-    conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
-  - trigger: progress
-    source: STAGE_3_AMN_ORI
-    dest: STAGE_4_ORI_AMN
-    conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
-  - trigger: progress
-    source: STAGE_4_AMN_ORI
-    dest: STAGE_4_ORI_AMN
-  - trigger: progress
-    source: STAGE_4_ORI_AMN
-    dest: STAGE_4_AMN_ORI
-  - trigger: manual
-    source: STAGE_4_AMN_ORI
-    dest: STAGE_5_ORI_AMN
-  - trigger: manual
-    source: STAGE_4_ORI_AMN
-    dest: STAGE_5_AMN_ORI
-  - trigger: progress
-    source: STAGE_5_ORI_AMN
-    dest: STAGE_5_AMN_ORI
-  - trigger: progress
-    source: STAGE_5_AMN_ORI
-    dest: STAGE_5_ORI_AMN
+    source: STAGE_5_AMN_ORI_MOVING_NOGO
+    dest: STAGE_5_ORI_AMN_MOVING_NOGO
 stages:
-  STAGE_0:
+  STAGE_5_ORI_AMN_MOVING_NOGO:
     script: *script
     script_md5: *script_md5
     parameters:
       <<: *parameters
-      stage: STAGE_0
-      taskVersion: "stage 0 moving"
-  STAGE_1:
+      stage: STAGE_5_ORI_AMN_MOVING_NOGO
+      taskVersion: "stage 5 ori AMN moving nogo"
+  STAGE_5_AMN_ORI_MOVING_NOGO:
     script: *script
     script_md5: *script_md5
     parameters:
       <<: *parameters
-      stage: STAGE_1
-      taskVersion: "stage 1 AMN moving timeouts"
-  STAGE_2:
-    script: *script
-    script_md5: *script_md5
-    parameters:
-      <<: *parameters
-      stage: STAGE_2
-      taskVersion: "stage 2 AMN timeouts"
-  STAGE_3_ORI_AMN:
-    script: *script
-    script_md5: *script_md5
-    parameters:
-      <<: *parameters
-      stage: STAGE_3_ORI_AMN
-      taskVersion: "stage 5 ori AMN moving timeouts"
-  STAGE_3_AMN_ORI:
-    script: *script
-    script_md5: *script_md5
-    parameters:
-      <<: *parameters
-      stage: STAGE_3_AMN_ORI
-      taskVersion: "stage 5 AMN ori moving timeouts"
-  STAGE_4_ORI_AMN:
-    script: *script
-    script_md5: *script_md5
-    parameters:
-      <<: *parameters
-      stage: STAGE_4_ORI_AMN
-      taskVersion: "stage 5 ori AMN moving"
-  STAGE_4_AMN_ORI:
-    script: *script
-    script_md5: *script_md5
-    parameters:
-      <<: *parameters
-      stage: STAGE_4_AMN_ORI
-      taskVersion: "stage 5 AMN ori moving"
-  STAGE_5_ORI_AMN:
-    script: *script
-    script_md5: *script_md5
-    parameters:
-      <<: *parameters
-      stage: STAGE_5_ORI_AMN
-      taskVersion: "stage 5 ori AMN moving"
-  STAGE_5_AMN_ORI:
-    script: *script
-    script_md5: *script_md5
-    parameters:
-      <<: *parameters
-      stage: STAGE_5_AMN_ORI
-      taskVersion: "stage 5 AMN ori moving"
+      stage: STAGE_5_AMN_ORI_MOVING_NOGO
+      taskVersion: "stage 5 AMN ori moving nogo"
