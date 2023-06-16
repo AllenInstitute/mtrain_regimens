@@ -2,10 +2,13 @@ _passive_prod_circle_script: &passive_prod_circle_script http://stash.corp.allen
 _passive_prod_circle_script_md5: &passive_prod_circle_script_md5 49b82e36b6dabc10fb9b96243651befb
 
 ### mtrain definitions
-name: consciousness_circle_v3
+name: consciousness_circle_v4
 
 transitions:
-
+  - trigger: manual
+    source: PASSIVE_CIRCLE
+    dest: PASSIVE_CIRCLE
+    
 stages:
   PASSIVE_CIRCLE:
     script: *passive_prod_circle_script
