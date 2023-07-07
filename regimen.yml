@@ -1,10 +1,10 @@
-_script: &script https://raw.githubusercontent.com/samgale/DynamicRoutingTask/697a16a1b8e024bf78d1bf5c408923390ce6bde1/runTask.py
-_script_md5: &script_md5 9ce7574ff7618135488f0898760f53c2
+_script: &script https://raw.githubusercontent.com/mochic/DynamicRoutingTask/6a3acf4647764a54b0f18f3d92d23ad0a66d31dd/runTask.py
+_script_md5: &script_md5 082bad8642ae13155c22a5e5d3adf3c5
 _parameters: &parameters
   mtrain_translator: "dynamic_routing"
-  taskScript: //allen/programs/mindscope/workgroups/dynamicrouting/DynamicRoutingTask/DynamicRouting1.py
+  taskScript: https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
 ### mtrain definitions
-name: DynamicRoutingDev_v0.0.4
+name: DynamicRoutingDev_v0.0.5
 transitions:
   - trigger: progress
     source: STAGE_0
