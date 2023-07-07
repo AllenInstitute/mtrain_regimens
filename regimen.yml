@@ -1,14 +1,14 @@
-_commit_hash: &commit_hash 0c7a3824afcf8b75d57fedc6c9643c7e02cef39d
 _script: &script https://raw.githubusercontent.com/mochic/DynamicRoutingTask/0c7a3824afcf8b75d57fedc6c9643c7e02cef39d/runTask.py
 _script_md5: &script_md5 724081e142b18d9759af04cad01eeea3
 _parameters: &parameters
   mtrain_translator: "dynamic_routing"
-  commit_hash: *commit_hash
+  task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+  task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
   GHTaskScriptParams:
-    - taskScript: https://raw.githubusercontent.com/mochic/DynamicRoutingTask/0c7a3824afcf8b75d57fedc6c9643c7e02cef39d/DynamicRouting1.py
-      taskControl: https://raw.githubusercontent.com/mochic/DynamicRoutingTask/0c7a3824afcf8b75d57fedc6c9643c7e02cef39d/TaskControl.py
+    - taskScript: https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+      taskControl: https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
 ### mtrain definitions
-name: DynamicRoutingDev_v0.0.7
+name: DynamicRoutingDev_v0.0.8
 transitions:
   - trigger: progress
     source: STAGE_0
