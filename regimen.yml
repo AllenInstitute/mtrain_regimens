@@ -1,17 +1,17 @@
 _script: &script 
-  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/f2b4612a8ef1e3bada999771937711d98642019c/runTask.py
+  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/2150673441ae2e23f5ec305aebe6ca52efba89ea/runTask.py
 _script_md5: 30b7b5a69e4e061ffb06498e7a6587c8
 _parameters: &parameters
   mtrain_translator: dynamic_routing
-  task_script_commit_hash: f2b4612a8ef1e3bada999771937711d98642019c
-  task_control_commit_hash: f2b4612a8ef1e3bada999771937711d98642019c
+  task_script_commit_hash: 2150673441ae2e23f5ec305aebe6ca52efba89ea
+  task_control_commit_hash: 2150673441ae2e23f5ec305aebe6ca52efba89ea
   GHTaskScriptParams:
     taskScript: 
-      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/f2b4612a8ef1e3bada999771937711d98642019c/DynamicRouting1.py
+      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/2150673441ae2e23f5ec305aebe6ca52efba89ea/DynamicRouting1.py
     taskControl: 
-      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/f2b4612a8ef1e3bada999771937711d98642019c/TaskControl.py
+      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/2150673441ae2e23f5ec305aebe6ca52efba89ea/TaskControl.py
 ### mtrain definitions
-name: DynamicRoutingDev_v0.0.25
+name: DynamicRoutingDev_v0.0.26
 transitions:
 - trigger: progress
   source: STAGE_0
