@@ -1,6 +1,6 @@
 _script: 
   https://raw.githubusercontent.com/samgale/DynamicRoutingTask/697a16a1b8e024bf78d1bf5c408923390ce6bde1/runTask.py
-_script_md5: &script_md5 runTask.py
+_script_md5: 9ce7574ff7618135488f0898760f53c2
 _parameters:
   mtrain_translator: dynamic_routing
   task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
@@ -11,7 +11,7 @@ _parameters:
     taskControl: 
       https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
 ### mtrain definitions
-name: DynamicRoutingDev_v0.0.10
+name: DynamicRoutingDev_v0.0.11
 transitions:
 - trigger: progress
   source: STAGE_0
@@ -66,7 +66,7 @@ transitions:
 stages:
   STAGE_0:
     script: &script runTask.py
-    script_md5: *script_md5
+    script_md5: &script_md5 runTask.py
     parameters:
       <<:
         mtrain_translator: dynamic_routing
