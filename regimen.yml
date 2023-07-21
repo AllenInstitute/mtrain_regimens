@@ -1,126 +1,245 @@
 _script: &script runTask.py
 _script_md5: &script_md5 runTask.py
-_parameters: &parameters
-  mtrain_translator: "dynamic_routing"
+_parameters:
+  mtrain_translator: dynamic_routing
   task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
   task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
-  GHTaskScriptParams:
-    - taskScript: https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
-      taskControl: https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+  GHTaskScriptParams: &id001
+  - taskScript: 
+      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+    taskControl: 
+      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
 ### mtrain definitions
 name: DynamicRoutingDev_v0.0.9
 transitions:
-  - trigger: progress
-    source: STAGE_0
-    dest: STAGE_1
-  - trigger: progress
-    source: STAGE_1
-    dest: STAGE_2
-    conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
-    unless: v2_dynamic_routing_fails_minimum_hit_count
-  - trigger: progress
-    source: STAGE_1
-    dest: STAGE_0
-    conditions: v2_dynamic_routing_fails_minimum_hit_count
-  - trigger: progress
-    source: STAGE_2
-    dest: STAGE_3_ORI_AMN
-    conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
-  - trigger: progress
-    source: STAGE_3_ORI_AMN
-    dest: STAGE_3_AMN_ORI
-    unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
-  - trigger: progress
-    source: STAGE_3_AMN_ORI
-    dest: STAGE_3_ORI_AMN
-    unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
-  - trigger: progress
-    source: STAGE_3_ORI_AMN
-    dest: STAGE_4_AMN_ORI
-    conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
-  - trigger: progress
-    source: STAGE_3_AMN_ORI
-    dest: STAGE_4_ORI_AMN
-    conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
-  - trigger: progress
-    source: STAGE_4_AMN_ORI
-    dest: STAGE_4_ORI_AMN
-  - trigger: progress
-    source: STAGE_4_ORI_AMN
-    dest: STAGE_4_AMN_ORI
-  - trigger: manual
-    source: STAGE_4_AMN_ORI
-    dest: STAGE_5_ORI_AMN
-  - trigger: manual
-    source: STAGE_4_ORI_AMN
-    dest: STAGE_5_AMN_ORI
-  - trigger: progress
-    source: STAGE_5_ORI_AMN
-    dest: STAGE_5_AMN_ORI
-  - trigger: progress
-    source: STAGE_5_AMN_ORI
-    dest: STAGE_5_ORI_AMN
+- trigger: progress
+  source: STAGE_0
+  dest: STAGE_1
+- trigger: progress
+  source: STAGE_1
+  dest: STAGE_2
+  conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
+  unless: v2_dynamic_routing_fails_minimum_hit_count
+- trigger: progress
+  source: STAGE_1
+  dest: STAGE_0
+  conditions: v2_dynamic_routing_fails_minimum_hit_count
+- trigger: progress
+  source: STAGE_2
+  dest: STAGE_3_ORI_AMN
+  conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
+- trigger: progress
+  source: STAGE_3_ORI_AMN
+  dest: STAGE_3_AMN_ORI
+  unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_AMN_ORI
+  dest: STAGE_3_ORI_AMN
+  unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_ORI_AMN
+  dest: STAGE_4_AMN_ORI
+  conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_AMN_ORI
+  dest: STAGE_4_ORI_AMN
+  conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_4_AMN_ORI
+  dest: STAGE_4_ORI_AMN
+- trigger: progress
+  source: STAGE_4_ORI_AMN
+  dest: STAGE_4_AMN_ORI
+- trigger: manual
+  source: STAGE_4_AMN_ORI
+  dest: STAGE_5_ORI_AMN
+- trigger: manual
+  source: STAGE_4_ORI_AMN
+  dest: STAGE_5_AMN_ORI
+- trigger: progress
+  source: STAGE_5_ORI_AMN
+  dest: STAGE_5_AMN_ORI
+- trigger: progress
+  source: STAGE_5_AMN_ORI
+  dest: STAGE_5_ORI_AMN
 stages:
   STAGE_0:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_0
-      taskVersion: "stage 0 moving"
+      taskVersion: stage 0 moving
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
   STAGE_1:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_1
-      taskVersion: "stage 1 AMN moving timeouts"
+      taskVersion: stage 1 AMN moving timeouts
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
   STAGE_2:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_2
-      taskVersion: "stage 2 AMN timeouts"
+      taskVersion: stage 2 AMN timeouts
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
   STAGE_3_ORI_AMN:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_3_ORI_AMN
-      taskVersion: "stage 5 ori AMN moving timeouts"
+      taskVersion: stage 5 ori AMN moving timeouts
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
   STAGE_3_AMN_ORI:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_3_AMN_ORI
-      taskVersion: "stage 5 AMN ori moving timeouts"
+      taskVersion: stage 5 AMN ori moving timeouts
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
   STAGE_4_ORI_AMN:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_4_ORI_AMN
-      taskVersion: "stage 5 ori AMN moving"
+      taskVersion: stage 5 ori AMN moving
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
   STAGE_4_AMN_ORI:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_4_AMN_ORI
-      taskVersion: "stage 5 AMN ori moving"
+      taskVersion: stage 5 AMN ori moving
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
   STAGE_5_ORI_AMN:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_5_ORI_AMN
-      taskVersion: "stage 5 ori AMN moving"
+      taskVersion: stage 5 ori AMN moving
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
   STAGE_5_AMN_ORI:
     script: *script
     script_md5: *script_md5
     parameters:
-      <<: *parameters
+      <<:
+        mtrain_translator: dynamic_routing
+        task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+        GHTaskScriptParams:
+        - taskScript: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+          taskControl: 
+            https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
+### mtrain definitions
       stage: STAGE_5_AMN_ORI
-      taskVersion: "stage 5 AMN ori moving"
+      taskVersion: stage 5 AMN ori moving
+      mtrain_translator: dynamic_routing
+      task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+      GHTaskScriptParams: *id001
