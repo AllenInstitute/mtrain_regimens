@@ -1,17 +1,17 @@
 _script: &script 
-  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/81939eb24fd524aa2a889bfd3231b819dc405ad7/runTask.py
-_script_md5: 4d531a8ffafeaa6999c0314ed057669b
+  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/697a16a1b8e024bf78d1bf5c408923390ce6bde1/runTask.py
+_script_md5: 9ce7574ff7618135488f0898760f53c2
 _parameters: &parameters
   mtrain_translator: dynamic_routing
-  task_script_commit_hash: 81939eb24fd524aa2a889bfd3231b819dc405ad7
-  task_control_commit_hash: 81939eb24fd524aa2a889bfd3231b819dc405ad7
+  task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+  task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
   GHTaskScriptParams:
     taskScript: 
-      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/81939eb24fd524aa2a889bfd3231b819dc405ad7/DynamicRouting1.py
+      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
     taskControl: 
-      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/81939eb24fd524aa2a889bfd3231b819dc405ad7/TaskControl.py
+      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
 ### mtrain definitions
-name: DynamicRoutingDev_v0.0.27
+name: DynamicRoutingDev1_v0.0.1
 transitions:
 - trigger: progress
   source: STAGE_0
@@ -66,63 +66,63 @@ transitions:
 stages:
   STAGE_0:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_0
       taskVersion: stage 0 moving
   STAGE_1:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_1
       taskVersion: stage 1 AMN moving timeouts
   STAGE_2:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_2
       taskVersion: stage 2 AMN timeouts
   STAGE_3_ORI_AMN:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_3_ORI_AMN
       taskVersion: stage 5 ori AMN moving timeouts
   STAGE_3_AMN_ORI:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_3_AMN_ORI
       taskVersion: stage 5 AMN ori moving timeouts
   STAGE_4_ORI_AMN:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_4_ORI_AMN
       taskVersion: stage 5 ori AMN moving
   STAGE_4_AMN_ORI:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_4_AMN_ORI
       taskVersion: stage 5 AMN ori moving
   STAGE_5_ORI_AMN:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_5_ORI_AMN
       taskVersion: stage 5 ori AMN moving
   STAGE_5_AMN_ORI:
     script: *script
-    script_md5: 4d531a8ffafeaa6999c0314ed057669b
+    script_md5: 9ce7574ff7618135488f0898760f53c2
     parameters:
       <<: *parameters
       stage: STAGE_5_AMN_ORI
