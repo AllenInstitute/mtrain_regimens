@@ -11,7 +11,7 @@ _parameters: &parameters
     taskControl: 
       https://raw.githubusercontent.com/mochic/DynamicRoutingTask/81939eb24fd524aa2a889bfd3231b819dc405ad7/TaskControl.py
 ### mtrain definitions
-name: DynamicRoutingDev_v0.0.27
+name: DynamicRouting_v0.0.0
 transitions:
 - trigger: progress
   source: STAGE_0
