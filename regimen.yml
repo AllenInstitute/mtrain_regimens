@@ -5,7 +5,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Vippo_v1
+name: Openscope_Vippo_v2
 
 transitions:
   - trigger: progress
@@ -54,7 +54,7 @@ stages:
     script_md5: *passive_prod_ephys_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
-        add_rf: True
+      add_rf: True
       number_runs_rf: 1
       n_repeats: 5
       monitor_name: "Gamma1.Luminance50"
@@ -120,9 +120,6 @@ stages:
 
     parameters:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
-      add_flashes: True
-      add_static: True
-      add_drift: True
       add_rf: True
       number_runs_rf: 5
       n_repeats: 25
