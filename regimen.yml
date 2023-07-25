@@ -1,11 +1,11 @@
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_vippo_stim/raw/play_stim.py?at=0a20a1b8775a59f177fb413f85569d91acf95cfe
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 60bca10eb94b801cf05802a53ed51e4a
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_vippo_stim/raw/play_stim.py?at=2dc2759ffc6a75ffcc85ca7f6573cdb61c0751ec
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 d44bbe47cba18f3fb0b50201af8d296b
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Vippo_v3
+name: Openscope_Vippo_v4
 
 transitions:
   - trigger: progress
