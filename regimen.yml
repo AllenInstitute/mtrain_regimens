@@ -1,5 +1,5 @@
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_vippo_stim/raw/play_stim.py?at=fbc356c45a9314e78d9e0a621de3a74ea8df5c3c
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 38a248c3f8fdf1affb8b5262a4216ad9
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_vippo_stim/raw/play_stim.py?at=0a20a1b8775a59f177fb413f85569d91acf95cfe
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 60bca10eb94b801cf05802a53ed51e4a
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
@@ -56,7 +56,7 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
         add_rf: True
       number_runs_rf: 1
-      n_repeats: 1
+      n_repeats: 5
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
 
@@ -73,7 +73,7 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
       add_rf: True
       number_runs_rf: 2
-      n_repeats: 2
+      n_repeats: 10
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
@@ -89,7 +89,7 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
       add_rf: True
       number_runs_rf: 3
-      n_repeats: 3
+      n_repeats: 15
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       disable_opto: True
@@ -105,7 +105,7 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
       add_rf: True
       number_runs_rf: 4
-      n_repeats: 4
+      n_repeats: 20
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
@@ -125,7 +125,7 @@ stages:
       add_drift: True
       add_rf: True
       number_runs_rf: 5
-      n_repeats: 5
+      n_repeats: 25
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
@@ -142,7 +142,7 @@ stages:
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
       add_rf: True
       number_runs_rf: 6
-      n_repeats: 6
+      n_repeats: 30
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
@@ -159,7 +159,7 @@ stages:
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
       add_rf: True
       number_runs_rf: 8
-      n_repeats: 9
+      n_repeats: 45
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
@@ -176,7 +176,7 @@ stages:
       stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
       add_rf: True
       number_runs_rf: 8
-      n_repeats: 10
+      n_repeats: 60
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
@@ -194,7 +194,7 @@ stages:
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
       add_rf: True
       number_runs_rf: 8
-      n_repeats: 10
+      n_repeats: 60
       monitor_name: "Gamma1.Luminance50"
       data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
