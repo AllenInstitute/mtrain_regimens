@@ -5,7 +5,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Vippo_v2
+name: Openscope_Vippo_v3
 
 transitions:
   - trigger: progress
@@ -58,7 +58,7 @@ stages:
       number_runs_rf: 1
       n_repeats: 5
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
 
       # optotagging      
       disable_opto: True
@@ -75,7 +75,7 @@ stages:
       number_runs_rf: 2
       n_repeats: 10
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
       disable_opto: True
 
@@ -91,7 +91,7 @@ stages:
       number_runs_rf: 3
       n_repeats: 15
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       disable_opto: True
 
       opto_params: 
@@ -107,7 +107,7 @@ stages:
       number_runs_rf: 4
       n_repeats: 20
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
       disable_opto: True
 
@@ -124,7 +124,7 @@ stages:
       number_runs_rf: 5
       n_repeats: 25
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
       disable_opto: True
 
@@ -141,7 +141,7 @@ stages:
       number_runs_rf: 6
       n_repeats: 30
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
       disable_opto: True
 
@@ -158,7 +158,7 @@ stages:
       number_runs_rf: 8
       n_repeats: 45
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
       disable_opto: True
 
@@ -175,7 +175,7 @@ stages:
       number_runs_rf: 8
       n_repeats: 60
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
       disable_opto: True
 
@@ -193,7 +193,7 @@ stages:
       number_runs_rf: 8
       n_repeats: 60
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
       disable_opto: True
 
@@ -208,7 +208,7 @@ stages:
       number_runs_rf: 1
       n_repeats: 1
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data      
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data      
       stage: OPTOTAGGING_ONLY
 
       # optotagging      
