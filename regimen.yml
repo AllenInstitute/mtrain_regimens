@@ -2,27 +2,41 @@ _script_0: &script_0 http://stash.corp.alleninstitute.org/projects/VB/repos/visu
 
 _script_0_md5: &script_0_md5 a6ffc6eb8a39c8c50f01a701fd597b98
 
-_script_1: &script_1 http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/testing/gratings.py?at=c0595a7a64f1d01215ff9a94d5fdb676c301f93c
-
-_script_1_md5: &script_1_md5 25738fb355c4ce69599b519a3e99ae1b
 
 ### mtrain definitions
-#based on VisualBehavior_Task1A_v1.0.3
-name: omFISH_Ophys_test_v0.0.1
+name: V1omFISH_gamma_v1.0.0
 
 transitions:
   - trigger: manual
-    source: STAGE_0
-    dest: STAGE_1
+    source: 40hz
+    dest: 40hz_random
+
+  - trigger: manual
+    source: 40hz_random
+    dest: square_stim
+
+  - trigger: manual
+    source: square_stim
+    dest: 8hz
 
 stages:
-  STAGE_0:
+  40hz:
     script: *script_0
     script_md5: *script_0_md5
     parameters:
-      stage: STAGE_0
-  STAGE_1:
-    script: *script_1
-    script_md5: *script_1_md5
+      stage: 40hz
+  40hz_random:
+    script: *script_0
+    script_md5: *script_0_md5
     parameters:
-      stage: STAGE_1
+      stage: 40hz_random
+  square_stim:
+    script: *script_0
+    script_md5: *script_0_md5
+    parameters:
+      stage: square_stim
+  8hz:
+    script: *script_0
+    script_md5: *script_0_md5
+    parameters:
+      stage: 8hz
