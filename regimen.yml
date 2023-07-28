@@ -1,10 +1,10 @@
-_script_0: &script_0 http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/testing/TenSessionClips_0.py?at=c0595a7a64f1d01215ff9a94d5fdb676c301f93c
+_script_0: &script_0 http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/testing/TenSessionClips_0.py?at=500697e44ba5b7237ed7afc7cec069746f50892a
 
-_script_0_md5: &script_0_md5 a6ffc6eb8a39c8c50f01a701fd597b98
+_script_0_md5: &script_0_md5 5f042b8ab04d6106d86d3d4fdcee5dc3
 
 
 ### mtrain definitions
-name: V1omFISH_gamma_v1.0.0
+name: V1omFISH_gamma_v1.1.0
 
 transitions:
   - trigger: manual
