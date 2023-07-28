@@ -1,11 +1,11 @@
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/test-scripts/production_script.py?at=963b240aa16fd61ac4c8f0a65fadacdd919d56f4
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 be665d4d916bf34d629bbcc4b77ab134
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/production-scripts/TBC_final_production_script.py?at=ae3e9186d43eb2695eb29df53dd5ffd5b3a133be
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 3cc121a28fade94f06ad3702a6a06eb8
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Barcoding_v11
+name: Openscope_Barcoding_Static_v13 
 
 transitions:
   - trigger: progress
@@ -54,14 +54,15 @@ stages:
     script_md5: *passive_prod_ephys_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
-      add_flashes: True
+      add_unique: False
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 1
-      n_repeats: 2
+      n_repeats: 4
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       # optotagging      
       disable_opto: True
@@ -74,14 +75,15 @@ stages:
     script_md5: *passive_prod_ephys_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
-      add_flashes: True
+      add_unique: False
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
-      number_runs_rf: 2
-      n_repeats: 5
+      number_runs_rf: 1
+      n_repeats: 8
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       # optotagging      
       disable_opto: True
@@ -94,14 +96,15 @@ stages:
     script_md5: *passive_prod_ephys_script_md5
     parameters:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
-      add_flashes: True
+      add_unique: False
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
-      number_runs_rf: 3
-      n_repeats: 7
+      number_runs_rf: 2
+      n_repeats: 12
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       disable_opto: True
 
@@ -114,14 +117,15 @@ stages:
     
     parameters:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
-      add_flashes: True
+      add_unique: False
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 4
-      n_repeats: 10
+      n_repeats: 15
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       # optotagging      
       disable_opto: True
@@ -135,14 +139,15 @@ stages:
 
     parameters:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
-      add_flashes: True
+      add_unique: False
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
-      number_runs_rf: 5
-      n_repeats: 12
+      number_runs_rf: 4
+      n_repeats: 19
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       # optotagging      
       disable_opto: True
@@ -156,14 +161,15 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
-      add_flashes: True
+      add_unique: False
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
-      number_runs_rf: 6
-      n_repeats: 15
+      number_runs_rf: 4
+      n_repeats: 23
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       # optotagging      
       disable_opto: True
@@ -177,14 +183,15 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
-      add_flashes: True
+      add_unique: False
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
-      number_runs_rf: 8
-      n_repeats: 22
+      number_runs_rf: 6
+      n_repeats: 35
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       # optotagging      
       disable_opto: True
@@ -198,14 +205,15 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
-      add_flashes: True
+      add_unique: True
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 8
-      n_repeats: 30
+      n_repeats: 45
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       # optotagging      
       disable_opto: True
@@ -220,14 +228,15 @@ stages:
 
     parameters:
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
-      add_flashes: True
+      add_unique: True
+      add_fullfield: True
       add_static: True
-      add_drift: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 8
-      n_repeats: 30
+      n_repeats: 45
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
 
       # optotagging      
       disable_opto: False
@@ -239,14 +248,15 @@ stages:
     script: *optotagging_script
     script_md5: *optotagging_script_md5
     parameters:
-      add_flashes: False
+      add_unique: False
+      add_fullfield: False
       add_static: False
       add_drift: False
       add_rf: False
       number_runs_rf: 1
       n_repeats: 1
       monitor_name: "Gamma1.Luminance50"
-      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/test-scripts
+      data_folder: //allen/programs/mindscope/workgroups/openscope/2023-Barcoding/openscope-barcodingstim/production-scripts
       
       stage: OPTOTAGGING_ONLY
 
