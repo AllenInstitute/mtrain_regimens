@@ -1,11 +1,11 @@
-_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/production-scripts/TBC_final_production_script.py?at=ae3e9186d43eb2695eb29df53dd5ffd5b3a133be
-_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 3cc121a28fade94f06ad3702a6a06eb8
+_passive_prod_ephys_script: &passive_prod_ephys_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-barcodingstim/raw/production-scripts/TBC_final_production_script.py?at=798969e2f8b4eba14e963284ee9b40dc9727e1d3
+_passive_prod_ephys_script_md5: &passive_prod_ephys_script_md5 11a6ae70b4e38e0f15912135fc59fe1c
 
 _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope-glo-stim/raw/pilot-scripts-allen/opto-tagging-only.py?at=f2edcca4c41f9a780ba564499809672748b53bf0
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Barcoding_Drift_v13 
+name: Openscope_Barcoding_v14 
 
 transitions:
   - trigger: progress
@@ -56,8 +56,8 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_10MIN_DAY6
       add_unique: False
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 1
       n_repeats: 4
@@ -77,8 +77,8 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_20MIN_DAY7
       add_unique: False
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 1
       n_repeats: 8
@@ -98,8 +98,8 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_30MIN_DAY8
       add_unique: False
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 2
       n_repeats: 12
@@ -119,8 +119,8 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_40MIN_DAY9
       add_unique: False
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 4
       n_repeats: 15
@@ -141,8 +141,8 @@ stages:
       stage: PASSIVE_CLUSTER_HAB_50MIN_DAY10
       add_unique: False
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 4
       n_repeats: 19
@@ -163,8 +163,8 @@ stages:
       stage: PASSIVE_EPHYS_HAB_60MIN_DAY1_2
       add_unique: False
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 4
       n_repeats: 23
@@ -185,8 +185,8 @@ stages:
       stage: PASSIVE_EPHYS_HAB_90MIN_DAY3_4
       add_unique: False
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 6
       n_repeats: 35
@@ -207,8 +207,8 @@ stages:
       stage: PASSIVE_EPHYS_HAB_120MIN_DAY5
       add_unique: True
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 8
       n_repeats: 45
@@ -230,8 +230,8 @@ stages:
       stage: PASSIVE_EPHYS_PROD_120MIN_DAY1
       add_unique: True
       add_fullfield: True
-      add_static: False
-      add_drift: True
+      add_static: True
+      add_drift: False
       add_rf: True
       number_runs_rf: 8
       n_repeats: 45
@@ -251,7 +251,7 @@ stages:
       add_unique: False
       add_fullfield: False
       add_static: False
-      add_drift: True
+      add_drift: False
       add_rf: False
       number_runs_rf: 1
       n_repeats: 1
