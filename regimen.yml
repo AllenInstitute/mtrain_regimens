@@ -1,104 +1,129 @@
-_day_1_script: &day_1_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day1.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_1_script_md5: &day_1_script_md5
-    1284dde1bab18233f470a679d5a234f2
-
-_day_2_script: &day_2_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day2.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_2_script_md5: &day_2_script_md5
-    5bd554df9c9bd5c40485a07956273cd9
-    
-_day_3_script: &day_3_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day3.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_3_script_md5: &day_3_script_md5
-    505ef9e14e6ac3f80e691f4d0b5265a8
-    
-_day_4_script: &day_4_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day4.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_4_script_md5: &day_4_script_md5
-    d82360a405c9ba1f1cc1d59b7707bc80
-    
-_day_5_script: &day_5_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day5.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_5_script_md5: &day_5_script_md5
-    e53821b4b498bcecb4aa793e5dff67b5
-    
-_day_6_script: &day_6_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day6.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
-
-_day_6_script_md5: &day_6_script_md5
-    b7e1e4e06b3736d04dafaa64793dee42
-
+_script: &script 
+  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/697a16a1b8e024bf78d1bf5c408923390ce6bde1/runTask.py
+_script_md5: 9ce7574ff7618135488f0898760f53c2
+_parameters: &parameters
+  mtrain_translator: dynamic_routing
+  task_script_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+  task_control_commit_hash: 3f18cbcb226292cf111e3b569a4270252e28e482
+  GHTaskScriptParams:
+    taskScript: 
+      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/DynamicRouting1.py
+    taskControl: 
+      https://raw.githubusercontent.com/mochic/DynamicRoutingTask/3f18cbcb226292cf111e3b569a4270252e28e482/TaskControl.py
 ### mtrain definitions
-#based on VisualBehavior_Task1A_v1.0.3
-name: Passive_VisualCoding_v1.0.0
-
+name: DynamicRoutingDev3_v0.0.2
 transitions:
-
-  - trigger: progress
-    source: DAY_1
-    dest: DAY_2
-    conditions: one_complete
-
-  - trigger: progress
-    source: DAY_2
-    dest: DAY_3
-    conditions: one_complete
-
-  - trigger: progress
-    source: DAY_3
-    dest: DAY_4
-    conditions: one_complete
-
-  - trigger: progress
-    source: DAY_4
-    dest: DAY_5
-    conditions: one_complete
-
-  - trigger: progress
-    source: DAY_5
-    dest: DAY_6
-    conditions: one_complete
-
+- trigger: progress
+  source: STAGE_0
+  dest: STAGE_1
+- trigger: progress
+  source: STAGE_1
+  dest: STAGE_2
+  conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
+  unless: v2_dynamic_routing_fails_minimum_hit_count
+- trigger: progress
+  source: STAGE_1
+  dest: STAGE_0
+  conditions: v2_dynamic_routing_fails_minimum_hit_count
+- trigger: progress
+  source: STAGE_2
+  dest: STAGE_3_ORI_AMN
+  conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
+- trigger: progress
+  source: STAGE_3_ORI_AMN
+  dest: STAGE_3_AMN_ORI
+  unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_AMN_ORI
+  dest: STAGE_3_ORI_AMN
+  unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_ORI_AMN
+  dest: STAGE_4_AMN_ORI
+  conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_AMN_ORI
+  dest: STAGE_4_ORI_AMN
+  conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_4_AMN_ORI
+  dest: STAGE_4_ORI_AMN
+- trigger: progress
+  source: STAGE_4_ORI_AMN
+  dest: STAGE_4_AMN_ORI
+- trigger: manual
+  source: STAGE_4_AMN_ORI
+  dest: STAGE_5_ORI_AMN
+- trigger: manual
+  source: STAGE_4_ORI_AMN
+  dest: STAGE_5_AMN_ORI
+- trigger: progress
+  source: STAGE_5_ORI_AMN
+  dest: STAGE_5_AMN_ORI
+- trigger: progress
+  source: STAGE_5_AMN_ORI
+  dest: STAGE_5_ORI_AMN
 stages:
-    DAY_1:
-        script: *day_1_script
-        script_md5: *day_1_script_md5
-        parameters:
-            stage: DAY_1
-
-    DAY_2:
-        script: *day_2_script
-        script_md5: *day_2_script_md5
-        parameters:
-            stage: DAY_2
-
-    DAY_3:
-        script: *day_3_script
-        script_md5: *day_3_script_md5
-        parameters:
-            stage: DAY_3
-
-    DAY_4:
-        script: *day_4_script
-        script_md5: *day_4_script_md5
-        parameters:
-            stage: DAY_4
-
-    DAY_5:
-        script: *day_5_script
-        script_md5: *day_5_script_md5
-        parameters:
-            stage: DAY_5
-
-    DAY_6:
-        script: *day_6_script
-        script_md5: *day_6_script_md5
-        parameters:
-            stage: DAY_6
-    
+  STAGE_0:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_0
+      taskVersion: stage 0 moving
+  STAGE_1:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_1
+      taskVersion: stage 1 AMN moving timeouts
+  STAGE_2:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_2
+      taskVersion: stage 2 AMN timeouts
+  STAGE_3_ORI_AMN:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_3_ORI_AMN
+      taskVersion: stage 5 ori AMN moving timeouts
+  STAGE_3_AMN_ORI:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_3_AMN_ORI
+      taskVersion: stage 5 AMN ori moving timeouts
+  STAGE_4_ORI_AMN:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_4_ORI_AMN
+      taskVersion: stage 5 ori AMN moving
+  STAGE_4_AMN_ORI:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_4_AMN_ORI
+      taskVersion: stage 5 AMN ori moving
+  STAGE_5_ORI_AMN:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_5_ORI_AMN
+      taskVersion: stage 5 ori AMN moving
+  STAGE_5_AMN_ORI:
+    script: *script
+    script_md5: 9ce7574ff7618135488f0898760f53c2
+    parameters:
+      <<: *parameters
+      stage: STAGE_5_AMN_ORI
+      taskVersion: stage 5 AMN ori moving
