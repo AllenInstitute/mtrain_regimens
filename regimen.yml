@@ -1,36 +1,134 @@
 _script: &script 
-  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/aa7ddaabde7b9a3899375bab020c1b85b586e9f2/runTask.py
-_script_md5: 7dccc7db86bbe1a3f1e71429e7ee28f0
+  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/runTask.py
+_script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
 _parameters: &parameters
   mtrain_translator: dynamic_routing
-  task_script_commit_hash: aa7ddaabde7b9a3899375bab020c1b85b586e9f2
-  task_control_commit_hash: aa7ddaabde7b9a3899375bab020c1b85b586e9f2
+  task_script_commit_hash: 6e73e3471137403fddc3da228ecbfdcac26d3f86
   GHTaskScriptParams:
     taskScript: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/aa7ddaabde7b9a3899375bab020c1b85b586e9f2/DynamicRouting1.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/DynamicRouting1.py
     taskControl: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/aa7ddaabde7b9a3899375bab020c1b85b586e9f2/TaskControl.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/TaskControl.py
+    taskUtils: 
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/TaskUtils.py
+    analysisScript: 
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/DynamicRouting1_postSessionAnalysis.py
+    analysisUtils: 
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/Analysis/DynamicRoutingAnalysisUtils.py
 ### mtrain definitions
-name: DynamicRouting_rewardOnly_v0.0.2
+name: DynamicRouting_v0.0.3
 transitions:
 - trigger: progress
-  source: STAGE_5_ORI_AMN_MOVING_REWARDONLY
-  dest: STAGE_5_AMN_ORI_MOVING_REWARDONLY
+  source: STAGE_0
+  dest: STAGE_1
 - trigger: progress
-  source: STAGE_5_AMN_ORI_MOVING_REWARDONLY
-  dest: STAGE_5_ORI_AMN_MOVING_REWARDONLY
+  source: STAGE_1
+  dest: STAGE_2
+  conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
+  unless: v2_dynamic_routing_fails_minimum_hit_count
+- trigger: progress
+  source: STAGE_1
+  dest: STAGE_0
+  conditions: v2_dynamic_routing_fails_minimum_hit_count
+- trigger: progress
+  source: STAGE_2
+  dest: STAGE_3_ORI_AMN
+  conditions: v2_dynamic_routing_meets_hit_count_and_dprime_same_modal
+- trigger: progress
+  source: STAGE_3_ORI_AMN
+  dest: STAGE_3_AMN_ORI
+  unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_AMN_ORI
+  dest: STAGE_3_ORI_AMN
+  unless: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_ORI_AMN
+  dest: STAGE_4_AMN_ORI
+  conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_3_AMN_ORI
+  dest: STAGE_4_ORI_AMN
+  conditions: v2_dynamic_routing_meets_dprime_same_modal_and_dprime_other_modal_state_agnostic
+- trigger: progress
+  source: STAGE_4_AMN_ORI
+  dest: STAGE_4_ORI_AMN
+- trigger: progress
+  source: STAGE_4_ORI_AMN
+  dest: STAGE_4_AMN_ORI
+- trigger: manual
+  source: STAGE_4_AMN_ORI
+  dest: STAGE_5_ORI_AMN
+- trigger: manual
+  source: STAGE_4_ORI_AMN
+  dest: STAGE_5_AMN_ORI
+- trigger: progress
+  source: STAGE_5_ORI_AMN
+  dest: STAGE_5_AMN_ORI
+- trigger: progress
+  source: STAGE_5_AMN_ORI
+  dest: STAGE_5_ORI_AMN
 stages:
-  STAGE_5_ORI_AMN_MOVING_REWARDONLY:
+  STAGE_0:
     script: *script
-    script_md5: 7dccc7db86bbe1a3f1e71429e7ee28f0
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
     parameters:
       <<: *parameters
-      stage: STAGE_5_ORI_AMN_MOVING_REWARDONLY
-      taskVersion: stage 5 ori AMN moving rewardOnly
-  STAGE_5_AMN_ORI_MOVING_REWARDONLY:
+      stage: STAGE_0
+      taskVersion: stage 0 moving
+  STAGE_1:
     script: *script
-    script_md5: 7dccc7db86bbe1a3f1e71429e7ee28f0
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
     parameters:
       <<: *parameters
-      stage: STAGE_5_AMN_ORI_MOVING_REWARDONLY
-      taskVersion: stage 5 AMN ori moving rewardOnly
+      stage: STAGE_1
+      taskVersion: stage 1 AMN moving timeouts
+  STAGE_2:
+    script: *script
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
+    parameters:
+      <<: *parameters
+      stage: STAGE_2
+      taskVersion: stage 2 AMN timeouts
+  STAGE_3_ORI_AMN:
+    script: *script
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
+    parameters:
+      <<: *parameters
+      stage: STAGE_3_ORI_AMN
+      taskVersion: stage 5 ori AMN moving timeouts
+  STAGE_3_AMN_ORI:
+    script: *script
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
+    parameters:
+      <<: *parameters
+      stage: STAGE_3_AMN_ORI
+      taskVersion: stage 5 AMN ori moving timeouts
+  STAGE_4_ORI_AMN:
+    script: *script
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
+    parameters:
+      <<: *parameters
+      stage: STAGE_4_ORI_AMN
+      taskVersion: stage 5 ori AMN moving
+  STAGE_4_AMN_ORI:
+    script: *script
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
+    parameters:
+      <<: *parameters
+      stage: STAGE_4_AMN_ORI
+      taskVersion: stage 5 AMN ori moving
+  STAGE_5_ORI_AMN:
+    script: *script
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
+    parameters:
+      <<: *parameters
+      stage: STAGE_5_ORI_AMN
+      taskVersion: stage 5 ori AMN moving
+  STAGE_5_AMN_ORI:
+    script: *script
+    script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
+    parameters:
+      <<: *parameters
+      stage: STAGE_5_AMN_ORI
+      taskVersion: stage 5 AMN ori moving
