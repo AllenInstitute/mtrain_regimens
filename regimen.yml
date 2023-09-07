@@ -1,22 +1,22 @@
 _script: &script 
-  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/runTask.py
+  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/2b311c39a2fee10834600cc42bc579446bdfe40d/runTask.py
 _script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
 _parameters: &parameters
   mtrain_translator: dynamic_routing
-  task_script_commit_hash: 6e73e3471137403fddc3da228ecbfdcac26d3f86
+  task_script_commit_hash: 2b311c39a2fee10834600cc42bc579446bdfe40d
   GHTaskScriptParams:
     taskScript: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/DynamicRouting1.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/2b311c39a2fee10834600cc42bc579446bdfe40d/DynamicRouting1.py
     taskControl: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/TaskControl.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/2b311c39a2fee10834600cc42bc579446bdfe40d/TaskControl.py
     taskUtils: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/TaskUtils.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/2b311c39a2fee10834600cc42bc579446bdfe40d/TaskUtils.py
     analysisScript: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/DynamicRouting1_postSessionAnalysis.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/2b311c39a2fee10834600cc42bc579446bdfe40d/DynamicRouting1_postSessionAnalysis.py
     analysisUtils: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/6e73e3471137403fddc3da228ecbfdcac26d3f86/Analysis/DynamicRoutingAnalysisUtils.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/2b311c39a2fee10834600cc42bc579446bdfe40d/Analysis/DynamicRoutingAnalysisUtils.py
 ### mtrain definitions
-name: DynamicRouting_v0.0.3
+name: DynamicRouting_v0.0.4
 transitions:
 - trigger: progress
   source: STAGE_0
