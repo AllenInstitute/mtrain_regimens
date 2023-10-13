@@ -1,5 +1,5 @@
 _script: &script 
-  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/2b311c39a2fee10834600cc42bc579446bdfe40d/runTask.py
+  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/c2b14223cbce1abda109b278f6f76e458dca3fe7/runTask.py
 _script_md5: d1b15492b8e8cc3214a0fbb7ff661faf
 _parameters: &parameters
   mtrain_translator: dynamic_routing
@@ -16,7 +16,7 @@ _parameters: &parameters
     analysisUtils: 
       https://raw.githubusercontent.com/samgale/DynamicRoutingTask/c2b14223cbce1abda109b278f6f76e458dca3fe7/Analysis/DynamicRoutingAnalysisUtils.py
 ### mtrain definitions
-name: DynamicRouting_v0.0.5
+name: DynamicRouting_v0.0.6
 transitions:
 - trigger: progress
   source: STAGE_0
