@@ -16,7 +16,7 @@ _parameters: &parameters
     analysisUtils: 
       https://raw.githubusercontent.com/samgale/DynamicRoutingTask/32513f6cc852b0cc3fede05f89f2a6f6ad7e1c89/Analysis/DynamicRoutingAnalysisUtils.py
 ### mtrain definitions
-name: DynamicRouting_v0.0.11
+name: DynamicRouting_repeats_v0.0.5
 transitions:
 - trigger: progress
   source: STAGE_0
@@ -96,14 +96,14 @@ stages:
     parameters:
       <<: *parameters
       stage: STAGE_3_ORI_AMN
-      taskVersion: stage 5 ori AMN moving timeouts
+      taskVersion: stage 5 ori AMN moving timeouts repeats
   STAGE_3_AMN_ORI:
     script: *script
     script_md5: 7ca1c9c5312b58961f796bb8929f99f3
     parameters:
       <<: *parameters
       stage: STAGE_3_AMN_ORI
-      taskVersion: stage 5 AMN ori moving timeouts
+      taskVersion: stage 5 AMN ori moving timeouts repeats
   STAGE_4_ORI_AMN:
     script: *script
     script_md5: 7ca1c9c5312b58961f796bb8929f99f3
