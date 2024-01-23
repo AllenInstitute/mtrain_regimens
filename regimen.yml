@@ -5,7 +5,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_Vippo_v11
+name: Openscope_test_rig_Vippo_v2
 
 transitions:
   - trigger: progress
@@ -47,6 +47,10 @@ transitions:
   - trigger: manual
     source: PASSIVE_EPHYS_PROD_120MIN_DAY1
     dest: OPTOTAGGING_ONLY
+
+  - trigger: manual
+    source: OPTOTAGGING_ONLY
+    dest: PASSIVE_TEST_PROD_4MIN
 
 stages:
   PASSIVE_CLUSTER_HAB_10MIN_DAY6:
@@ -211,6 +215,24 @@ stages:
       movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data      
       stage: OPTOTAGGING_ONLY
 
+      # optotagging      
+      disable_opto: True
+
+      opto_params: 
+        operation_mode: "experiment"
+
+
+  PASSIVE_TEST_PROD_4MIN:
+    script: *passive_prod_ephys_script
+    script_md5: *passive_prod_ephys_script_md5
+
+    parameters:
+      stage: PASSIVE_TEST_PROD_4MIN
+      add_rf: True
+      number_runs_rf: 1
+      n_repeats: 1
+      monitor_name: "Gamma1.Luminance50"
+      movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-Vippo/openscope_vippo_stim/data
       # optotagging      
       disable_opto: True
 
