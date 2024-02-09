@@ -5,7 +5,7 @@ _optotagging_script: &optotagging_script http://stash.corp.alleninstitute.org/us
 _optotagging_script_md5: &optotagging_script_md5 acab6e90112a1ec23adc25bea5406a5f
 
 ### mtrain definitions
-name: Openscope_test_rig_Vippo_v5
+name: Openscope_test_rig_Vippo_v6
 
 transitions:
   - trigger: progress
