@@ -97,7 +97,7 @@ _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
 
 ### mtrain definitions
 
-name: OpenScope_texture_active_v1
+name: OpenScope_texture_active_v2
 
 transitions:
 
@@ -181,7 +181,7 @@ stages:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_texture_parameters
+            <<: *image_set_fixed_texture_parameters
             stage: TRAINING_3_images_fixed_texture_10uL_reward
 
             # rewards (mL)
