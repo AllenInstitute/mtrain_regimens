@@ -33,7 +33,7 @@ _fixed_texture_set_stimulus: &fixed_texture_set
 _sampled_texture_set_stimulus: &sampled_texture_set
     class: images
     params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A3_240404.pkl
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A3_240417.pkl
         sampling: even
 
 _flash_parameters: &flash_parameters
@@ -97,7 +97,7 @@ _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
 
 ### mtrain definitions
 
-name: OpenScope_texture_active_v2
+name: OpenScope_texture_active_v3
 
 transitions:
 
