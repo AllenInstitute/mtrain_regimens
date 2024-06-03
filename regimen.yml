@@ -30,6 +30,13 @@ _fixed_texture_set_stimulus: &fixed_texture_set
         image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A2.5_240404.pkl
         sampling: even
 
+
+_small_sampled_texture_set_stimulus: &small_sampled_texture_set
+    class: images
+    params:
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A2.6_240601.pkl
+        sampling: even
+
 _sampled_texture_set_stimulus: &sampled_texture_set
     class: images
     params:
@@ -90,6 +97,11 @@ _image_set_fixed_texture_parameters: &image_set_fixed_texture_parameters
     stimulus: *fixed_texture_set
     catch_frequency: null
 
+_image_set_small_sampled_texture_parameters: &image_set_small_sampled_texture_parameters
+    <<: *flash_parameters
+    stimulus: *small_sampled_texture_set
+    catch_frequency: null
+
 _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
     <<: *flash_parameters
     stimulus: *sampled_texture_set
@@ -97,7 +109,7 @@ _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
 
 ### mtrain definitions
 
-name: OpenScope_texture_active_v3
+name: OpenScope_texture_active_v4
 
 transitions:
 
@@ -123,7 +135,12 @@ transitions:
 
   - trigger: progress
     source: TRAINING_4_images_fixed_texture_training
-    dest: TRAINING_5_images_sampled_texture_training
+    dest: TRAINING_5_images_small_sampled_texture_training
+    conditions: meets_engagement_criteria
+
+  - trigger: progress
+    source: TRAINING_5_images_small_sampled_texture_training
+    dest: TRAINING_6_images_sampled_texture_training
     conditions: meets_engagement_criteria
 
 stages:
@@ -199,11 +216,21 @@ stages:
             start_stop_padding: 300.0
 
 
-    TRAINING_5_images_sampled_texture_training:
+    TRAINING_5_images_small_sampled_texture_training:
+        script: *texture_detection_script
+        script_md5: *texture_detection_script_md5
+        parameters:
+            <<: *image_set_small_sampled_texture_parameters
+            stage: TRAINING_5_images_small_sampled_texture_training
+            warm_up_trials: 5
+            start_stop_padding: 300.0
+
+
+    TRAINING_6_images_sampled_texture_training:
         script: *texture_detection_script
         script_md5: *texture_detection_script_md5
         parameters:
             <<: *image_set_sampled_texture_parameters
-            stage: TRAINING_5_images_sampled_texture_training
+            stage: TRAINING_6_images_sampled_texture_training
             warm_up_trials: 5
             start_stop_padding: 300.0
