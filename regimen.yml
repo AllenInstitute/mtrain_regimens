@@ -109,7 +109,7 @@ _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
 
 ### mtrain definitions
 
-name: OpenScope_texture_active_v4
+name: OpenScope_texture_active_v5
 
 transitions:
 
@@ -141,7 +141,7 @@ transitions:
   - trigger: progress
     source: TRAINING_5_images_small_sampled_texture_training
     dest: TRAINING_6_images_sampled_texture_training
-    conditions: meets_engagement_criteria
+    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
 stages:
 
