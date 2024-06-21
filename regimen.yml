@@ -118,7 +118,7 @@ _no_flash_parameters:
   change_flashes_min:
   change_flashes_max:
 
-_image_set_g_parameters:
+_image_set_g_parameters: &image_set_g_parameters
   <<: *flash_parameters
   stimulus: *image_set_g
   catch_frequency:
@@ -168,7 +168,7 @@ _replay_k_parameters: &replay_k_parameters
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: VisualBehaviorEPHYS_sev_v0.0.4
+name: VisualBehaviorEPHYS_sev_v0.0.5
 
 transitions:
 - trigger: manual
@@ -196,10 +196,10 @@ transitions:
 
 stages:
   HABITUATION_5_images_G_handoff_ready_5uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
     parameters:
-      <<: *replay_g_parameters
+      <<: *image_set_g_parameters
       stage: HABITUATION_5_images_G_handoff_ready_5uL_reward
       warm_up_trials: 5
       reward_volume: 0.005
@@ -214,10 +214,10 @@ stages:
       start_padding_windowless: 20.0
 
   HABITUATION_5_images_G_handoff_ready_3uL_reward:
-    script: *replay_script
-    script_md5: *replay_script_md5
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
     parameters:
-      <<: *replay_g_parameters
+      <<: *image_set_g_parameters
       stage: HABITUATION_5_images_G_handoff_ready_3uL_reward
       warm_up_trials: 5
       reward_volume: 0.003
