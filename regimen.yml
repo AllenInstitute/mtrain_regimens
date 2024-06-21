@@ -65,6 +65,9 @@ _flash_parameters: &flash_parameters
   # start stop padding < 1 can cause a critcally breaking bug
   start_stop_padding: 1
 
+  # Turn off dev mode
+  dev_mode: False
+
 _no_flash_parameters: &no_flash_parameters
   <<: *flash_parameters
   periodic_flash: null
@@ -78,6 +81,9 @@ _no_flash_parameters: &no_flash_parameters
   change_time_scale: 2.0
   change_flashes_min: null
   change_flashes_max: null
+
+  # Turn off dev mode
+  dev_mode: False
 
 _image_set_g_parameters: &image_set_g_parameters
   <<: *flash_parameters
@@ -102,7 +108,7 @@ _psycode_parameters: &psycode_parameters
   epilogue: True
   number_runs_rf: 10
 
-name: Openscope_psycode_v1
+name: Openscope_psycode_v2
 
 transitions:
   - trigger: progress
