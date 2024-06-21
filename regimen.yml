@@ -1,236 +1,392 @@
-_change_detection_script: &change_detection_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_with_fingerprint.py?at=021ec55fbbdbb05aad1681c016e83066fe5aa1dd
+_change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=5adfa6e285774719135d0ebcba421f15f6f56168
+_change_detection_script_md5: &change_detection_script_md5 410d697d666405eed63f72e4d3e189bb
 
-_change_detection_script_md5: &change_detection_script_md5
-    e0535f3b6f03ccc8eeccaed2118f3c1d
-
-_texture_detection_script: &texture_detection_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_texture/raw/active_stimulus.py?at=d4286289cf29ba4324b5358ce91395db863733da
-
-_texture_detection_script_md5: &texture_detection_script_md5
-    5e24efe5c55b842b566e6d6e0679e1a0
+_psycode_script: &psycode_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_psycode/raw/active_pilot_stimulus.py?at=711bb282117a67a2d197bc456f328edf97073c3b
+_psycode_script_md5: &psycode_script_md5 e4041014d17e13408f790e6d1f0e0228
 
 _full_field_gratings_stimulus: &full_field_gratings
-    class: grating
-    params:
-        sf: 0.04
-        tex: sqr
-        size: [200, 150,]
-        units: deg
-        phase: 0.25
-    groups:
-        vertical:
-            Ori: [0, 180]
-        horizontal:
-            Ori: [90, 270]
+  class: grating
+  params:
+    sf: 0.04
+    tex: sqr
+    size: [200, 150]
+    units: deg
+    phase: 0.25
+  groups:
+    vertical:
+      Ori: [0, 180]
+    horizontal:
+      Ori: [90, 270]
 
-_fixed_texture_set_stimulus: &fixed_texture_set
-    class: images
-    params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A2.5_240404.pkl
-        sampling: even
-
-
-_small_sampled_texture_set_stimulus: &small_sampled_texture_set
-    class: images
-    params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A2.6_240601.pkl
-        sampling: even
-
-_sampled_texture_set_stimulus: &sampled_texture_set
-    class: images
-    params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A3_240417.pkl
-        sampling: even
+_image_set_g_stimulus: &image_set_g
+  class: images
+  luminance_matching_intensity: -0.46
+  params:
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
+    sampling: even
 
 _flash_parameters: &flash_parameters
-    task_id: DoC
+  task_id: DoC
 
-    catch_frequency: 0.25
-    failure_repeats: 5
+  catch_frequency: 0.25
+  failure_repeats: 5
 
-    # rewards (mL)
-    reward_volume: 0.007
-    volume_limit: 5.0
+  # rewards (mL)
+  reward_volume: 0.007
+  volume_limit: 5.0
 
-    # auto rewards
-    auto_reward_vol: 0.005
-    warm_up_trials: 5
-    auto_reward_delay: 0.150
-    free_reward_trials: 10000
+  # auto rewards
+  auto_reward_vol: 0.005
 
-    # trial timing
-    min_no_lick_time: 0.0
-    timeout_duration: 0.3
-    pre_change_time: 0.0
-    stimulus_window: 6.0
-    max_task_duration_min: 60.0
-    start_stop_padding: 20.0
-    periodic_flash: [0.25, 0.5]
-    response_window: [0.15,0.75]
-    end_after_response: True
-    end_after_response_sec: 3.5
+  # This seems to be needed to prevent a bug
+  auto_reward_volume: 0.005
 
-    # timing of changes
-    change_time_dist: geometric
-    change_time_scale: 0.3
-    change_flashes_min: 4  # inclusive
-    change_flashes_max: 12  # exclusive
+  warm_up_trials: 5
+  auto_reward_delay: 0.150
+  free_reward_trials: 10000
+
+  # trial timing
+  min_no_lick_time: 0.0
+  timeout_duration: 0.3
+  pre_change_time: 0.0
+  stimulus_window: 6.0
+  max_task_duration_min: 60.0
+  periodic_flash: [0.25, 0.5]
+  response_window: [0.15, 0.75]
+  end_after_response: True
+  end_after_response_sec: 3.5
+
+  # timing of changes
+  change_time_dist: geometric
+  change_time_scale: 0.3
+  change_flashes_min: 4 # inclusive
+  change_flashes_max: 12 # exclusive
+
+  # start stop padding < 1 can cause a critcally breaking bug
+  start_stop_padding: 1
 
 _no_flash_parameters: &no_flash_parameters
-    <<: *flash_parameters
-    periodic_flash: null
-    response_window: [0.15,1.0]
-    reward_volume: 0.010
-    free_reward_trials: 10
-    pre_change_time: 2.25
+  <<: *flash_parameters
+  periodic_flash: null
+  response_window: [0.15, 1.0]
+  reward_volume: 0.010
+  free_reward_trials: 10
+  pre_change_time: 2.25
 
-    # timing of changes
-    change_time_dist: exponential
-    change_time_scale: 2.0
-    change_flashes_min: null
-    change_flashes_max: null
+  # timing of changes
+  change_time_dist: exponential
+  change_time_scale: 2.0
+  change_flashes_min: null
+  change_flashes_max: null
 
+_image_set_g_parameters: &image_set_g_parameters
+  <<: *flash_parameters
+  stimulus: *image_set_g
+  catch_frequency: null
+  
+_psycode_parameters: &psycode_parameters
+  <<: *flash_parameters
+  stimulus: *image_set_g
+  catch_frequency: null
+  change_time_scale: 0.1
+  short_distrib_start1: 714
+  short_distrib_end1: 1268
+  change_time_dist1: 0.4
+  injection_start: 1268
+  injection_end: 2168
+  short_distrib_start2: 2882
+  short_distrib_end2: 3436
+  change_time_dist2: 0.4
+  max_task_duration_min: 60.0
+  prologue: True  
+  epilogue: True
+  number_runs_rf: 10
 
-_image_set_fixed_texture_parameters: &image_set_fixed_texture_parameters
-    <<: *flash_parameters
-    stimulus: *fixed_texture_set
-    catch_frequency: null
-
-_image_set_small_sampled_texture_parameters: &image_set_small_sampled_texture_parameters
-    <<: *flash_parameters
-    stimulus: *small_sampled_texture_set
-    catch_frequency: null
-
-_image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
-    <<: *flash_parameters
-    stimulus: *sampled_texture_set
-    catch_frequency: null
-
-### mtrain definitions
-
-name: OpenScope_texture_active_v5
+name: Openscope_psycode_v1
 
 transitions:
-
   - trigger: progress
-    source: TRAINING_0_gratings_autorewards_15min
-    dest: TRAINING_1_gratings
+    source: TRAINING_0_gratings_autorewards_15min_0uL_reward
+    dest: TRAINING_1_gratings_10uL_reward
     conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_1_gratings
-    dest: TRAINING_2_gratings_flashed
+    source: TRAINING_1_gratings_10uL_reward
+    dest: TRAINING_2_gratings_flashed_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: TRAINING_2_gratings_flashed
-    dest: TRAINING_3_images_fixed_texture_10uL_reward
+    source: TRAINING_2_gratings_flashed_10uL_reward
+    dest: TRAINING_3_images_G_10uL_reward
     conditions: [two_out_of_three_aint_bad, yesterday_was_good]
 
   - trigger: progress
-    source: TRAINING_3_images_fixed_texture_10uL_reward
-    dest: TRAINING_4_images_fixed_texture_training
+    source: TRAINING_3_images_G_10uL_reward
+    dest: TRAINING_4_images_G_training_7uL_reward
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_4_images_fixed_texture_training
-    dest: TRAINING_5_images_small_sampled_texture_training
-    conditions: meets_engagement_criteria
+    source: TRAINING_4_images_G_training_7uL_reward
+    dest: TRAINING_5_images_G_training_5uL_reward
+    conditions: meets_engagement_criteria_logged
 
   - trigger: progress
-    source: TRAINING_5_images_small_sampled_texture_training
-    dest: TRAINING_6_images_sampled_texture_training
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+    source: TRAINING_5_images_G_training_5uL_reward
+    dest: TRAINING_5_images_G_handoff_ready_5uL_reward
+    conditions: meets_engagement_and_hit_threshold
 
+  - trigger: progress
+    source: TRAINING_5_images_G_handoff_ready_5uL_reward
+    dest: TRAINING_6_psycode_passive_5uL_reward
+    conditions: meets_engagement_and_hit_threshold
+
+  - trigger: progress
+    source: TRAINING_6_psycode_passive_5uL_reward
+    dest: TRAINING_7_psycode_injection_5uL_reward
+    conditions: meets_engagement_and_hit_threshold
+
+  - trigger: manual
+    source: TRAINING_7_psycode_injection_5uL_reward
+    dest: EPHYS_HAB_psycode_5uL_reward
+
+  - trigger: manual
+    source: EPHYS_HAB_psycode_5uL_reward
+    dest: EPHYS_1_psycode_5uL_reward
+
+  - trigger: manual
+    source: EPHYS_HAB_psycode_5uL_reward
+    dest: EPHYS_HAB_psycode_3uL_reward
+    
+  - trigger: manual
+    source: EPHYS_HAB_psycode_3uL_reward
+    dest: EPHYS_1_psycode_3uL_reward
+
+  - trigger: manual
+    source: EPHYS_1_psycode_3uL_reward
+    dest: EPHYS_test_psycode
+    
 stages:
+  TRAINING_0_gratings_autorewards_15min_0uL_reward:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *no_flash_parameters
+      stage: TRAINING_0_gratings_autorewards_15min_0uL_reward
+      stimulus: *full_field_gratings
 
-    TRAINING_0_gratings_autorewards_15min:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *no_flash_parameters
-            stage: TRAINING_0_gratings_autorewards_15min
-            stimulus: *full_field_gratings
+      # auto rewards
+      warm_up_trials: -1 #infinite
+      abort_on_early_response: False
+      catch_frequency: 0.0
 
-            # auto rewards
-            warm_up_trials: -1 #infinite
-            abort_on_early_response: False
-            catch_frequency: 0.0
+      response_window: [0.0, 0.0]
+      min_no_lick_time: 0.0
+      failure_repeats: 0
 
-            response_window: [0.0, 0.0]
-            min_no_lick_time: 0.0
-            failure_repeats: 0
+      # trial timing
+      max_task_duration_min: 15.0
 
-            # trial timing
-            max_task_duration_min: 15.0
+      # rewards (mL)
+      reward_volume: 0.0
 
-            # rewards (mL)
-            reward_volume: 0.0
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
 
+  TRAINING_1_gratings_10uL_reward:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *no_flash_parameters
+      stage: TRAINING_1_gratings_10uL_reward
 
-    TRAINING_1_gratings:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *no_flash_parameters
-            stage: TRAINING_1_gratings
+      stimulus: *full_field_gratings
 
-            stimulus: *full_field_gratings
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
 
+  TRAINING_2_gratings_flashed_10uL_reward:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *flash_parameters
+      stage: TRAINING_2_gratings_flashed_10uL_reward
+      task_id: DoC
 
-    TRAINING_2_gratings_flashed:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *flash_parameters
-            stage: TRAINING_2_gratings_flashed
-            task_id: DoC
+      stimulus: *full_field_gratings
+      free_reward_trials: 10
 
-            stimulus: *full_field_gratings
-            free_reward_trials: 10
+      # rewards (mL)
+      reward_volume: 0.01
 
-            # rewards (mL)
-            reward_volume: 0.01
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
 
+  TRAINING_3_images_G_10uL_reward:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_g_parameters
+      stage: TRAINING_3_images_G_10uL_reward
 
-    TRAINING_3_images_fixed_texture_10uL_reward:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_fixed_texture_parameters
-            stage: TRAINING_3_images_fixed_texture_10uL_reward
+      # rewards (mL)
+      reward_volume: 0.01
+      free_reward_trials: 10
 
-            # rewards (mL)
-            reward_volume: 0.01
-            free_reward_trials: 10
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
 
+  TRAINING_4_images_G_training_7uL_reward:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_g_parameters
+      stage: TRAINING_4_images_G_training_7uL_reward
 
-    TRAINING_4_images_fixed_texture_training:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
-        parameters:
-            <<: *image_set_fixed_texture_parameters
-            stage: TRAINING_4_images_fixed_texture_training
-            warm_up_trials: 5
-            start_stop_padding: 300.0
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
 
+  TRAINING_5_images_G_training_5uL_reward:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_g_parameters
+      stage: TRAINING_5_images_G_training_5uL_reward
+      warm_up_trials: 5
+      reward_volume: 0.005
 
-    TRAINING_5_images_small_sampled_texture_training:
-        script: *texture_detection_script
-        script_md5: *texture_detection_script_md5
-        parameters:
-            <<: *image_set_small_sampled_texture_parameters
-            stage: TRAINING_5_images_small_sampled_texture_training
-            warm_up_trials: 5
-            start_stop_padding: 300.0
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
 
+  TRAINING_5_images_G_handoff_ready_5uL_reward:
+    script: *change_detection_script
+    script_md5: *change_detection_script_md5
+    parameters:
+      <<: *image_set_g_parameters
+      stage: TRAINING_5_images_G_handoff_ready_5uL_reward
+      warm_up_trials: 5
+      reward_volume: 0.005
 
-    TRAINING_6_images_sampled_texture_training:
-        script: *texture_detection_script
-        script_md5: *texture_detection_script_md5
-        parameters:
-            <<: *image_set_sampled_texture_parameters
-            stage: TRAINING_6_images_sampled_texture_training
-            warm_up_trials: 5
-            start_stop_padding: 300.0
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
+  TRAINING_6_psycode_passive_5uL_reward:
+    script: *psycode_script
+    script_md5: *psycode_script_md5
+    parameters:
+      <<: *psycode_parameters
+      stage: TRAINING_6_psycode_passive_5uL_reward
+      warm_up_trials: 5
+      reward_volume: 0.005
+      free_reward_trials: 10
+      prologue: True  
+      epilogue: False
+      injection_start: None
+      injection_end: None
+      number_runs_rf: 5
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
+  TRAINING_7_psycode_injection_5uL_reward:
+    script: *psycode_script
+    script_md5: *psycode_script_md5
+    parameters:
+      <<: *psycode_parameters
+      stage: TRAINING_7_psycode_injection_5uL_reward
+      warm_up_trials: 5
+      reward_volume: 0.005
+      free_reward_trials: 10
+      prologue: True  
+      epilogue: False
+      number_runs_rf: 5
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 300.0
+
+  EPHYS_HAB_psycode_5uL_reward:
+    script: *psycode_script
+    script_md5: *psycode_script_md5
+    parameters:
+      <<: *psycode_parameters
+      stage: EPHYS_HAB_psycode_5uL_reward
+      warm_up_trials: 5
+      reward_volume: 0.005
+      free_reward_trials: 10
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+
+  EPHYS_1_psycode_5uL_reward:
+    script: *psycode_script
+    script_md5: *psycode_script_md5
+    parameters:
+      <<: *psycode_parameters
+      stage: EPHYS_1_psycode_5uL_reward
+      warm_up_trials: 3
+      reward_volume: 0.005
+      prologue: True  
+      epilogue: True
+
+      # optotagging      
+      disable_opto: False
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  EPHYS_HAB_psycode_3uL_reward:
+    script: *psycode_script
+    script_md5: *psycode_script_md5
+    parameters:
+      <<: *psycode_parameters
+      stage: EPHYS_HAB_psycode_3uL_reward
+      warm_up_trials: 5
+      reward_volume: 0.003
+      free_reward_trials: 10
+
+      # ephys-specific no grayscreen pre-exp time
+      start_padding_windowless: 20.0
+
+  EPHYS_1_psycode_3uL_reward:
+    script: *psycode_script
+    script_md5: *psycode_script_md5
+    parameters:
+      <<: *psycode_parameters
+      stage: EPHYS_1_psycode_3uL_reward
+      warm_up_trials: 3
+      reward_volume: 0.003
+      prologue: True  
+      epilogue: True
+
+      # optotagging      
+      disable_opto: False
+
+      opto_params: 
+        operation_mode: "experiment"
+
+  EPHYS_test_psycode:
+    script: *psycode_script
+    script_md5: *psycode_script_md5
+    parameters:
+      <<: *psycode_parameters
+      stage: EPHYS_test_psycode
+      warm_up_trials: 3
+      reward_volume: 0.003
+      prologue: True  
+      epilogue: True
+      change_time_scale: 0.1
+      short_distrib_start1: 30
+      short_distrib_end1: 60
+      change_time_dist1: 0.4
+      injection_start: 120
+      injection_end: 160
+      short_distrib_start2: 200
+      short_distrib_end2: 240
+      change_time_dist2: 0.4
+      max_task_duration_min: 5
+      number_runs_rf: 1
+
+      # optotagging      
+      disable_opto: False
+
+      opto_params: 
+        operation_mode: "experiment"
