@@ -28,15 +28,14 @@ _day_10_script: &day_10_script
 _day_10_script_md5: &day_10_script_md5
     e53821b4b498bcecb4aa793e5dff67b5
     
-_sequencelearning_script: &sequencelearning_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_sequencelearning_stim/raw/production_stimulus.py?at=22c9dff0eb4dd20d438a3ac8b1a082d91858c048
+_mousemotion_script: &mousemotion_script
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/Final_Pilot_Stim/shared_script.py?at=2adb1071c52abdb457d55c542237bbf02b184413
 
-_sequencelearning_script_md5: &sequencelearning_script_md5
-    36334321ad0652300af4cf88a31e5ad7
+_mousemotion_script_md5: &mousemotion_script_md5
+    ec614a4157f9c76e831d9e88e09c58f9
 
 ### mtrain definitions
-#based on VisualBehavior_Task1A_v1.0.3
-name: Openscope_SequenceLearning_v3
+name: Openscope_Mousemotion_v1
 
 transitions:
 
@@ -62,27 +61,19 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-    dest: HAB_SEQUENCELEARNING
+    dest: HAB_MOUSEMOTION
 
   - trigger: manual
-    source: HAB_SEQUENCELEARNING
-    dest: RANDOM_ORDER_SEQUENCELEARNING_DAY0
+    source: HAB_MOUSEMOTION
+    dest: ANTERIOR_MOUSEMOTION
 
   - trigger: manual
-    source: RANDOM_ORDER_SEQUENCELEARNING_DAY0
-    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
+    source: ANTERIOR_MOUSEMOTION
+    dest: POSTERIOR_MOUSEMOTION
 
   - trigger: manual
-    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
-    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
-
-  - trigger: manual
-    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
-    dest: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
-
-  - trigger: manual
-    source: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
-    dest: RANDOM_ORDER_SEQUENCELEARNING_DAY4
+    source: POSTERIOR_MOUSEMOTION
+    dest: TEST_MOUSEMOTION
 
 stages:
     DAY_6:
@@ -116,58 +107,42 @@ stages:
             stage: DAY_10
 
 
-    HAB_SEQUENCELEARNING:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
+    HAB_MOUSEMOTION:
+        script: *mousemotion_script
+        script_md5: *mousemotion_script_md5
         parameters:
-            stage: HAB_SEQUENCELEARNING
-            monitor_name: "Gamma1.Luminance50"
-            day: 0
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+            stage: HAB_MOUSEMOTION
+        num_reps: 17
+        dev_mode: False
+        inter_block_interval: 10
+        vertical_pos: 0
 
-
-    RANDOM_ORDER_SEQUENCELEARNING_DAY0:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
+    ANTERIOR_MOUSEMOTION:
+        script: *mousemotion_script
+        script_md5: *mousemotion_script_md5
         parameters:
-            stage: RANDOM_ORDER_SEQUENCELEARNING_DAY0
-            monitor_name: "Gamma1.Luminance50"
-            day: 0
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+            stage: ANTERIOR_MOUSEMOTION
+        num_reps: 17
+        dev_mode: False
+        inter_block_interval: 10
+        vertical_pos: 8
 
-
-    REPEATED_MOVIE_SEQUENCELEARNING_DAY1:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
+    POSTERIOR_MOUSEMOTION:
+        script: *mousemotion_script
+        script_md5: *mousemotion_script_md5
         parameters:
-            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY1
-            monitor_name: "Gamma1.Luminance50"
-            day: 1
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+            stage: POSTERIOR_MOUSEMOTION
+        num_reps: 17
+        dev_mode: False
+        inter_block_interval: 10
+        vertical_pos: -8
 
-    REPEATED_MOVIE_SEQUENCELEARNING_DAY2:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
+    TEST_MOUSEMOTION:
+        script: *mousemotion_script
+        script_md5: *mousemotion_script_md5
         parameters:
-            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY2
-            monitor_name: "Gamma1.Luminance50"
-            day: 2
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
-
-    REPEATED_MOVIE_SEQUENCELEARNING_DAY3:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
-        parameters:
-            stage: REPEATED_MOVIE_SEQUENCELEARNING_DAY3
-            monitor_name: "Gamma1.Luminance50"
-            day: 3
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
-
-    RANDOM_ORDER_SEQUENCELEARNING_DAY4:
-        script: *sequencelearning_script
-        script_md5: *sequencelearning_script_md5
-        parameters:
-            stage: RANDOM_ORDER_SEQUENCELEARNING_DAY4
-            monitor_name: "Gamma1.Luminance50"
-            day: 0
-            movie_folder: //allen/programs/mindscope/workgroups/openscope/2023-SequenceLearning/openscope_sequencelearning_stim/data
+            stage: TEST_MOUSEMOTION
+        num_reps: 1
+        dev_mode: False
+        inter_block_interval: 10
+        vertical_pos: 0
