@@ -34,7 +34,7 @@ _mousemotion_script_md5: &mousemotion_script_md5
     3d07b173d7347a774e64cd59a414987c
 
 ### mtrain definitions
-name: Openscope_Mousemotion_v3
+name: Openscope_Mousemotion_v4
 
 transitions:
 
@@ -111,37 +111,37 @@ stages:
         script_md5: *mousemotion_script_md5
         parameters:
             stage: HAB_MOUSEMOTION
-        num_reps: 17
-        dev_mode: False
-        inter_block_interval: 10
-        vertical_pos: 0
+            num_reps: 17
+            dev_mode: False
+            inter_block_interval: 10
+            vertical_pos: 0
 
     ANTERIOR_MOUSEMOTION:
         script: *mousemotion_script
         script_md5: *mousemotion_script_md5
         parameters:
             stage: ANTERIOR_MOUSEMOTION
-        num_reps: 17
-        dev_mode: False
-        inter_block_interval: 10
-        vertical_pos: 8
+            num_reps: 17
+            dev_mode: False
+            inter_block_interval: 10
+            vertical_pos: 8
 
     POSTERIOR_MOUSEMOTION:
         script: *mousemotion_script
         script_md5: *mousemotion_script_md5
         parameters:
             stage: POSTERIOR_MOUSEMOTION
-        num_reps: 17
-        dev_mode: False
-        inter_block_interval: 10
-        vertical_pos: -8
+            num_reps: 17
+            dev_mode: False
+            inter_block_interval: 10
+            vertical_pos: -8
 
     TEST_MOUSEMOTION:
         script: *mousemotion_script
         script_md5: *mousemotion_script_md5
         parameters:
             stage: TEST_MOUSEMOTION
-        num_reps: 1
-        dev_mode: False
-        inter_block_interval: 10
-        vertical_pos: 0
+            num_reps: 1
+            dev_mode: False
+            inter_block_interval: 10
+            vertical_pos: 0
