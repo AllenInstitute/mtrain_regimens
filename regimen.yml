@@ -108,7 +108,7 @@ _psycode_parameters: &psycode_parameters
   epilogue: True
   number_runs_rf: 10
 
-name: Openscope_psycode_v4
+name: Openscope_psycode_v5
 
 transitions:
   - trigger: progress
@@ -286,8 +286,8 @@ stages:
       free_reward_trials: 10
       prologue: True  
       epilogue: False
-      injection_start: None
-      injection_end: None
+      injection_start: null
+      injection_end: null
       number_runs_rf: 5
 
       # ephys-specific no grayscreen pre-exp time
