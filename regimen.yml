@@ -29,12 +29,13 @@ _day_10_script_md5: &day_10_script_md5
     e53821b4b498bcecb4aa793e5dff67b5
     
 _mousemotion_script: &mousemotion_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/Final_Pilot_Stim/Final_updated.py?at=04d223fbeb6170379478d0902cee6d7f833dc29f
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/Final_Pilot_Stim/Final_updated.py?at=845936e1361be105e0238c5f61fb1d8b0f783449
+
 _mousemotion_script_md5: &mousemotion_script_md5
-    d68e0160b33245b1bbf355e8738461ca
+    cc29b67cce8ae6ddac84e3dfb0707755
 
 ### mtrain definitions
-name: Openscope_Mousemotion_v8
+name: Openscope_Mousemotion_v9
 
 transitions:
 
@@ -124,7 +125,7 @@ stages:
             num_reps: 17
             dev_mode: False
             inter_block_interval: 10
-            vertical_pos: 146
+            vertical_pos: -146
 
     POSTERIOR_MOUSEMOTION:
         script: *mousemotion_script
@@ -134,7 +135,7 @@ stages:
             num_reps: 17
             dev_mode: False
             inter_block_interval: 10
-            vertical_pos: -146
+            vertical_pos: 146
 
     TEST_MOUSEMOTION:
         script: *mousemotion_script
