@@ -28,14 +28,14 @@ _day_10_script: &day_10_script
 _day_10_script_md5: &day_10_script_md5
     e53821b4b498bcecb4aa793e5dff67b5
     
-_mousemotion_script: &mousemotion_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/Final_Pilot_Stim/Final_updated.py?at=845936e1361be105e0238c5f61fb1d8b0f783449
+_loop_script: &loop_script
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/stimulus_loop.py?at=8ffefa1480845e26c379c8823f7faa202f7554ad
 
-_mousemotion_script_md5: &mousemotion_script_md5
-    cc29b67cce8ae6ddac84e3dfb0707755
+_loop_script_md5: &loop_script_md5
+    2d5cf4c864e2e5f4c396918fbd13f6c7
 
 ### mtrain definitions
-name: Openscope_Mousemotion_v9
+name: Openscope_Loop_v1
 
 transitions:
 
@@ -61,19 +61,39 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-    dest: HAB_MOUSEMOTION
+     dest: GROUPA_60MIN_DAY1_2
 
   - trigger: manual
-    source: HAB_MOUSEMOTION
-    dest: ANTERIOR_MOUSEMOTION
+    source: GROUPA_60MIN_DAY1_2
+    dest: GROUPA_90MIN_DAY3_4
 
   - trigger: manual
-    source: ANTERIOR_MOUSEMOTION
-    dest: POSTERIOR_MOUSEMOTION
+    source: GROUPA_90MIN_DAY3_4
+    dest: GROUPA_120MIN_DAY5
 
   - trigger: manual
-    source: POSTERIOR_MOUSEMOTION
-    dest: TEST_MOUSEMOTION
+    source: GROUPA_120MIN_DAY5
+    dest: PROD_GROUPA_LOOP
+
+  - trigger: manual
+    source: DAY_10
+     dest: GROUPB_60MIN_DAY1_2
+
+  - trigger: manual
+    source: GROUPB_60MIN_DAY1_2
+    dest: GROUPB_90MIN_DAY3_4
+
+  - trigger: manual
+    source: GROUPB_90MIN_DAY3_4
+    dest: GROUPB_120MIN_DAY5
+
+  - trigger: manual
+    source: GROUPB_120MIN_DAY5
+    dest: PROD_GROUPB_LOOP
+
+  - trigger: manual
+    source: PROD_GROUPB_LOOP
+    dest: TEST_LOOP
 
 stages:
     DAY_6:
@@ -106,43 +126,83 @@ stages:
         parameters:
             stage: DAY_10
 
-
-    HAB_MOUSEMOTION:
-        script: *mousemotion_script
-        script_md5: *mousemotion_script_md5
+    GROUPA_60MIN_DAY1_2:
+        script: *loop_script
+        script_md5: *loop_script_md5
         parameters:
-            stage: HAB_MOUSEMOTION
-            num_reps: 17
+            stage: GROUPA_60MIN_DAY1_2
+            group: "movie_order_groupA"
             dev_mode: False
-            inter_block_interval: 10
-            vertical_pos: 0
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
-    ANTERIOR_MOUSEMOTION:
-        script: *mousemotion_script
-        script_md5: *mousemotion_script_md5
+    GROUPA_90MIN_DAY3_4:
+        script: *loop_script
+        script_md5: *loop_script_md5
         parameters:
-            stage: ANTERIOR_MOUSEMOTION
-            num_reps: 17
+            stage: GROUPA_90MIN_DAY3_4
+            group: "movie_order_groupA"
             dev_mode: False
-            inter_block_interval: 10
-            vertical_pos: -146
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
-    POSTERIOR_MOUSEMOTION:
-        script: *mousemotion_script
-        script_md5: *mousemotion_script_md5
+    GROUPA_120MIN_DAY5:
+        script: *loop_script
+        script_md5: *loop_script_md5
         parameters:
-            stage: POSTERIOR_MOUSEMOTION
-            num_reps: 17
+            stage: GROUPA_120MIN_DAY5
+            group: "movie_order_groupA"
             dev_mode: False
-            inter_block_interval: 10
-            vertical_pos: 146
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
-    TEST_MOUSEMOTION:
-        script: *mousemotion_script
-        script_md5: *mousemotion_script_md5
+    PROD_GROUPA_LOOP:
+        script: *loop_script
+        script_md5: *loop_script_md5
         parameters:
-            stage: TEST_MOUSEMOTION
-            num_reps: 1
+            stage: PROD_GROUPA_LOOP
+            group: "movie_order_groupA"
             dev_mode: False
-            inter_block_interval: 10
-            vertical_pos: 146
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+
+    GROUPB_60MIN_DAY1_2:
+        script: *loop_script
+        script_md5: *loop_script_md5
+        parameters:
+            stage: GROUPB_60MIN_DAY1_2
+            group: "movie_order_groupB"
+            dev_mode: False
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+
+    GROUPB_90MIN_DAY3_4:
+        script: *loop_script
+        script_md5: *loop_script_md5
+        parameters:
+            stage: GROUPB_90MIN_DAY3_4
+            group: "movie_order_groupB"
+            dev_mode: False
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+
+    GROUPB_120MIN_DAY5:
+        script: *loop_script
+        script_md5: *loop_script_md5
+        parameters:
+            stage: GROUPB_120MIN_DAY5
+            group: "movie_order_groupB"
+            dev_mode: False
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+
+    PROD_GROUPB_LOOP:
+        script: *loop_script
+        script_md5: *loop_script_md5
+        parameters:
+            stage: PROD_GROUPB_LOOP
+            group: "movie_order_groupB"
+            dev_mode: False
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+
+    TEST_LOOP:
+        script: *loop_script
+        script_md5: *loop_script_md5
+        parameters:
+            stage: TEST_LOOP
+            group: "movie_order_groupTEST"
+            dev_mode: False
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
