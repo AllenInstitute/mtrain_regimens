@@ -35,7 +35,7 @@ _loop_script_md5: &loop_script_md5
     2d5cf4c864e2e5f4c396918fbd13f6c7
 
 ### mtrain definitions
-name: Openscope_Loop_v1
+name: Openscope_Loop_v2
 
 transitions:
 
@@ -61,7 +61,7 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-     dest: GROUPA_60MIN_DAY1_2
+    dest: GROUPA_60MIN_DAY1_2
 
   - trigger: manual
     source: GROUPA_60MIN_DAY1_2
@@ -77,7 +77,7 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-     dest: GROUPB_60MIN_DAY1_2
+    dest: GROUPB_60MIN_DAY1_2
 
   - trigger: manual
     source: GROUPB_60MIN_DAY1_2
