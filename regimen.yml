@@ -29,13 +29,13 @@ _day_10_script_md5: &day_10_script_md5
     e53821b4b498bcecb4aa793e5dff67b5
     
 _mousemotion_script: &mousemotion_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/Final_Pilot_Stim/Final_updated.py?at=845936e1361be105e0238c5f61fb1d8b0f783449
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/PilotCode/Pilot_Final.py?at=377480b3287577150040ba7b388d14776df0d2af
 
 _mousemotion_script_md5: &mousemotion_script_md5
-    cc29b67cce8ae6ddac84e3dfb0707755
+    796a7ad8cfd41b5bff5c02f31a899f75
 
 ### mtrain definitions
-name: Openscope_Mousemotion_v9
+name: Openscope_Mousemotion_v10
 
 transitions:
 
@@ -116,6 +116,7 @@ stages:
             dev_mode: False
             inter_block_interval: 10
             vertical_pos: 0
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024_mousemotion/data
 
     ANTERIOR_MOUSEMOTION:
         script: *mousemotion_script
@@ -126,6 +127,7 @@ stages:
             dev_mode: False
             inter_block_interval: 10
             vertical_pos: -146
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024_mousemotion/data
 
     POSTERIOR_MOUSEMOTION:
         script: *mousemotion_script
@@ -136,6 +138,7 @@ stages:
             dev_mode: False
             inter_block_interval: 10
             vertical_pos: 146
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024_mousemotion/data
 
     TEST_MOUSEMOTION:
         script: *mousemotion_script
@@ -146,3 +149,4 @@ stages:
             dev_mode: False
             inter_block_interval: 10
             vertical_pos: 146
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024_mousemotion/data
