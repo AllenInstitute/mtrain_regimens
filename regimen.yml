@@ -1,41 +1,41 @@
 _day_6_script: &day_6_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day1.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day1.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
 
 _day_6_script_md5: &day_6_script_md5
     1284dde1bab18233f470a679d5a234f2
 
 _day_7_script: &day_7_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day2.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day2.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
 
 _day_7_script_md5: &day_7_script_md5
     5bd554df9c9bd5c40485a07956273cd9
     
 _day_8_script: &day_8_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day3.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day3.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
 
 _day_8_script_md5: &day_8_script_md5
-    505ef9e14e6ac3f80e691f4d0b5265a8
+    853a85c542e243fe5933bee2dfe37269
     
 _day_9_script: &day_9_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day4.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day4.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
 
 _day_9_script_md5: &day_9_script_md5
-    d82360a405c9ba1f1cc1d59b7707bc80
+    cc449e67a7d35ba0a4b1c6b166449d07
     
 _day_10_script: &day_10_script
-    http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/passive/visual_coding/day5.py?at=e4b0f5cc22aa94d5ee2d0916b0db1a1afa774888
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day5.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
 
 _day_10_script_md5: &day_10_script_md5
-    e53821b4b498bcecb4aa793e5dff67b5
+    cdc97517625fcd9b3f9ceaf96ed08007
     
 _loop_script: &loop_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/stimulus_loop.py?at=8ffefa1480845e26c379c8823f7faa202f7554ad
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/stimulus_loop.py?at=ea066e0a791ac6883fc6426dc8cba06e4b728b4a
 
 _loop_script_md5: &loop_script_md5
-    2d5cf4c864e2e5f4c396918fbd13f6c7
+    93bd262748063532407ec14e6314ce3a
 
 ### mtrain definitions
-name: Openscope_Loop_v3
+name: Openscope_Loop_v4
 
 transitions:
 
