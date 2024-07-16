@@ -35,7 +35,7 @@ _loop_script_md5: &loop_script_md5
     2d5cf4c864e2e5f4c396918fbd13f6c7
 
 ### mtrain definitions
-name: Openscope_Loop_v2
+name: Openscope_Loop_v3
 
 transitions:
 
@@ -73,7 +73,7 @@ transitions:
 
   - trigger: manual
     source: GROUPA_120MIN_DAY5
-    dest: PROD_GROUPA_LOOP
+    dest: EPHYS_GROUPA_LOOP
 
   - trigger: manual
     source: DAY_10
@@ -89,10 +89,10 @@ transitions:
 
   - trigger: manual
     source: GROUPB_120MIN_DAY5
-    dest: PROD_GROUPB_LOOP
+    dest: EPHYS_GROUPB_LOOP
 
   - trigger: manual
-    source: PROD_GROUPB_LOOP
+    source: EPHYS_GROUPB_LOOP
     dest: TEST_LOOP
 
 stages:
@@ -131,7 +131,7 @@ stages:
         script_md5: *loop_script_md5
         parameters:
             stage: GROUPA_60MIN_DAY1_2
-            group: "movie_order_groupA"
+            group: "rig_hab_day1_groupA"
             dev_mode: False
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
@@ -140,7 +140,7 @@ stages:
         script_md5: *loop_script_md5
         parameters:
             stage: GROUPA_90MIN_DAY3_4
-            group: "movie_order_groupA"
+            group: "rig_hab_day3_groupA"
             dev_mode: False
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
@@ -149,15 +149,15 @@ stages:
         script_md5: *loop_script_md5
         parameters:
             stage: GROUPA_120MIN_DAY5
-            group: "movie_order_groupA"
+            group: "rig_hab_day5_groupA"
             dev_mode: False
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
-    PROD_GROUPA_LOOP:
+    EPHYS_GROUPA_LOOP:
         script: *loop_script
         script_md5: *loop_script_md5
         parameters:
-            stage: PROD_GROUPA_LOOP
+            stage: EPHYS_GROUPA_LOOP
             group: "movie_order_groupA"
             dev_mode: False
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
@@ -167,7 +167,7 @@ stages:
         script_md5: *loop_script_md5
         parameters:
             stage: GROUPB_60MIN_DAY1_2
-            group: "movie_order_groupB"
+            group: "rig_hab_day1_groupB"
             dev_mode: False
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
@@ -176,7 +176,7 @@ stages:
         script_md5: *loop_script_md5
         parameters:
             stage: GROUPB_90MIN_DAY3_4
-            group: "movie_order_groupB"
+            group: "rig_hab_day3_groupB"
             dev_mode: False
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
@@ -185,15 +185,15 @@ stages:
         script_md5: *loop_script_md5
         parameters:
             stage: GROUPB_120MIN_DAY5
-            group: "movie_order_groupB"
+            group: "rig_hab_day5_groupB"
             dev_mode: False
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
 
-    PROD_GROUPB_LOOP:
+    EPHYS_GROUPB_LOOP:
         script: *loop_script
         script_md5: *loop_script_md5
         parameters:
-            stage: PROD_GROUPB_LOOP
+            stage: EPHYS_GROUPB_LOOP
             group: "movie_order_groupB"
             dev_mode: False
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
