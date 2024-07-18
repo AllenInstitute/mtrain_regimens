@@ -29,13 +29,13 @@ _day_10_script_md5: &day_10_script_md5
     cdc97517625fcd9b3f9ceaf96ed08007
     
 _loop_script: &loop_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/stimulus_loop.py?at=c393112a8ece1d78d6c43286a4a5c85648bf745e
-    
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/stimulus_loop.py?at=1efe11b9f1787b2d216c96ed1a8fc00641f52b05
+
 _loop_script_md5: &loop_script_md5
-    6eda2fdda960cb6abf41a66aaf1c11fe
+    b3df91ca7cc972cd5581dd159f49bcb0
 
 ### mtrain definitions
-name: Openscope_Loop_v5
+name: Openscope_Loop_v6
 
 transitions:
 
