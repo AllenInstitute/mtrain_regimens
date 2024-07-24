@@ -30,11 +30,22 @@ _fixed_texture_set_stimulus: &fixed_texture_set
         image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A2.5_240404.pkl
         sampling: even
 
-
-_small_sampled_texture_set_stimulus: &small_sampled_texture_set
+_shift1_texture_set_stimulus: &shift1_texture_set
     class: images
     params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A2.6_240601.pkl
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-5_stage-B2.5_240723.pkl
+        sampling: even
+
+_shift2_texture_set_stimulus: &shift2_texture_set
+    class: images
+    params:
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-10_stage-B2.5_240723.pkl
+        sampling: even
+
+_shift3_texture_set_stimulus: &shift3_texture_set
+    class: images
+    params:
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-20_stage-B2.5_240723.pkl
         sampling: even
 
 _sampled_texture_set_stimulus: &sampled_texture_set
@@ -91,15 +102,24 @@ _no_flash_parameters: &no_flash_parameters
     change_flashes_min: null
     change_flashes_max: null
 
-
 _image_set_fixed_texture_parameters: &image_set_fixed_texture_parameters
     <<: *flash_parameters
     stimulus: *fixed_texture_set
     catch_frequency: null
 
-_image_set_small_sampled_texture_parameters: &image_set_small_sampled_texture_parameters
+_image_set_shift1_texture_parameters: &image_set_shift1_texture_parameters
     <<: *flash_parameters
-    stimulus: *small_sampled_texture_set
+    stimulus: *shift1_texture_set
+    catch_frequency: null
+
+_image_set_shift2_texture_parameters: &image_set_shift2_texture_parameters
+    <<: *flash_parameters
+    stimulus: *shift2_texture_set
+    catch_frequency: null
+
+_image_set_shift3_texture_parameters: &image_set_shift3_texture_parameters
+    <<: *flash_parameters
+    stimulus: *shift3_texture_set
     catch_frequency: null
 
 _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
@@ -109,7 +129,7 @@ _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
 
 ### mtrain definitions
 
-name: OpenScope_texture_active_v5
+name: OpenScope_texture_active_v6
 
 transitions:
 
@@ -135,13 +155,38 @@ transitions:
 
   - trigger: progress
     source: TRAINING_4_images_fixed_texture_training
-    dest: TRAINING_5_images_small_sampled_texture_training
-    conditions: meets_engagement_criteria
+    dest: TRAINING_5_images_visual1_fixed_texture_training
+    conditions: yesterday_was_good
 
   - trigger: progress
-    source: TRAINING_5_images_small_sampled_texture_training
-    dest: TRAINING_6_images_sampled_texture_training
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+    source: TRAINING_5_images_visual1_fixed_texture_training
+    dest: TRAINING_6_images_visual2_fixed_texture_training
+    conditions: yesterday_was_good
+
+  - trigger: progress
+    source: TRAINING_6_images_visual2_fixed_texture_training
+    dest: TRAINING_7_images_visual3_fixed_texture_training
+    conditions: yesterday_was_good
+ 
+  - trigger: progress
+    source: TRAINING_7_images_visual3_fixed_texture_training
+    dest: TRAINING_8_images_visual3_shift1_texture_training
+    conditions: yesterday_was_good
+
+  - trigger: progress
+    source: TRAINING_8_images_visual3_shift1_texture_training
+    dest: TRAINING_9_images_visual3_shift2_texture_training
+    conditions: yesterday_was_good
+ 
+  - trigger: progress
+    source: TRAINING_9_images_visual3_shift2_texture_training
+    dest: TRAINING_10_images_visual3_shift3_texture_training
+    conditions: yesterday_was_good
+
+  - trigger: progress
+    source: TRAINING_10_images_visual3_shift3_texture_training
+    dest: TRAINING_11_images_sampled_texture_training
+    conditions: yesterday_was_good
 
 stages:
 
@@ -215,22 +260,79 @@ stages:
             warm_up_trials: 5
             start_stop_padding: 300.0
 
-
-    TRAINING_5_images_small_sampled_texture_training:
-        script: *texture_detection_script
-        script_md5: *texture_detection_script_md5
+    TRAINING_5_images_visual1_fixed_texture_training:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_small_sampled_texture_parameters
-            stage: TRAINING_5_images_small_sampled_texture_training
+            <<: *image_set_fixed_texture_parameters
+            stage: TRAINING_5_images_visual1_fixed_texture_training
             warm_up_trials: 5
             start_stop_padding: 300.0
+            change_time_scale: 0.2
+            change_flashes_min: 4  # inclusive
 
+    TRAINING_6_images_visual2_fixed_texture_training:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_fixed_texture_parameters
+            stage: TRAINING_6_images_visual2_fixed_texture_training
+            warm_up_trials: 5
+            start_stop_padding: 300.0
+            change_time_scale: 0.1
+            change_flashes_min: 3  # inclusive
 
-    TRAINING_6_images_sampled_texture_training:
+    TRAINING_7_images_visual3_fixed_texture_training:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_fixed_texture_parameters
+            stage: TRAINING_7_images_visual3_fixed_texture_training
+            warm_up_trials: 5
+            start_stop_padding: 300.0
+            change_time_scale: 0.05
+            change_flashes_min: 2  # inclusive
+
+    TRAINING_8_images_visual3_shift1_texture_training:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_shift1_texture_parameters
+            stage: TRAINING_8_images_visual3_shift1_texture_training
+            warm_up_trials: 5
+            start_stop_padding: 300.0
+            change_time_scale: 0.05
+            change_flashes_min: 2  # inclusive
+
+    TRAINING_9_images_visual3_shift2_texture_training:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_shift2_texture_parameters
+            stage: TRAINING_9_images_visual3_shift2_texture_training
+            warm_up_trials: 5
+            start_stop_padding: 300.0
+            change_time_scale: 0.05
+            change_flashes_min: 2  # inclusive
+
+    TRAINING_10_images_visual3_shift3_texture_training:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
+        parameters:
+            <<: *image_set_shift3_texture_parameters
+            stage: TRAINING_10_images_visual3_shift3_texture_training
+            warm_up_trials: 5
+            start_stop_padding: 300.0
+            change_time_scale: 0.05
+            change_flashes_min: 2  # inclusive
+
+    TRAINING_11_images_sampled_texture_training:
         script: *texture_detection_script
         script_md5: *texture_detection_script_md5
         parameters:
             <<: *image_set_sampled_texture_parameters
-            stage: TRAINING_6_images_sampled_texture_training
+            stage: TRAINING_11_images_sampled_texture_training
             warm_up_trials: 5
             start_stop_padding: 300.0
+            change_time_scale: 0.05
+            change_flashes_min: 2  # inclusive
