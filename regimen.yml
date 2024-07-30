@@ -108,7 +108,7 @@ _psycode_parameters: &psycode_parameters
   epilogue: True
   number_runs_rf: 10
 
-name: Openscope_psycode_v6
+name: Openscope_psycode_v7
 
 transitions:
   - trigger: progress
@@ -170,6 +170,10 @@ transitions:
   - trigger: manual
     source: EPHYS_1_psycode_3uL_reward
     dest: EPHYS_test_psycode
+
+  - trigger: manual
+    source: EPHYS_test_psycode
+    dest: TRAINING_test_psycode
     
 stages:
   TRAINING_0_gratings_autorewards_15min_0uL_reward:
@@ -396,3 +400,29 @@ stages:
 
       opto_params: 
         operation_mode: "experiment"
+
+TRAINING_test_psycode:
+    script: *psycode_script
+    script_md5: *psycode_script_md5
+    parameters:
+      <<: *psycode_parameters
+      stage: EPHYS_test_psycode
+      warm_up_trials: 3
+      reward_volume: 0.003
+      prologue: True  
+      epilogue: True
+      change_time_scale: 0.1
+      short_distrib_start1: 30
+      short_distrib_end1: 60
+      change_time_dist1: 0.4
+      injection_start: 120
+      injection_end: 160
+      short_distrib_start2: 200
+      short_distrib_end2: 240
+      change_time_dist2: 0.4
+      max_task_duration_min: 5
+      number_runs_rf: 1
+      start_padding_windowless: 5.0
+
+      # optotagging      
+      disable_opto: True
