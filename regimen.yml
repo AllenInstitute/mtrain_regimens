@@ -129,7 +129,7 @@ _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
 
 ### mtrain definitions
 
-name: OpenScope_texture_active_v6
+name: OpenScope_texture_active_v7
 
 transitions:
 
@@ -294,8 +294,8 @@ stages:
             change_flashes_min: 2  # inclusive
 
     TRAINING_8_images_visual3_shift1_texture_training:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+        script: *texture_detection_script
+        script_md5: *texture_detection_script_md5
         parameters:
             <<: *image_set_shift1_texture_parameters
             stage: TRAINING_8_images_visual3_shift1_texture_training
@@ -305,8 +305,8 @@ stages:
             change_flashes_min: 2  # inclusive
 
     TRAINING_9_images_visual3_shift2_texture_training:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+        script: *texture_detection_script
+        script_md5: *texture_detection_script_md5
         parameters:
             <<: *image_set_shift2_texture_parameters
             stage: TRAINING_9_images_visual3_shift2_texture_training
@@ -316,8 +316,8 @@ stages:
             change_flashes_min: 2  # inclusive
 
     TRAINING_10_images_visual3_shift3_texture_training:
-        script: *change_detection_script
-        script_md5: *change_detection_script_md5
+        script: *texture_detection_script
+        script_md5: *texture_detection_script_md5
         parameters:
             <<: *image_set_shift3_texture_parameters
             stage: TRAINING_10_images_visual3_shift3_texture_training
