@@ -33,19 +33,19 @@ _fixed_texture_set_stimulus: &fixed_texture_set
 _shift1_texture_set_stimulus: &shift1_texture_set
     class: images
     params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-5_stage-B2.5_240723.pkl
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-5_stage-B2.5_240806.pkl
         sampling: even
 
 _shift2_texture_set_stimulus: &shift2_texture_set
     class: images
     params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-10_stage-B2.5_240723.pkl
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-10_stage-B2.5_240806.pkl
         sampling: even
 
 _shift3_texture_set_stimulus: &shift3_texture_set
     class: images
     params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-20_stage-B2.5_240723.pkl
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-20_stage-B2.5_240806.pkl
         sampling: even
 
 _sampled_texture_set_stimulus: &sampled_texture_set
@@ -129,7 +129,7 @@ _image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
 
 ### mtrain definitions
 
-name: OpenScope_texture_active_v7
+name: OpenScope_texture_active_v8
 
 transitions:
 
