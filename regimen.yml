@@ -1,41 +1,11 @@
-_day_6_script: &day_6_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day1.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_6_script_md5: &day_6_script_md5
-    1284dde1bab18233f470a679d5a234f2
-
-_day_7_script: &day_7_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day2.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_7_script_md5: &day_7_script_md5
-    5bd554df9c9bd5c40485a07956273cd9
+_passive_script: &passive_script
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_texture/raw/passive_stimulus.py?at=7cb8b9f95604b274e87cd1d1a77c2df044998057
     
-_day_8_script: &day_8_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day3.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_8_script_md5: &day_8_script_md5
-    853a85c542e243fe5933bee2dfe37269
-    
-_day_9_script: &day_9_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day4.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_9_script_md5: &day_9_script_md5
-    cc449e67a7d35ba0a4b1c6b166449d07
-    
-_day_10_script: &day_10_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day5.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_10_script_md5: &day_10_script_md5
-    cdc97517625fcd9b3f9ceaf96ed08007
-    
-_loop_script: &loop_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/stimulus_loop.py?at=1efe11b9f1787b2d216c96ed1a8fc00641f52b05
-
-_loop_script_md5: &loop_script_md5
-    b3df91ca7cc972cd5581dd159f49bcb0
+_passive_script_md5: &passive_script_md5
+    f9da776cee49539a68bb0097a4c8f6ab
 
 ### mtrain definitions
-name: Openscope_Loop_v7
+name: Openscope_texture_passive_v1
 
 transitions:
 
@@ -61,148 +31,79 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-    dest: GROUPA_60MIN_DAY1_2
+    dest: OPHYS_PROD
 
   - trigger: manual
-    source: GROUPA_60MIN_DAY1_2
-    dest: GROUPA_90MIN_DAY3_4
-
-  - trigger: manual
-    source: GROUPA_90MIN_DAY3_4
-    dest: GROUPA_120MIN_DAY5
-
-  - trigger: manual
-    source: GROUPA_120MIN_DAY5
-    dest: EPHYS_GROUPA_LOOP
-
-  - trigger: manual
-    source: DAY_10
-    dest: GROUPB_60MIN_DAY1_2
-
-  - trigger: manual
-    source: GROUPB_60MIN_DAY1_2
-    dest: GROUPB_90MIN_DAY3_4
-
-  - trigger: manual
-    source: GROUPB_90MIN_DAY3_4
-    dest: GROUPB_120MIN_DAY5
-
-  - trigger: manual
-    source: GROUPB_120MIN_DAY5
-    dest: EPHYS_GROUPB_LOOP
-
-  - trigger: manual
-    source: EPHYS_GROUPB_LOOP
-    dest: TEST_LOOP
+    source: OPHYS_PROD
+    dest: TEST_STAGE
 
 stages:
     DAY_6:
-        script: *day_6_script
-        script_md5: *day_6_script_md5
+        script: *passive_script
+        script_md5: *passive_script_md5
         parameters:
             stage: DAY_6
+            image_repeat: 2
+            blank_sweep: 100
+            monitor_name: "Gamma1.Luminance50"
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/passive
 
     DAY_7:
-        script: *day_7_script
-        script_md5: *day_7_script_md5
+        script: *passive_script
+        script_md5: *passive_script_md5
         parameters:
             stage: DAY_7
+            image_repeat: 4
+            blank_sweep: 100
+            monitor_name: "Gamma1.Luminance50"
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/passive
 
     DAY_8:
-        script: *day_8_script
-        script_md5: *day_8_script_md5
+        script: *passive_script
+        script_md5: *passive_script_md5
         parameters:
             stage: DAY_8
+            image_repeat: 5
+            blank_sweep: 100
+            monitor_name: "Gamma1.Luminance50"
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/passive
 
     DAY_9:
-        script: *day_9_script
-        script_md5: *day_9_script_md5
+        script: *passive_script
+        script_md5: *passive_script_md5
         parameters:
             stage: DAY_9
+            image_repeat: 6
+            blank_sweep: 100
+            monitor_name: "Gamma1.Luminance50"
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/passive
 
     DAY_10:
-        script: *day_10_script
-        script_md5: *day_10_script_md5
+        script: *passive_script
+        script_md5: *passive_script_md5
         parameters:
             stage: DAY_10
+            image_repeat: 8
+            blank_sweep: 100
+            monitor_name: "Gamma1.Luminance50"
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/passive
 
-    GROUPA_60MIN_DAY1_2:
-        script: *loop_script
-        script_md5: *loop_script_md5
+    OPHYS_PROD:
+        script: *passive_script
+        script_md5: *passive_script_md5
         parameters:
-            stage: GROUPA_60MIN_DAY1_2
-            stimulus_orderings: "rig_hab_day1_groupA"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+            stage: OPHYS_PROD
+            image_repeat: 10
+            blank_sweep: 100
+            monitor_name: "Gamma1.Luminance50"
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/passive
 
-    GROUPA_90MIN_DAY3_4:
-        script: *loop_script
-        script_md5: *loop_script_md5
+    TEST_STAGE:
+        script: *passive_script
+        script_md5: *passive_script_md5
         parameters:
-            stage: GROUPA_90MIN_DAY3_4
-            stimulus_orderings: "rig_hab_day3_groupA"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    GROUPA_120MIN_DAY5:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: GROUPA_120MIN_DAY5
-            stimulus_orderings: "rig_hab_day5_groupA"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    EPHYS_GROUPA_LOOP:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: EPHYS_GROUPA_LOOP
-            stimulus_orderings: "movie_order_groupA"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    GROUPB_60MIN_DAY1_2:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: GROUPB_60MIN_DAY1_2
-            stimulus_orderings: "rig_hab_day1_groupB"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    GROUPB_90MIN_DAY3_4:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: GROUPB_90MIN_DAY3_4
-            stimulus_orderings: "rig_hab_day3_groupB"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    GROUPB_120MIN_DAY5:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: GROUPB_120MIN_DAY5
-            stimulus_orderings: "rig_hab_day5_groupB"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    EPHYS_GROUPB_LOOP:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: EPHYS_GROUPB_LOOP
-            stimulus_orderings: "movie_order_groupB"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    TEST_LOOP:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: TEST_LOOP
-            stimulus_orderings: "movie_order_groupTEST"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+            stage: TEST_STAGE
+            image_repeat: 1
+            blank_sweep: 1
+            monitor_name: "Gamma1.Luminance50"
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/passive
