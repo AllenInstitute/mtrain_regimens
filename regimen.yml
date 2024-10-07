@@ -1,8 +1,8 @@
 _change_detection_script: &change_detection_script http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/change_detection_extended.py?at=5adfa6e285774719135d0ebcba421f15f6f56168
 _change_detection_script_md5: &change_detection_script_md5 410d697d666405eed63f72e4d3e189bb
 
-_psycode_script: &psycode_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_psycode/raw/active_pilot_stimulus.py?at=afeb56fee20be4f163f41b6061d67efc5f7c32f6
-_psycode_script_md5: &psycode_script_md5 f1cebe60d30edefb202603e222cd4631
+_psycode_script: &psycode_script http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_psycode/raw/active_pilot_stimulus.py?at=3208eda28e9c76a3c5f3ab6317f497b4f8354ae7
+_psycode_script_md5: &psycode_script_md5 fe93102b9e939243640d91fe02653217
 
 _full_field_gratings_stimulus: &full_field_gratings
   class: grating
@@ -109,7 +109,7 @@ _psycode_parameters: &psycode_parameters
   number_runs_rf: 8
   number_runs_ss: 15
 
-name: Openscope_psycode_v15
+name: Openscope_psycode_v16
 
 transitions:
   - trigger: progress
