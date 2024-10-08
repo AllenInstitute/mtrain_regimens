@@ -10,6 +10,12 @@ _texture_detection_script: &texture_detection_script
 _texture_detection_script_md5: &texture_detection_script_md5
     5e24efe5c55b842b566e6d6e0679e1a0
 
+_passive_script: &passive_script
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_texture/raw/passive_stimulus.py?at=7cb8b9f95604b274e87cd1d1a77c2df044998057
+    
+_passive_script_md5: &passive_script_md5
+    f9da776cee49539a68bb0097a4c8f6ab
+
 _full_field_gratings_stimulus: &full_field_gratings
     class: grating
     params:
@@ -96,8 +102,7 @@ _image_set_mixed_texture_parameters: &image_set_mixed_texture_parameters
 
 
 ### mtrain definitions
-
-name: OpenScope_texture_active_v9
+name: OpenScope_texture_active_v10
 
 transitions:
 
@@ -144,6 +149,10 @@ transitions:
   - trigger: manual
     source: OPHYS_8_fixed_texture
     dest: OPHYS_9_moving_texture
+
+  - trigger: manual
+    source: OPHYS_9_moving_texture
+    dest: OPHYS_10_passive_texture
 
 stages:
 
@@ -267,3 +276,13 @@ stages:
             start_stop_padding: 300.0
             change_time_scale: 0.05
             change_flashes_min: 2  # inclusive
+
+    OPHYS_10_passive_texture:
+        script: *passive_script
+        script_md5: *passive_script_md5
+        parameters:
+            stage: OPHYS_10_passive_texture
+            image_repeat: 10
+            blank_sweep: 100
+            monitor_name: "Gamma1.Luminance50"
+            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/passive
