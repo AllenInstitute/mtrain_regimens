@@ -30,28 +30,10 @@ _fixed_texture_set_stimulus: &fixed_texture_set
         image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A2.5_240404.pkl
         sampling: even
 
-_shift1_texture_set_stimulus: &shift1_texture_set
+_shift1_texture_set_stimulus: &moving_texture_set
     class: images
     params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-5_stage-B2.5_240806.pkl
-        sampling: even
-
-_shift2_texture_set_stimulus: &shift2_texture_set
-    class: images
-    params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-10_stage-B2.5_240806.pkl
-        sampling: even
-
-_shift3_texture_set_stimulus: &shift3_texture_set
-    class: images
-    params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_SIGMA-20_stage-B2.5_240806.pkl
-        sampling: even
-
-_sampled_texture_set_stimulus: &sampled_texture_set
-    class: images
-    params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_stage-A3_240417.pkl
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_TriangleDistribution_8_13_stage-B2.5_241004.pkl
         sampling: even
 
 _flash_parameters: &flash_parameters
@@ -107,29 +89,15 @@ _image_set_fixed_texture_parameters: &image_set_fixed_texture_parameters
     stimulus: *fixed_texture_set
     catch_frequency: null
 
-_image_set_shift1_texture_parameters: &image_set_shift1_texture_parameters
+_image_set_mixed_texture_parameters: &image_set_mixed_texture_parameters
     <<: *flash_parameters
-    stimulus: *shift1_texture_set
+    stimulus: *moving_texture_set
     catch_frequency: null
 
-_image_set_shift2_texture_parameters: &image_set_shift2_texture_parameters
-    <<: *flash_parameters
-    stimulus: *shift2_texture_set
-    catch_frequency: null
-
-_image_set_shift3_texture_parameters: &image_set_shift3_texture_parameters
-    <<: *flash_parameters
-    stimulus: *shift3_texture_set
-    catch_frequency: null
-
-_image_set_sampled_texture_parameters: &image_set_sampled_texture_parameters
-    <<: *flash_parameters
-    stimulus: *sampled_texture_set
-    catch_frequency: null
 
 ### mtrain definitions
 
-name: OpenScope_texture_active_v8
+name: OpenScope_texture_active_v9
 
 transitions:
 
@@ -170,23 +138,12 @@ transitions:
  
   - trigger: progress
     source: TRAINING_7_images_visual3_fixed_texture_training
-    dest: TRAINING_8_images_visual3_shift1_texture_training
+    dest: OPHYS_8_fixed_texture
     conditions: yesterday_was_good
 
-  - trigger: progress
-    source: TRAINING_8_images_visual3_shift1_texture_training
-    dest: TRAINING_9_images_visual3_shift2_texture_training
-    conditions: yesterday_was_good
- 
-  - trigger: progress
-    source: TRAINING_9_images_visual3_shift2_texture_training
-    dest: TRAINING_10_images_visual3_shift3_texture_training
-    conditions: yesterday_was_good
-
-  - trigger: progress
-    source: TRAINING_10_images_visual3_shift3_texture_training
-    dest: TRAINING_11_images_sampled_texture_training
-    conditions: yesterday_was_good
+  - trigger: manual
+    source: OPHYS_8_fixed_texture
+    dest: OPHYS_9_moving_texture
 
 stages:
 
@@ -213,7 +170,6 @@ stages:
             # rewards (mL)
             reward_volume: 0.0
 
-
     TRAINING_1_gratings:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
@@ -222,7 +178,6 @@ stages:
             stage: TRAINING_1_gratings
 
             stimulus: *full_field_gratings
-
 
     TRAINING_2_gratings_flashed:
         script: *change_detection_script
@@ -238,7 +193,6 @@ stages:
             # rewards (mL)
             reward_volume: 0.01
 
-
     TRAINING_3_images_fixed_texture_10uL_reward:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
@@ -249,7 +203,6 @@ stages:
             # rewards (mL)
             reward_volume: 0.01
             free_reward_trials: 10
-
 
     TRAINING_4_images_fixed_texture_training:
         script: *change_detection_script
@@ -293,45 +246,23 @@ stages:
             change_time_scale: 0.05
             change_flashes_min: 2  # inclusive
 
-    TRAINING_8_images_visual3_shift1_texture_training:
-        script: *texture_detection_script
-        script_md5: *texture_detection_script_md5
+    OPHYS_8_fixed_texture:
+        script: *change_detection_script
+        script_md5: *change_detection_script_md5
         parameters:
-            <<: *image_set_shift1_texture_parameters
-            stage: TRAINING_8_images_visual3_shift1_texture_training
+            <<: *image_set_fixed_texture_parameters
+            stage: OPHYS_8_fixed_texture
             warm_up_trials: 5
             start_stop_padding: 300.0
             change_time_scale: 0.05
             change_flashes_min: 2  # inclusive
 
-    TRAINING_9_images_visual3_shift2_texture_training:
+    OPHYS_9_moving_texture:
         script: *texture_detection_script
         script_md5: *texture_detection_script_md5
         parameters:
-            <<: *image_set_shift2_texture_parameters
-            stage: TRAINING_9_images_visual3_shift2_texture_training
-            warm_up_trials: 5
-            start_stop_padding: 300.0
-            change_time_scale: 0.05
-            change_flashes_min: 2  # inclusive
-
-    TRAINING_10_images_visual3_shift3_texture_training:
-        script: *texture_detection_script
-        script_md5: *texture_detection_script_md5
-        parameters:
-            <<: *image_set_shift3_texture_parameters
-            stage: TRAINING_10_images_visual3_shift3_texture_training
-            warm_up_trials: 5
-            start_stop_padding: 300.0
-            change_time_scale: 0.05
-            change_flashes_min: 2  # inclusive
-
-    TRAINING_11_images_sampled_texture_training:
-        script: *texture_detection_script
-        script_md5: *texture_detection_script_md5
-        parameters:
-            <<: *image_set_sampled_texture_parameters
-            stage: TRAINING_11_images_sampled_texture_training
+            <<: *image_set_mixed_texture_parameters
+            stage: OPHYS_9_moving_texture
             warm_up_trials: 5
             start_stop_padding: 300.0
             change_time_scale: 0.05
