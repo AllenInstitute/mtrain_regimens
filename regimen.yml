@@ -39,7 +39,7 @@ _fixed_texture_set_stimulus: &fixed_texture_set
 _shift1_texture_set_stimulus: &moving_texture_set
     class: images
     params:
-        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_TriangleDistribution_8_13_stage-B2.5_241004.pkl
+        image_set: //allen/programs/mindscope/workgroups/openscope/2024-Texture/Script/openscope_texture/data/active/OpenScope-Texture_ShiftedImages_TriangleDistribution_8_13_stage-B2.5_241016.pkl
         sampling: even
 
 _flash_parameters: &flash_parameters
@@ -102,7 +102,7 @@ _image_set_mixed_texture_parameters: &image_set_mixed_texture_parameters
 
 
 ### mtrain definitions
-name: OpenScope_texture_active_v10
+name: OpenScope_texture_active_v11
 
 transitions:
 
