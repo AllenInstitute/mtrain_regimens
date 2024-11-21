@@ -94,14 +94,14 @@ _psycode_parameters: &psycode_parameters
   <<: *flash_parameters
   stimulus: *image_set_g
   catch_frequency: null
-  change_time_scale: 0.1
-  short_distrib_start1: 714
-  short_distrib_end1: 1268
+  change_time_scale: 0.3
+  short_distrib_start1: null
+  short_distrib_end1: null
   change_time_dist1: 0.4
   injection_start: 1268
   injection_end: 2168
-  short_distrib_start2: 2882
-  short_distrib_end2: 3600
+  short_distrib_start2: null
+  short_distrib_end2: null
   change_time_dist2: 0.4
   max_task_duration_min: 60.0
   prologue: True  
@@ -109,7 +109,7 @@ _psycode_parameters: &psycode_parameters
   number_runs_rf: 8
   number_runs_ss: 15
 
-name: Openscope_psycode_v16
+name: Openscope_psycode_v17
 
 transitions:
   - trigger: progress
@@ -398,14 +398,14 @@ stages:
       reward_volume: 0.003
       prologue: True  
       epilogue: True
-      change_time_scale: 0.1
-      short_distrib_start1: 30
-      short_distrib_end1: 60
+      change_time_scale: 0.3
+      short_distrib_start1: null
+      short_distrib_end1: null
       change_time_dist1: 0.4
       injection_start: 120
       injection_end: 160
-      short_distrib_start2: 200
-      short_distrib_end2: 240
+      short_distrib_start2: null
+      short_distrib_end2: null
       change_time_dist2: 0.4
       max_task_duration_min: 5
       number_runs_rf: 1
@@ -427,14 +427,14 @@ stages:
         reward_volume: 0.003
         prologue: True  
         epilogue: True
-        change_time_scale: 0.1
-        short_distrib_start1: 30
-        short_distrib_end1: 60
+        change_time_scale: 0.3
+        short_distrib_start1: null
+        short_distrib_end1: null
         change_time_dist1: 0.4
         injection_start: 120
         injection_end: 160
-        short_distrib_start2: 200
-        short_distrib_end2: 240
+        short_distrib_start2: null
+        short_distrib_end2: null
         change_time_dist2: 0.4
         max_task_duration_min: 5
         number_runs_rf: 1
