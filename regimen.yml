@@ -141,10 +141,9 @@ transitions:
     dest: TRAINING_7_images_visual3_fixed_texture_training
     conditions: yesterday_was_good
  
-  - trigger: progress
+  - trigger: manual
     source: TRAINING_7_images_visual3_fixed_texture_training
     dest: OPHYS_8_fixed_texture
-    conditions: yesterday_was_good
 
   - trigger: manual
     source: OPHYS_8_fixed_texture
