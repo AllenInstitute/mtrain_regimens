@@ -102,7 +102,7 @@ _image_set_mixed_texture_parameters: &image_set_mixed_texture_parameters
 
 
 ### mtrain definitions
-name: OpenScope_texture_active_v11
+name: OpenScope_texture_active_v12
 
 transitions:
 
