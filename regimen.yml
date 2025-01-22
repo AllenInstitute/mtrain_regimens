@@ -29,13 +29,13 @@ _day_10_script_md5: &day_10_script_md5
     e53821b4b498bcecb4aa793e5dff67b5
     
 _mousemotion_script: &mousemotion_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/PilotCode/Pilot_Final.py?at=e20dc3188e4515f063f211aa00dd142b05ee6aab
-
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/PilotCode/Pilot_Final.py?at=4cb68e99acec9a3bd7cb081fcf4a9741e7373361
+    
 _mousemotion_script_md5: &mousemotion_script_md5
-    04e17b45ba01b13f9be236870e1dd7ce
+    dbdac577ab7f9253af8599a62205cba4
 
 ### mtrain definitions
-name: Openscope_Mousemotion_v13
+name: Openscope_Mousemotion_v14
 
 transitions:
 
