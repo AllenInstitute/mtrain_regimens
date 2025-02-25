@@ -29,13 +29,12 @@ _day_10_script_md5: &day_10_script_md5
     e53821b4b498bcecb4aa793e5dff67b5
     
 _mousemotion_script: &mousemotion_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/PilotCode/Pilot_Final.py?at=c218a5d1e49f12832744f2c371637a66c855f283
-
+    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_mousemotion/raw/ProductionCode/ExperimentCode.py?at=a9e0217ddcbcdb36b5b98fb9546e333942af7f7d
 _mousemotion_script_md5: &mousemotion_script_md5
-    6ecff30c395d1949040a7fb6119782ed
+    2853282974f5d631c713f73a680b5404
 
 ### mtrain definitions
-name: Openscope_Mousemotion_v18
+name: Openscope_Mousemotion_v19
 
 transitions:
 
@@ -110,7 +109,6 @@ stages:
         parameters:
             stage: DAY_10
 
-
     HAB_MOUSEMOTION:
         script: *mousemotion_script
         script_md5: *mousemotion_script_md5
@@ -122,34 +120,12 @@ stages:
             vertical_pos: 0
             data_folder: //allen/programs/mindscope/workgroups/openscope/2024_mousemotion/data
 
-    ANTERIOR_MOUSEMOTION:
-        script: *mousemotion_script
-        script_md5: *mousemotion_script_md5
-        parameters:
-            stage: ANTERIOR_MOUSEMOTION
-            num_reps: 13
-            dev_mode: False
-            inter_block_interval: 10
-            vertical_pos: -146
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024_mousemotion/data
-
-    POSTERIOR_MOUSEMOTION:
-        script: *mousemotion_script
-        script_md5: *mousemotion_script_md5
-        parameters:
-            stage: POSTERIOR_MOUSEMOTION
-            num_reps: 13
-            dev_mode: False
-            inter_block_interval: 10
-            vertical_pos: 146
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024_mousemotion/data
-
     CENTER_MOUSEMOTION:
         script: *mousemotion_script
         script_md5: *mousemotion_script_md5
         parameters:
             stage: CENTER_MOUSEMOTION
-            num_reps: 13
+            num_reps: 22
             dev_mode: False
             inter_block_interval: 10
             vertical_pos: 0
