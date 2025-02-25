@@ -34,7 +34,7 @@ _mousemotion_script_md5: &mousemotion_script_md5
     2853282974f5d631c713f73a680b5404
 
 ### mtrain definitions
-name: Openscope_Mousemotion_v19
+name: Openscope_Mousemotion_v20
 
 transitions:
 
@@ -64,19 +64,11 @@ transitions:
 
   - trigger: manual
     source: HAB_MOUSEMOTION
-    dest: ANTERIOR_MOUSEMOTION
-
-  - trigger: manual
-    source: ANTERIOR_MOUSEMOTION
-    dest: POSTERIOR_MOUSEMOTION
-
-  - trigger: manual
-    source: POSTERIOR_MOUSEMOTION
-    dest: TEST_MOUSEMOTION
-
-  - trigger: manual
-    source: TEST_MOUSEMOTION
     dest: CENTER_MOUSEMOTION
+
+  - trigger: manual
+    source: CENTER_MOUSEMOTION
+    dest: TEST_MOUSEMOTION
 
 stages:
     DAY_6:
