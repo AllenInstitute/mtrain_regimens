@@ -28,14 +28,14 @@ _day_10_script: &day_10_script
 _day_10_script_md5: &day_10_script_md5
     cdc97517625fcd9b3f9ceaf96ed08007
     
-_loop_script: &loop_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/stimulus_loop.py?at=1efe11b9f1787b2d216c96ed1a8fc00641f52b05
+_v2_script: &v2_script
+    https://raw.githubusercontent.com/AllenInstitute/openscope_v2species/66f59cd5d6303b5748127a46f6d059447160ecbf/stimulus_v2species_shared_oephys.py
 
-_loop_script_md5: &loop_script_md5
-    b3df91ca7cc972cd5581dd159f49bcb0
+_v2_script_md5: &v2_script_md5
+    cb522e99969d18186768c1656bb6e9be
 
 ### mtrain definitions
-name: Openscope_Loop_v7
+name: Openscope_V2species_v1
 
 transitions:
 
@@ -61,39 +61,31 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-    dest: GROUPA_60MIN_DAY1_2
+    dest: TRAIN_60MIN_DAY1_2
 
   - trigger: manual
-    source: GROUPA_60MIN_DAY1_2
-    dest: GROUPA_90MIN_DAY3_4
+    source: TRAIN_60MIN_DAY1_2
+    dest: TRAIN_90MIN_DAY3_4
 
   - trigger: manual
-    source: GROUPA_90MIN_DAY3_4
-    dest: GROUPA_120MIN_DAY5
+    source: TRAIN_90MIN_DAY3_4
+    dest: TRAIN_120MIN_DAY5
 
   - trigger: manual
-    source: GROUPA_120MIN_DAY5
-    dest: EPHYS_GROUPA_LOOP
+    source: TRAIN_120MIN_DAY5
+    dest: EPHYS_PROD_V2
 
   - trigger: manual
     source: DAY_10
-    dest: GROUPB_60MIN_DAY1_2
+    dest: MESO_PROD_V2
 
   - trigger: manual
-    source: GROUPB_60MIN_DAY1_2
-    dest: GROUPB_90MIN_DAY3_4
+    source: MESO_PROD_V2
+    dest: TEST_V2
 
   - trigger: manual
-    source: GROUPB_90MIN_DAY3_4
-    dest: GROUPB_120MIN_DAY5
-
-  - trigger: manual
-    source: GROUPB_120MIN_DAY5
-    dest: EPHYS_GROUPB_LOOP
-
-  - trigger: manual
-    source: EPHYS_GROUPB_LOOP
-    dest: TEST_LOOP
+    source: EPHYS_PROD_V2
+    dest: TEST_V2
 
 stages:
     DAY_6:
@@ -126,83 +118,74 @@ stages:
         parameters:
             stage: DAY_10
 
-    GROUPA_60MIN_DAY1_2:
-        script: *loop_script
-        script_md5: *loop_script_md5
+    TRAIN_60MIN_DAY1_2:
+        script: *v2_script
+        script_md5: *v2_script_md5
         parameters:
-            stage: GROUPA_60MIN_DAY1_2
-            stimulus_orderings: "rig_hab_day1_groupA"
+            stage: TRAIN_60MIN_DAY1_2
             dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+            nb_runs_ephys_rf: 10
+            nb_run_gratings: 13
+            inter_block_interval: 10
+            nb_run_flash: 0
+            post_blank: 0
 
-    GROUPA_90MIN_DAY3_4:
-        script: *loop_script
-        script_md5: *loop_script_md5
+    TRAIN_90MIN_DAY3_4:
+        script: *v2_script
+        script_md5: *v2_script_md5
         parameters:
-            stage: GROUPA_90MIN_DAY3_4
-            stimulus_orderings: "rig_hab_day3_groupA"
+            stage: TRAIN_90MIN_DAY3_4
             dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+            nb_runs_ephys_rf: 20
+            nb_run_gratings: 15
+            inter_block_interval: 10
+            nb_run_flash: 150
+            post_blank: 0
 
-    GROUPA_120MIN_DAY5:
-        script: *loop_script
-        script_md5: *loop_script_md5
+    TRAIN_120MIN_DAY5:
+        script: *v2_script
+        script_md5: *v2_script_md5
         parameters:
-            stage: GROUPA_120MIN_DAY5
-            stimulus_orderings: "rig_hab_day5_groupA"
+            stage: TRAIN_120MIN_DAY5
             dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+            nb_runs_ephys_rf: 20
+            nb_run_gratings: 15
+            inter_block_interval: 10
+            nb_run_flash: 150
+            post_blank: 100
 
-    EPHYS_GROUPA_LOOP:
-        script: *loop_script
-        script_md5: *loop_script_md5
+    EPHYS_PROD_V2:
+        script: *v2_script
+        script_md5: *v2_script_md5
         parameters:
-            stage: EPHYS_GROUPA_LOOP
-            stimulus_orderings: "movie_order_groupA"
+            stage: EPHYS_PROD_V2
             dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+            nb_runs_ephys_rf: 20
+            nb_run_gratings: 15
+            inter_block_interval: 10
+            nb_run_flash: 150
+            post_blank: 1980
 
-    GROUPB_60MIN_DAY1_2:
-        script: *loop_script
-        script_md5: *loop_script_md5
+    MESO_PROD_V2:
+        script: *v2_script
+        script_md5: *v2_script_md5
         parameters:
-            stage: GROUPB_60MIN_DAY1_2
-            stimulus_orderings: "rig_hab_day1_groupB"
+            stage: MESO_PROD_V2
             dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+            nb_runs_ephys_rf: 10
+            nb_run_gratings: 15
+            inter_block_interval: 10
+            nb_run_flash: 0
+            post_blank: 0
 
-    GROUPB_90MIN_DAY3_4:
-        script: *loop_script
-        script_md5: *loop_script_md5
+    TEST_V2:
+        script: *v2_script
+        script_md5: *v2_script_md5
         parameters:
-            stage: GROUPB_90MIN_DAY3_4
-            stimulus_orderings: "rig_hab_day3_groupB"
             dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
+            nb_runs_ephys_rf: 1
+            nb_run_gratings: 1
+            inter_block_interval: 1
+            nb_run_flash: 1
+            post_blank: 1
 
-    GROUPB_120MIN_DAY5:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: GROUPB_120MIN_DAY5
-            stimulus_orderings: "rig_hab_day5_groupB"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    EPHYS_GROUPB_LOOP:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: EPHYS_GROUPB_LOOP
-            stimulus_orderings: "movie_order_groupB"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
-
-    TEST_LOOP:
-        script: *loop_script
-        script_md5: *loop_script_md5
-        parameters:
-            stage: TEST_LOOP
-            stimulus_orderings: "movie_order_groupTEST"
-            dev_mode: False
-            data_folder: //allen/programs/mindscope/workgroups/openscope/2024-Loop/openscope_loop/data
