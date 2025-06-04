@@ -32,10 +32,10 @@ _v2_script: &v2_script
     https://raw.githubusercontent.com/AllenInstitute/openscope_v2species/66f59cd5d6303b5748127a46f6d059447160ecbf/stimulus_v2species_shared_oephys.py
 
 _v2_script_md5: &v2_script_md5
-    cb522e99969d18186768c1656bb6e9be
+    f5d379f76c8461b3c75d5817871b8c73
 
 ### mtrain definitions
-name: Openscope_V2species_v1
+name: Openscope_V2species_v2
 
 transitions:
 
