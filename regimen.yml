@@ -29,13 +29,12 @@ _day_10_script_md5: &day_10_script_md5
     cdc97517625fcd9b3f9ceaf96ed08007
     
 _v2_script: &v2_script
-    https://raw.githubusercontent.com/AllenInstitute/openscope_v2species/66f59cd5d6303b5748127a46f6d059447160ecbf/stimulus_v2species_shared_oephys.py
-
+    https://raw.githubusercontent.com/AllenInstitute/openscope_v2species/e4a010ca43d0cb398cf9cb662f769795afc5b37b/stimulus_v2species_shared_oephys.py
 _v2_script_md5: &v2_script_md5
-    f5d379f76c8461b3c75d5817871b8c73
+    127c19d422669f8a6ccc2edd492e800d
 
 ### mtrain definitions
-name: Openscope_V2species_v2
+name: Openscope_V2species_v3
 
 transitions:
 
