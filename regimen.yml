@@ -35,7 +35,7 @@ _v2_script_md5: &v2_script_md5
     87cbac5380f0914b8ba374edb83bd295
 
 ### mtrain definitions
-name: Openscope_V2species_v5
+name: Openscope_V2species_v6
 
 transitions:
 
@@ -164,7 +164,7 @@ stages:
             nb_run_gratings: 15
             inter_block_interval: 10
             nb_run_flash: 150
-            post_blank: 1980
+            post_blank: 60
 
     MESO_PROD_V2:
         script: *v2_script
@@ -176,7 +176,7 @@ stages:
             nb_run_gratings: 15
             inter_block_interval: 10
             nb_run_flash: 0
-            post_blank: 0
+            post_blank: 60
 
     TEST_V2:
         script: *v2_script
