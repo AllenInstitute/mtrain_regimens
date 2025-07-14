@@ -34,7 +34,7 @@ _P3_script_md5: &P3_script_md5
     2e85a45fee42b0593c604353b05c4aeb
 
 ### mtrain definitions
-name: Openscope_P3_v1
+name: Openscope_P3_v2
 
 transitions:
 
@@ -129,14 +129,14 @@ stages:
         script: *P3_script
         script_md5: *P3_script_md5
         <<: *bonsai_launcher_parameters
-        bonsai_parameters:
+        parameters:
             stage: TRAIN_60MIN_DAY1_2
 
     TRAIN_90MIN_DAY3_4:
         script: *P3_script
         script_md5: *P3_script_md5
         <<: *bonsai_launcher_parameters
-        bonsai_parameters:
+        parameters:
             stage: TRAIN_90MIN_DAY3_4
 
 
@@ -144,24 +144,26 @@ stages:
         script: *P3_script
         script_md5: *P3_script_md5
         <<: *bonsai_launcher_parameters
-        bonsai_parameters:
+        parameters:
             stage: TRAIN_120MIN_DAY5
 
     EPHYS_PROD_P3:
         script: *P3_script
         script_md5: *P3_script_md5
         <<: *bonsai_launcher_parameters
-        bonsai_parameters:
+        parameters:
             stage: EPHYS_PROD_P3
 
     MESO_PROD_P3:
         script: *P3_script
         script_md5: *P3_script_md5
         <<: *bonsai_launcher_parameters
-        bonsai_parameters:
+        parameters:
             stage: MESO_PROD_P3
 
     TEST_P3:
         script: *P3_script
         script_md5: *P3_script_md5
         <<: *bonsai_launcher_parameters
+        parameters:
+            stage: TEST_P3
