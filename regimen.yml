@@ -28,14 +28,13 @@ _day_10_script: &day_10_script
 _day_10_script_md5: &day_10_script_md5
     cdc97517625fcd9b3f9ceaf96ed08007
     
-_v2_script: &v2_script
-    https://raw.githubusercontent.com/AllenInstitute/openscope_v2species/914a53766d480b1f3e8f8618f093572bf6e6a965/stimulus_v2species_shared_oephys.py
-
-_v2_script_md5: &v2_script_md5
-    472a14f42e6b53adffbd01e9f81d62f2
+_P3_script: &P3_script
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/802b97afbd3971ce89a759cdf42b486ab0cfb5e6/code/experiment-launcher/bonsai_experiment_launcher.py
+_P3_script_md5: &P3_script_md5
+    2e85a45fee42b0593c604353b05c4aeb
 
 ### mtrain definitions
-name: Openscope_V2species_v4
+name: Openscope_P3_v1
 
 transitions:
 
@@ -73,19 +72,27 @@ transitions:
 
   - trigger: manual
     source: TRAIN_120MIN_DAY5
-    dest: EPHYS_PROD_V2
+    dest: EPHYS_PROD_P3
 
   - trigger: manual
     source: DAY_10
-    dest: MESO_PROD_V2
+    dest: MESO_PROD_P3
 
   - trigger: manual
-    source: MESO_PROD_V2
-    dest: TEST_V2
+    source: MESO_PROD_P3
+    dest: TEST_P3
 
   - trigger: manual
-    source: EPHYS_PROD_V2
-    dest: TEST_V2
+    source: EPHYS_PROD_P3
+    dest: TEST_P3
+
+_bonsai_launcher_parameters: &bonsai_launcher_parameters
+    repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
+    repository_commit_hash: main
+    local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
+    bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
+    bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
+    bonsai_setup_script: code/stimulus-control/bonsai/setup.cmd
 
 stages:
     DAY_6:
@@ -119,73 +126,42 @@ stages:
             stage: DAY_10
 
     TRAIN_60MIN_DAY1_2:
-        script: *v2_script
-        script_md5: *v2_script_md5
-        parameters:
+        script: *P3_script
+        script_md5: *P3_script_md5
+        <<: *bonsai_launcher_parameters
+        bonsai_parameters:
             stage: TRAIN_60MIN_DAY1_2
-            dev_mode: False
-            nb_runs_ephys_rf: 10
-            nb_run_gratings: 13
-            inter_block_interval: 10
-            nb_run_flash: 0
-            post_blank: 0
 
     TRAIN_90MIN_DAY3_4:
-        script: *v2_script
-        script_md5: *v2_script_md5
-        parameters:
+        script: *P3_script
+        script_md5: *P3_script_md5
+        <<: *bonsai_launcher_parameters
+        bonsai_parameters:
             stage: TRAIN_90MIN_DAY3_4
-            dev_mode: False
-            nb_runs_ephys_rf: 20
-            nb_run_gratings: 15
-            inter_block_interval: 10
-            nb_run_flash: 150
-            post_blank: 0
+
 
     TRAIN_120MIN_DAY5:
-        script: *v2_script
-        script_md5: *v2_script_md5
-        parameters:
+        script: *P3_script
+        script_md5: *P3_script_md5
+        <<: *bonsai_launcher_parameters
+        bonsai_parameters:
             stage: TRAIN_120MIN_DAY5
-            dev_mode: False
-            nb_runs_ephys_rf: 20
-            nb_run_gratings: 15
-            inter_block_interval: 10
-            nb_run_flash: 150
-            post_blank: 100
 
-    EPHYS_PROD_V2:
-        script: *v2_script
-        script_md5: *v2_script_md5
-        parameters:
-            stage: EPHYS_PROD_V2
-            dev_mode: False
-            nb_runs_ephys_rf: 20
-            nb_run_gratings: 15
-            inter_block_interval: 10
-            nb_run_flash: 150
-            post_blank: 1980
+    EPHYS_PROD_P3:
+        script: *P3_script
+        script_md5: *P3_script_md5
+        <<: *bonsai_launcher_parameters
+        bonsai_parameters:
+            stage: EPHYS_PROD_P3
 
-    MESO_PROD_V2:
-        script: *v2_script
-        script_md5: *v2_script_md5
-        parameters:
-            stage: MESO_PROD_V2
-            dev_mode: False
-            nb_runs_ephys_rf: 10
-            nb_run_gratings: 15
-            inter_block_interval: 10
-            nb_run_flash: 0
-            post_blank: 0
+    MESO_PROD_P3:
+        script: *P3_script
+        script_md5: *P3_script_md5
+        <<: *bonsai_launcher_parameters
+        bonsai_parameters:
+            stage: MESO_PROD_P3
 
-    TEST_V2:
-        script: *v2_script
-        script_md5: *v2_script_md5
-        parameters:
-            dev_mode: False
-            nb_runs_ephys_rf: 1
-            nb_run_gratings: 1
-            inter_block_interval: 1
-            nb_run_flash: 1
-            post_blank: 1
-
+    TEST_P3:
+        script: *P3_script
+        script_md5: *P3_script_md5
+        <<: *bonsai_launcher_parameters
