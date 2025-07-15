@@ -29,9 +29,10 @@ _day_10_script_md5: &day_10_script_md5
     cdc97517625fcd9b3f9ceaf96ed08007
     
 _P3_script: &P3_script
-    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/802b97afbd3971ce89a759cdf42b486ab0cfb5e6/code/experiment-launcher/bonsai_experiment_launcher.py
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/3d198d6107dc8641d0012351ae628ab57da9fdba/code/experiment-launcher/bonsai_experiment_launcher.py
+    
 _P3_script_md5: &P3_script_md5
-    2e85a45fee42b0593c604353b05c4aeb
+    beaa8a079086cfeafe4af0e3af67c399
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
@@ -42,7 +43,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     bonsai_setup_script: code/stimulus-control/bonsai/setup.cmd
 
 ### mtrain definitions
-name: Openscope_P3_v3
+name: Openscope_P3_v4
 
 transitions:
 
@@ -128,42 +129,44 @@ stages:
     TRAIN_60MIN_DAY1_2:
         script: *P3_script
         script_md5: *P3_script_md5
-        <<: *bonsai_launcher_parameters
         parameters:
-            stage: TRAIN_60MIN_DAY1_2
+            stage: TRAIN_60MIN_DAY1_2\
+            <<: *bonsai_launcher_parameters
 
     TRAIN_90MIN_DAY3_4:
         script: *P3_script
         script_md5: *P3_script_md5
-        <<: *bonsai_launcher_parameters
         parameters:
             stage: TRAIN_90MIN_DAY3_4
+            <<: *bonsai_launcher_parameters
 
 
     TRAIN_120MIN_DAY5:
         script: *P3_script
         script_md5: *P3_script_md5
-        <<: *bonsai_launcher_parameters
         parameters:
-            stage: TRAIN_120MIN_DAY5
+            stage: TRAIN_120MIN_DAY5            
+            <<: *bonsai_launcher_parameters
+
 
     EPHYS_PROD_P3:
         script: *P3_script
         script_md5: *P3_script_md5
-        <<: *bonsai_launcher_parameters
         parameters:
-            stage: EPHYS_PROD_P3
+            stage: EPHYS_PROD_P3            
+            <<: *bonsai_launcher_parameters
+
 
     MESO_PROD_P3:
         script: *P3_script
         script_md5: *P3_script_md5
-        <<: *bonsai_launcher_parameters
         parameters:
             stage: MESO_PROD_P3
+            <<: *bonsai_launcher_parameters
 
     TEST_P3:
         script: *P3_script
         script_md5: *P3_script_md5
-        <<: *bonsai_launcher_parameters
         parameters:
             stage: TEST_P3
+            <<: *bonsai_launcher_parameters
