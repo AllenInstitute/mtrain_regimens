@@ -29,10 +29,10 @@ _day_10_script_md5: &day_10_script_md5
     cdc97517625fcd9b3f9ceaf96ed08007
     
 _P3_script: &P3_script
-    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/643a600ba826c18f88577f2288c1f58fc7171a55/code/experiment-launcher/bonsai_experiment_launcher.py
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/46562d3c9ded21323c132df271d8d39129f8a759/code/experiment-launcher/bonsai_experiment_launcher.py
 
 _P3_script_md5: &P3_script_md5
-    188a3daf3b8b561eea4589310a7f9905
+    9d070f08c9db34c64cd0d398aa7e7210
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
@@ -43,7 +43,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     bonsai_setup_script: code/stimulus-control/bonsai/setup.cmd
 
 ### mtrain definitions
-name: Openscope_P3_v7
+name: Openscope_P3_v8
 
 transitions:
 
