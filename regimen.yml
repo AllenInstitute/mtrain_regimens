@@ -2,11 +2,11 @@ _P3_script: &P3_script
     https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/4edb6a1b311c8caa38e981ab9ecb6d1e935eb458/code/experiment-launcher/bonsai_experiment_launcher.py
 
 _P3_script_md5: &P3_script_md5
-    86763a237d1ea916c3bf8e65d7768c45
+    6ea874adb99451e1f8c1f9ab10c41200
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
-    repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
-    repository_commit_hash: main
+    repository_url: https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/efdb01c635c4bf2126e0906e9cfeea855c1a94e1/code/experiment-launcher/bonsai_experiment_launcher.py
+    repository_commit_hash: 7266925645cb6af622482aaf6971c882d152d875
     local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
     bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
     bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
@@ -20,11 +20,12 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     Photodiode_ExtentX: 6
     Photodiode_ExtentY: 7.5
     Photodiode_LocationX: 32
-    Photodiode_LocationY: -20
-    Wheel2GratingPhase: 1
+    Photodiode_LocationY: 20
+    MotorCouplingCPD: 0.04
+    WheelRadiusOverScreenRatio: 0.36
 
 ### mtrain definitions
-name: Openscope_P3_v11
+name: Openscope_P3_v12
 
 transitions:
 
