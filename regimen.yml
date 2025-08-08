@@ -1,38 +1,8 @@
-_day_6_script: &day_6_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day1.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_6_script_md5: &day_6_script_md5
-    1284dde1bab18233f470a679d5a234f2
-
-_day_7_script: &day_7_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day2.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_7_script_md5: &day_7_script_md5
-    5bd554df9c9bd5c40485a07956273cd9
-    
-_day_8_script: &day_8_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day3.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_8_script_md5: &day_8_script_md5
-    853a85c542e243fe5933bee2dfe37269
-    
-_day_9_script: &day_9_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day4.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_9_script_md5: &day_9_script_md5
-    cc449e67a7d35ba0a4b1c6b166449d07
-    
-_day_10_script: &day_10_script
-    http://stash.corp.alleninstitute.org/users/jeromel/repos/openscope_loop/raw/cluster_hab/day5.py?at=4d8bd831407d150f3902125fcdb070658d7d4b2b
-
-_day_10_script_md5: &day_10_script_md5
-    cdc97517625fcd9b3f9ceaf96ed08007
-    
 _P3_script: &P3_script
-    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/a056a5e00c94fce96107ecdfc897856274ba0e81/code/experiment-launcher/bonsai_experiment_launcher.py
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/4edb6a1b311c8caa38e981ab9ecb6d1e935eb458/code/experiment-launcher/bonsai_experiment_launcher.py
 
 _P3_script_md5: &P3_script_md5
-    e00fac6cdc5dfadeccdd23dca5b30d50
+    86763a237d1ea916c3bf8e65d7768c45
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
@@ -41,9 +11,20 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
     bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
     bonsai_setup_script: code/stimulus-control/bonsai/setup.cmd
+    control1_block_path: blocks\test\jitter
+    control2_block_path: blocks\test\sequentials
+    control3_block_path: blocks\test\standard
+    control4_block_path: blocks\test\motor
+    oddball_block_duration: 00:00:30
+    oddball_block_path: blocks\test\motor
+    Photodiode_ExtentX: 6
+    Photodiode_ExtentY: 7.5
+    Photodiode_LocationX: 32
+    Photodiode_LocationY: -20
+    Wheel2GratingPhase: 1
 
 ### mtrain definitions
-name: Openscope_P3_v10
+name: Openscope_P3_v11
 
 transitions:
 
@@ -97,34 +78,39 @@ transitions:
 
 stages:
     DAY_6:
-        script: *day_6_script
-        script_md5: *day_6_script_md5
+        script: *P3_script
+        script_md5: *P3_script_md5
         parameters:
             stage: DAY_6
+            <<: *bonsai_launcher_parameters
 
     DAY_7:
-        script: *day_7_script
-        script_md5: *day_7_script_md5
+        script: *P3_script
+        script_md5: *P3_script_md5
         parameters:
             stage: DAY_7
+            <<: *bonsai_launcher_parameters
 
     DAY_8:
-        script: *day_8_script
-        script_md5: *day_8_script_md5
+        script: *P3_script
+        script_md5: *P3_script_md5
         parameters:
             stage: DAY_8
+            <<: *bonsai_launcher_parameters
 
     DAY_9:
-        script: *day_9_script
-        script_md5: *day_9_script_md5
+        script: *P3_script
+        script_md5: *P3_script_md5
         parameters:
             stage: DAY_9
+            <<: *bonsai_launcher_parameters
 
     DAY_10:
-        script: *day_10_script
-        script_md5: *day_10_script_md5
+        script: *P3_script
+        script_md5: *P3_script_md5
         parameters:
             stage: DAY_10
+            <<: *bonsai_launcher_parameters
 
     TRAIN_60MIN_DAY1_2:
         script: *P3_script
