@@ -6,7 +6,7 @@ _P3_script_md5: &P3_script_md5
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/efdb01c635c4bf2126e0906e9cfeea855c1a94e1/code/experiment-launcher/bonsai_experiment_launcher.py
-    repository_commit_hash: 1c6a27cdb92a54bc3e83f68293d1cc62e5c47986
+    repository_commit_hash: 64d7efea8493336fff5a26d6f6233a0c18a4bd15
     local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
     bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
     bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
@@ -25,7 +25,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_v14
+name: Openscope_P3_v16
 
 transitions:
 
@@ -84,6 +84,8 @@ stages:
         parameters:
             stage: DAY_6
             <<: *bonsai_launcher_parameters
+            oddball_block_duration: 00:08:00
+            oddball_block_path: blocks\motor_nooddball
 
     DAY_7:
         script: *P3_script
@@ -91,6 +93,8 @@ stages:
         parameters:
             stage: DAY_7
             <<: *bonsai_launcher_parameters
+            oddball_block_duration: 00:18:00
+            oddball_block_path: blocks\motor_nooddball
 
     DAY_8:
         script: *P3_script
@@ -98,6 +102,8 @@ stages:
         parameters:
             stage: DAY_8
             <<: *bonsai_launcher_parameters
+            oddball_block_duration: 00:28:00
+            oddball_block_path: blocks\motor_nooddball
 
     DAY_9:
         script: *P3_script
@@ -105,6 +111,8 @@ stages:
         parameters:
             stage: DAY_9
             <<: *bonsai_launcher_parameters
+            oddball_block_duration: 00:38:00
+            oddball_block_path: blocks\motor_nooddball
 
     DAY_10:
         script: *P3_script
@@ -112,6 +120,8 @@ stages:
         parameters:
             stage: DAY_10
             <<: *bonsai_launcher_parameters
+            oddball_block_duration: 00:48:00
+            oddball_block_path: blocks\motor_nooddball
 
     TRAIN_60MIN_DAY1_2:
         script: *P3_script
@@ -119,6 +129,8 @@ stages:
         parameters:
             stage: TRAIN_60MIN_DAY1_2\
             <<: *bonsai_launcher_parameters
+            oddball_block_duration: 00:58:00
+            oddball_block_path: blocks\motor_nooddball
 
     TRAIN_90MIN_DAY3_4:
         script: *P3_script
@@ -126,7 +138,8 @@ stages:
         parameters:
             stage: TRAIN_90MIN_DAY3_4
             <<: *bonsai_launcher_parameters
-
+            oddball_block_duration: 00:58:00
+            oddball_block_path: blocks\motor_nooddball
 
     TRAIN_120MIN_DAY5:
         script: *P3_script
@@ -134,7 +147,8 @@ stages:
         parameters:
             stage: TRAIN_120MIN_DAY5            
             <<: *bonsai_launcher_parameters
-
+            oddball_block_duration: 00:58:00
+            oddball_block_path: blocks\motor_nooddball
 
     EPHYS_PROD_P3:
         script: *P3_script
@@ -142,7 +156,8 @@ stages:
         parameters:
             stage: EPHYS_PROD_P3            
             <<: *bonsai_launcher_parameters
-
+            oddball_block_duration: 00:58:00
+            oddball_block_path: blocks\motor_nooddball
 
     MESO_PROD_P3:
         script: *P3_script
@@ -150,6 +165,8 @@ stages:
         parameters:
             stage: MESO_PROD_P3
             <<: *bonsai_launcher_parameters
+            oddball_block_duration: 00:58:00
+            oddball_block_path: blocks\motor_nooddball
 
     TEST_P3:
         script: *P3_script
@@ -157,3 +174,5 @@ stages:
         parameters:
             stage: TEST_P3
             <<: *bonsai_launcher_parameters
+            oddball_block_path: blocks\motor_nooddball
+            oddball_block_duration: 00:01:00
