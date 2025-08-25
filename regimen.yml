@@ -1,22 +1,18 @@
 _P3_script: &P3_script
-    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/efdb01c635c4bf2126e0906e9cfeea855c1a94e1/code/experiment-launcher/bonsai_experiment_launcher.py
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/6b2446414a525a3fb0303e5e00217d83c640e6a3/code/experiment-launcher/bonsai_experiment_launcher.py
 
 _P3_script_md5: &P3_script_md5
-    6ea874adb99451e1f8c1f9ab10c41200
+    3a2df05e8737604985ed28204f137859
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/efdb01c635c4bf2126e0906e9cfeea855c1a94e1/code/experiment-launcher/bonsai_experiment_launcher.py
-    repository_commit_hash: main
+    repository_commit_hash: 1e706d57d4f58e5738888d1f5369fa7f2c440ff4
     local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
     bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
     bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
     bonsai_setup_script: code/stimulus-control/bonsai/setup.cmd
-    control1_block_path: blocks\test\jitter
-    control2_block_path: blocks\test\sequentials
-    control3_block_path: blocks\test\standard
-    control4_block_path: blocks\test\motor
-    oddball_block_duration: 00:01:00
-    oddball_block_path: blocks\test\motor
+    stimulus_table_duration: 00:01:00
+    session_type: sensorimotor_no_oddball
     Photodiode_ExtentX: 8
     Photodiode_ExtentY: 8
     Photodiode_LocationX: 59
@@ -25,7 +21,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_v17
+name: Openscope_P3_v18
 
 transitions:
 
@@ -51,30 +47,26 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-    dest: TRAIN_60MIN_DAY1_2
+    dest: TRAIN_FULL_DAY1_5
 
   - trigger: manual
-    source: TRAIN_60MIN_DAY1_2
-    dest: TRAIN_90MIN_DAY3_4
+    source: TRAIN_FULL_DAY1_5
+    dest: EPHYS_SESSION1_PROD_P3_SENSORYMOTOR
 
   - trigger: manual
-    source: TRAIN_90MIN_DAY3_4
-    dest: TRAIN_120MIN_DAY5
+    source: EPHYS_SESSION1_PROD_P3_SENSORYMOTOR
+    dest: EPHYS_SESSION2_PROD_P3_STANDARD
 
   - trigger: manual
-    source: TRAIN_120MIN_DAY5
-    dest: EPHYS_PROD_P3
+    source: EPHYS_SESSION2_PROD_P3_STANDARD
+    dest: EPHYS_SESSION3_PROD_P3_SEQUENCE
 
   - trigger: manual
-    source: DAY_10
-    dest: MESO_PROD_P3
+    source: EPHYS_SESSION3_PROD_P3_SEQUENCE
+    dest: EPHYS_SESSION4_PROD_P3_DURATION
 
   - trigger: manual
-    source: MESO_PROD_P3
-    dest: TEST_P3
-
-  - trigger: manual
-    source: EPHYS_PROD_P3
+    source: EPHYS_SESSION4_PROD_P3_DURATION
     dest: TEST_P3
 
 stages:
@@ -84,8 +76,8 @@ stages:
         parameters:
             stage: DAY_6
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:08:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 00:08:00
+
 
     DAY_7:
         script: *P3_script
@@ -93,8 +85,7 @@ stages:
         parameters:
             stage: DAY_7
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:18:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 00:18:00
 
     DAY_8:
         script: *P3_script
@@ -102,8 +93,7 @@ stages:
         parameters:
             stage: DAY_8
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:28:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 00:28:00
 
     DAY_9:
         script: *P3_script
@@ -111,8 +101,7 @@ stages:
         parameters:
             stage: DAY_9
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:38:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 00:38:00
 
     DAY_10:
         script: *P3_script
@@ -120,53 +109,51 @@ stages:
         parameters:
             stage: DAY_10
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:48:00
-            oddball_block_path: blocks\motor_nooddball
-
-    TRAIN_60MIN_DAY1_2:
+            stimulus_table_duration: 00:48:00
+            
+    TRAIN_FULL_DAY1_5:
         script: *P3_script
         script_md5: *P3_script_md5
         parameters:
-            stage: TRAIN_60MIN_DAY1_2\
+            stage: TRAIN_FULL_DAY1_5
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:58:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 02:00:00
 
-    TRAIN_90MIN_DAY3_4:
+    EPHYS_SESSION1_PROD_P3_SENSORYMOTOR:
         script: *P3_script
         script_md5: *P3_script_md5
         parameters:
-            stage: TRAIN_90MIN_DAY3_4
+            stage: EPHYS_SESSION1_PROD_P3_SENSORYMOTOR            
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:58:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 02:00:00
+            session_type: sensorimotor_mismatch
 
-    TRAIN_120MIN_DAY5:
+    EPHYS_SESSION2_PROD_P3_STANDARD:
         script: *P3_script
         script_md5: *P3_script_md5
         parameters:
-            stage: TRAIN_120MIN_DAY5            
+            stage: EPHYS_SESSION2_PROD_P3_STANDARD
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:58:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 02:00:00
+            session_type: visual_mismatch
 
-    EPHYS_PROD_P3:
+    EPHYS_SESSION3_PROD_P3_SEQUENCE:
         script: *P3_script
         script_md5: *P3_script_md5
         parameters:
-            stage: EPHYS_PROD_P3            
+            stage: EPHYS_SESSION3_PROD_P3_SEQUENCE
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:58:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 02:00:00
+            session_type: sequence_mismatch
 
-    MESO_PROD_P3:
+    EPHYS_SESSION4_PROD_P3_DURATION:
         script: *P3_script
         script_md5: *P3_script_md5
         parameters:
-            stage: MESO_PROD_P3
+            stage: EPHYS_SESSION4_PROD_P3_DURATION
             <<: *bonsai_launcher_parameters
-            oddball_block_duration: 00:58:00
-            oddball_block_path: blocks\motor_nooddball
+            stimulus_table_duration: 02:00:00
+            session_type: duration_mismatch
 
     TEST_P3:
         script: *P3_script
@@ -174,5 +161,4 @@ stages:
         parameters:
             stage: TEST_P3
             <<: *bonsai_launcher_parameters
-            oddball_block_path: blocks\motor_nooddball
-            oddball_block_duration: 00:01:00
+            stimulus_table_duration: 00:10:00
