@@ -2,11 +2,11 @@ _P3_script: &P3_script
     https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/d8d275e1c755ff36687107dedf3a32d8743d3b71/code/experiment-launcher/bonsai_experiment_launcher.py
 
 _P3_script_md5: &P3_script_md5
-    c52df45b704224e9dd87e296009a5e42
+    7036459b769b593e6ec0b1d2f4233fb4
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
-    repository_commit_hash: d8d275e1c755ff36687107dedf3a32d8743d3b71
+    repository_commit_hash: 814c399148663bd3e54a5685993f776882bb8576
     local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
     bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
     bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
@@ -21,7 +21,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_v36
+name: Openscope_P3_v37
 
 transitions:
 
@@ -128,6 +128,12 @@ stages:
             stimulus_table_duration: 02:00:00
             session_type: sensorimotor_mismatch
 
+            # optotagging      
+            disable_opto: False
+
+            opto_params: 
+              operation_mode: "experiment"
+
     EPHYS_SESSION2_PROD_P3_STANDARD:
         script: *P3_script
         script_md5: *P3_script_md5
@@ -136,6 +142,12 @@ stages:
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 02:00:00
             session_type: visual_mismatch
+
+            # optotagging      
+            disable_opto: False
+
+            opto_params: 
+              operation_mode: "experiment"
 
     EPHYS_SESSION3_PROD_P3_SEQUENCE:
         script: *P3_script
@@ -146,6 +158,12 @@ stages:
             stimulus_table_duration: 02:00:00
             session_type: sequence_mismatch
 
+            # optotagging      
+            disable_opto: False
+
+            opto_params: 
+              operation_mode: "experiment"
+
     EPHYS_SESSION4_PROD_P3_DURATION:
         script: *P3_script
         script_md5: *P3_script_md5
@@ -155,6 +173,12 @@ stages:
             stimulus_table_duration: 02:00:00
             session_type: duration_mismatch
 
+            # optotagging      
+            disable_opto: False
+
+            opto_params: 
+              operation_mode: "experiment"
+
     TEST_P3:
         script: *P3_script
         script_md5: *P3_script_md5
@@ -162,3 +186,10 @@ stages:
             stage: TEST_P3
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:00:10
+
+            # optotagging      
+            disable_opto: False
+
+            opto_params: 
+              operation_mode: "experiment"
+
