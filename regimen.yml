@@ -1,12 +1,12 @@
 _P3_script: &P3_script
-    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/814c399148663bd3e54a5685993f776882bb8576/code/experiment-launcher/bonsai_experiment_launcher.py
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/869b2b020d428c8a154680a23eca7dbe23a2e4b4/code/experiment-launcher/bonsai_experiment_launcher.py
 
 _P3_script_md5: &P3_script_md5
-    7036459b769b593e6ec0b1d2f4233fb4
+    74fcc39901e34cd436cd1449f66b6b08
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
-    repository_commit_hash: 814c399148663bd3e54a5685993f776882bb8576
+    repository_commit_hash: 869b2b020d428c8a154680a23eca7dbe23a2e4b4
     local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
     bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
     bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
@@ -21,7 +21,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_v38
+name: Openscope_P3_v39
 
 transitions:
 
@@ -77,7 +77,7 @@ stages:
             stage: DAY_6
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:08:00
-
+            session_type: sensorimotor_mismatch_no_oddball_training
 
     DAY_7:
         script: *P3_script
@@ -86,6 +86,7 @@ stages:
             stage: DAY_7
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:18:00
+            session_type: sensorimotor_mismatch_no_oddball_training
 
     DAY_8:
         script: *P3_script
@@ -94,6 +95,7 @@ stages:
             stage: DAY_8
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:28:00
+            session_type: sensorimotor_mismatch_no_oddball_training
 
     DAY_9:
         script: *P3_script
@@ -102,6 +104,7 @@ stages:
             stage: DAY_9
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:38:00
+            session_type: sensorimotor_mismatch_no_oddball_training
 
     DAY_10:
         script: *P3_script
@@ -110,7 +113,8 @@ stages:
             stage: DAY_10
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:48:00
-            
+            session_type: sensorimotor_mismatch_no_oddball_training
+
     TRAIN_FULL_DAY1_5:
         script: *P3_script
         script_md5: *P3_script_md5
@@ -118,6 +122,7 @@ stages:
             stage: TRAIN_FULL_DAY1_5
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 02:00:00
+            session_type: sensorimotor_no_oddball
 
     EPHYS_SESSION1_PROD_P3_SENSORYMOTOR:
         script: *P3_script
@@ -186,6 +191,7 @@ stages:
             stage: TEST_P3
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:00:10
+            session_type: sensorimotor_no_oddball
 
             # optotagging      
             disable_opto: False
