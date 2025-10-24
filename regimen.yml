@@ -21,7 +21,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_v49
+name: Openscope_P3_v50
 
 transitions:
 
@@ -68,6 +68,10 @@ transitions:
   - trigger: manual
     source: EPHYS_SESSION4_PROD_P3_DURATION
     dest: TEST_P3
+
+  - trigger: manual
+    source: TEST_P3
+    dest: TEST_CLUSTER
 
 stages:
     DAY_6:
@@ -198,4 +202,13 @@ stages:
 
             opto_params: 
               operation_mode: "experiment"
+
+    TEST_CLUSTER:
+        script: *P3_script
+        script_md5: *P3_script_md5
+        parameters:
+            stage: TEST_CLUSTER
+            <<: *bonsai_launcher_parameters
+            stimulus_table_duration: 00:05:00
+            session_type: short_test
 
