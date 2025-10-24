@@ -1,12 +1,12 @@
 _P3_script: &P3_script
-    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/3518b1249fb7ac8a433d96f73d812a080f500afe/code/experiment-launcher/bonsai_experiment_launcher.py
-
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/8ac1fc5c522ec9f3d12d65479624c402fc2e80ea/code/experiment-launcher/bonsai_experiment_launcher.py
+    
 _P3_script_md5: &P3_script_md5
-    783ab6d436730a4bd5fef72002967805
+    684ecd8b1c642e8fcce73590302e15fe
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
-    repository_commit_hash: 621e4046ec9aecd27bdca67a26e421db5cb8d04f
+    repository_commit_hash: 8ac1fc5c522ec9f3d12d65479624c402fc2e80ea
     local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
     bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
     bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
@@ -21,7 +21,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_v48
+name: Openscope_P3_v49
 
 transitions:
 
@@ -191,7 +191,7 @@ stages:
             stage: TEST_P3
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:00:10
-            session_type: sensorimotor_no_oddball
+            session_type: short_test
 
             # optotagging      
             disable_opto: False
