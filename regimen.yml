@@ -6,6 +6,10 @@ _script_1: &script_1 http://stash.corp.alleninstitute.org/projects/VB/repos/visu
 
 _script_1_md5: &script_1_md5 25738fb355c4ce69599b519a3e99ae1b
 
+_script_2: &script_2 http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/testing/gratings.py?at=c0595a7a64f1d01215ff9a94d5fdb676c301f93c
+
+_script_2_md5: &script_2_md5 25738fb355c4ce69599b519a3e99ae1b
+
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
 name: omFISH_Ophys_test_v0.0.1
@@ -14,6 +18,9 @@ transitions:
   - trigger: manual
     source: STAGE_0
     dest: STAGE_1
+  - trigger: manual
+    source: STAGE_1
+    dest: STAGE_1_SHORT
 
 stages:
   STAGE_0:
@@ -26,3 +33,8 @@ stages:
     script_md5: *script_1_md5
     parameters:
       stage: STAGE_1
+  STAGE_1_SHORT:
+    script: *script_2
+    script_md5: *script_2_md5
+    parameters:
+      stage: STAGE_1_SHORT
