@@ -8,12 +8,12 @@ _script_3_md5: &script_3_md5 69d81ee19f643a5ba60998ae57d2c0ff
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: MultiplaneOphys_Tests_v0.0.1
+name: MultiplaneOphys_Tests_v0.0.2
 
 transitions:
   - trigger: manual
-    source: TESTING_STAGE_1_SHORT
-    dest: TESTING_STAGE_1_SHORT_1min
+    source: STAGE_1_SHORT
+    dest: STAGE_1_SHORT_test
 
 stages:
   STAGE_1_SHORT:
