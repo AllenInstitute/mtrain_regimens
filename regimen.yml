@@ -1,28 +1,28 @@
-_script_0: &script_0 http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/testing/TenSessionClips_0.py?at=c0595a7a64f1d01215ff9a94d5fdb676c301f93c
+_script_2: &script_2 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/stage_1_short.py?at=e22aed36d3a8d2e79e998e35b06f757fa07ad1d8
 
-_script_0_md5: &script_0_md5 a6ffc6eb8a39c8c50f01a701fd597b98
+_script_2_md5: &script_2_md5 4d14c2638c12ae61e5e2360ffcd75c09
 
-_script_1: &script_1 http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/testing/gratings.py?at=c0595a7a64f1d01215ff9a94d5fdb676c301f93c
+_script_3: &script_3 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/stage_1_short_test.py?at=e22aed36d3a8d2e79e998e35b06f757fa07ad1d8
 
-_script_1_md5: &script_1_md5 25738fb355c4ce69599b519a3e99ae1b
+_script_3_md5: &script_3_md5 69d81ee19f643a5ba60998ae57d2c0ff
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: omFISH_Ophys_test_v0.0.1
+name: MultiplaneOphys_Tests_v0.0.1
 
 transitions:
   - trigger: manual
-    source: STAGE_0
-    dest: STAGE_1
+    source: TESTING_STAGE_1_SHORT
+    dest: TESTING_STAGE_1_SHORT_1min
 
 stages:
-  STAGE_0:
-    script: *script_0
-    script_md5: *script_0_md5
+  STAGE_1_SHORT:
+    script: *script_2
+    script_md5: *script_2_md5
     parameters:
-      stage: STAGE_0
-  STAGE_1:
-    script: *script_1
-    script_md5: *script_1_md5
+      stage: TESTING_STAGE_1_SHORT
+  STAGE_1_SHORT_test:
+    script: *script_3
+    script_md5: *script_3_md5
     parameters:
-      stage: STAGE_1
+      stage: TESTING_STAGE_1_SHORT_1min
