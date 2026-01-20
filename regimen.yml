@@ -1,12 +1,12 @@
 _P3_script: &P3_script
-    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/04e9a285eba9f40c7c8ae112b8a259c96270a30b/code/experiment-launcher/bonsai_experiment_launcher.py
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/313d5d0622c3c82d025a84a395af6fde9f5aa81f/code/experiment-launcher/bonsai_experiment_launcher.py
             
 _P3_script_md5: &P3_script_md5
     29f37c4670ba9a32357036303e20d22a
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
-    repository_commit_hash: 04e9a285eba9f40c7c8ae112b8a259c96270a30b
+    repository_commit_hash: 313d5d0622c3c82d025a84a395af6fde9f5aa81f
     local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
     bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
     bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
@@ -21,7 +21,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_motor_cohort_v1
+name: Openscope_P3_motor_cohort_v2
 
 transitions:
 
@@ -161,6 +161,7 @@ stages:
             stimulus_table_duration: 02:00:00
             session_type: sensorimotor_no_oddball_long_zebra
             Photodiode_LocationX: -59
+            Photodiode_LocationY: -28
 
 
     EPHYS_SESSION1_SENSORYMOTOR:
@@ -187,6 +188,7 @@ stages:
             stimulus_table_duration: 02:00:00
             session_type: sensorimotor_mismatch_long_zebra
             Photodiode_LocationX: -59
+            Photodiode_LocationY: -28
 
     EPHYS_SESSION2_STANDARD:
         script: *P3_script
@@ -212,6 +214,7 @@ stages:
             stimulus_table_duration: 02:00:00
             session_type: visual_mismatch_long_zebra
             Photodiode_LocationX: -59
+            Photodiode_LocationY: -28
 
     EPHYS_SESSION3_SEQUENCE:
         script: *P3_script
@@ -237,6 +240,7 @@ stages:
             stimulus_table_duration: 02:00:00
             session_type: sequence_mismatch_long_zebra
             Photodiode_LocationX: -59
+            Photodiode_LocationY: -28
 
     EPHYS_SESSION4_DURATION:
         script: *P3_script
@@ -262,6 +266,7 @@ stages:
             stimulus_table_duration: 02:00:00
             session_type: duration_mismatch_long_zebra
             Photodiode_LocationX: -59
+            Photodiode_LocationY: -28
 
     TEST_P3:
         script: *P3_script
@@ -296,3 +301,4 @@ stages:
             stimulus_table_duration: 00:00:10
             session_type: short_test
             Photodiode_LocationX: -59
+            Photodiode_LocationY: -28
