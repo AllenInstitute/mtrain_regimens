@@ -21,7 +21,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_sequence_cohort_v3
+name: Openscope_P3_sequence_cohort_v4
 
 transitions:
 
@@ -248,7 +248,7 @@ stages:
             stage: EPHYS_SESSION4_SENSORYMOTOR
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 02:00:00
-            session_type: sensorimotor_no_oddball_long_zebra
+            session_type: sensorimotor_mismatch_long_zebra
 
             # optotagging      
             disable_opto: False
@@ -263,7 +263,7 @@ stages:
             stage: OPTICAL_SESSION4_SENSORYMOTOR
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 02:00:00
-            session_type: sensorimotor_no_oddball_long_zebra
+            session_type: sensorimotor_mismatch_long_zebra
             Photodiode_LocationX: -59
             Photodiode_LocationY: -28
 
