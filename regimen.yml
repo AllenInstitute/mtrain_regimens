@@ -169,7 +169,7 @@ _image_set_h_parameters: &image_set_h_parameters
 # to be more consistent with ephys_task1g_master: 
 # use more stringent transition criteria (added meets_engagement_and_hit_threshold)
 # reduced reward volume in TRAINING_1 to 0.007ml (instead of 0.01), then to 0.005 in TRAINING_4 (instead of 0.007)
-name: Learning_TESTONLY_v0.0.3
+name: Learning_TESTONLY_v0.0.4
 
 # potential further changes: 
 # dont do gradual steps down in reward volume, just start with 5ul from the beginning (autoreward session is 5ul anyway)
