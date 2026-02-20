@@ -94,7 +94,7 @@ _flash_parameters: &flash_parameters
     auto_reward_vol: 0.005
     warm_up_trials: 5
     auto_reward_delay: 0.150
-    free_reward_trials: 10000
+    free_reward_trials: 10
 
     # trial timing
     min_no_lick_time: 0.0
@@ -185,27 +185,27 @@ transitions:
   - trigger: progress
     source: TRAINING_1_gratings_static
     dest: TRAINING_2_gratings_flashed
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+    conditions: [two_out_of_three_aint_bad, yesterday_was_good, meets_engagement_criteria]
 
   - trigger: progress
     source: TRAINING_2_gratings_flashed
     dest: TRAINING_3_images_G_7ul_reward
-    conditions: [two_out_of_three_aint_bad, yesterday_was_good]
+    conditions: [two_out_of_three_aint_bad, yesterday_was_good, meets_engagement_criteria]
 
   - trigger: progress
     source: TRAINING_3_images_G_7ul_reward
     dest: TRAINING_4_images_G_5ul_reward
-    conditions: meets_engagement_and_hit_threshold
+    conditions: [two_out_of_three_aint_bad, yesterday_was_good, meets_engagement_criteria]
 
   - trigger: progress
     source: TRAINING_4_images_G_5ul_reward
     dest: TRAINING_5_images_G_no_autorewards
-    conditions: three_complete
+    conditions: meets_engagement_and_hit_threshold
 
   - trigger: progress
     source: TRAINING_5_images_G_no_autorewards
     dest: TRAINING_6_images_G_omissions
-    conditions: meets_engagement_and_hit_threshold
+    conditions: three_complete
 
   - trigger: progress
     source: TRAINING_6_images_G_omissions
@@ -219,13 +219,18 @@ transitions:
 
   - trigger: progress
     source: TRAINING_8_images_H_extinction
-    dest: PASSIVE_0_movie_clips # passive movie clips
+    dest: PASSIVE_0_movie_clips 
     conditions: one_complete
 
   - trigger: progress
     source: PASSIVE_0_movie_clips 
-    dest: PASSIVE_1_gratings # passive gratings - 3 sessions of this stimulus
+    dest: PASSIVE_1_gratings 
     conditions: one_complete
+
+  - trigger: progress
+    source: PASSIVE_1_gratings
+    dest: PASSIVE_1_gratings 
+    conditions: three_complete # want 3 sessions of passive gratings
 
 
 stages:
@@ -265,7 +270,8 @@ stages:
             stimulus: *full_field_gratings
 
             reward_volume: 0.007 # mL
-            free_reward_trials: 10
+            free_reward_trials: 0
+            warm_up_trials: 5
 
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
@@ -282,8 +288,8 @@ stages:
             stimulus: *full_field_gratings
             
             reward_volume: 0.007 # mL
-            free_reward_trials: 10
-            warm_up_trials: 10 # what is the difference between this and free_reward_trials?
+            free_reward_trials: 0
+            warm_up_trials: 5 
 
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
@@ -297,8 +303,8 @@ stages:
             stage: TRAINING_3_images_G_7ul_reward
 
             reward_volume: 0.007 # mL
-            free_reward_trials: 10
-            warm_up_trials: 10
+            free_reward_trials: 0
+            warm_up_trials: 5
 
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
@@ -312,7 +318,7 @@ stages:
             stage: TRAINING_4_images_G_5ul_reward
 
             reward_volume: 0.005 # mL
-            free_reward_trials: 5
+            free_reward_trials: 0
             warm_up_trials: 5
 
             start_stop_padding: 300.0
@@ -328,7 +334,7 @@ stages:
 
             reward_volume: 0.005 # mL
             free_reward_trials: 0
-            warm_up_trials: 0
+            warm_up_trials: 5
 
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
@@ -343,7 +349,7 @@ stages:
 
             reward_volume: 0.005 # mL
             free_reward_trials: 0
-            warm_up_trials: 0
+            warm_up_trials: 5
 
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
@@ -360,7 +366,7 @@ stages:
 
             reward_volume: 0.005 # mL
             free_reward_trials: 0
-            warm_up_trials: 0
+            warm_up_trials: 5
 
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
