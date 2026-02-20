@@ -161,18 +161,17 @@ _image_set_h_parameters: &image_set_h_parameters
 
 ### mtrain definitions
 
-# based on VisualBehavior_Task1A_v1.0.3
-# for imaging throughout the learning process: 
+# based on VisualBehavior_Task1A_v1.1.1 and modified in the following ways for learning experiments:
 # added 5 min gray screen + fingerprint movie to all sessions
 # removed "handoff_ready" and "handoff_lapsed" stages as mice are trained continuously on the rig and there is no handoff
 # also renamed "OPHYS_" sessions to start with "TRAINING_" since there is no longer a distinction - all training sessions happen on ophys rig
-# to be more consistent with ephys_task1g_master: 
-# use more stringent transition criteria (added meets_engagement_and_hit_threshold)
-# reduced reward volume in TRAINING_1 to 0.007ml (instead of 0.01), then to 0.005 in TRAINING_4 (instead of 0.007)
+# use more stringent transition criteria (added meets_engagement_criteria in addition to peak d-prime >2)
+# reduced reward volume in TRAINING_1 to 0.007ml (instead of 0.01), then to 0.005 in TRAINING_4 (instead of 0.007) then to 0.003 in TRAINING_5 and therafter
+# keep autorewards to 5 in all sessions, remove free rewards entirely
+
 name: Learning_V1omFISH_v1.0.3
 
 # potential further changes: 
-# dont do gradual steps down in reward volume, just start with 5ul from the beginning (autoreward session is 5ul anyway)
 # addition of zebra noise stimulus instead of or in addition to fingerprint stim
 
 transitions:
@@ -199,11 +198,11 @@ transitions:
 
   - trigger: progress
     source: TRAINING_4_images_G_5ul_reward
-    dest: TRAINING_5_images_G_no_autorewards
-    conditions: meets_engagement_and_hit_threshold
+    dest: TRAINING_5_images_G_3ul_reward
+    conditions: [two_out_of_three_aint_bad, yesterday_was_good, meets_engagement_criteria]
 
   - trigger: progress
-    source: TRAINING_5_images_G_no_autorewards
+    source: TRAINING_5_images_G_3ul_reward
     dest: TRAINING_6_images_G_omissions
     conditions: three_complete
 
@@ -230,7 +229,7 @@ transitions:
   - trigger: progress
     source: PASSIVE_1_gratings
     dest: PASSIVE_1_gratings 
-    conditions: three_complete # want 3 sessions of passive gratings
+    conditions: three_complete # want 3 sessions of passive gratings - operator to manually end after 3 sessions, but if they forget or want to run more, they can just keep running passive grating sessions and the mouse will stay in that stage
 
 
 stages:
@@ -325,14 +324,14 @@ stages:
             epilogue: *fingerprint_movie
 
 
-    TRAINING_5_images_G_no_autorewards:
+    TRAINING_5_images_G_3ul_reward:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_g_parameters
-            stage: TRAINING_5_images_G_no_autorewards
+            stage: TRAINING_5_images_G_3ul_reward
 
-            reward_volume: 0.005 # mL
+            reward_volume: 0.003 # mL
             free_reward_trials: 0
             warm_up_trials: 5
 
@@ -347,7 +346,7 @@ stages:
             <<: *image_set_g_parameters
             stage: TRAINING_6_images_G_omissions
 
-            reward_volume: 0.005 # mL
+            reward_volume: 0.003 # mL
             free_reward_trials: 0
             warm_up_trials: 5
 
@@ -364,7 +363,7 @@ stages:
             <<: *image_set_h_parameters
             stage: TRAINING_7_images_H
 
-            reward_volume: 0.005 # mL
+            reward_volume: 0.003 # mL
             free_reward_trials: 0
             warm_up_trials: 5
 
