@@ -169,7 +169,7 @@ _image_set_h_parameters: &image_set_h_parameters
 # reduced reward volume in TRAINING_1 to 0.007ml (instead of 0.01), then to 0.005 in TRAINING_4 (instead of 0.007) then to 0.003 in TRAINING_5 and therafter
 # keep autorewards to 5 in all sessions, remove free rewards entirely
 
-name: Learning_V1omFISH_v1.0.3
+name: Learning_V1omFISH_v1.0.4
 
 # potential further changes: 
 # addition of zebra noise stimulus instead of or in addition to fingerprint stim
