@@ -226,11 +226,6 @@ transitions:
     dest: PASSIVE_1_gratings 
     conditions: one_complete
 
-  - trigger: progress
-    source: PASSIVE_1_gratings
-    dest: PASSIVE_1_gratings 
-    conditions: three_complete # want 3 sessions of passive gratings - operator to manually end after 3 sessions, but if they forget or want to run more, they can just keep running passive grating sessions and the mouse will stay in that stage
-
 
 stages:
 
@@ -393,12 +388,12 @@ stages:
         script: *script_0
         script_md5: *script_0_md5
         parameters:
-        stage: PASSIVE_0_movie_clips
+            stage: PASSIVE_0_movie_clips
 
     PASSIVE_1_gratings:
         script: *script_1
         script_md5: *script_1_md5
         parameters:
-        stage: PASSIVE_1_gratings
+            stage: PASSIVE_1_gratings
 
 
