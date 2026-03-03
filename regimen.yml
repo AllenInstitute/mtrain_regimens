@@ -92,9 +92,9 @@ _flash_parameters: &flash_parameters
 
     # auto rewards
     auto_reward_vol: 0.005
-    warm_up_trials: 5
+    warm_up_trials: 5 #auto rewards for the first N trials
     auto_reward_delay: 0.150
-    free_reward_trials: 10
+    free_reward_trials: 10000 #free reward if no licks for N trials
 
     # trial timing
     min_no_lick_time: 0.0
@@ -119,7 +119,7 @@ _no_flash_parameters: &no_flash_parameters
     periodic_flash: null
     response_window: [0.15,1.0]
     reward_volume: 0.010
-    free_reward_trials: 10
+    free_reward_trials: 10000 #free reward if no licks for N trials
     pre_change_time: 2.25
 
     # timing of changes
@@ -264,7 +264,6 @@ stages:
             stimulus: *full_field_gratings
 
             reward_volume: 0.007 # mL
-            free_reward_trials: 0
             warm_up_trials: 5
 
             start_stop_padding: 300.0
@@ -282,7 +281,6 @@ stages:
             stimulus: *full_field_gratings
             
             reward_volume: 0.007 # mL
-            free_reward_trials: 0
             warm_up_trials: 5 
 
             start_stop_padding: 300.0
@@ -297,7 +295,6 @@ stages:
             stage: TRAINING_3_images_G_7ul_reward
 
             reward_volume: 0.007 # mL
-            free_reward_trials: 0
             warm_up_trials: 5
 
             start_stop_padding: 300.0
@@ -312,7 +309,6 @@ stages:
             stage: TRAINING_4_images_G_5ul_reward
 
             reward_volume: 0.005 # mL
-            free_reward_trials: 0
             warm_up_trials: 5
 
             start_stop_padding: 300.0
@@ -327,7 +323,6 @@ stages:
             stage: TRAINING_5_images_G_3ul_reward
 
             reward_volume: 0.003 # mL
-            free_reward_trials: 0
             warm_up_trials: 5
 
             start_stop_padding: 300.0
@@ -342,7 +337,6 @@ stages:
             stage: TRAINING_6_images_G_omissions
 
             reward_volume: 0.003 # mL
-            free_reward_trials: 0
             warm_up_trials: 5
 
             start_stop_padding: 300.0
@@ -359,7 +353,6 @@ stages:
             stage: TRAINING_7_images_H
 
             reward_volume: 0.003 # mL
-            free_reward_trials: 0
             warm_up_trials: 5
 
             start_stop_padding: 300.0
@@ -376,7 +369,6 @@ stages:
             stage: TRAINING_8_images_H_extinction
 
             reward_volume: 0 
-            free_reward_trials: 0
             warm_up_trials: 0
 
             start_stop_padding: 300.0
