@@ -169,7 +169,7 @@ _image_set_h_parameters: &image_set_h_parameters
 # reduced reward volume in TRAINING_1 to 0.007ml (instead of 0.01), then to 0.005 in TRAINING_4 (instead of 0.007) then to 0.003 in TRAINING_5 and therafter
 # keep autorewards to 5 in all sessions, remove free rewards entirely
 
-name: Learning_V1omFISH_v1.0.7
+name: Learning_V1omFISH_v1.0.8
 
 # potential further changes: 
 # addition of zebra noise stimulus instead of or in addition to fingerprint stim
@@ -178,51 +178,51 @@ transitions:
 
   - trigger: progress
     source: TRAINING_0_gratings_autorewards_15min
-    dest: TRAINING_1_gratings_static_autorewards
+    dest: TRAINING_0_gratings_autorewards_30min
     conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_1_gratings_static_autorewards
-    dest: TRAINING_2_gratings_static
+    source: TRAINING_0_gratings_autorewards_30min
+    dest: TRAINING_1_gratings_static
     conditions: one_complete
 
   - trigger: progress
-    source: TRAINING_2_gratings_static
-    dest: TRAINING_3_gratings_flashed
+    source: TRAINING_1_gratings_static
+    dest: TRAINING_2_gratings_flashed
     conditions: [two_out_of_three_aint_bad_adjusted_dprime, yesterday_was_good_adjusted_dprime]
 
   - trigger: progress
-    source: TRAINING_3_gratings_flashed
-    dest: TRAINING_4_images_G_7ul_reward
+    source: TRAINING_2_gratings_flashed
+    dest: TRAINING_3_images_G_7ul_reward
     conditions: [two_out_of_three_aint_bad_adjusted_dprime, yesterday_was_good_adjusted_dprime]
 
   - trigger: progress
-    source: TRAINING_4_images_G_7ul_reward
-    dest: TRAINING_5_images_G_5ul_reward
+    source: TRAINING_3_images_G_7ul_reward
+    dest: TRAINING_4_images_G_5ul_reward
     conditions: [two_out_of_three_aint_bad_adjusted_dprime, yesterday_was_good_adjusted_dprime]
 
   - trigger: progress
-    source: TRAINING_5_images_G_5ul_reward
-    dest: TRAINING_6_images_G_3ul_reward
+    source: TRAINING_4_images_G_5ul_reward
+    dest: TRAINING_5_images_G_3ul_reward
     conditions: [two_out_of_three_aint_bad_adjusted_dprime, yesterday_was_good_adjusted_dprime]
 
   - trigger: progress
-    source: TRAINING_6_images_G_3ul_reward
-    dest: TRAINING_7_images_G_omissions
+    source: TRAINING_5_images_G_3ul_reward
+    dest: TRAINING_6_images_G_omissions
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_7_images_G_omissions
-    dest: TRAINING_8_images_H
+    source: TRAINING_6_images_G_omissions
+    dest: TRAINING_7_images_H
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_8_images_H
-    dest: TRAINING_9_images_H_extinction
+    source: TRAINING_7_images_H
+    dest: TRAINING_8_images_H_extinction
     conditions: three_complete
 
   - trigger: progress
-    source: TRAINING_9_images_H_extinction
+    source: TRAINING_8_images_H_extinction
     dest: PASSIVE_0_movie_clips 
     conditions: one_complete
 
@@ -258,28 +258,36 @@ stages:
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
-
-    TRAINING_1_gratings_static_autorewards:
+    TRAINING_0_gratings_autorewards_30min:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *no_flash_parameters
-            stage: TRAINING_1_gratings_static_autorewards
-
+            stage: TRAINING_0_gratings_autorewards_30min
             stimulus: *full_field_gratings
 
-            reward_volume: 0.007 # mL
-            warm_up_trials: 100 #roughly how many trials it takes for 15 minutes of autorewards
+            # auto rewards
+            warm_up_trials: -1 #infinite
+            abort_on_early_response: False
+            catch_frequency: 0.0
+
+            response_window: [0.0, 0.0]
+            min_no_lick_time: 0.0
+            failure_repeats: 0
+
+            max_task_duration_min: 30.0
+
+            reward_volume: 0.0 # autorewards are always 0.005 mL
 
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
-    TRAINING_2_gratings_static:
+    TRAINING_1_gratings_static:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *no_flash_parameters
-            stage: TRAINING_2_gratings_static
+            stage: TRAINING_1_gratings_static
 
             stimulus: *full_field_gratings
 
@@ -289,12 +297,13 @@ stages:
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
-    TRAINING_3_gratings_flashed:
+
+    TRAINING_2_gratings_flashed:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *flash_parameters
-            stage: TRAINING_3_gratings_flashed
+            stage: TRAINING_2_gratings_flashed
             task_id: DoC
 
             stimulus: *full_field_gratings
@@ -306,12 +315,12 @@ stages:
             epilogue: *fingerprint_movie
 
 
-    TRAINING_4_images_G_7ul_reward:
+    TRAINING_3_images_G_7ul_reward:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_g_parameters
-            stage: TRAINING_4_images_G_7ul_reward
+            stage: TRAINING_3_images_G_7ul_reward
 
             reward_volume: 0.007 # mL
             warm_up_trials: 5
@@ -320,12 +329,12 @@ stages:
             epilogue: *fingerprint_movie
 
 
-    TRAINING_5_images_G_5ul_reward:
+    TRAINING_4_images_G_5ul_reward:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_g_parameters
-            stage: TRAINING_5_images_G_5ul_reward
+            stage: TRAINING_4_images_G_5ul_reward
 
             reward_volume: 0.005 # mL
             warm_up_trials: 5
@@ -334,12 +343,12 @@ stages:
             epilogue: *fingerprint_movie
 
 
-    TRAINING_6_images_G_3ul_reward:
+    TRAINING_5_images_G_3ul_reward:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_g_parameters
-            stage: TRAINING_6_images_G_3ul_reward
+            stage: TRAINING_5_images_G_3ul_reward
 
             reward_volume: 0.003 # mL
             warm_up_trials: 5
@@ -348,12 +357,12 @@ stages:
             epilogue: *fingerprint_movie
 
 
-    TRAINING_7_images_G_omissions:
+    TRAINING_6_images_G_omissions:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_g_parameters
-            stage: TRAINING_7_images_G_omissions
+            stage: TRAINING_6_images_G_omissions
 
             reward_volume: 0.003 # mL
             warm_up_trials: 5
@@ -364,12 +373,12 @@ stages:
             flash_omit_probability: 0.05
 
 
-    TRAINING_8_images_H:
+    TRAINING_7_images_H:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_h_parameters
-            stage: TRAINING_8_images_H
+            stage: TRAINING_7_images_H
 
             reward_volume: 0.003 # mL
             warm_up_trials: 5
@@ -380,12 +389,12 @@ stages:
             flash_omit_probability: 0.05
 
 
-    TRAINING_9_images_H_extinction:
+    TRAINING_8_images_H_extinction:
         script: *change_detection_script
         script_md5: *change_detection_script_md5
         parameters:
             <<: *image_set_h_parameters
-            stage: TRAINING_9_images_H_extinction
+            stage: TRAINING_8_images_H_extinction
 
             reward_volume: 0 
             warm_up_trials: 0
