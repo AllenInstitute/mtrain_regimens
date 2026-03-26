@@ -119,7 +119,7 @@ _no_flash_parameters: &no_flash_parameters
     periodic_flash: null
     response_window: [0.15,1.0]
     reward_volume: 0.010
-    free_reward_trials: 10000 #free reward if no licks for N trials
+    free_reward_trials: 10
     pre_change_time: 2.25
 
     # timing of changes
@@ -169,7 +169,7 @@ _image_set_h_parameters: &image_set_h_parameters
 # reduced reward volume in TRAINING_1 to 0.007ml (instead of 0.01), then to 0.005 in TRAINING_4 (instead of 0.007) then to 0.003 in TRAINING_5 and therafter
 # keep autorewards to 5 in all sessions, remove free rewards entirely
 
-name: Learning_V1omFISH_v1.0.8
+name: Learning_V1omFISH_v1.0.9
 
 # potential further changes: 
 # addition of zebra noise stimulus instead of or in addition to fingerprint stim
@@ -324,7 +324,7 @@ stages:
 
             reward_volume: 0.007 # mL
             warm_up_trials: 5
-
+            free_reward_trials: 10
             start_stop_padding: 300.0
             epilogue: *fingerprint_movie
 
