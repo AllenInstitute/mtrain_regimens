@@ -22,7 +22,7 @@ _image_set_g_stimulus: &image_set_g
   class: images
   luminance_matching_intensity: -0.46
   params:
-    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_G_2019.05.26.pkl
+    image_set: //allen/programs/braintv/workgroups/nc-ophys/visual_behavior/image_dictionaries/Natural_Images_Lum_Matched_set_ophys_P_2026.04.09.pkl
     sampling: even
 
 _flash_parameters: &flash_parameters
@@ -109,7 +109,7 @@ _psycode_parameters: &psycode_parameters
   number_runs_rf: 8
   number_runs_ss: 15
 
-name: Openscope_psycode_v18
+name: Openscope_psycode_set_P_v1
 
 transitions:
   - trigger: progress
