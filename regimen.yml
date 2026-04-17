@@ -1,27 +1,25 @@
-_P3_script: &P3_script
-    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/313d5d0622c3c82d025a84a395af6fde9f5aa81f/code/experiment-launcher/bonsai_experiment_launcher.py
+_launcher_script: &launcher_script
+    https://raw.githubusercontent.com/AllenNeuralDynamics/openscope-community-predictive-processing/4d0767e3da7d2c03c2d0ab805a4a8e7248c77323/code/experiment-launcher/bonsai_experiment_launcher.py
             
-_P3_script_md5: &P3_script_md5
+_launcher_script_md5: &launcher_script_md5
     29f37c4670ba9a32357036303e20d22a
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
-    repository_url: https://github.com/AllenNeuralDynamics/openscope-community-predictive-processing.git
-    repository_commit_hash: 313d5d0622c3c82d025a84a395af6fde9f5aa81f
-    local_repository_path: C:/BonsaiDataPredictiveProcessingRepo
-    bonsai_path: code/stimulus-control/src/Mindscope/generic_oddball.bonsai
-    bonsai_exe_path: code/stimulus-control/bonsai/Bonsai.exe
-    bonsai_setup_script: code/stimulus-control/bonsai/setup.cmd
+    repository_url: https://github.com/AllenNeuralDynamics/ophys-passive-visual-stim.git
+    repository_commit_hash: f9f0ac7f1f889ef148105fcd1b444a78016076fe
+    local_repository_path: C:/BonsaiDataSCBC
+    bonsai_path: src/RandomNaturalMovies_Harpless.bonsai
+    bonsai_exe_path: bonsai/Bonsai.exe
+    bonsai_setup_script: bonsai/setup.cmd
     stimulus_table_duration: 00:01:00
-    session_type: sequence_mismatch_no_oddball_long_zebra
+    stimulus_table_path: ParameterFiles/pilot_stim_trials.csv
     Photodiode_ExtentX: 8
     Photodiode_ExtentY: 8
     Photodiode_LocationX: 59
     Photodiode_LocationY: 28
-    MotorCouplingCPD: 0.04
-    WheelRadiusOverScreenRatio: 0.36 
 
 ### mtrain definitions
-name: Openscope_P3_sequence_cohort_v2
+name: SCBC_Diverse_VisStim
 
 transitions:
 
@@ -47,251 +45,65 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-    dest: TRAIN_FULL_EPHYS
+    dest: TRAIN_FULL_DAY1_5
 
   - trigger: manual
-    source: TRAIN_FULL_EPHYS 
-    dest: TRAIN_FULL_OPTICAL
-
-  - trigger: manual
-    source: TRAIN_FULL_OPTICAL
-    dest: EPHYS_SESSION1_SEQUENCE
-
-  - trigger: manual
-    source: EPHYS_SESSION1_SEQUENCE
-    dest: OPTICAL_SESSION1_SEQUENCE
-
-  - trigger: manual
-    source: OPTICAL_SESSION1_SEQUENCE
-    dest: EPHYS_SESSION2_DURATION
-
-  - trigger: manual
-    source: EPHYS_SESSION2_DURATION
-    dest: OPTICAL_SESSION2_DURATION
-
-  - trigger: manual
-    source: OPTICAL_SESSION2_DURATION
-    dest: EPHYS_SESSION3_STANDARD
-
-  - trigger: manual
-    source: EPHYS_SESSION3_STANDARD
-    dest: OPTICAL_SESSION3_STANDARD
-
-  - trigger: manual
-    source: OPTICAL_SESSION3_STANDARD
-    dest: EPHYS_SESSION4_SENSORYMOTOR
-
-  - trigger: manual
-    source: EPHYS_SESSION4_SENSORYMOTOR
-    dest: OPTICAL_SESSION4_SENSORYMOTOR
-
-  - trigger: manual
-    source: OPTICAL_SESSION4_SENSORYMOTOR
-    dest: TEST_P3
-
-  - trigger: manual
-    source: TEST_P3
+    source: TRAIN_FULL_DAY1_5
     dest: TEST_CLUSTER
-
-  - trigger: manual
-    source: TEST_CLUSTER
-    dest: TEST_OPTICAL
 
 stages:
     DAY_6:
-        script: *P3_script
-        script_md5: *P3_script_md5
+        script: *launcher_script
+        script_md5: *launcher_script_md5
         parameters:
             stage: DAY_6
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:08:00
-            session_type: sequence_mismatch_no_oddball_training
 
     DAY_7:
-        script: *P3_script
-        script_md5: *P3_script_md5
+        script: *launcher_script
+        script_md5: *launcher_script_md5
         parameters:
             stage: DAY_7
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:18:00
-            session_type: sequence_mismatch_no_oddball_training
 
     DAY_8:
-        script: *P3_script
-        script_md5: *P3_script_md5
+        script: *launcher_script
+        script_md5: *launcher_script_md5
         parameters:
             stage: DAY_8
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:28:00
-            session_type: sequence_mismatch_no_oddball_training
 
     DAY_9:
-        script: *P3_script
-        script_md5: *P3_script_md5
+        script: *launcher_script
+        script_md5: *launcher_script_md5
         parameters:
             stage: DAY_9
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:38:00
-            session_type: sequence_mismatch_no_oddball_training
 
     DAY_10:
-        script: *P3_script
-        script_md5: *P3_script_md5
+        script: *launcher_script
+        script_md5: *launcher_script_md5
         parameters:
             stage: DAY_10
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:48:00
-            session_type: sequence_mismatch_no_oddball_training
 
-    TRAIN_FULL_EPHYS:
-        script: *P3_script
-        script_md5: *P3_script_md5
+    TRAIN_FULL_DAY1_5:
+        script: *launcher_script
+        script_md5: *launcher_script_md5
         parameters:
-            stage: TRAIN_FULL_EPHYS
+            stage: TRAIN_FULL_DAY1_5
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 02:00:00
-            session_type: sequence_mismatch_no_oddball_long_zebra
-
-    TRAIN_FULL_OPTICAL:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: TRAIN_FULL_OPTICAL
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: sequence_mismatch_no_oddball_long_zebra
-            Photodiode_LocationX: -59
-
-    EPHYS_SESSION1_SEQUENCE:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: EPHYS_SESSION1_SEQUENCE            
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: sequence_mismatch_long_zebra
-
-            # optotagging      
-            disable_opto: False
-
-            opto_params: 
-              operation_mode: "experiment"
-
-    OPTICAL_SESSION1_SEQUENCE:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: OPTICAL_SESSION1_SEQUENCE            
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: sequence_mismatch_long_zebra
-            Photodiode_LocationX: -59
-
-    EPHYS_SESSION2_DURATION:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: EPHYS_SESSION2_DURATION
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: duration_mismatch_long_zebra
-
-            # optotagging      
-            disable_opto: False
-
-            opto_params: 
-              operation_mode: "experiment"
-
-    OPTICAL_SESSION2_DURATION:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: OPTICAL_SESSION2_DURATION
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: duration_mismatch_long_zebra
-            Photodiode_LocationX: -59
-
-    EPHYS_SESSION3_STANDARD:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: EPHYS_SESSION3_STANDARD
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: visual_mismatch_long_zebra
-
-            # optotagging      
-            disable_opto: False
-
-            opto_params: 
-              operation_mode: "experiment"
-
-    OPTICAL_SESSION3_STANDARD:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: OPTICAL_SESSION3_STANDARD
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: visual_mismatch_long_zebra
-            Photodiode_LocationX: -59
-
-    EPHYS_SESSION4_SENSORYMOTOR:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: EPHYS_SESSION4_SENSORYMOTOR
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: sensorimotor_no_oddball_long_zebra
-
-            # optotagging      
-            disable_opto: False
-
-            opto_params: 
-              operation_mode: "experiment"
-
-    OPTICAL_SESSION4_SENSORYMOTOR:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: OPTICAL_SESSION4_SENSORYMOTOR
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
-            session_type: sensorimotor_no_oddball_long_zebra
-            Photodiode_LocationX: -59
-
-    TEST_P3:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: TEST_P3
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 00:00:10
-            session_type: short_test
-
-            # optotagging      
-            disable_opto: False
-
-            opto_params: 
-              operation_mode: "experiment"
 
     TEST_CLUSTER:
-        script: *P3_script
-        script_md5: *P3_script_md5
+        script: *launcher_script
+        script_md5: *launcher_script_md5
         parameters:
             stage: TEST_CLUSTER
             <<: *bonsai_launcher_parameters
             stimulus_table_duration: 00:05:00
-            session_type: short_test
-
-    TEST_OPTICAL:
-        script: *P3_script
-        script_md5: *P3_script_md5
-        parameters:
-            stage: TEST_OPTICAL
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 00:00:10
-            session_type: short_test
-            Photodiode_LocationX: -59
