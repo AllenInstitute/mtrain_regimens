@@ -6,7 +6,7 @@ _launcher_script_md5: &launcher_script_md5
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/ophys-passive-visual-stim.git
-    repository_commit_hash: f9f0ac7f1f889ef148105fcd1b444a78016076fe
+    repository_commit_hash: cluster-dev
     local_repository_path: C:/BonsaiDataSCBC
     bonsai_path: src/RandomNaturalMovies_Harpless.bonsai
     bonsai_exe_path: bonsai/Bonsai.exe
