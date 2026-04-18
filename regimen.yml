@@ -19,7 +19,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     Photodiode_LocationY: -28
 
 ### mtrain definitions
-name: SCBC_DiverseVisStim_v4
+name: SCBC_DiverseVisStim_v5
 
 transitions:
 
@@ -45,10 +45,6 @@ transitions:
 
   - trigger: manual
     source: DAY_10
-    dest: TRAIN_FULL_DAY1_5
-
-  - trigger: manual
-    source: TRAIN_FULL_DAY1_5
     dest: TEST_CLUSTER
 
 stages:
@@ -58,7 +54,7 @@ stages:
         parameters:
             stage: DAY_6
             <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 00:08:00
+            stimulus_table_duration: 00:12:00
 
     DAY_7:
         script: *launcher_script
@@ -66,7 +62,7 @@ stages:
         parameters:
             stage: DAY_7
             <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 00:18:00
+            stimulus_table_duration: 00:25:00
 
     DAY_8:
         script: *launcher_script
@@ -74,7 +70,7 @@ stages:
         parameters:
             stage: DAY_8
             <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 00:28:00
+            stimulus_table_duration: 00:38:00
 
     DAY_9:
         script: *launcher_script
@@ -82,7 +78,7 @@ stages:
         parameters:
             stage: DAY_9
             <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 00:38:00
+            stimulus_table_duration: 00:51:00
 
     DAY_10:
         script: *launcher_script
@@ -90,15 +86,7 @@ stages:
         parameters:
             stage: DAY_10
             <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 00:48:00
-
-    TRAIN_FULL_DAY1_5:
-        script: *launcher_script
-        script_md5: *launcher_script_md5
-        parameters:
-            stage: TRAIN_FULL_DAY1_5
-            <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 02:00:00
+            stimulus_table_duration: 01:04:00
 
     TEST_CLUSTER:
         script: *launcher_script
@@ -106,4 +94,5 @@ stages:
         parameters:
             stage: TEST_CLUSTER
             <<: *bonsai_launcher_parameters
-            stimulus_table_duration: 00:05:00
+            stimulus_table_duration: 00:00:45
+            stimulus_table_path: ParameterFiles/test_cluster_stim_trials_test.csv
