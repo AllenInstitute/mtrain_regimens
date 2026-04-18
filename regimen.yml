@@ -19,7 +19,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     Photodiode_LocationY: 28
 
 ### mtrain definitions
-name: SCBC_DiverseVisStim_v3
+name: SCBC_DiverseVisStim_v4
 
 transitions:
 
