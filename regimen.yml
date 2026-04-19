@@ -6,7 +6,7 @@ _launcher_script_md5: &launcher_script_md5
 
 _bonsai_launcher_parameters: &bonsai_launcher_parameters
     repository_url: https://github.com/AllenNeuralDynamics/ophys-passive-visual-stim.git
-    repository_commit_hash: deac52d4f01c243ba789a424a31e3b1e219dd12e
+    repository_commit_hash: 5a1559799a0b099c40f4c2475c2fbc0447faaa4a
     local_repository_path: C:/BonsaiDataSCBC
     bonsai_path: src/RandomNaturalMovies_Harpless.bonsai
     bonsai_exe_path: bonsai/Bonsai.exe
@@ -19,7 +19,7 @@ _bonsai_launcher_parameters: &bonsai_launcher_parameters
     Photodiode_LocationY: -28
 
 ### mtrain definitions
-name: SCBC_DiverseVisStim_v5
+name: SCBC_DiverseVisStim_v6
 
 transitions:
 
