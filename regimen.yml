@@ -169,7 +169,7 @@ _image_set_h_parameters: &image_set_h_parameters
 # reduced reward volume in TRAINING_1 to 0.007ml (instead of 0.01), then to 0.005 in TRAINING_4 (instead of 0.007) then to 0.003 in TRAINING_5 and therafter
 # keep autorewards to 5 in all sessions, remove free rewards entirely
 
-name: Learning_V1omFISH_v1.0.9
+name: Learning_V1omFISH_v1.1.0
 
 # potential further changes: 
 # addition of zebra noise stimulus instead of or in addition to fingerprint stim
@@ -199,17 +199,17 @@ transitions:
   - trigger: progress
     source: TRAINING_3_images_G_7ul_reward
     dest: TRAINING_4_images_G_5ul_reward
-    conditions: [two_out_of_three_aint_bad_adjusted_dprime, yesterday_was_good_adjusted_dprime]
+    conditions: meets_engagement_and_hit_threshold
 
   - trigger: progress
     source: TRAINING_4_images_G_5ul_reward
     dest: TRAINING_5_images_G_3ul_reward
-    conditions: [two_out_of_three_aint_bad_adjusted_dprime, yesterday_was_good_adjusted_dprime]
+    conditions: meets_engagement_and_hit_threshold
 
   - trigger: progress
     source: TRAINING_5_images_G_3ul_reward
     dest: TRAINING_6_images_G_omissions
-    conditions: three_complete
+    conditions: meets_engagement_and_hit_threshold
 
   - trigger: progress
     source: TRAINING_6_images_G_omissions
