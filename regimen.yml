@@ -1,23 +1,23 @@
 _script: &script 
-  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/32513f6cc852b0cc3fede05f89f2a6f6ad7e1c89/runTask.py
+  https://raw.githubusercontent.com/samgale/DynamicRoutingTask/41050a23189b9ce0d310fcab67bf8a6f6681aa7b/runTask.py
 _script_md5: 7ca1c9c5312b58961f796bb8929f99f3
 _parameters: &parameters
   rewardVol: 0.003
   mtrain_translator: dynamic_routing
-  task_script_commit_hash: 32513f6cc852b0cc3fede05f89f2a6f6ad7e1c89
+  task_script_commit_hash: 41050a23189b9ce0d310fcab67bf8a6f6681aa7b
   GHTaskScriptParams:
     taskScript: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/32513f6cc852b0cc3fede05f89f2a6f6ad7e1c89/DynamicRouting1.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/41050a23189b9ce0d310fcab67bf8a6f6681aa7b/DynamicRouting1.py
     taskControl: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/32513f6cc852b0cc3fede05f89f2a6f6ad7e1c89/TaskControl.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/41050a23189b9ce0d310fcab67bf8a6f6681aa7b/TaskControl.py
     taskUtils: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/32513f6cc852b0cc3fede05f89f2a6f6ad7e1c89/TaskUtils.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/41050a23189b9ce0d310fcab67bf8a6f6681aa7b/TaskUtils.py
     analysisScript: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/32513f6cc852b0cc3fede05f89f2a6f6ad7e1c89/DynamicRouting1_postSessionAnalysis.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/41050a23189b9ce0d310fcab67bf8a6f6681aa7b/DynamicRouting1_postSessionAnalysis.py
     analysisUtils: 
-      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/32513f6cc852b0cc3fede05f89f2a6f6ad7e1c89/Analysis/DynamicRoutingAnalysisUtils.py
+      https://raw.githubusercontent.com/samgale/DynamicRoutingTask/41050a23189b9ce0d310fcab67bf8a6f6681aa7b/Analysis/DynamicRoutingAnalysisUtils.py
 ### mtrain definitions
-name: DynamicRouting_v0.0.12
+name: DynamicRouting_v0.0.13
 transitions:
 - trigger: progress
   source: STAGE_0
