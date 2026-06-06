@@ -2,6 +2,7 @@ _script: &script
   https://raw.githubusercontent.com/samgale/DynamicRoutingTask/41050a23189b9ce0d310fcab67bf8a6f6681aa7b/runTask.py
 _script_md5: a11f1985c656a245e24b67cd6ccdf6a4
 _parameters: &parameters
+  useCamstimConfig: 1
   rewardVol: 0.003
   mtrain_translator: dynamic_routing
   task_script_commit_hash: 41050a23189b9ce0d310fcab67bf8a6f6681aa7b
@@ -17,7 +18,7 @@ _parameters: &parameters
     analysisUtils:
       https://raw.githubusercontent.com/samgale/DynamicRoutingTask/41050a23189b9ce0d310fcab67bf8a6f6681aa7b/Analysis/DynamicRoutingAnalysisUtils.py
 ### mtrain definitions
-name: DynamicRouting_v0.0.14
+name: DynamicRouting_v0.0.15
 transitions:
 - trigger: progress
   source: STAGE_0
