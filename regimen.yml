@@ -1,14 +1,14 @@
-_script_0: &script_0 http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/testing/TenSessionClips_0.py?at=500697e44ba5b7237ed7afc7cec069746f50892a
+_script_0: &script_0 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/U01/movie_clips_0.py?at=853624d8584aec00cb34385de673bbb5e75f7050
 
-_script_0_md5: &script_0_md5 5f042b8ab04d6106d86d3d4fdcee5dc3
+_script_0_md5: &script_0_md5 80425bd84be6e567afeaba2f26ee662b
 
-_script_1: &script_1 http://stash.corp.alleninstitute.org/projects/VB/repos/visual_behavior_scripts/raw/testing/gratings.py?at=500697e44ba5b7237ed7afc7cec069746f50892a
+_script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/U01/gratings_1.py?at=853624d8584aec00cb34385de673bbb5e75f7050
 
-_script_1_md5: &script_1_md5 b31e254922529583bfc4f219e7050dfd
+_script_1_md5: &script_1_md5 8bc691caa06295f36d40ad35298516e1
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: omFISH_Ophys_test_v0.0.2
+name: omFISH_TESTONLY_v0.0.1
 
 transitions:
   - trigger: manual
