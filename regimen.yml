@@ -1,14 +1,14 @@
-_script_0: &script_0 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/U01/movie_clips_0.py?at=853624d8584aec00cb34385de673bbb5e75f7050
+_script_0: &script_0 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/U01/movie_clips_0.py?at=ca183acd29b9db11d02ac1cce9e1828d08926642
 
-_script_0_md5: &script_0_md5 80425bd84be6e567afeaba2f26ee662b
+_script_0_md5: &script_0_md5 8f4c3e8b553862726d0f91365680f55a
 
-_script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/U01/gratings_1.py?at=853624d8584aec00cb34385de673bbb5e75f7050
+_script_1: &script_1 http://stash.corp.alleninstitute.org/users/sams/repos/visual_behavior_scripts/raw/U01/gratings_1.py?at=ca183acd29b9db11d02ac1cce9e1828d08926642
 
-_script_1_md5: &script_1_md5 8bc691caa06295f36d40ad35298516e1
+_script_1_md5: &script_1_md5 fd180b59829e82a447fbe10296b26782
 
 ### mtrain definitions
 #based on VisualBehavior_Task1A_v1.0.3
-name: omFISH_TESTONLY_v0.0.1
+name: omFISH_TESTONLY_v0.0.2
 
 transitions:
   - trigger: manual
